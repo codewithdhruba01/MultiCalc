@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
+// import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
 
 // Conversion factors
 const conversions = {
