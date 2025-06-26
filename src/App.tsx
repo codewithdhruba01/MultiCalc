@@ -7,6 +7,9 @@ import HealthCalculators from './pages/HealthCalculators'
 import MathCalculators from './pages/MathCalculators'
 import DetailedAgeCalculator from './pages/DetailedAgeCalculator'
 import About from './pages/About'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Contact from './pages/Contact'
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="math-calculators" element={<MathCalculators />} />
         <Route path="age-calculator" element={<DetailedAgeCalculator />} />
         <Route path="about" element={<About />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="terms-of-service" element={<TermsOfService />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
   )

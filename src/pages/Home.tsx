@@ -8,30 +8,38 @@ export default function Home() {
     {
       title: 'Basic Calculators',
       description: 'Standard and scientific calculators for everyday use',
-      icon: <Calculator className="h-12 w-12 text-primary" />,
+      icon: <Calculator className="h-12 w-12 text-white" />,
       link: '/basic-calculators',
-      calculators: ['Basic Calculator', 'Scientific Calculator', 'Percentage Calculator']
+      calculators: ['Basic Calculator', 'Scientific Calculator', 'Percentage Calculator'],
+      gradient: 'from-blue-500 to-indigo-600',
+      hoverEffect: 'hover:shadow-blue-200 dark:hover:shadow-blue-900'
     },
     {
       title: 'Financial Calculators',
       description: 'Tools for financial planning and calculations',
-      icon: <CreditCard className="h-12 w-12 text-primary" />,
+      icon: <CreditCard className="h-12 w-12 text-white" />,
       link: '/financial-calculators',
-      calculators: ['Loan Calculator', 'Currency Converter']
+      calculators: ['Loan Calculator', 'Currency Converter'],
+      gradient: 'from-emerald-500 to-teal-600',
+      hoverEffect: 'hover:shadow-emerald-200 dark:hover:shadow-emerald-900'
     },
     {
       title: 'Health Calculators',
       description: 'Calculate health metrics and statistics',
-      icon: <BarChart3 className="h-12 w-12 text-primary" />,
+      icon: <BarChart3 className="h-12 w-12 text-white" />,
       link: '/health-calculators',
-      calculators: ['BMI Calculator']
+      calculators: ['BMI Calculator'],
+      gradient: 'from-rose-500 to-pink-600',
+      hoverEffect: 'hover:shadow-rose-200 dark:hover:shadow-rose-900'
     },
     {
       title: 'Math Calculators',
       description: 'Advanced mathematical tools and converters',
-      icon: <Percent className="h-12 w-12 text-primary" />,
+      icon: <Percent className="h-12 w-12 text-white" />,
       link: '/math-calculators',
-      calculators: ['Unit Converter', 'Age Calculator']
+      calculators: ['Unit Converter', 'Age Calculator'],
+      gradient: 'from-amber-500 to-orange-600',
+      hoverEffect: 'hover:shadow-amber-200 dark:hover:shadow-amber-900'
     }
   ]
 
@@ -51,7 +59,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4 md:text-5xl lg:text-6xl">
-            Multi-Calculator
+            Multi Calculator
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Your one-stop solution for all calculation needs. Simple, fast, and accurate.
@@ -101,20 +109,23 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {calculatorCategories.map((category, index) => (
               <Link to={category.link} key={index}>
-                <Card className="h-full transition-all hover:shadow-lg">
-                  <CardHeader className="text-center">
-                    <div className="mx-auto mb-4">
+                <Card className={`h-full transition-all hover:shadow-xl ${category.hoverEffect} transform hover:-translate-y-1 duration-300`}>
+                  <div className={`bg-gradient-to-br ${category.gradient} rounded-t-lg p-6 text-center`}>
+                    <div className="mx-auto mb-2 bg-white/20 p-4 rounded-full inline-block">
                       {category.icon}
                     </div>
-                    <CardTitle>{category.title}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc list-inside text-muted-foreground">
+                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                  </div>
+                  <CardContent className="pt-4">
+                    <p className="text-muted-foreground mb-4">{category.description}</p>
+                    <div className="space-y-2">
                       {category.calculators.map((calc, i) => (
-                        <li key={i}>{calc}</li>
+                        <div key={i} className="flex items-center">
+                          <div className="w-2 h-2 rounded-full bg-primary mr-2"></div>
+                          <span>{calc}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </CardContent>
                 </Card>
               </Link>

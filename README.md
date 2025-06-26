@@ -19,6 +19,10 @@ A comprehensive calculator website with multiple calculator types and a beautifu
 ### Installation
 
 1. Clone the repository
+ ```bash
+git clone https://github.com/codewithdhruba01/MultiCalc.git
+cd MultiCalc
+````
 2. Install dependencies:
    ```bash
    npm install
@@ -44,7 +48,7 @@ A comprehensive calculator website with multiple calculator types and a beautifu
 - Loan Calculator
 - Unit Converter
 
-## Built With
+## Tech Stack
 
 - React
 - TypeScript

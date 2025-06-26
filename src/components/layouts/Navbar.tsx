@@ -35,6 +35,16 @@ export default function Navbar() {
             >
               Home
             </NavLink>
+            
+            <NavLink 
+              to="/about" 
+              className={({ isActive }) => 
+                isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
+              }
+            >
+              About
+            </NavLink>
+
             <NavLink 
               to="/basic-calculators" 
               className={({ isActive }) => 
@@ -43,6 +53,7 @@ export default function Navbar() {
             >
               Basic
             </NavLink>
+
             <NavLink 
               to="/financial-calculators" 
               className={({ isActive }) => 
@@ -51,6 +62,7 @@ export default function Navbar() {
             >
               Financial
             </NavLink>
+
             <NavLink 
               to="/health-calculators" 
               className={({ isActive }) => 
@@ -59,6 +71,7 @@ export default function Navbar() {
             >
               Health
             </NavLink>
+
             <NavLink 
               to="/math-calculators" 
               className={({ isActive }) => 
@@ -67,6 +80,7 @@ export default function Navbar() {
             >
               Math
             </NavLink>
+
             <NavLink 
               to="/age-calculator" 
               className={({ isActive }) => 
@@ -78,14 +92,8 @@ export default function Navbar() {
                 Age Calculator
               </span>
             </NavLink>
-            <NavLink 
-              to="/about" 
-              className={({ isActive }) => 
-                isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
-              }
-            >
-              About
-            </NavLink>
+
+            
           </nav>
           
           <div className="flex items-center gap-2">

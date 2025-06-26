@@ -106,7 +106,7 @@ export default function About() {
                 We're constantly working to improve MultiCalc and add new features. If you have suggestions, encounter any issues, or want to request a new calculator type, we'd love to hear from you!
               </p>
               <p className="text-muted-foreground">
-                Contact us at <a href="mailto:feedback@multicalc.example.com" className="text-primary hover:underline">feedback@multicalc.example.com</a>
+                Contact us at <a href="contact" className="text-primary hover:underline">Contact us</a>
               </p>
             </section>
           </div>

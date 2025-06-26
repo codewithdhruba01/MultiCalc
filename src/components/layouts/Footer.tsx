@@ -44,7 +44,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/age-calculator" className="text-muted-foreground hover:text-foreground flex items-center">
-                  <Calendar className="h-3 w-3 mr-1" />
+                  
                   Age Calculator
                 </Link>
               </li>
@@ -60,19 +60,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
+                <Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
+                <Link to="/terms-of-service" className="text-muted-foreground hover:text-foreground">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
+                <Link to="/contact" className="text-muted-foreground hover:text-foreground">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -80,11 +80,11 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-lg font-medium">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://x.com/codewithdhruba" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://github.com/codewithdhruba01/MultiCalc" className="text-muted-foreground hover:text-foreground">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>
@@ -94,10 +94,10 @@ export default function Footer() {
         
         <div className="mt-8 border-t border-border/40 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} MultiCalc. All rights reserved.
+            &copy; {currentYear} Dhrubaraj Pati. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center mt-2 md:mt-0">
-            Made with <Heart className="h-4 w-4 mx-1 text-red-500" /> for calculations
+            Made with <Heart className="h-4 w-4 mx-1 text-red-500" /> for Dhrubaraj Pati
           </p>
         </div>
       </Container>
