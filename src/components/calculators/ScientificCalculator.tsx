@@ -172,7 +172,7 @@ export default function ScientificCalculator() {
             <TabsTrigger value="history">History</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="calculator">
+          <TabsContent>
             <div className="space-y-4">
               <div className="bg-muted p-4 rounded-md text-right">
                 <div className="text-xs text-muted-foreground mb-1">
@@ -473,7 +473,7 @@ export default function ScientificCalculator() {
             </div>
           </TabsContent>
           
-          <TabsContent value="history">
+          <TabsContent>
             <div className="bg-muted p-4 rounded-md h-80 overflow-y-auto">
               {history.length === 0 ? (
                 <p className="text-center text-muted-foreground">No calculation history yet</p>

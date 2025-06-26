@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
+import { Tabs, TabsList, TabsTrigger,  } from '../ui/Tabs'
 
 type Unit = 'metric' | 'imperial'
 
@@ -82,10 +82,22 @@ export default function BMICalculator() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs value={unit} onValueChange={handleUnitChange} className="mb-6">
+        <Tabs className="mb-6">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="metric">Metric</TabsTrigger>
-            <TabsTrigger value="imperial">Imperial</TabsTrigger>
+            <TabsTrigger
+              value="metric"
+              onClick={() => handleUnitChange('metric')}
+              className={unit === 'metric' ? 'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground' : ''}
+            >
+              Metric
+            </TabsTrigger>
+            <TabsTrigger
+              value="imperial"
+              onClick={() => handleUnitChange('imperial')}
+              className={unit === 'imperial' ? 'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground' : ''}
+            >
+              Imperial
+            </TabsTrigger>
           </TabsList>
         </Tabs>
         

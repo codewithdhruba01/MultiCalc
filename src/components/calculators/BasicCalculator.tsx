@@ -31,8 +31,6 @@ export default function BasicCalculator() {
 
   const handleOperator = (operator: string) => {
     try {
-      const inputValue = parseFloat(display)
-      
       if (currentOperation !== null) {
         const result = calculate()
         setDisplay(String(result))

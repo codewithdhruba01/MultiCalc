@@ -118,7 +118,7 @@ export default function DetailedAgeCalculator() {
 
   // Live update effect
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | null = null
+    let intervalId: ReturnType<typeof setInterval> | null = null
     
     if (liveUpdate && birthDate) {
       // Initial calculation

@@ -162,22 +162,55 @@ export default function UnitConverter() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs 
-          value={category} 
-          onValueChange={(value) => handleCategoryChange(value as ConversionCategory)}
-          className="mb-4"
-        >
-          <TabsList className="grid grid-cols-3 mb-4">
-            <TabsTrigger value="length">Length</TabsTrigger>
-            <TabsTrigger value="weight">Weight</TabsTrigger>
-            <TabsTrigger value="volume">Volume</TabsTrigger>
-          </TabsList>
-          <TabsList className="grid grid-cols-3">
-            <TabsTrigger value="temperature">Temperature</TabsTrigger>
-            <TabsTrigger value="area">Area</TabsTrigger>
-            <TabsTrigger value="time">Time</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        {/* Tabs for selecting conversion category */}
+        <div className="mb-4">
+          <div className="grid grid-cols-3 mb-4">
+            <button
+              className={`px-4 py-2 rounded ${category === 'length' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('length')}
+              type="button"
+            >
+              Length
+            </button>
+            <button
+              className={`px-4 py-2 rounded ${category === 'weight' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('weight')}
+              type="button"
+            >
+              Weight
+            </button>
+            <button
+              className={`px-4 py-2 rounded ${category === 'volume' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('volume')}
+              type="button"
+            >
+              Volume
+            </button>
+          </div>
+          <div className="grid grid-cols-3">
+            <button
+              className={`px-4 py-2 rounded ${category === 'temperature' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('temperature')}
+              type="button"
+            >
+              Temperature
+            </button>
+            <button
+              className={`px-4 py-2 rounded ${category === 'area' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('area')}
+              type="button"
+            >
+              Area
+            </button>
+            <button
+              className={`px-4 py-2 rounded ${category === 'time' ? 'bg-primary text-white' : 'bg-background'}`}
+              onClick={() => handleCategoryChange('time')}
+              type="button"
+            >
+              Time
+            </button>
+          </div>
+        </div>
         
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">

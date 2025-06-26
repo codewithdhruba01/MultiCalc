@@ -126,7 +126,7 @@ export default function LoanCalculator() {
             <TabsTrigger value="schedule">Amortization</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="calculator" className="space-y-4">
+          <TabsContent className="space-y-4">
             <div>
               <label htmlFor="loanAmount" className="block text-sm font-medium mb-1">
                 Loan Amount
@@ -215,7 +215,7 @@ export default function LoanCalculator() {
             )}
           </TabsContent>
           
-          <TabsContent value="schedule">
+          <TabsContent>
             {result ? (
               <div className="max-h-96 overflow-y-auto">
                 <table className="w-full border-collapse">

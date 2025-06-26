@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container'
-import { Calculator, Github, Heart, Twitter, Calendar } from 'lucide-react'
+import { Calculator, Github, Heart, Twitter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {

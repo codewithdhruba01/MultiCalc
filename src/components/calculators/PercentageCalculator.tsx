@@ -98,7 +98,7 @@ export default function PercentageCalculator() {
             <TabsTrigger value="total">% of Total</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="basic" className="space-y-4">
+          <TabsContent className="space-y-4">
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
@@ -147,7 +147,7 @@ export default function PercentageCalculator() {
             </div>
           </TabsContent>
           
-          <TabsContent value="change" className="space-y-4">
+          <TabsContent className="space-y-4">
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
@@ -204,7 +204,7 @@ export default function PercentageCalculator() {
             </div>
           </TabsContent>
           
-          <TabsContent value="total" className="space-y-4">
+          <TabsContent className="space-y-4">
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
