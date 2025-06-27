@@ -5,6 +5,7 @@ import { evaluate } from 'mathjs'
 
 export default function BasicCalculator() {
   const [display, setDisplay] = useState('0')
+  const [storedValue, setStoredValue] = useState<string | null>(null)
   const [currentOperation, setCurrentOperation] = useState<string | null>(null)
   const [waitingForOperand, setWaitingForOperand] = useState(false)
   const [clearAll, setClearAll] = useState(true)
@@ -30,49 +31,43 @@ export default function BasicCalculator() {
   }
 
   const handleOperator = (operator: string) => {
-    try {
-      if (currentOperation !== null) {
-        const result = calculate()
+    if (currentOperation && storedValue !== null) {
+      try {
+        const result = evaluate(`${storedValue} ${currentOperation} ${display}`)
         setDisplay(String(result))
-        setCurrentOperation(operator)
-      } else {
-        setCurrentOperation(operator)
+        setStoredValue(String(result))
+      } catch (error) {
+        setDisplay('Error')
+        setStoredValue(null)
+        setCurrentOperation(null)
       }
-      
-      setWaitingForOperand(true)
-    } catch (error) {
-      setDisplay('Error')
+    } else {
+      setStoredValue(display)
     }
-  }
-
-  const calculate = () => {
-    if (currentOperation === null) return parseFloat(display)
-    
-    try {
-      const result = evaluate(`${display} ${currentOperation} ${display}`)
-      return result
-    } catch (error) {
-      setDisplay('Error')
-      return 0
-    }
+    setCurrentOperation(operator)
+    setWaitingForOperand(true)
   }
 
   const handleEquals = () => {
-    try {
-      if (currentOperation) {
-        const result = calculate()
+    if (currentOperation && storedValue !== null) {
+      try {
+        const result = evaluate(`${storedValue} ${currentOperation} ${display}`)
         setDisplay(String(result))
+        setStoredValue(null)
         setCurrentOperation(null)
         setWaitingForOperand(true)
+      } catch (error) {
+        setDisplay('Error')
+        setStoredValue(null)
+        setCurrentOperation(null)
       }
-    } catch (error) {
-      setDisplay('Error')
     }
   }
 
   const handleClear = () => {
     if (clearAll) {
       setDisplay('0')
+      setStoredValue(null)
       setCurrentOperation(null)
     } else {
       setDisplay('0')

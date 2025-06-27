@@ -11,7 +11,7 @@ const mockExchangeRates = {
   JPY: 149.5,
   CAD: 1.35,
   AUD: 1.51,
-  INR: 83.12,
+  INR: 85.53,
   CNY: 7.19,
   BRL: 5.05,
   ZAR: 18.33
@@ -138,7 +138,7 @@ export default function CurrencyConverter() {
           
           {convertedAmount !== null && (
             <div className="mt-6 p-4 bg-muted rounded-md">
-              <h3 className="text-lg font-medium mb-2">Conversion Result</h3>
+              <h3 className="text-lg font-medium mb-2 text-center">Conversion Result</h3>
               <div className="text-center">
                 <p className="text-2xl font-bold">
                   {parseFloat(amount).toFixed(2)} {fromCurrency} = {convertedAmount} {toCurrency}
