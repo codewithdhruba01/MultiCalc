@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
               <div>
                 <h2 className="text-xl font-bold mb-2">Introduction</h2>
                 <p>
-                  Welcome to MultiCalc ("we," "our," or "us"). We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+                  Welcome to MultiCalc We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
                 </p>
                 <p>
                   Please read this Privacy Policy carefully. By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the website.

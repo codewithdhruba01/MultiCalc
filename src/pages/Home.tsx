@@ -135,33 +135,38 @@ export default function Home() {
 
         {/* Features Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Our Calculators?</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">Why Choose Our Calculators?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-muted rounded-lg">
-              <div className="bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Calculator className="h-8 w-8 text-primary" />
+            {/* Feature 1 */}
+            <div className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+                <Calculator className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Easy to Use</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-semibold mb-2">Easy to Use</h3>
+              <p className="text-white/90">
                 Simple, intuitive interface designed for quick calculations without any hassle.
               </p>
             </div>
-            <div className="text-center p-6 bg-muted rounded-lg">
-              <div className="bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Ruler className="h-8 w-8 text-primary" />
+
+            {/* Feature 2 */}
+            <div className="group text-center p-6 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+                <Ruler className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Accurate Results</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-semibold mb-2">Accurate Results</h3>
+              <p className="text-white/90">
                 Precise calculations you can rely on for personal, educational, or professional use.
               </p>
             </div>
-            <div className="text-center p-6 bg-muted rounded-lg">
-              <div className="bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Calendar className="h-8 w-8 text-primary" />
+
+            {/* Feature 3 */}
+            <div className="group text-center p-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+                <Calendar className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Multiple Categories</h3>
-              <p className="text-muted-foreground">
-                From basic math to finance, health, and conversions - we've got all your calculation needs covered.
+              <h3 className="text-xl font-semibold mb-2">Multiple Categories</h3>
+              <p className="text-white/90">
+                From basic math to finance, health, and conversions — we've got all your calculation needs covered.
               </p>
             </div>
           </div>
@@ -175,7 +180,7 @@ export default function Home() {
           </p>
           <Link 
             to="/basic-calculators" 
-            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-lg font-medium text-primary-foreground hover:bg-primary/90"
+            className="inline-flex items-center justify-center px-8 py-3 font-bold border border-[#2563EB] text-[#3B82F6] rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
           >
             Start Calculating Now
           </Link>
