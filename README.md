@@ -13,8 +13,7 @@ Whether you’re a student needing quick calculations, a professional who wants 
 
 ## 📸 Screenshots
 
-![MultiCalc Screenshot](public/screenshoot/template.png)
-
+![MultiCalc Screenshot](./public/Screenshoot/template.png)
 
 ## Features
 
