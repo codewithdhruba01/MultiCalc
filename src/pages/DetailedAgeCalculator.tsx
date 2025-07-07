@@ -1,10 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Clock, Calendar, Hourglass } from 'lucide-react'
 
 export default function DetailedAgeCalculator() {
+  useEffect(() => {
+          // Scroll to top when page loads
+          window.scrollTo(0, 0)
+      
+          // Initialize AOS
+          AOS.init({
+            duration: 800,
+            once: true,
+          })
+        }, [])
   const [birthDate, setBirthDate] = useState<string>('')
   const [toDate, setToDate] = useState<string>(new Date().toISOString().split('T')[0])
   const [liveUpdate, setLiveUpdate] = useState<boolean>(false)
@@ -138,7 +150,7 @@ export default function DetailedAgeCalculator() {
   }, [liveUpdate, birthDate])
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-8 md:py-12" data-aos="zoom-in">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Detailed Age Calculator</h1>

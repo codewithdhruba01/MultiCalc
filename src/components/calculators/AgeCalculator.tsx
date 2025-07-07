@@ -1,8 +1,21 @@
 import { useState } from 'react'
 import { Button } from '../ui/Button'
+import AOS from 'aos'
+import { useEffect } from 'react'
+import 'aos/dist/aos.css'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 
 export default function AgeCalculator() {
+   useEffect(() => {
+        // Scroll to top when page loads
+        window.scrollTo(0, 0)
+    
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          once: true,
+        })
+      }, [])
   const [birthDate, setBirthDate] = useState<string>('')
   const [toDate, setToDate] = useState<string>(new Date().toISOString().split('T')[0])
   const [age, setAge] = useState<{
@@ -69,7 +82,7 @@ export default function AgeCalculator() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
         <CardTitle className="text-center">Age Calculator</CardTitle>
         <CardDescription className="text-center">

@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import AOS from 'aos'
+import { useEffect } from 'react'
+import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
@@ -6,6 +9,16 @@ import { Input } from '@/components/ui/Input'
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react'
 
 export default function Contact() {
+    useEffect(() => {
+      // Scroll to top when page loads
+      window.scrollTo(0, 0)
+  
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+      })
+    }, [])
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -34,7 +47,6 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
-      // Reset form after submission
       setFormState({
         name: '',
         email: '',
@@ -48,14 +60,14 @@ export default function Contact() {
     <div className="py-8 md:py-12">
       <Container>
         <div className="max-w-5xl mx-auto">
-          <div className="mb-8 text-center">
+          <div className="mb-8 text-center" data-aos="fade-up">
             <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Have questions, feedback, or need assistance? We're here to help. Reach out to our team using the contact information below or fill out the form.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12" data-aos="fade-up">
             <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 border-blue-200 dark:border-blue-800">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center">
@@ -113,7 +125,7 @@ export default function Contact() {
             </Card>
           </div>
           
-          <Card className="mb-12">
+          <Card className="mb-12" data-aos="fade-up">
             <CardHeader>
               <CardTitle>Send Us a Message</CardTitle>
               <CardDescription>
@@ -230,7 +242,7 @@ export default function Contact() {
             </CardContent>
           </Card>
           
-          <div className="bg-muted rounded-lg p-6">
+          <div className="bg-muted rounded-lg p-6" data-aos="fade-up">
             <h2 className="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>

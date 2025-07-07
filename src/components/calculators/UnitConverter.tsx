@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Button } from '../ui/Button'
+import AOS from 'aos'
+import { useEffect } from 'react'
+import 'aos/dist/aos.css'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
 // import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
 
 // Conversion factors
 const conversions = {
+  
   length: {
     meter: 1,
     kilometer: 0.001,
@@ -70,6 +74,16 @@ type ConversionCategory = keyof typeof conversions
 type UnitType<T extends ConversionCategory> = keyof typeof conversions[T]
 
 export default function UnitConverter() {
+   useEffect(() => {
+          // Scroll to top when page loads
+          window.scrollTo(0, 0)
+      
+          // Initialize AOS
+          AOS.init({
+            duration: 800,
+            once: true,
+          })
+        }, [])
   const [category, setCategory] = useState<ConversionCategory>('length')
   const [fromUnit, setFromUnit] = useState<string>('meter')
   const [toUnit, setToUnit] = useState<string>('centimeter')
@@ -154,7 +168,7 @@ export default function UnitConverter() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto"  data-aos="fade-up">
       <CardHeader>
         <CardTitle className="text-center">Unit Converter</CardTitle>
         <CardDescription className="text-center">

@@ -97,7 +97,7 @@ export default function Home() {
         </section>
 
         {/* Featured Calculator */}
-        <section className="mb-16" data-aos="fade-up">
+        <section className="mb-16" data-aos="zoom-in">
           <h2 className="text-3xl font-bold mb-8 text-center">Featured Calculator</h2>
           <div className="max-w-xl mx-auto">
             <Link to={featuredCalculators[0].link}>
@@ -205,7 +205,7 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="text-center p-8 bg-muted rounded-lg" data-aos="fade-up">
+        <section className="text-center p-8 bg-muted rounded-lg" data-aos="zoom-in">
           <h2 className="text-2xl font-bold mb-4">Ready to Calculate?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Explore our range of calculators and simplify your calculations today. No sign-up required!

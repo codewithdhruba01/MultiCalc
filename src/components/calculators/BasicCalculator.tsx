@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card'
 import { evaluate } from 'mathjs'
 
 export default function BasicCalculator() {
+  useEffect(() => {
+          // Scroll to top when page loads
+          window.scrollTo(0, 0)
+      
+          // Initialize AOS
+          AOS.init({
+            duration: 800,
+            once: true,
+          })
+        }, [])
   const [display, setDisplay] = useState('0')
   const [storedValue, setStoredValue] = useState<string | null>(null)
   const [currentOperation, setCurrentOperation] = useState<string | null>(null)
@@ -86,7 +98,7 @@ export default function BasicCalculator() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
         <CardTitle className="text-center">Basic Calculator</CardTitle>
       </CardHeader>

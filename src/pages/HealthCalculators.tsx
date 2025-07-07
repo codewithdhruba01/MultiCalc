@@ -1,9 +1,22 @@
 import { Container } from '@/components/ui/Container'
+import AOS from 'aos'
+import { useEffect } from 'react'
+import 'aos/dist/aos.css'
 import BMICalculator from '@/components/calculators/BMICalculator'
 
 export default function HealthCalculators() {
+  useEffect(() => {
+          // Scroll to top when page loads
+          window.scrollTo(0, 0)
+      
+          // Initialize AOS
+          AOS.init({
+            duration: 800,
+            once: true,
+          })
+        }, [])
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-8 md:py-12" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Health Calculators</h1>

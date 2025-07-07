@@ -1,14 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import LoanCalculator from '@/components/calculators/LoanCalculator'
 import CurrencyConverter from '@/components/calculators/CurrencyConverter'
 import { Button } from '@/components/ui/Button'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function FinancialCalculators() {
   const [activeCalculator, setActiveCalculator] = useState<'loan' | 'currency'>('loan')
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    AOS.init({ duration: 700, once: true })
+  }, [])
+
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-8 md:py-12" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Financial Calculators</h1>
