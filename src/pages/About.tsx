@@ -1,18 +1,45 @@
+import { useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { Calculator, Code, Lightbulb, Zap } from 'lucide-react'
 
 export default function About() {
+  useEffect(() => {
+    // Scroll to top when About page is mounted
+    window.scrollTo(0, 0)
+
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+    })
+  }, [])
+
   return (
     <div className="py-8 md:py-12">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2 text-center">About MultiCalc</h1>
-          <p className="text-muted-foreground text-center mb-8">
+          <h1
+            className="text-3xl font-bold mb-2 text-center"
+            data-aos="fade-up"
+          >
+            About MultiCalc
+          </h1>
+          <p
+            className="text-muted-foreground text-center mb-8"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Learn more about our calculator website and its features
           </p>
-          
+
           <div className="space-y-8">
-            <section className="bg-muted p-6 rounded-lg">
+            <section
+              className="bg-muted p-6 rounded-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <h2 className="text-2xl font-bold mb-4 flex items-center">
                 <Calculator className="h-6 w-6 mr-2" />
                 Our Mission
@@ -24,11 +51,11 @@ export default function About() {
                 Our goal is to continually expand our collection of calculators to cover more areas and provide even more value to our users. We're committed to maintaining a clean, intuitive interface that makes finding and using the right calculator a breeze.
               </p>
             </section>
-            
-            <section>
+
+            <section data-aos="fade-up" data-aos-delay="300">
               <h2 className="text-2xl font-bold mb-4">Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-muted p-6 rounded-lg">
+                <div className="bg-muted p-6 rounded-lg" data-aos="fade-up" data-aos-delay="400">
                   <h3 className="text-xl font-semibold mb-3 flex items-center">
                     <Zap className="h-5 w-5 mr-2 text-primary" />
                     Multiple Calculator Types
@@ -37,8 +64,8 @@ export default function About() {
                     From basic arithmetic to scientific calculations, financial planning tools, health metrics, and unit conversions - we've got you covered with a wide range of calculators.
                   </p>
                 </div>
-                
-                <div className="bg-muted p-6 rounded-lg">
+
+                <div className="bg-muted p-6 rounded-lg" data-aos="fade-up" data-aos-delay="500">
                   <h3 className="text-xl font-semibold mb-3 flex items-center">
                     <Lightbulb className="h-5 w-5 mr-2 text-primary" />
                     Dark/Light Mode
@@ -47,8 +74,8 @@ export default function About() {
                     Work comfortably in any lighting condition with our customizable theme options. Switch between dark and light modes with a single click.
                   </p>
                 </div>
-                
-                <div className="bg-muted p-6 rounded-lg">
+
+                <div className="bg-muted p-6 rounded-lg" data-aos="fade-up" data-aos-delay="600">
                   <h3 className="text-xl font-semibold mb-3 flex items-center">
                     <Code className="h-5 w-5 mr-2 text-primary" />
                     Modern Design
@@ -57,8 +84,8 @@ export default function About() {
                     Enjoy a clean, responsive interface that works seamlessly on desktops, tablets, and mobile devices. Our modern design prioritizes usability and clarity.
                   </p>
                 </div>
-                
-                <div className="bg-muted p-6 rounded-lg">
+
+                <div className="bg-muted p-6 rounded-lg" data-aos="fade-up" data-aos-delay="700">
                   <h3 className="text-xl font-semibold mb-3 flex items-center">
                     <Calculator className="h-5 w-5 mr-2 text-primary" />
                     Accurate Results
@@ -69,8 +96,12 @@ export default function About() {
                 </div>
               </div>
             </section>
-            
-            <section className="bg-muted p-6 rounded-lg">
+
+            <section
+              className="bg-muted p-6 rounded-lg"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
               <h2 className="text-2xl font-bold mb-4">How to Use</h2>
               <ol className="list-decimal list-inside space-y-3">
                 <li className="text-lg">
@@ -99,14 +130,17 @@ export default function About() {
                 </li>
               </ol>
             </section>
-            
-            <section>
+
+            <section data-aos="fade-up" data-aos-delay="900">
               <h2 className="text-2xl font-bold mb-4">Feedback</h2>
               <p className="mb-4">
                 We're constantly working to improve MultiCalc and add new features. If you have suggestions, encounter any issues, or want to request a new calculator type, we'd love to hear from you!
               </p>
               <p className="text-muted-foreground">
-                Contact us at <a href="contact" className="text-primary hover:underline">Contact us</a>
+                Contact us at{' '}
+                <a href="contact" className="text-primary hover:underline">
+                  Contact us
+                </a>
               </p>
             </section>
           </div>
