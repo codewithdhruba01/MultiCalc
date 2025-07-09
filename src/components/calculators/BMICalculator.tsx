@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
-import { Tabs, TabsList, TabsTrigger,  } from '../ui/Tabs'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 type Unit = 'metric' | 'imperial'
 
@@ -13,20 +14,22 @@ export default function BMICalculator() {
   const [bmi, setBmi] = useState<number | null>(null)
   const [status, setStatus] = useState<string>('')
 
+  useEffect(() => {
+    AOS.init({ duration: 700, once: true })
+  }, [])
+
   const calculateBMI = () => {
     if (!height || !weight) return
 
     let bmiValue: number
-    
+
     if (unit === 'metric') {
-      // Metric: BMI = weight(kg) / height(m)²
       const heightInMeters = parseFloat(height) / 100
       bmiValue = parseFloat(weight) / (heightInMeters * heightInMeters)
     } else {
-      // Imperial: BMI = 703 × weight(lb) / height(in)²
       bmiValue = 703 * parseFloat(weight) / (parseFloat(height) * parseFloat(height))
     }
-    
+
     setBmi(parseFloat(bmiValue.toFixed(1)))
     setStatus(getBMIStatus(bmiValue))
   }
@@ -65,8 +68,8 @@ export default function BMICalculator() {
     setStatus('')
   }
 
-  const handleUnitChange = (value: string) => {
-    setUnit(value as Unit)
+  const handleUnitChange = (value: Unit) => {
+    setUnit(value)
     setHeight('')
     setWeight('')
     setBmi(null)
@@ -74,7 +77,7 @@ export default function BMICalculator() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
       <CardHeader>
         <CardTitle className="text-center">BMI Calculator</CardTitle>
         <CardDescription className="text-center">
@@ -82,25 +85,26 @@ export default function BMICalculator() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs className="mb-6">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger
-              value="metric"
+        {/* Unit Switch Buttons */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex rounded-md shadow-sm">
+            <Button
+              variant={unit === 'metric' ? 'default' : 'outline'}
+              className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleUnitChange('metric')}
-              className={unit === 'metric' ? 'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground' : ''}
             >
               Metric
-            </TabsTrigger>
-            <TabsTrigger
-              value="imperial"
+            </Button>
+            <Button
+              variant={unit === 'imperial' ? 'default' : 'outline'}
+              className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'imperial' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleUnitChange('imperial')}
-              className={unit === 'imperial' ? 'data-[state=active]:bg-primary data-[state=active]:text-primary-foreground' : ''}
             >
               Imperial
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-        
+            </Button>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <div>
             <label htmlFor="height" className="block text-sm font-medium mb-1">
@@ -114,7 +118,7 @@ export default function BMICalculator() {
               onChange={(e) => setHeight(e.target.value)}
             />
           </div>
-          
+
           <div>
             <label htmlFor="weight" className="block text-sm font-medium mb-1">
               Weight {unit === 'metric' ? '(kg)' : '(lbs)'}
@@ -127,7 +131,7 @@ export default function BMICalculator() {
               onChange={(e) => setWeight(e.target.value)}
             />
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <Button onClick={calculateBMI} disabled={!height || !weight}>
               Calculate
@@ -136,7 +140,7 @@ export default function BMICalculator() {
               Reset
             </Button>
           </div>
-          
+
           {bmi !== null && (
             <div className="mt-6 p-4 bg-muted rounded-md">
               <h3 className="text-lg font-medium mb-2">Your Result</h3>
@@ -150,7 +154,7 @@ export default function BMICalculator() {
               </div>
             </div>
           )}
-          
+
           <div className="mt-6 text-sm text-muted-foreground">
             <h4 className="font-medium mb-2">BMI Categories:</h4>
             <ul className="space-y-1">
