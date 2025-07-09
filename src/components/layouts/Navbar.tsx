@@ -24,22 +24,21 @@ export default function Navbar() {
             <Calculator className="h-6 w-6" />
             <span>MultiCalc</span>
           </Link>
-          
+
           <nav className="hidden md:flex items-center gap-6">
             <NavLink 
               to="/" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
               end
             >
               Home
             </NavLink>
-            
 
             <NavLink 
               to="/basic-calculators" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
@@ -48,7 +47,7 @@ export default function Navbar() {
 
             <NavLink 
               to="/financial-calculators" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
@@ -57,7 +56,7 @@ export default function Navbar() {
 
             <NavLink 
               to="/health-calculators" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
@@ -66,7 +65,7 @@ export default function Navbar() {
 
             <NavLink 
               to="/math-calculators" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
@@ -75,20 +74,20 @@ export default function Navbar() {
 
             <NavLink 
               to="/age-calculator" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
               Age Calculator
             </NavLink>
           </nav>
-          
+
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="md:hidden" 
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -98,71 +97,72 @@ export default function Navbar() {
         </div>
       </Container>
 
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden border-t border-border/40">
-          <Container>
-            <nav className="flex flex-col py-4 space-y-2">
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-                end
-              >
-                Home
-              </NavLink>
-              <NavLink 
-                to="/basic-calculators" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                Basic Calculators
-              </NavLink>
-              <NavLink 
-                to="/financial-calculators" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                Financial Calculators
-              </NavLink>
-              <NavLink 
-                to="/health-calculators" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                Health Calculators
-              </NavLink>
-              <NavLink 
-                to="/math-calculators" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                Math Calculators
-              </NavLink>
-
-              <NavLink 
-                to="/age-calculator" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                Age Calculator
-              </NavLink>
-            </nav>
-          </Container>
-        </div>
-      )}
+      {/* Smooth Animated Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform origin-top ${
+          isMenuOpen ? 'scale-y-100 opacity-100 max-h-[1000px]' : 'scale-y-0 opacity-0 max-h-0'
+        } border-t border-border/40`}
+      >
+        <Container>
+          <nav className="flex flex-col py-4 space-y-2">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+              end
+            >
+              Home
+            </NavLink>
+            <NavLink 
+              to="/basic-calculators" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Basic Calculators
+            </NavLink>
+            <NavLink 
+              to="/financial-calculators" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Financial Calculators
+            </NavLink>
+            <NavLink 
+              to="/health-calculators" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Health Calculators
+            </NavLink>
+            <NavLink 
+              to="/math-calculators" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Math Calculators
+            </NavLink>
+            <NavLink 
+              to="/age-calculator" 
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Age Calculator
+            </NavLink>
+          </nav>
+        </Container>
+      </div>
     </header>
   )
 }
