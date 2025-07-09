@@ -29,7 +29,7 @@ export default function Home() {
       description: 'Tools for financial planning and calculations',
       icon: <CreditCard className="h-12 w-12 text-white" />,
       link: '/financial-calculators',
-      calculators: ['Loan Calculator', 'Currency Converter'],
+      calculators: ['Loan Calculator', 'Currency Converter', 'Price to Weight Calculator'],
       gradient: 'from-emerald-500 to-teal-600',
       hoverEffect: 'hover:shadow-emerald-200 dark:hover:shadow-emerald-900'
     },
@@ -38,7 +38,7 @@ export default function Home() {
       description: 'Calculate health metrics and statistics',
       icon: <BarChart3 className="h-12 w-12 text-white" />,
       link: '/health-calculators',
-      calculators: ['BMI Calculator'],
+      calculators: ['BMI Calculator', 'Metric', 'Imperial'],
       gradient: 'from-rose-500 to-pink-600',
       hoverEffect: 'hover:shadow-rose-200 dark:hover:shadow-rose-900'
     },
