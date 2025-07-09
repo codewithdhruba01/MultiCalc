@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function PriceToWeightConverter() {
   const [pricePerKg, setPricePerKg] = useState<string>('')
   const [amountYouHave, setAmountYouHave] = useState<string>('')
   const [weightInGrams, setWeightInGrams] = useState<number | null>(null)
+
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true })
+  }, [])
 
   const handleConvert = () => {
     const price = parseFloat(pricePerKg)
@@ -25,7 +31,7 @@ export default function PriceToWeightConverter() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
       <CardHeader>
         <CardTitle className="text-center">Price to Weight Converter</CardTitle>
         <CardDescription className="text-center">
