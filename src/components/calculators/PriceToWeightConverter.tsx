@@ -31,7 +31,7 @@ export default function PriceToWeightConverter() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
         <CardTitle className="text-center">Price to Weight Converter</CardTitle>
         <CardDescription className="text-center">
