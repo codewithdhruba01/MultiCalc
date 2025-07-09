@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Calculator, Menu, X, Calendar } from 'lucide-react'
+import { Calculator, Menu, X } from 'lucide-react'
 import { Container } from '../ui/Container'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { Button } from '../ui/Button'
@@ -36,14 +36,6 @@ export default function Navbar() {
               Home
             </NavLink>
             
-            <NavLink 
-              to="/about" 
-              className={({ isActive }) => 
-                isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
-              }
-            >
-              About
-            </NavLink>
 
             <NavLink 
               to="/basic-calculators" 
@@ -87,13 +79,8 @@ export default function Navbar() {
                 isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
               }
             >
-              <span className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1" />
-                Age Calculator
-              </span>
+              Age Calculator
             </NavLink>
-
-            
           </nav>
           
           <div className="flex items-center gap-2">
@@ -162,6 +149,7 @@ export default function Navbar() {
               >
                 Math Calculators
               </NavLink>
+
               <NavLink 
                 to="/age-calculator" 
                 className={({ isActive }) => 
@@ -169,19 +157,7 @@ export default function Navbar() {
                 }
                 onClick={closeMenu}
               >
-                <span className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  Age Calculator
-                </span>
-              </NavLink>
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => 
-                  isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
-                }
-                onClick={closeMenu}
-              >
-                About
+                Age Calculator
               </NavLink>
             </nav>
           </Container>
