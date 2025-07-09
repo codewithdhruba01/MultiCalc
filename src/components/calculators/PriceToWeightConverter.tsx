@@ -10,9 +10,24 @@ export default function PriceToWeightConverter() {
   const [amountYouHave, setAmountYouHave] = useState<string>('')
   const [weightInGrams, setWeightInGrams] = useState<number | null>(null)
 
+  // New fields
+  const [quantityKg, setQuantityKg] = useState<string>('')
+  const [totalPrice, setTotalPrice] = useState<string>('')
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true })
   }, [])
+
+  // Auto-calculate price per kg
+  useEffect(() => {
+    const qty = parseFloat(quantityKg)
+    const price = parseFloat(totalPrice)
+
+    if (!isNaN(qty) && !isNaN(price) && qty > 0) {
+      const calculatedPricePerKg = price / qty
+      setPricePerKg(calculatedPricePerKg.toFixed(2))
+    }
+  }, [quantityKg, totalPrice])
 
   const handleConvert = () => {
     const price = parseFloat(pricePerKg)
@@ -27,6 +42,8 @@ export default function PriceToWeightConverter() {
   const handleReset = () => {
     setPricePerKg('')
     setAmountYouHave('')
+    setQuantityKg('')
+    setTotalPrice('')
     setWeightInGrams(null)
   }
 
@@ -35,12 +52,40 @@ export default function PriceToWeightConverter() {
       <CardHeader>
         <CardTitle className="text-center">Price to Weight Converter</CardTitle>
         <CardDescription className="text-center">
-          This converter tool helps you find out how many grams of product you can get for a specific amount of money
+          This tool helps you find out how many grams of product you can get for a specific amount of money.
         </CardDescription>
       </CardHeader>
 
       <CardContent>
         <div className="space-y-4">
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="quantityKg" className="block text-sm font-medium mb-1">
+                Quantity (kg)
+              </label>
+              <Input
+                id="quantityKg"
+                type="number"
+                placeholder="Enter quantity in kg"
+                value={quantityKg}
+                onChange={(e) => setQuantityKg(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="totalPrice" className="block text-sm font-medium mb-1">
+                Total Price (Taka)
+              </label>
+              <Input
+                id="totalPrice"
+                type="number"
+                placeholder="Enter total price"
+                value={totalPrice}
+                onChange={(e) => setTotalPrice(e.target.value)}
+              />
+            </div>
+          </div>
+
           <div>
             <label htmlFor="pricePerKg" className="block text-sm font-medium mb-1">
               Price per Kg
@@ -83,7 +128,6 @@ export default function PriceToWeightConverter() {
                 {weightInGrams} grams
               </p>
               <p className="text-sm mt-2 text-muted-foreground">
-                Formula: (Amount ÷ 1kg Amount) × 1000
               </p>
             </div>
           )}
