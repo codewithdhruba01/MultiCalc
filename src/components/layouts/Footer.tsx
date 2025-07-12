@@ -48,6 +48,12 @@ export default function Footer() {
                   Age Calculator
                 </Link>
               </li>
+              <li>
+                <Link to="/marks-calculators" className="text-muted-foreground hover:text-foreground flex items-center">
+                  
+                  Marks Calculator
+                </Link>
+              </li>
             </ul>
           </div>
           

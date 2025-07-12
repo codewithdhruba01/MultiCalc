@@ -80,6 +80,14 @@ export default function Navbar() {
             >
               Age Calculator
             </NavLink>
+            <NavLink 
+              to="/marks-calculators"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"
+              }
+            >
+              Marks Calculator
+            </NavLink>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -159,6 +167,15 @@ export default function Navbar() {
               onClick={closeMenu}
             >
               Age Calculator
+            </NavLink>
+            <NavLink 
+              to="/marks-calculators"
+              className={({ isActive }) =>
+                isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"
+              }
+              onClick={closeMenu}
+            >
+              Marks Calculator
             </NavLink>
           </nav>
         </Container>
