@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function PercentageCalculator() {
   // Basic percentage calculation
@@ -10,6 +12,10 @@ export default function PercentageCalculator() {
   const [ofValue, setOfValue] = useState<string>('')
   const [percentResult, setPercentResult] = useState<number | null>(null)
   
+  useEffect(() => {
+      AOS.init({ duration: 800, once: true })
+    }, [])
+
   // Percentage change calculation
   const [fromValue, setFromValue] = useState<string>('')
   const [toValue, setToValue] = useState<string>('')
@@ -83,7 +89,7 @@ export default function PercentageCalculator() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
         <CardTitle className="text-center">Percentage Calculator</CardTitle>
         <CardDescription className="text-center">

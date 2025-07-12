@@ -74,7 +74,7 @@ export default function PriceToWeightConverter() {
             </div>
             <div>
               <label htmlFor="totalPrice" className="block text-sm font-medium mb-1">
-                Total Price (Taka)
+                Total Price
               </label>
               <Input
                 id="totalPrice"

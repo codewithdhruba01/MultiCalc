@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card'
 import { evaluate } from 'mathjs'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function ScientificCalculator() {
   const [display, setDisplay] = useState('0')
@@ -11,6 +13,10 @@ export default function ScientificCalculator() {
   const [clearAll, setClearAll] = useState(true)
   const [history, setHistory] = useState<string[]>([])
   const [isRadians, setIsRadians] = useState(true)
+
+  useEffect(() => {
+        AOS.init({ duration: 800, once: true })
+      }, [])
 
   const handleDigit = (digit: string) => {
     if (waitingForOperand) {
@@ -161,7 +167,7 @@ export default function ScientificCalculator() {
   }
 
   return (
-    <Card className="w-full max-w-xl mx-auto">
+    <Card className="w-full max-w-xl mx-auto" data-aos="zoom-in">
       <CardHeader>
         <CardTitle className="text-center">Scientific Calculator</CardTitle>
       </CardHeader>
