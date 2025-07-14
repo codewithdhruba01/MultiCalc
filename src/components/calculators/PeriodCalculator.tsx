@@ -1,0 +1,157 @@
+import { useState, useEffect } from 'react'
+import { Button } from '../ui/Button'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
+
+export default function PeriodCalculator() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    AOS.init({
+      duration: 800,
+      once: true,
+    })
+  }, [])
+
+  const [lastPeriod, setLastPeriod] = useState<string>('')
+  const [periodLength, setPeriodLength] = useState<string>('5')
+  const [result, setResult] = useState<{
+    nextStart: string
+    nextEnd: string
+    ovulation: string
+    fertileStart: string
+    fertileEnd: string
+    nextPeriods: { start: string; end: string }[]
+  } | null>(null)
+
+  const calculatePeriod = () => {
+    if (!lastPeriod) return
+
+    const cycleLength = 28
+    const lastDate = new Date(lastPeriod)
+    const periodLen = parseInt(periodLength, 10)
+
+    const nextStart = new Date(lastDate)
+    nextStart.setDate(nextStart.getDate() + cycleLength)
+
+    const nextEnd = new Date(nextStart)
+    nextEnd.setDate(nextEnd.getDate() + periodLen - 1)
+
+    const ovulation = new Date(lastDate)
+    ovulation.setDate(ovulation.getDate() + 14)
+
+    const fertileStart = new Date(ovulation)
+    fertileStart.setDate(fertileStart.getDate() - 4)
+
+    const fertileEnd = new Date(ovulation)
+    fertileEnd.setDate(fertileEnd.getDate() + 1)
+
+    const nextPeriods = Array.from({ length: 3 }, (_, i) => {
+      const start = new Date(nextStart)
+      start.setDate(start.getDate() + cycleLength * i)
+      const end = new Date(start)
+      end.setDate(end.getDate() + periodLen - 1)
+      return { start: start.toISOString().split('T')[0], end: end.toISOString().split('T')[0] }
+    })
+
+    setResult({
+      nextStart: nextStart.toISOString().split('T')[0],
+      nextEnd: nextEnd.toISOString().split('T')[0],
+      ovulation: ovulation.toISOString().split('T')[0],
+      fertileStart: fertileStart.toISOString().split('T')[0],
+      fertileEnd: fertileEnd.toISOString().split('T')[0],
+      nextPeriods
+    })
+  }
+
+  const handleReset = () => {
+    setLastPeriod('')
+    setPeriodLength('5')
+    setResult(null)
+  }
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
+  return (
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
+      <CardHeader>
+        <CardTitle className="text-center">Period Calculator</CardTitle>
+        <CardDescription className="text-center">
+          Estimate your next period and ovulation date
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="lastPeriod" className="block text-sm font-medium mb-1">
+              Last Period Start Date
+            </label>
+            <input
+              id="lastPeriod"
+              type="date"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+              value={lastPeriod}
+              onChange={(e) => setLastPeriod(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="periodLength" className="block text-sm font-medium mb-1">
+              Period Length (days)
+            </label>
+            <input
+              id="periodLength"
+              type="number"
+              min="1"
+              max="10"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+              value={periodLength}
+              onChange={(e) => setPeriodLength(e.target.value)}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Button onClick={calculatePeriod} disabled={!lastPeriod}>
+              Calculate
+            </Button>
+            <Button variant="outline" onClick={handleReset}>
+              Reset
+            </Button>
+          </div>
+
+          {result && (
+            <div className="mt-6 p-4 bg-muted rounded-md space-y-3">
+              <h3 className="text-lg font-medium">Your Cycle Details</h3>
+              <p className="text-center">
+                <strong>Next Period:</strong> {formatDate(result.nextStart)} to {formatDate(result.nextEnd)}
+              </p>
+              <p className="text-center">
+                <strong>Ovulation Date:</strong> {formatDate(result.ovulation)}
+              </p>
+              <p className="text-center">
+                <strong>Fertile Window:</strong> {formatDate(result.fertileStart)} to {formatDate(result.fertileEnd)}
+              </p>
+              <div>
+                <h4 className="font-medium mt-3">Upcoming Periods:</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {result.nextPeriods.map((p, i) => (
+                    <li key={i}>
+                      {formatDate(p.start)} to {formatDate(p.end)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}

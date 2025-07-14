@@ -1,20 +1,20 @@
-import { Container } from '@/components/ui/Container'
+import { useEffect, useState } from 'react'
 import AOS from 'aos'
-import { useEffect } from 'react'
 import 'aos/dist/aos.css'
+import { Container } from '@/components/ui/Container'
+import { Button } from '@/components/ui/Button'
 import BMICalculator from '@/components/calculators/BMICalculator'
+import PregnancyCalculator from '@/components/calculators/PregnancyCalculator'
+import PeriodCalculator from '@/components/calculators/PeriodCalculator'
 
 export default function HealthCalculators() {
+  const [activeCalculator, setActiveCalculator] = useState<'bmi' | 'pregnancy' | 'period'>('bmi')
+
   useEffect(() => {
-          // Scroll to top when page loads
-          window.scrollTo(0, 0)
-      
-          // Initialize AOS
-          AOS.init({
-            duration: 800,
-            once: true,
-          })
-        }, [])
+    window.scrollTo(0, 0)
+    AOS.init({ duration: 800, once: true })
+  }, [])
+
   return (
     <div className="py-8 md:py-12" data-aos="fade-up">
       <Container>
@@ -23,29 +23,45 @@ export default function HealthCalculators() {
           <p className="text-muted-foreground text-center mb-8">
             Tools for calculating health metrics and statistics
           </p>
-          
-          <BMICalculator />
-          
-          <div className="mt-12 p-6 bg-muted rounded-lg">
-            <h2 className="text-xl font-bold mb-4">About BMI Calculator</h2>
-            <p className="mb-4">
-              Body Mass Index (BMI) is a measure of body fat based on height and weight that applies to adult men and women. It is a simple and widely used method for estimating a person's body fat.
-            </p>
-            <p className="mb-4">
-              BMI is calculated by dividing a person's weight in kilograms by the square of their height in meters (kg/m²). In the imperial system, the formula is weight in pounds divided by height in inches squared, multiplied by 703.
-            </p>
-            <h3 className="text-lg font-semibold mb-2">BMI Categories:</h3>
-            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-              <li>Underweight: BMI less than 18.5</li>
-              <li>Normal weight: BMI 18.5 to 24.9</li>
-              <li>Overweight: BMI 25 to 29.9</li>
-              <li>Obesity (Class 1): BMI 30 to 34.9</li>
-              <li>Obesity (Class 2): BMI 35 to 39.9</li>
-              <li>Extreme Obesity (Class 3): BMI 40 or greater</li>
-            </ul>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Note: BMI is a general guideline and may not accurately reflect body fat levels for athletes, elderly individuals, or pregnant women. Consult a healthcare professional for a comprehensive health assessment.
-            </p>
+
+          {/* Tab Switcher */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex rounded-md shadow-sm">
+              <Button
+                variant={activeCalculator === 'bmi' ? 'default' : 'outline'}
+                className={`rounded-l-md rounded-r-none px-4 py-2 ${
+                  activeCalculator === 'bmi' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('bmi')}
+              >
+                BMI
+              </Button>
+              <Button
+                variant={activeCalculator === 'pregnancy' ? 'default' : 'outline'}
+                className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
+                  activeCalculator === 'pregnancy' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('pregnancy')}
+              >
+                Pregnancy
+              </Button>
+              <Button
+                variant={activeCalculator === 'period' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeCalculator === 'period' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('period')}
+              >
+                Period
+              </Button>
+            </div>
+          </div>
+
+          {/* Render Selected Calculator */}
+          <div className="transition-all duration-300">
+            {activeCalculator === 'bmi' && <BMICalculator />}
+            {activeCalculator === 'pregnancy' && <PregnancyCalculator />}
+            {activeCalculator === 'period' && <PeriodCalculator />}
           </div>
         </div>
       </Container>

@@ -1,0 +1,297 @@
+import { useState, useEffect } from 'react'
+import { Button } from '../ui/Button'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
+
+export default function PregnancyCalculator() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    AOS.init({
+      duration: 800,
+      once: true,
+    })
+  }, [])
+
+  const [method, setMethod] = useState<string>('lastPeriod')
+  const [mainDate, setMainDate] = useState<string>('')
+  const [calcDate, setCalcDate] = useState<string>(new Date().toISOString().split('T')[0])
+  const [ultrasoundWeeks, setUltrasoundWeeks] = useState<string>('')
+  const [cycleLength, setCycleLength] = useState<string>('28')
+  const [result, setResult] = useState<{
+    dueDate: string
+    conceptionDate: string
+    gestationWeeks: number
+    gestationDays: number
+    months: number
+    trimester: string
+    percentComplete: number
+    babySize: string
+    babyWeight: string
+    milestones: { label: string; date: string }[]
+  } | null>(null)
+
+  const babySizeData: Record<number, { size: string, weight: string }> = {
+    23: { size: '11.4 inches (28.9 cm)', weight: '1.1 pounds (501 grams)' },
+    24: { size: '11.8 inches (30 cm)', weight: '1.3 pounds (600 grams)' },
+    25: { size: '13.6 inches (34.6 cm)', weight: '1.5 pounds (700 grams)' },
+    // ... extend as needed
+  }
+
+  const calculatePregnancy = () => {
+    if (!mainDate) return
+
+    const referenceDate = calcDate ? new Date(calcDate) : new Date()
+    let dueDate: Date
+    let conceptionDate: Date
+    let lmpAdjusted: Date | null = null
+
+    if (method === 'lastPeriod') {
+      const lmp = new Date(mainDate)
+      const cycleAdj = parseInt(cycleLength, 10) - 28
+      lmpAdjusted = new Date(lmp)
+      lmpAdjusted.setDate(lmpAdjusted.getDate() + cycleAdj)
+      dueDate = new Date(lmpAdjusted)
+      dueDate.setDate(dueDate.getDate() + 280)
+      conceptionDate = new Date(lmpAdjusted)
+      conceptionDate.setDate(conceptionDate.getDate() + 14)
+    } else if (method === 'dueDate') {
+      dueDate = new Date(mainDate)
+      conceptionDate = new Date(dueDate)
+      conceptionDate.setDate(dueDate.getDate() - 266)
+    } else if (method === 'conception') {
+      conceptionDate = new Date(mainDate)
+      dueDate = new Date(conceptionDate)
+      dueDate.setDate(conceptionDate.getDate() + 266)
+    } else if (method === 'ivf') {
+      conceptionDate = new Date(mainDate)
+      dueDate = new Date(conceptionDate)
+      dueDate.setDate(dueDate.getDate() + 266)
+    } else if (method === 'ultrasound') {
+      if (!ultrasoundWeeks) {
+        alert('Please enter gestational age at ultrasound')
+        return
+      }
+      const ultrasoundDate = new Date(mainDate)
+      const weeks = parseInt(ultrasoundWeeks, 10)
+      const lmp = new Date(ultrasoundDate)
+      lmp.setDate(lmp.getDate() - (weeks * 7))
+      dueDate = new Date(lmp)
+      dueDate.setDate(dueDate.getDate() + 280)
+      conceptionDate = new Date(lmp)
+      conceptionDate.setDate(conceptionDate.getDate() + 14)
+    } else {
+      alert('Unknown method')
+      return
+    }
+
+    const pregnancyStart = new Date(dueDate)
+    pregnancyStart.setDate(dueDate.getDate() - 280)
+
+    const diffTime = referenceDate.getTime() - pregnancyStart.getTime()
+    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+    const gestationWeeks = Math.floor(totalDays / 7)
+    const gestationDays = totalDays % 7
+    const months = +(totalDays / 30.44).toFixed(1)
+
+    const trimester =
+      gestationWeeks < 13 ? 'First' :
+      gestationWeeks < 28 ? 'Second' :
+      'Third'
+
+    const percentComplete = +( (totalDays / 280) * 100 ).toFixed(1)
+
+    const babyData = babySizeData[gestationWeeks] || { size: 'N/A', weight: 'N/A' }
+
+    const milestones = [
+      { label: 'End of First Trimester', date: formatDate(new Date(pregnancyStart.getTime() + (13 * 7 * 24 * 60 * 60 * 1000)).toISOString()) },
+      { label: 'End of Second Trimester', date: formatDate(new Date(pregnancyStart.getTime() + (27 * 7 * 24 * 60 * 60 * 1000)).toISOString()) },
+      { label: 'Start of Third Trimester', date: formatDate(new Date(pregnancyStart.getTime() + (28 * 7 * 24 * 60 * 60 * 1000)).toISOString()) },
+    ]
+
+    setResult({
+      dueDate: dueDate.toISOString().split('T')[0],
+      conceptionDate: conceptionDate.toISOString().split('T')[0],
+      gestationWeeks,
+      gestationDays,
+      months,
+      trimester,
+      percentComplete,
+      babySize: babyData.size,
+      babyWeight: babyData.weight,
+      milestones
+    })
+  }
+
+  const handleReset = () => {
+    setMainDate('')
+    setUltrasoundWeeks('')
+    setCycleLength('28')
+    setCalcDate(new Date().toISOString().split('T')[0])
+    setResult(null)
+  }
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
+  const getLabel = () => {
+    switch (method) {
+      case 'lastPeriod':
+        return 'Last Menstrual Period (LMP)'
+      case 'dueDate':
+        return 'Estimated Due Date'
+      case 'ultrasound':
+        return 'Ultrasound Date'
+      case 'conception':
+        return 'Conception Date'
+      case 'ivf':
+        return 'IVF Transfer Date'
+      default:
+        return ''
+    }
+  }
+
+  return (
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
+      <CardHeader>
+        <CardTitle className="text-center">Pregnancy Calculator</CardTitle>
+        <CardDescription className="text-center">
+          Estimate your due date and milestones
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="method" className="block text-sm font-medium mb-1">
+              Calculate Based On
+            </label>
+            <select
+              id="method"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+              value={method}
+              onChange={(e) => setMethod(e.target.value)}
+            >
+              <option value="dueDate">Due Date</option>
+              <option value="lastPeriod">Last Period</option>
+              <option value="ultrasound">Ultrasound</option>
+              <option value="conception">Conception Date</option>
+              <option value="ivf">IVF Transfer Date</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="mainDate" className="block text-sm font-medium mb-1">
+              {getLabel()}
+            </label>
+            <input
+              id="mainDate"
+              type="date"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+              value={mainDate}
+              onChange={(e) => setMainDate(e.target.value)}
+            />
+          </div>
+
+          {method === 'lastPeriod' && (
+            <div>
+              <label htmlFor="cycleLength" className="block text-sm font-medium mb-1">
+                Average Length of Your Cycles (days)
+              </label>
+              <input
+                id="cycleLength"
+                type="number"
+                min="20"
+                max="45"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                value={cycleLength}
+                onChange={(e) => setCycleLength(e.target.value)}
+              />
+            </div>
+          )}
+
+          {method === 'ultrasound' && (
+            <div>
+              <label htmlFor="ultrasoundWeeks" className="block text-sm font-medium mb-1">
+                Gestational Age at Ultrasound (weeks)
+              </label>
+              <input
+                id="ultrasoundWeeks"
+                type="number"
+                min="1"
+                max="40"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                value={ultrasoundWeeks}
+                onChange={(e) => setUltrasoundWeeks(e.target.value)}
+              />
+            </div>
+          )}
+
+          <div>
+            <label htmlFor="calcDate" className="block text-sm font-medium mb-1">
+              Calculate At Date (optional)
+            </label>
+            <input
+              id="calcDate"
+              type="date"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+              value={calcDate}
+              onChange={(e) => setCalcDate(e.target.value)}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Button onClick={calculatePregnancy} disabled={!mainDate}>
+              Calculate
+            </Button>
+            <Button variant="outline" onClick={handleReset}>
+              Reset
+            </Button>
+          </div>
+
+          {result && (
+            <div className="mt-6 p-4 bg-muted rounded-md space-y-3">
+              <h3 className="text-lg font-medium">Pregnancy Result</h3>
+              <p className="text-center text-xl font-bold">
+                Week #{result.gestationWeeks} ({result.gestationWeeks} weeks {result.gestationDays} days)
+              </p>
+              <p className="text-center">
+                About {result.months} months pregnant
+              </p>
+              <p className="text-center">
+                Trimester: <strong>{result.trimester}</strong>
+              </p>
+              <p className="text-center">
+                Due Date: <strong>{formatDate(result.dueDate)}</strong>
+              </p>
+              <p className="text-center">
+                Conception Date: {formatDate(result.conceptionDate)}
+              </p>
+              <p className="text-center">
+                Baby size: {result.babySize}, weight: {result.babyWeight}
+              </p>
+              <p className="text-center">
+                {result.percentComplete}% completed
+              </p>
+              <div>
+                <h4 className="font-medium mt-3">Important Milestones:</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {result.milestones.map((m, i) => (
+                    <li key={i}>
+                      {m.label}: {m.date}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}

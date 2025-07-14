@@ -38,7 +38,7 @@ export default function Home() {
       description: 'Calculate health metrics and statistics',
       icon: <BarChart3 className="h-12 w-12 text-white" />,
       link: '/health-calculators',
-      calculators: ['BMI Calculator', 'Metric', 'Imperial'],
+      calculators: ['BMI Calculator', 'Pregnancy Calculator', 'Period Calculator'],
       gradient: 'from-rose-500 to-pink-600',
       hoverEffect: 'hover:shadow-rose-200 dark:hover:shadow-rose-900'
     },
