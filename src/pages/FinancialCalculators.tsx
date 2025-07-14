@@ -24,25 +24,32 @@ export default function FinancialCalculators() {
             Tools for financial planning, loans, and currency conversions
           </p>
 
+          {/* Slider-style Tab Switcher */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
                 variant={activeCalculator === 'loan' ? 'default' : 'outline'}
-                className={`rounded-l-md px-4 py-2 ${activeCalculator === 'loan' ? 'bg-primary text-primary-foreground' : ''}`}
+                className={`rounded-l-md rounded-r-none px-4 py-2 ${
+                  activeCalculator === 'loan' ? 'bg-primary text-primary-foreground' : ''
+                }`}
                 onClick={() => setActiveCalculator('loan')}
               >
-                Loan Calculator
+                Loan
               </Button>
               <Button
                 variant={activeCalculator === 'currency' ? 'default' : 'outline'}
-                className={`px-4 py-2 border-x ${activeCalculator === 'currency' ? 'bg-primary text-primary-foreground' : ''}`}
+                className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
+                  activeCalculator === 'currency' ? 'bg-primary text-primary-foreground' : ''
+                }`}
                 onClick={() => setActiveCalculator('currency')}
               >
-                Currency Converter
+                Currency
               </Button>
               <Button
                 variant={activeCalculator === 'priceToWeight' ? 'default' : 'outline'}
-                className={`rounded-r-md px-4 py-2 ${activeCalculator === 'priceToWeight' ? 'bg-primary text-primary-foreground' : ''}`}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeCalculator === 'priceToWeight' ? 'bg-primary text-primary-foreground' : ''
+                }`}
                 onClick={() => setActiveCalculator('priceToWeight')}
               >
                 Price to Weight
@@ -50,6 +57,7 @@ export default function FinancialCalculators() {
             </div>
           </div>
 
+          {/* Render Selected Calculator */}
           <div className="transition-all duration-300">
             {activeCalculator === 'loan' && <LoanCalculator />}
             {activeCalculator === 'currency' && <CurrencyConverter />}

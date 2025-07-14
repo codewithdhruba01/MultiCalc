@@ -59,11 +59,8 @@ export default function YgpaToCgpaPage() {
       return;
     }
 
-    // Step 1: Percentage
     const perc = ygpaVal * 9.5;
-
-    // Step 2: Total Marks
-    const total = (perc * subjVal * 100) / 100;
+    const total = perc * subjVal;
 
     setPercentage(perc.toFixed(2));
     setTotalMarks(total.toFixed(2));
@@ -84,21 +81,29 @@ export default function YgpaToCgpaPage() {
         <div className="max-w-3xl mx-auto text-center" data-aos="fade-up">
           <h1 className="text-3xl font-bold mb-2">Marks Calculators</h1>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Advanced mathematical tools and converters
+            Convert YGPA to CGPA or Total Marks easily
           </p>
-          <div className="inline-flex gap-2">
-            <Button
-              variant={activeTab === 'cgpa' ? 'default' : 'secondary'}
-              onClick={() => setActiveTab('cgpa')}
-            >
-              YGPA to CGPA
-            </Button>
-            <Button
-              variant={activeTab === 'total' ? 'default' : 'secondary'}
-              onClick={() => setActiveTab('total')}
-            >
-              YGPA to Total Marks
-            </Button>
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex rounded-md shadow-sm">
+              <Button
+                variant={activeTab === 'cgpa' ? 'default' : 'outline'}
+                className={`rounded-l-md rounded-r-none px-4 py-2 ${
+                  activeTab === 'cgpa' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveTab('cgpa')}
+              >
+                YGPA to CGPA
+              </Button>
+              <Button
+                variant={activeTab === 'total' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeTab === 'total' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveTab('total')}
+              >
+                YGPA to Total Marks
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -109,9 +114,8 @@ export default function YgpaToCgpaPage() {
           >
             <h2 className="text-lg font-semibold mb-1">YGPA to CGPA Converter</h2>
             <p className="text-muted-foreground mb-4 text-sm">
-              Convert your Yearly Grade Point Average to Cumulative Grade Point Average
+              Convert your Yearly Grade Point Average to Cumulative Grade Point Average.
             </p>
-
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
                 <label htmlFor="ygpa" className="block text-sm font-medium mb-1">
@@ -143,11 +147,9 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
             </div>
-
             {error && (
               <div className="text-red-600 text-sm mb-3">{error}</div>
             )}
-
             <div className="flex gap-2">
               <Button onClick={handleConvertCgpa}>Convert</Button>
               <Button variant="secondary" onClick={handleResetCgpa}>
@@ -164,9 +166,8 @@ export default function YgpaToCgpaPage() {
           >
             <h2 className="text-lg font-semibold mb-1">YGPA to Total Marks</h2>
             <p className="text-muted-foreground mb-4 text-sm">
-              Convert your YGPA into total marks and percentage
+              Convert your YGPA into total marks and percentage.
             </p>
-
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
                 <label htmlFor="ygpa2" className="block text-sm font-medium mb-1">
@@ -225,11 +226,9 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
             </div>
-
             {error && (
               <div className="text-red-600 text-sm mb-3">{error}</div>
             )}
-
             <div className="flex gap-2">
               <Button onClick={handleConvertTotal}>Convert</Button>
               <Button variant="secondary" onClick={handleResetTotal}>
