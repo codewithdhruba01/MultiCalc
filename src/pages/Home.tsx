@@ -4,7 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3 } from 'lucide-react'
+import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight } from 'lucide-react'
 
 export default function Home() {
   useEffect(() => {
@@ -68,16 +68,10 @@ export default function Home() {
       <Container>
         {/* Hero Section */}
         <section className="mb-12 text-center">
-          <h1
-            className="text-4xl font-bold mb-4 md:text-5xl lg:text-6xl"
-            data-aos="fade-up"
-          >
+          <h1 className="text-4xl font-bold mb-4 md:text-5xl lg:text-6xl" data-aos="fade-up">
             Multi Calculator
           </h1>
-          <p
-            className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
-            data-aos="fade-up"
-          >
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8" data-aos="fade-up">
             Your one-stop solution for all calculation needs. Simple, fast, and accurate.
           </p>
           <div className="flex flex-wrap justify-center gap-4" data-aos="fade-up">
@@ -157,67 +151,144 @@ export default function Home() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+            <div className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Easy to Use</h3>
-              <p className="text-white/90">
-                Simple, intuitive interface designed for quick calculations without any hassle.
-              </p>
+              <p className="text-white/90">Simple, intuitive interface designed for quick calculations without any hassle.</p>
             </div>
 
-            {/* Feature 2 */}
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
-                <Ruler className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Accurate Results</h3>
-              <p className="text-white/90">
-                Precise calculations you can rely on for personal, educational, or professional use.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+            <div className="group text-center p-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Calendar className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Multiple Categories</h3>
-              <p className="text-white/90">
-                From basic math to finance, health, and conversions — we've got all your calculation needs covered.
-              </p>
+              <p className="text-white/90">From basic math to finance, health, and conversions — we've got all your calculation needs covered.</p>
+            </div>
+
+            <div className="group text-center p-6 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Ruler className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Accurate Results</h3>
+              <p className="text-white/90">Precise calculations you can rely on for personal, educational, or professional use.</p>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="text-center p-8 bg-muted rounded-lg" data-aos="zoom-in">
-          <h2 className="text-2xl font-bold mb-4">Ready to Calculate?</h2>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Explore our range of calculators and simplify your calculations today. No sign-up required!
-          </p>
-          <Link
-            to="/basic-calculators"
-            className="inline-flex items-center justify-center px-8 py-3 font-bold border border-[#2563EB] text-[#3B82F6] rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
-          >
-            Start Calculating Now
-          </Link>
-        </section>
-      </Container>
+     {/* CTA Section */}
+        <section
+  className="relative mb-16 rounded-xl overflow-hidden bg-gradient-to-br from-rose-500 to-pink-600 text-white text-center py-20 px-6 shadow-lg"
+  data-aos="zoom-in"
+>
+  <div className="max-w-4xl mx-auto">
+    <h2
+      className="text-4xl md:text-5xl font-semibold tracking-tight mb-4"
+      style={{ letterSpacing: '-0.02em' }}
+    >
+      Build. Customize.<br className="hidden md:inline" />Deploy Quickly.
+    </h2>
+    <p className="text-lg md:text-xl mb-8 text-white/90 leading-relaxed">
+      Start With <span className="text-white/70">Multicalculator Today</span>
+    </p>
+    <Link
+  to="/basic-calculators"
+  className="group relative inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+>
+  <span
+    className="flex items-center gap-2 bg-rose-500 text-white px-4 py-2 rounded-full font-semibold text-sm md:text-base cursor-pointer transition-all duration-300 ease-in-out group-hover:ml-2 group-hover:shadow-md group-hover:shadow-rose-300"
+  >
+    <Globe className="w-6 h-6 animate-spin-slow" />
+    Start Now
+  </span>
+  <span
+    className="bg-gray-100 group-hover:bg-gray-200 p-2 rounded-full transition-all duration-300 transform group-hover:scale-110 group-hover:shadow"
+  >
+    <ArrowRight className="w-4 h-4 text-rose-500 transition-transform duration-300 group-hover:translate-x-0.5" />
+  </span>
+</Link>
+
+  </div>
+
+  {/* Optional Decorative Shape */}
+  <div className="absolute inset-0 opacity-10 pointer-events-none">
+    <svg
+      viewBox="0 0 1024 1024"
+      fill="none"
+      className="w-full h-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path
+        d="M1024,0 L0,1024 L1024,1024 Z"
+        fill="white"
+        fillOpacity="0.2"
+      />
+    </svg>
+  </div>
+</section>
+
+        {/* Testimonial Section */}
+        <section className="mb-16">
+  <h2
+    className="text-3xl font-bold mb-12 text-center"
+    data-aos="fade-up"
+  >
+    What Our Users Say
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {[
+      {
+        quote: "This site helped me plan my budget effortlessly. Highly recommend!",
+        name: "Ravi Sharma",
+        company: "FinEdge Solutions",
+        image: "https://randomuser.me/api/portraits/men/32.jpg"
+      },
+      {
+        quote: "The calculators are fast and super accurate. Love the clean design.",
+        name: "Anjali Mehra",
+        company: "MathGenius",
+        image: "https://randomuser.me/api/portraits/women/44.jpg"
+      },
+      {
+        quote: "No clutter, no ads, just smooth tools that work every time.",
+        name: "Soham Roy",
+        company: "QuickCalc Co.",
+        image: "https://randomuser.me/api/portraits/men/54.jpg"
+      }
+    ].map((testimonial, i) => (
+      <div
+        key={i}
+        className="group relative p-6 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+        data-aos="fade-up"
+        data-aos-delay={i * 150}
+      >
+        <svg
+          className="absolute top-4 left-4 w-8 h-8 text-primary opacity-20 group-hover:opacity-40 transition-opacity"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M7.17 6A5.995 5.995 0 002 12c0 3.31 2.69 6 6 6h2v-2H8c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V6H7.17zm9 0A5.995 5.995 0 0011 12c0 3.31 2.69 6 6 6h2v-2h-2c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V6h-1.83z" />
+        </svg>
+        <p className="text-muted-foreground italic mb-6 mt-4">
+          “{testimonial.quote}”
+        </p>
+        <div className="flex items-center gap-4">
+          <img
+            src={testimonial.image}
+            alt={testimonial.name}
+            className="w-12 h-12 rounded-full object-cover border-2 border-primary"
+          />
+          <div>
+            <h4 className="font-bold text-primary">{testimonial.name}</h4>
+            <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+  </Container>
     </div>
   )
 }

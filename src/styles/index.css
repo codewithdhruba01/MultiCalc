@@ -75,3 +75,8 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
+}
