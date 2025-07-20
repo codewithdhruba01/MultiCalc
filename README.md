@@ -1,4 +1,21 @@
-# Multi-Calculator
+<div align="center">
+
+![Banner](public/assets/)
+
+![GitHub contributors](https://img.shields.io/github/contributors/codewithdhruba01/MultiCalc?color=lightgrey)
+[![GitHub forks](https://img.shields.io/github/forks/codewithdhruba01/MultiCalc?color=lightgrey)](https://github.com/codewithdhruba01/MultiCalc/network)
+[![GitHub stars](https://img.shields.io/github/stars/codewithdhruba01/MultiCalc?color=lightgrey)](https://github.com/codewithdhruba01/MultiCalc/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/codewithdhruba01/MultiCalc?color=lightgrey)](https://github.com/codewithdhruba01/MultiCalc/issues)
+[![MIT License](https://img.shields.io/badge/license-MIT-lightgrey)](./LICENSE)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+
+# Multi Calculator Website
+
+</div>
 
 MultiCalc is a lightweight, responsive, and intuitive web-based calculator built to simplify everyday arithmetic operations. Designed with simplicity and usability in mind, it provides a clean interface that allows users of all backgrounds to perform basic mathematical calculations effortlessly.
 Whether you’re a student needing quick calculations, a professional who wants a handy digital calculator, or just someone who prefers an elegant web app over traditional calculators, MultiCalc is the perfect solution.
