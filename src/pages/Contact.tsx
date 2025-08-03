@@ -1,213 +1,234 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AOS from 'aos'
-import { useEffect } from 'react'
 import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
-import { Card, CardContent, CardHeader } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { Send, Check } from 'lucide-react'
+import {
+  Send, Mail, Phone, MapPin, Github,
+  Linkedin, Twitter, Check, ChevronDown
+} from 'lucide-react'
 
 export default function Contact() {
-    useEffect(() => {
-      // Scroll to top when page loads
-      window.scrollTo(0, 0)
-  
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        once: true,
-      })
-    }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    AOS.init({ duration: 800, once: true })
+  }, [])
+
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
-
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormState(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormState(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError(null)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+    const formId = import.meta.env.VITE_FORMSPREE_FORM_ID
+    const endpoint = `https://formspree.io/f/${formId}`
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState)
       })
-    }, 1500)
+
+      if (!response.ok) throw new Error('Something went wrong. Please try again.')
+
+      setIsSubmitted(true)
+      setFormState({ name: '', email: '', subject: '', message: '' })
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
+  const faqData = [
+    {
+      question: 'Are all calculators free to use',
+      answer: 'Yes, all calculators on our website are completely free to use with no hidden charges or subscription fees.'
+    },
+    {
+      question: 'How accurate are the calculators?',
+      answer: 'Our calculators are designed to provide accurate results based on standard mathematical formulas and industry practices.'
+    },
+    {
+      question: 'Do i need to create an account?',
+      answer: "No, you don't need to create an account to use our calculators. Simply visit the website and start calculating."
+    },
+    {
+      question: 'Can i suggest a new calculator?',
+      answer: "Absolutely! We welcome suggestions for new calculators. Please use the contact form above to send us your ideas."
+    }
+  ]
+
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-12">
       <Container>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-8 text-center" data-aos="fade-up">
-            <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Have questions, feedback, or need assistance? We're here to help. Reach out to our team using the contact information below or fill out the form
-            </p>
-          </div>
-          
-          <Card className="mb-12" data-aos="fade-up">
-            <CardHeader>
-             
-            </CardHeader>
-            <CardContent>
-              {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center py-6">
-                  <div className="bg-green-100 dark:bg-green-900 p-4 rounded-full mb-4">
-                    <Check className="h-8 w-8 text-green-600 dark:text-green-300" />
+        <div className="max-w-7xl mx-auto">
+          {/* Page Heading */}
+          <h1 className="text-4xl font-bold text-center mb-5">Contact Us</h1>
+          <p className="text-center text-muted-foreground mb-20 max-w-3xl mx-auto font-sans font-semibold">
+  Have questions, feedback, or need assistance we're here to help.
+</p>
+
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            {/* Left: Contact Info */}
+            <div data-aos="fade-up">
+              <h2 className="text-2xl font-semibold mb-3">Let's Start a Conversation</h2>
+              <p className="text-muted-foreground mb-8">
+                 Reach out to our team using the contact information below or fill out the form. I'd love to hear from you. I typically respond within 24 hours.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
+                  <Mail className="text-blue-600 w-5 h-5" />
+                  <div>
+                    <p className="text-sm font-semibold">Email</p>
+                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">pati.dhrubaraj@outlook.com</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-                  <p className="text-muted-foreground text-center max-w-md">
-                    Thank you for contacting us. We've received your message and will respond shortly.
-                  </p>
-                  <Button 
-                    className="mt-6" 
-                    onClick={() => setIsSubmitted(false)}
-                  >
-                    Send Another Message
-                  </Button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">
-                        Your Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formState.name}
-                        onChange={handleChange}
-                        placeholder="Enter Your Name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formState.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
+
+                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
+                  <Phone className="text-purple-600 w-5 h-5" />
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formState.subject}
-                      onChange={handleChange}
-                      placeholder="How can we help you?"
-                      required
-                    />
+                    <p className="text-sm font-semibold">Phone</p>
+                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">+91 9064644809</p>
                   </div>
-                  
+                </div>
+
+                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
+                  <MapPin className="text-green-600 w-5 h-5" />
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Please provide details about your inquiry..."
-                      required
-                    ></textarea>
+                    <p className="text-sm font-semibold">Location</p>
+                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">Kolkata, West Bengal</p>
                   </div>
-                  
-                  {error && (
-                    <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-md text-sm">
-                      {error}
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-6">
+                <p className="text-sm font-medium mb-2">Connect With Me</p>
+                <div className="flex gap-4">
+                  <a href="https://github.com/dhrubaraj-pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#ffffff] bg-[#2c2c2c] hover:bg-[#1d1d1d] transition">
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a href="https://linkedin.com/in/dhrubaraj-pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#d3d3d3] bg-[#296af5] hover:bg-[#223c83] transition">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="https://twitter.com/dhrubaraj_pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#fff] bg-[#28aaf5] hover:bg-[#2fa6bb] transition">
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Contact Form */}
+            <div data-aos="fade-up">
+              <div className="rounded-xl bg-[#f3f2f2] dark:bg-[#11161f] p-6">
+                <h3 className="text-xl font-bold mb-6">Send me a message</h3>
+
+                {isSubmitted ? (
+                  <div className="text-center py-6">
+                    <div className="bg-green-100 dark:bg-green-900 p-4 rounded-full inline-block mb-4">
+                      <Check className="h-8 w-8 text-green-600 dark:text-green-300" />
                     </div>
-                  )}
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full md:w-auto"
-                    disabled={isSubmitting}
+                    <h4 className="text-lg font-semibold mb-2">Message Sent!</h4>
+                    <p className="text-muted-foreground">Thank you! I’ll get back to you soon.</p>
+                    <Button className="mt-6" onClick={() => setIsSubmitted(false)}>
+                      Send Another
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium mb-1">
+                          Name <span className="text-red-500">*</span>
+                        </label>
+                        <Input id="name" name="name" placeholder="Your Name" value={formState.name} onChange={handleChange} required />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium mb-1">
+                          Email Address <span className="text-red-500">*</span>
+                        </label>
+                        <Input id="email" name="email" type="email" placeholder="Email Address" value={formState.email} onChange={handleChange} required />
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="subject" className="block text-sm font-medium mb-1">
+                        Subject <span className="text-red-500">*</span>
+                      </label>
+                      <Input id="subject" name="subject" placeholder="Subject of your message" value={formState.subject} onChange={handleChange} required />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-1">
+                        Message 
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={6}
+                        placeholder="Your message here"
+                        value={formState.message}
+                        onChange={handleChange}
+                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        required
+                      ></textarea>
+                    </div>
+
+                    {error && <p className="text-red-500 text-sm">{error}</p>}
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:brightness-110 transition"
+                    >
+                      {isSubmitting ? 'Sending...' : (
+                        <span className="flex items-center text-white">
+                          Send Message <Send className="ml-2 w-4 h-4" />
+                        </span>
+                      )}
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-16" data-aos="fade-up">
+            <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <div className="space-y-4 max-w-2xl mx-auto">
+              {faqData.map((faq, index) => (
+                <div key={index} className="rounded-md border border-muted p-4">
+                  <button
+                    className="w-full flex items-center justify-between text-left font-medium text-base"
+                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   >
-                    {isSubmitting ? (
-                      <span className="flex items-center">
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Sending...
-                      </span>
-                    ) : (
-                      <span className="flex items-center">
-                        <Send className="mr-2 h-4 w-4" />
-                        Send Message
-                      </span>
-                    )}
-                  </Button>
-                </form>
-              )}
-            </CardContent>
-          </Card>
-          
-          <div className="bg-muted rounded-lg p-6" data-aos="fade-up">
-            <h2 className="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Are all calculators free to use</h3>
-                <p className="text-muted-foreground">
-                  Yes, all calculators on our website are completely free to use with no hidden charges or subscription fees.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Do I need to create an account?</h3>
-                <p className="text-muted-foreground">
-                  No, you don't need to create an account to use our calculators. Simply visit the website and start calculating.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">How accurate are the calculators?</h3>
-                <p className="text-muted-foreground">
-                  Our calculators are designed to provide accurate results based on standard mathematical formulas and industry practices.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Can I suggest a new calculator?</h3>
-                <p className="text-muted-foreground">
-                  Absolutely! We welcome suggestions for new calculators. Please use the contact form above to send us your ideas.
-                </p>
-              </div>
+                    {faq.question}
+                    <ChevronDown className={`transition-transform ${openFAQ === index ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openFAQ === index && (
+                    <p className="mt-3 text-muted-foreground text-sm">{faq.answer}</p>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
