@@ -125,13 +125,13 @@ export default function Contact() {
               <div className="mt-6">
                 <p className="text-sm font-medium mb-2">Connect With Me</p>
                 <div className="flex gap-4">
-                  <a href="https://github.com/dhrubaraj-pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#ffffff] bg-[#2c2c2c] hover:bg-[#1d1d1d] transition">
+                  <a href="https://github.com/codewithdhruba01" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#ffffff] bg-[#2c2c2c] hover:bg-[#1d1d1d] transition">
                     <Github className="w-5 h-5" />
                   </a>
                   <a href="https://linkedin.com/in/dhrubaraj-pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#d3d3d3] bg-[#296af5] hover:bg-[#223c83] transition">
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href="https://twitter.com/dhrubaraj_pati" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#fff] bg-[#28aaf5] hover:bg-[#2fa6bb] transition">
+                  <a href="https://x.com/codewithdhruba" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-[#fff] bg-[#28aaf5] hover:bg-[#235985] transition">
                     <Twitter className="w-5 h-5" />
                   </a>
                 </div>
