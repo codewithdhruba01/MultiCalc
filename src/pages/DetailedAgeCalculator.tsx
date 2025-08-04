@@ -4,7 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
-import { Clock, Calendar, Hourglass } from 'lucide-react'
+import { Clock, CalendarHeart, HeartPulse, Bed, HeartHandshake, Cake, Calendar, Hourglass } from 'lucide-react'
 
 export default function DetailedAgeCalculator() {
   useEffect(() => {
@@ -285,14 +285,29 @@ export default function DetailedAgeCalculator() {
                   </div>
 
                   <div className="mt-8 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-medium mb-2">Fun Facts</h3>
+                    <h3 className="text-xl font-bold font-sans mb-2">Fun Facts</h3>
                     <ul className="space-y-2 text-sm">
-                      <li>Your next birthday is in <strong>{getDaysUntilNextBirthday()} days</strong> on a <strong>{getNextBirthdayWeekday()}</strong>.</li>
-                      <li>You have lived through approximately {Math.floor(age.totalDays / 7).toLocaleString()} weeks.</li>
-                      <li>Your heart has beaten approximately {Math.floor(age.totalMinutes * 80).toLocaleString()} times (assuming average 80 beats per minute).</li>
-                      <li>You have taken approximately {Math.floor(age.totalMinutes * 16).toLocaleString()} breaths (assuming average 16 breaths per minute).</li>
+                      <li className="flex items-start gap-2">
+                        <Cake className="text-gray-500 w-5 h-5 flex-shrink-0" />
+                        <span>Your next birthday is in <strong>{getDaysUntilNextBirthday()} days</strong> on a <strong>{getNextBirthdayWeekday()}</strong>.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CalendarHeart className="text-green-500 w-5 h-5 flex-shrink-0" />
+                        <span>You have lived through approximately {Math.floor(age.totalDays / 7).toLocaleString()} weeks.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <HeartHandshake className="text-pink-500 w-5 h-5 flex-shrink-0" />
+                        <span>Your heart has beaten approximately {Math.floor(age.totalMinutes * 80).toLocaleString()} times (assuming average 80 beats per minute).</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <HeartPulse className="text-red-600 w-5 h-5 flex-shrink-0" />
+                        <span>You have taken approximately {Math.floor(age.totalMinutes * 16).toLocaleString()} breaths (assuming average 16 breaths per minute).</span>
+                      </li>
                       {age.years >= 8 && (
-                        <li>You have slept for approximately {Math.floor(age.totalHours / 3).toLocaleString()} hours (assuming 8 hours of sleep per day).</li>
+                        <li className="flex items-start gap-2">
+                          <Bed className="text-blue-500 w-5 h-5 flex-shrink-0" />
+                          <span>You have slept for approximately {Math.floor(age.totalHours / 3).toLocaleString()} hours (assuming 8 hours of sleep per day).</span>
+                        </li>
                       )}
                     </ul>
                   </div>
