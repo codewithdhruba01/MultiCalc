@@ -94,6 +94,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-⭐ **If you find this project useful, please give it a star!**
-<br>**Developed with ❤️ by [Dhrubaraj Pati](https://github.com/codewithdhruba01) 
-<br>[🔗 Live Demo](https://multi-calc-gamma.vercel.app/)**
+<div align="center">
+   
+⭐ If you find this project useful, please give it a star!
+
+**Built with ❤️ by Dhrubaraj Pati for developers**
+
+[Website](https://codewithdhruba.netlify.app/) • [GitHub](https://github.com/codewithdhruba01) • [Twitter](https://x.com/codewithdhruba)
+
+</div>
