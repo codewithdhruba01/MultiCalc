@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container'
-import { Calculator, Github, Heart, Twitter } from 'lucide-react'
+import { Calculator, Github, Heart, Twitter, Globe } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
@@ -93,6 +93,10 @@ export default function Footer() {
               <a href="https://github.com/codewithdhruba01/MultiCalc" className="text-muted-foreground hover:text-foreground">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
+              </a>
+              <a href="https://codewithdhruba.netlify.app/" className="text-muted-foreground hover:text-foreground">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Website</span>
               </a>
             </div>
           </div>
