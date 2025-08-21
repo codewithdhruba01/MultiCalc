@@ -12,9 +12,17 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import Contact from './pages/Contact'
 
+// Clerk pages
+import { SignIn, SignUp } from '@clerk/clerk-react'
+
 function App() {
   return (
     <Routes>
+      {/* Clerk Auth Routes */}
+      <Route path="/sign-in/*" element={<SignIn routing="path" path="/sign-in" />} />
+      <Route path="/sign-up/*" element={<SignUp routing="path" path="/sign-up" />} />
+
+      {/* Main App Routes */}
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="basic-calculators" element={<BasicCalculators />} />
