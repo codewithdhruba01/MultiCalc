@@ -89,7 +89,7 @@ export default function Home() {
     <div className="py-8 md:py-12">
       <Container>
         {/* Hero Section */}
-        <section className="mb-12 text-center">
+        <section className="mb-12 text-center mt-12">
           <h1 className="text-4xl font-bold mb-4 md:text-5xl lg:text-6xl" data-aos="fade-up">
             Multi Calculator
           </h1>
@@ -97,17 +97,36 @@ export default function Home() {
             Your one-stop solution for all calculation needs. Simple, fast, and accurate.
           </p>
           <div className="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-            <Link
-              to="/basic-calculators"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-lg font-medium text-primary-foreground hover:bg-primary/90"
-            >
-              Get Started
+            {/* Get Started Button */}
+            <Link to="/basic-calculators">
+              <button className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group">
+                <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+                </span>
+                <span className="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4">
+                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0" />
+                <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+                  Get Started
+                </span>
+              </button>
             </Link>
-            <Link
-              to="/about"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-lg font-medium hover:bg-accent hover:text-accent-foreground"
-            >
-              Learn More
+
+            {/* Learn More Button */}
+            <Link to="/about">
+              <button className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-md group">
+                <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+                </span>
+                <span className="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-ml-4 group-hover:-mb-4">
+                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-red-600 rounded-md group-hover:translate-x-0" />
+                <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+                  Learn More
+                </span>
+              </button>
             </Link>
           </div>
         </section>
@@ -116,22 +135,22 @@ export default function Home() {
         <section className="mb-16" data-aos="zoom-in">
           <h2 className="text-3xl font-bold mb-8 text-center">Featured Calculator</h2>
           <div className="max-w-xl mx-auto">
-            <Link to={featuredCalculators[0].link}>
-              <Card className="transition-all hover:shadow-lg border-primary/30">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 bg-primary/10 p-4 rounded-full">
-                    {featuredCalculators[0].icon}
-                  </div>
-                  <CardTitle className="text-2xl">{featuredCalculators[0].title}</CardTitle>
-                  <CardDescription className="text-lg">{featuredCalculators[0].description}</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <span className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-md font-medium text-primary-foreground hover:bg-primary/90">
+            <Card className="transition-all hover:shadow-lg border-primary/30">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 bg-primary/10 p-4 rounded-full">
+                  {featuredCalculators[0].icon}
+                </div>
+                <CardTitle className="text-2xl">{featuredCalculators[0].title}</CardTitle>
+                <CardDescription className="text-lg">{featuredCalculators[0].description}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link to={featuredCalculators[0].link}>
+                  <button className="bg-indigo-500 text-white font-bold px-6 py-2 rounded-md shadow-[3px_3px_0px_black] hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0px_black] transition-all duration-200">
                     Try Now
-                  </span>
-                </CardContent>
-              </Card>
-            </Link>
+                  </button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -241,7 +260,7 @@ export default function Home() {
 
           <div className="relative w-full overflow-hidden">
             <motion.div
-              className="flex gap-3 sm:gap-5 md:gap-7 lg:gap-9" // 👈 gap adjusted for responsive
+              className="flex gap-3 sm:gap-5 md:gap-7 lg:gap-9"
               animate={{ x: ["0%", "-100%"] }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
             >
