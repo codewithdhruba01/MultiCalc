@@ -6,134 +6,160 @@ import { ThemeToggle } from '../ui/ThemeToggle'
 import { Button } from '../ui/Button'
 
 // Clerk imports
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-4 z-50 w-full flex justify-center">
       <Container>
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
-            <Calculator className="h-6 w-6" />
-            <span>MultiCalc</span>
-          </Link>
+        <div className="flex justify-center">
+          {/* Capsule Navbar */}
+          <div className="flex items-center justify-between w-full md:w-auto gap-4 bg-card/70 backdrop-blur-md px-6 py-2 rounded-full shadow-lg border border-border/40">
+            
+            {/* Logo */}
+            <Link 
+              to="/" 
+              className="flex items-center gap-2 font-bold text-lg px-3 py-1 rounded-full hover:bg-accent transition" 
+              onClick={closeMenu}
+            >
+              <Calculator className="h-5 w-5" />
+              <span>MultiCalc</span>
+            </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            <NavLink to="/" end className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Home
-            </NavLink>
-            <NavLink to="/basic-calculators" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Basic
-            </NavLink>
-            <NavLink to="/financial-calculators" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Financial
-            </NavLink>
-            <NavLink to="/health-calculators" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Health
-            </NavLink>
-            <NavLink to="/math-calculators" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Math
-            </NavLink>
-            <NavLink to="/age-calculator" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Age Calculator
-            </NavLink>
-            <NavLink to="/marks-calculators" className={({ isActive }) => isActive ? "text-primary font-medium" : "text-foreground/70 hover:text-foreground"}>
-              Marks Calculator
-            </NavLink>
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-2">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/basic-calculators", label: "Basic" },
+                { to: "/financial-calculators", label: "Financial" },
+                { to: "/health-calculators", label: "Health" },
+                { to: "/math-calculators", label: "Math" },
+                { to: "/age-calculator", label: "Age" },
+                { to: "/marks-calculators", label: "Marks" },
+              ].map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.to === "/"}
+                  className={({ isActive }) =>
+                    `px-3 py-1 rounded-full text-sm font-medium transition ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+
+            {/* Right Side */}
+            <div className="flex items-center gap-2 pl-2">
+              <ThemeToggle />
+
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="outline" size="icon" className="rounded-full">
+                    <LogIn className="h-4 w-4" />
+                  </Button>
+                </SignInButton>
+              </SignedOut>
+
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden rounded-full"
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+
+      {/* Mobile Dropdown Menu */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
+      >
+        {/* Overlay */}
+        <div 
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={closeMenu}
+        ></div>
+
+        {/* Dropdown Panel */}
+        <div className="relative bg-card w-full h-auto shadow-xl p-6 flex flex-col rounded-b-2xl">
+          {/* Logo & Close Button */}
+          <div className="flex items-center justify-between mb-6">
+            <Link to="/" className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
+              <Calculator className="h-5 w-5" />
+              <span>MultiCalc</span>
+            </Link>
+            <button onClick={closeMenu}>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Nav Links */}
+          <nav className="flex flex-col gap-3">
+            {[
+              { to: "/", label: "Home" },
+              { to: "/basic-calculators", label: "Basic Calculators" },
+              { to: "/financial-calculators", label: "Financial Calculators" },
+              { to: "/health-calculators", label: "Health Calculators" },
+              { to: "/math-calculators", label: "Math Calculators" },
+              { to: "/age-calculator", label: "Age Calculator" },
+              { to: "/marks-calculators", label: "Marks Calculator" },
+            ].map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={closeMenu}
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `block px-3 py-2 rounded-lg text-sm font-medium transition ${
+                    isActive
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
 
-          {/* Right Side (Theme + Auth + Mobile Menu Button) */}
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-
-            {/* Clerk Auth */}
+          {/* Auth Buttons Bottom */}
+          <div className="mt-6 flex gap-3">
             <SignedOut>
               <SignInButton mode="modal">
-                <Button variant="outline" size="icon">
-                  <LogIn  className="h-4 w-4" />
-                </Button>
+                <Button variant="default" className="w-full">Sign in</Button>
+              </SignInButton>
+              <SignInButton mode="modal">
+                <Button variant="outline" className="w-full">Sign Up</Button>
               </SignInButton>
             </SignedOut>
 
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
           </div>
         </div>
-      </Container>
-
-      {/* Mobile Nav */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out transform origin-top ${
-          isMenuOpen ? 'scale-y-100 opacity-100 max-h-[1000px]' : 'scale-y-0 opacity-0 max-h-0'
-        } border-t border-border/40`}
-      >
-        <Container>
-          <nav className="flex flex-col py-4 space-y-2">
-            <NavLink to="/" end onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Home
-            </NavLink>
-            <NavLink to="/basic-calculators" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Basic Calculators
-            </NavLink>
-            <NavLink to="/financial-calculators" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Financial Calculators
-            </NavLink>
-            <NavLink to="/health-calculators" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Health Calculators
-            </NavLink>
-            <NavLink to="/math-calculators" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Math Calculators
-            </NavLink>
-            <NavLink to="/age-calculator" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Age Calculator
-            </NavLink>
-            <NavLink to="/marks-calculators" onClick={closeMenu} className={({ isActive }) => isActive ? "text-primary font-medium py-2" : "text-foreground/70 hover:text-foreground py-2"}>
-              Marks Calculator
-            </NavLink>
-
-            {/* Mobile Clerk Auth */}
-            <div className="flex gap-2 pt-4">
-              <SignedOut>
-                <SignInButton mode="modal">
-                  <SignUpButton mode="modal">
-                  <Button variant="default" size="sm" className="w-full">Sign in</Button>
-                </SignUpButton>
-                </SignInButton>
-                <SignUpButton mode="modal">
-                  <Button variant="default" size="sm" className="w-full">Sign Up</Button>
-                </SignUpButton>
-              </SignedOut>
-
-              <SignedIn>
-                <UserButton afterSignOutUrl="/" />
-              </SignedIn>
-            </div>
-          </nav>
-        </Container>
       </div>
     </header>
   )
