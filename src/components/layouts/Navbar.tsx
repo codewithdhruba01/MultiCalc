@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Calculator, Menu, X, LogIn } from 'lucide-react'
 import { Container } from '../ui/Container'
@@ -10,9 +10,22 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showPanel, setShowPanel] = useState(false)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const closeMenu = () => setIsMenuOpen(false)
+  const closeMenu = () => {
+    setShowPanel(false)
+    setTimeout(() => setIsMenuOpen(false), 300)
+  }
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      const timer = setTimeout(() => setShowPanel(true), 100) 
+      return () => clearTimeout(timer)
+    } else {
+      setShowPanel(false)
+    }
+  }, [isMenuOpen])
 
   return (
     <header className="sticky top-4 z-50 w-full flex justify-center">
@@ -91,76 +104,79 @@ export default function Navbar() {
       </Container>
 
       {/* Mobile Dropdown Menu */}
-      <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-        }`}
-      >
-        {/* Overlay */}
-        <div 
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={closeMenu}
-        ></div>
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          {/* Overlay (fade only) */}
+          <div
+            className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+              isMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={closeMenu}
+          ></div>
 
-        {/* Dropdown Panel */}
-        <div className="relative bg-card w-full h-auto shadow-xl p-6 flex flex-col rounded-b-2xl">
-          {/* Logo & Close Button */}
-          <div className="flex items-center justify-between mb-6">
-            <Link to="/" className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
-              <Calculator className="h-5 w-5" />
-              <span>MultiCalc</span>
-            </Link>
-            <button onClick={closeMenu}>
-              <X className="h-6 w-6" />
-            </button>
-          </div>
+          <div
+            className={`relative bg-card w-full h-auto shadow-xl p-6 flex flex-col rounded-b-2xl transform transition-transform duration-300 ease-in-out ${
+              showPanel ? "translate-y-0" : "-translate-y-full"
+            }`}
+          >
+            {/* Logo & Close Button */}
+            <div className="flex items-center justify-between mb-6">
+              <Link to="/" className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
+                <Calculator className="h-5 w-5" />
+                <span>MultiCalc</span>
+              </Link>
+              <button onClick={closeMenu}>
+                <X className="h-6 w-6" />
+              </button>
+            </div>
 
-          {/* Nav Links */}
-          <nav className="flex flex-col gap-3">
-            {[
-              { to: "/", label: "Home" },
-              { to: "/basic-calculators", label: "Basic Calculators" },
-              { to: "/financial-calculators", label: "Financial Calculators" },
-              { to: "/health-calculators", label: "Health Calculators" },
-              { to: "/math-calculators", label: "Math Calculators" },
-              { to: "/age-calculator", label: "Age Calculator" },
-              { to: "/marks-calculators", label: "Marks Calculator" },
-            ].map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={closeMenu}
-                end={item.to === "/"}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-lg text-sm font-medium transition ${
-                    isActive
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground/70 hover:text-foreground"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+            {/* Nav Links */}
+            <nav className="flex flex-col gap-3">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/basic-calculators", label: "Basic Calculators" },
+                { to: "/financial-calculators", label: "Financial Calculators" },
+                { to: "/health-calculators", label: "Health Calculators" },
+                { to: "/math-calculators", label: "Math Calculators" },
+                { to: "/age-calculator", label: "Age Calculator" },
+                { to: "/marks-calculators", label: "Marks Calculator" },
+              ].map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  onClick={closeMenu}
+                  end={item.to === "/"}
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg text-sm font-medium transition ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
 
-          {/* Auth Buttons Bottom */}
-          <div className="mt-6 flex gap-3">
-            <SignedOut>
-              <SignInButton mode="modal">
-                <Button variant="default" className="w-full">Sign in</Button>
-              </SignInButton>
-              <SignInButton mode="modal">
-                <Button variant="outline" className="w-full">Sign Up</Button>
-              </SignInButton>
-            </SignedOut>
+            {/* Auth Buttons Bottom */}
+            <div className="mt-6 flex gap-3">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="default" className="w-full">Sign in</Button>
+                </SignInButton>
+                <SignInButton mode="modal">
+                  <Button variant="outline" className="w-full">Sign Up</Button>
+                </SignInButton>
+              </SignedOut>
 
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
