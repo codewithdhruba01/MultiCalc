@@ -221,7 +221,7 @@ export default function Home() {
               <span
                 className="flex items-center gap-2 bg-rose-500 text-white px-4 py-2 rounded-full font-semibold text-sm md:text-base cursor-pointer transition-all duration-300 ease-in-out group-hover:ml-2 group-hover:shadow-md group-hover:shadow-rose-300"
               >
-                <Globe className="w-6 h-6 animate-spin-slow" />
+                <Globe className="mr-2 h-5 w-5 animate-spin-slow" />
                 Start Now
               </span>
               <span
