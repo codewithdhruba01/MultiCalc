@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "aos": "^2.3.4",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.13",
