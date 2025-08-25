@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container'
-import { Calculator, Github, Heart, Twitter, Globe } from 'lucide-react'
+import { Github, Heart, Twitter, Globe } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
@@ -11,7 +11,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
             <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-              <Calculator className="h-6 w-6" />
+              <img 
+                src="/logo/multicalc.png" 
+                alt="MultiCalc Logo" 
+                className="h-11 w-auto"
+              />
               <span>MultiCalc</span>
             </Link>
             <p className="text-sm text-muted-foreground">

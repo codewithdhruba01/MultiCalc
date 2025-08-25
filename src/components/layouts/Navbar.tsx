@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Calculator, Menu, X, LogIn } from 'lucide-react'
+import { Menu, X, LogIn } from 'lucide-react'
 import { Container } from '../ui/Container'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { Button } from '../ui/Button'
@@ -37,10 +37,14 @@ export default function Navbar() {
             {/* Logo */}
             <Link 
               to="/" 
-              className="flex items-center gap-2 font-bold text-lg px-3 py-1 rounded-full hover:bg-accent transition" 
+              className="flex items-center gap-2 font-bold text-lg px-3 py-1 rounded-full" 
               onClick={closeMenu}
             >
-              <Calculator className="h-5 w-5" />
+              <img 
+                src="/logo/multicalc.png" 
+                alt="MultiCalc Logo" 
+                className="h-10 w-auto"
+              />
               <span>MultiCalc</span>
             </Link>
 
@@ -122,7 +126,11 @@ export default function Navbar() {
             {/* Logo & Close Button */}
             <div className="flex items-center justify-between mb-6">
               <Link to="/" className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
-                <Calculator className="h-5 w-5" />
+                <img 
+                src="/logo/multicalc.png" 
+                alt="MultiCalc Logo" 
+                className="h-10 w-auto"
+              />
                 <span>MultiCalc</span>
               </Link>
               <button onClick={closeMenu}>
