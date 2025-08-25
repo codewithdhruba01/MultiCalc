@@ -4,7 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight } from 'lucide-react'
+import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight, ArrowBigRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function Home() {
@@ -88,16 +88,29 @@ export default function Home() {
   return (
     <div className="py-8 md:py-12">
       <Container>
-        {/* Hero Section */}
-        <section className="mb-12 text-center mt-12">
-          <h1 className="text-4xl font-bold mb-4 md:text-5xl lg:text-6xl" data-aos="fade-up">
-            Multi Calculator
+        {/* ✅ Hero Section - NotesBuddy style */}
+        <section className="mb-20 mt-20 text-center">
+          {/* Top Badge */}
+          <button className="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-6">
+            Now it is time to calculate →
+          </button>
+
+          {/* Title */}
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-5" data-aos="fade-up">
+            Your all-in-one <br /> calculator platform
+            <span className="block italic font-light text-gray-600 dark:text-gray-300">
+              effective
+            </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8" data-aos="fade-up">
-            Your one-stop solution for all calculation needs. Simple, fast, and accurate.
+
+          {/* Subtitle */}
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto" data-aos="fade-up">
+            All your calculations in one place. From basic math to complex formulas, <br />
+            your one-stop calculator hub.
           </p>
-          <div className="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-            {/* Get Started Button */}
+
+          {/* ✅ Buttons with lucide-react icons */}
+          <div className="flex flex-wrap gap-4 mb-9 justify-center" data-aos="zoom-in">
             <Link to="/basic-calculators">
               <button className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group">
                 <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
@@ -115,19 +128,39 @@ export default function Home() {
 
             {/* Learn More Button */}
             <Link to="/about">
-              <button className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-md group">
-                <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
-                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
-                </span>
-                <span className="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-ml-4 group-hover:-mb-4">
-                  <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
-                </span>
-                <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-red-600 rounded-md group-hover:translate-x-0" />
-                <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
-                  Learn More
-                </span>
+              <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                
+                 Learn More
+                 <ArrowBigRight className="w-5 h-5" />
               </button>
             </Link>
+          </div>
+
+
+      {/* Trusted Users */}
+<div className="flex items-center justify-center gap-3 mt-8" data-aos="zoom-in">
+  <div className="flex -space-x-3">
+    {[
+      "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
+      "https://media.licdn.com/dms/image/v2/D4E03AQF_yseNz4L6QQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718270182406?e=1758758400&v=beta&t=pSDL3921FQskO04WLg8bhBDElIM4HMUOG0HvYw3X_J4",
+      "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1758758400&v=beta&t=9HR_Zx5h6eh_0Nn0Hu7zyzt4i4PAs7XLxFLPH5IZmYE",
+      "https://media.licdn.com/dms/image/v2/D5603AQF-enUdXzZsNQ/profile-displayphoto-scale_200_200/B56ZeKafJQGoAY-/0/1750373891578?e=1758758400&v=beta&t=ccU0R5aZhCq3f4vuaK_iOW7Z37Q4SCmYHkxrxDYcKQ8",
+      "https://media.licdn.com/dms/image/v2/D5603AQH-RnGEEqNs1A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1704649237478?e=1758758400&v=beta&t=WT8yz2pfbzSjy0c_lQQFWkL601aKUiruRsWrAISrJfA",
+      "https://media.licdn.com/dms/image/v2/D5603AQFAdnzmscuOrg/profile-displayphoto-scale_200_200/B56ZfYsGjSGQAY-/0/1751687129794?e=1758758400&v=beta&t=rODi_KlpaUq7QzA7dD-6TaEkFhH0X64HrJ7h0VoG-y0",
+    ].map((src, index) => (
+      <img
+        key={index}
+        className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900
+                   transition-transform transform-gpu ease-in-out duration-500
+                   hover:scale-125 hover:z-20 hover:shadow-lg cursor-pointer"
+        src={src}
+        alt={`User ${index + 1}`}
+         />
+       ))}
+       </div>
+         <span className="text-gray-600 dark:text-gray-400 text-sm">
+              Trusted by 1000+ users
+            </span>
           </div>
         </section>
 
