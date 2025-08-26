@@ -9,7 +9,7 @@ export default function BasicCalculators() {
   const [activeCalculator, setActiveCalculator] = useState<'basic' | 'scientific' | 'percentage'>('basic')
 
   return (
-    <div className="py-8 md:py-12" data-aos="fade-up">
+    <div className="py-20 md:py-15" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Basic Calculators</h1>

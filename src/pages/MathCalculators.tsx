@@ -8,7 +8,7 @@ export default function MathCalculators() {
   const [activeCalculator, setActiveCalculator] = useState<'unit' | 'age'>('unit')
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Math Calculators</h1>

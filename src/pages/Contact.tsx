@@ -78,7 +78,7 @@ export default function Contact() {
   ]
 
   return (
-    <div className="py-12">
+    <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Page Heading */}

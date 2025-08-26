@@ -17,7 +17,7 @@ export default function About() {
   }, [])
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1

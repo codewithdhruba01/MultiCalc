@@ -130,7 +130,7 @@ export default function DetailedAgeCalculator() {
   }, [liveUpdate, birthDate])
 
   return (
-    <div className="py-8 md:py-12" data-aos="zoom-in">
+    <div className="py-20 md:py-15" data-aos="zoom-in">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-center">Detailed Age Calculator</h1>
