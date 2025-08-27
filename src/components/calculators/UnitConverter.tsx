@@ -170,8 +170,8 @@ export default function UnitConverter() {
   return (
     <Card className="w-full max-w-md mx-auto"  data-aos="fade-up">
       <CardHeader>
-        <CardTitle className="text-center">Unit Converter</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Unit Converter</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Convert between different units of measurement
         </CardDescription>
       </CardHeader>

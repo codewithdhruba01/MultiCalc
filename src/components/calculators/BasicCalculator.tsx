@@ -100,7 +100,7 @@ export default function BasicCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Basic Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold">Basic Calculator</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="bg-muted p-4 rounded-md mb-4 text-right">

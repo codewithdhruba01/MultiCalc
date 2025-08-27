@@ -26,13 +26,12 @@ export default function LoanCalculator() {
     if (!loanAmount || !interestRate || !loanTerm) return
     
     const principal = parseFloat(loanAmount)
-    const rate = parseFloat(interestRate) / 100 / 12 // Monthly interest rate
+    const rate = parseFloat(interestRate) / 100 / 12 
     const numberOfPayments = termUnit === 'years' 
       ? parseInt(loanTerm) * 12 
       : parseInt(loanTerm)
     
     if (rate === 0) {
-      // Simple division for 0% interest
       const monthlyPayment = principal / numberOfPayments
       
       const amortizationSchedule = []
@@ -62,11 +61,9 @@ export default function LoanCalculator() {
       return
     }
     
-    // Standard loan calculation formula
     const x = Math.pow(1 + rate, numberOfPayments)
     const monthlyPayment = (principal * x * rate) / (x - 1)
     
-    // Calculate amortization schedule
     const amortizationSchedule = []
     let remainingBalance = principal
     let totalInterest = 0
@@ -114,8 +111,8 @@ export default function LoanCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Loan Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Loan Calculator</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Calculate loan payments and generate amortization schedule
         </CardDescription>
       </CardHeader>

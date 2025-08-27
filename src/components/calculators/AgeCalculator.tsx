@@ -84,8 +84,8 @@ export default function AgeCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Age Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Age Calculator</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Calculate your exact age in years, months, and days
         </CardDescription>
       </CardHeader>
@@ -129,7 +129,7 @@ export default function AgeCalculator() {
           
           {age !== null && (
             <div className="mt-6 p-4 bg-muted rounded-md">
-              <h3 className="text-lg font-medium mb-2">Age Result</h3>
+              <h3 className="text-lg text-center font-bold mb-2 font-synonym">Age Result</h3>
               <div className="space-y-2">
                 <p className="text-center text-2xl font-bold">
                   {age.years} years, {age.months} months, {age.days} days

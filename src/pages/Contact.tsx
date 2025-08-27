@@ -82,16 +82,16 @@ export default function Contact() {
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Page Heading */}
-          <h1 className="text-4xl font-bold text-center mb-5">Contact Us</h1>
-          <p className="text-center text-muted-foreground mb-20 max-w-3xl mx-auto font-sans font-semibold">
-  Have questions, feedback, or need assistance we're here to help.
-</p>
+          <h1 className="text-5xl font-excon font-bold text-center mb-5">Contact Us</h1>
+          <p className="text-center text-muted-foreground mb-20 max-w-3xl mx-auto font-satoshi">
+           Have questions, feedback, or need assistance we're here to help.
+          </p>
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Left: Contact Info */}
             <div data-aos="fade-up">
-              <h2 className="text-2xl font-semibold mb-3">Let's Start a Conversation</h2>
-              <p className="text-muted-foreground mb-8">
+              <h2 className="text-2xl font-poppins font-bold mb-3">Let's Start a Conversation</h2>
+              <p className="text-muted-foreground mb-8 font-satoshi">
                  Reach out to our team using the contact information below or fill out the form. I'd love to hear from you. I typically respond within 24 hours.
               </p>
 
@@ -99,7 +99,7 @@ export default function Contact() {
                 <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
                   <Mail className="text-blue-600 w-5 h-5" />
                   <div>
-                    <p className="text-sm font-semibold">Email</p>
+                    <p className="text-sm font-excon">Email</p>
                     <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">pati.dhrubaraj@outlook.com</p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export default function Contact() {
                 <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
                   <Phone className="text-purple-600 w-5 h-5" />
                   <div>
-                    <p className="text-sm font-semibold">Phone</p>
+                    <p className="text-sm font-excon">Phone</p>
                     <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">+91 9064644809</p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function Contact() {
                 <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
                   <MapPin className="text-green-600 w-5 h-5" />
                   <div>
-                    <p className="text-sm font-semibold">Location</p>
+                    <p className="text-sm font-excon">Location</p>
                     <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">Kolkata, West Bengal</p>
                   </div>
                 </div>
@@ -213,19 +213,19 @@ export default function Contact() {
 
           {/* FAQ Section */}
           <div className="mt-16" data-aos="fade-up">
-            <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-synonym font-bold text-center mb-8">Frequently Asked Questions</h2>
             <div className="space-y-4 max-w-2xl mx-auto">
               {faqData.map((faq, index) => (
                 <div key={index} className="rounded-md border border-muted p-4">
                   <button
-                    className="w-full flex items-center justify-between text-left font-medium text-base"
+                    className="w-full flex items-center justify-between text-left font-outfit text-base"
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   >
                     {faq.question}
                     <ChevronDown className={`transition-transform ${openFAQ === index ? 'rotate-180' : ''}`} />
                   </button>
                   {openFAQ === index && (
-                    <p className="mt-3 text-muted-foreground text-sm">{faq.answer}</p>
+                    <p className="mt-3 text-muted-foreground font-satoshi text-sm">{faq.answer}</p>
                   )}
                 </div>
               ))}

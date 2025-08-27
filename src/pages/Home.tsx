@@ -4,8 +4,8 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight, ArrowBigRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight, ArrowBigRight, Star, Quote } from 'lucide-react'
+
 
 export default function Home() {
   useEffect(() => {
@@ -66,53 +66,64 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "This site helped me plan my budget effortlessly. Highly recommend!",
-      name: "Ravi Sharma",
-      company: "FinEdge Solutions",
-      image: "https://randomuser.me/api/portraits/men/32.jpg"
+      id: 1,
+      name: 'Arjun Sharma',
+      role: 'Software Engineer',
+      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+      rating: 4,
+      comment: 'As a financial analyst, accuracy matters to me. MultiCalc saves me hours by handling both simple and complex calculations without errors.'
     },
     {
-      quote: "The calculators are fast and super accurate. Love the clean design.",
-      name: "Anjali Mehra",
-      company: "MathGenius",
-      image: "https://randomuser.me/api/portraits/women/44.jpg"
+      id: 2,
+      name: 'Priya Patel',
+      role: 'Student',
+      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
+      rating: 5,
+      comment: 'MultiCalc has made my math solution so much easier! I don’t waste time searching for different calculators anymore — everything is in one place.'
     },
     {
-      quote: "No clutter, no ads, just smooth tools that work every time.",
-      name: "Soham Roy",
-      company: "QuickCalc Co.",
-      image: "https://randomuser.me/api/portraits/men/54.jpg"
+      id: 3,
+      name: 'Rohit Kumar',
+      role: 'Marketing Manager',
+      image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400',
+      rating: 5,
+      comment: 'Accurate and fast. MultiCalc saves hours of work by simplifying both financial and complex calculations.'
+    },
+    {
+      id: 4,
+      name: 'Sneha Reddy',
+      role: 'HR Manager',
+      image: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400',
+      rating: 5,
+      comment: 'Pregnancy Calculator gave me accurate due dates and weekly insights — it really eased my journey.'
     }
-  ]
+  ];
 
   return (
     <div className="py-8 md:py-12">
       <Container>
-        {/* ✅ Hero Section - NotesBuddy style */}
         <section className="mb-20 mt-20 text-center">
-          {/* Top Badge */}
-          <button className="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-6">
+          <button className="bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-10 font-supreme">
             Now it is time to calculate →
           </button>
 
           {/* Title */}
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-5" data-aos="fade-up">
+          <h1 className="text-5xl md:text-7xl font-excon font-bold mb-5" data-aos="fade-up">
             Your all-in-one <br /> calculator platform
-            <span className="block italic font-light text-gray-600 dark:text-gray-300">
+            <span className="block italic font-light text-gray-500 dark:text-gray-500">
               effective
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto" data-aos="fade-up">
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto font-satoshi" data-aos="fade-up">
             All your calculations in one place. From basic math to complex formulas, <br />
             your one-stop calculator hub.
           </p>
 
-          {/* ✅ Buttons with lucide-react icons */}
           <div className="flex flex-wrap gap-4 mb-9 justify-center" data-aos="zoom-in">
             <Link to="/basic-calculators">
-              <button className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group">
+              <button className="relative flex items-center px-6 py-3 overflow-hidden font-poppins font-medium transition-all bg-indigo-500 rounded-md group">
                 <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
                   <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
                 </span>
@@ -128,7 +139,7 @@ export default function Home() {
 
             {/* Learn More Button */}
             <Link to="/about">
-              <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+              <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                 
                  Learn More
                  <ArrowBigRight className="w-5 h-5" />
@@ -166,7 +177,7 @@ export default function Home() {
 
         {/* Featured Calculator */}
         <section className="mb-16" data-aos="zoom-in">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Calculator</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-8 text-center">Featured Calculator</h2>
           <div className="max-w-xl mx-auto">
             <Card className="transition-all hover:shadow-lg border-primary/30">
               <CardHeader className="text-center">
@@ -189,7 +200,7 @@ export default function Home() {
 
         {/* Categories Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Calculator Categories</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-8 text-center" data-aos="fade-up">Calculator Categories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {calculatorCategories.map((category, index) => (
               <Link to={category.link} key={index}>
@@ -202,10 +213,10 @@ export default function Home() {
                     <div className="mx-auto mb-2 bg-white/20 p-4 rounded-full inline-block">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                    <h3 className="text-xl font-outfit text-white">{category.title}</h3>
                   </div>
                   <CardContent className="pt-4">
-                    <p className="text-muted-foreground mb-4">{category.description}</p>
+                    <p className="text-muted-foreground font-satoshi mb-4">{category.description}</p>
                     <div className="space-y-2">
                       {category.calculators.map((calc, i) => (
                         <div key={i} className="flex items-center">
@@ -223,30 +234,30 @@ export default function Home() {
 
         {/* Features Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-12 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
               <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Easy to Use</h3>
-              <p className="text-white/90">Simple, intuitive interface designed for quick calculations without any hassle.</p>
+              <h3 className="text-xl font-outfit mb-2">Easy to Use</h3>
+              <p className="text-white/90 font-satoshi">Simple, intuitive interface designed for quick calculations without any hassle.</p>
             </div>
 
             <div className="group text-center p-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
               <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Calendar className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Multiple Categories</h3>
-              <p className="text-white/90">From basic math to finance, health, and conversions — we've got all your calculation needs covered.</p>
+              <h3 className="text-xl font-outfit mb-2">Multiple Categories</h3>
+              <p className="text-white/90 font-satoshi">From basic math to finance, health, and conversions — we've got all your calculation needs covered.</p>
             </div>
 
             <div className="group text-center p-6 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
               <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <Ruler className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Accurate Results</h3>
-              <p className="text-white/90">Precise calculations you can rely on for personal, educational, or professional use.</p>
+              <h3 className="text-xl font-outfit mb-2">Accurate Results</h3>
+              <p className="text-white/90 font-satoshi">Precise calculations you can rely on for personal, educational, or professional use.</p>
             </div>
           </div>
         </section>
@@ -258,13 +269,13 @@ export default function Home() {
         >
           <div className="max-w-4xl mx-auto">
             <h2
-              className="text-4xl md:text-5xl font-semibold tracking-tight mb-4"
+              className="text-4xl md:text-5xl font-excon font-bold tracking-tight mb-4"
               style={{ letterSpacing: '-0.02em' }}
             >
-              Build. Customize.<br className="hidden md:inline" />Deploy Quickly.
+              Build, Customize,<br className="hidden md:inline" />Deploy Quickly
             </h2>
-            <p className="text-lg md:text-xl mb-8 text-white/90 leading-relaxed">
-              Start With <span className="text-white/70">Multicalculator Today</span>
+            <p className="text-lg font-satoshi md:text-xl mb-8 text-white/90 leading-relaxed">
+              Start With <span className="text-white/60 font-supreme">Multicalculator </span> Today.
             </p>
             <Link
               to="/basic-calculators"
@@ -286,57 +297,61 @@ export default function Home() {
         </section>
 
         {/* Testimonial Section */}
-        <section className="mb-16 overflow-hidden">
-          <h2 className="text-3xl font-bold mb-12 text-center" data-aos="fade-up">
+         <section className={`py-20 'bg-gray-800' : 'bg-gray-50'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-excon font-bold mb-8 text-center">
             What Our Users Say
           </h2>
+          <p className= "text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-6">
+          Here's what our happy user have to say about their experience.
+          </p>
+        </div>
 
-          <div className="relative w-full overflow-hidden">
-            <motion.div
-              className="flex gap-3 sm:gap-5 md:gap-7 lg:gap-9"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className={` 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} p-8 rounded-2xl border hover:shadow-2xl transition-all duration-300 group relative overflow-hidden`}
             >
-              {[...Array(2)].map((_, idx) => (
-                <div key={idx} className="flex gap-3 sm:gap-5 md:gap-7 lg:gap-9 min-w-full">
-                  {testimonials.map((testimonial, i) => (
-                    <div
-                      key={i}
-                      className="group relative p-4 sm:p-6 bg-gradient-to-br from-zinc-100 to-zinc-200 
-                        dark:from-zinc-800 dark:to-zinc-900 rounded-xl shadow-lg 
-                        hover:shadow-xl transition-all duration-300 
-                        min-w-[220px] sm:min-w-[260px] md:min-w-[300px] lg:min-w-[340px] max-w-sm flex-shrink-0"
-                    >
-                      <svg
-                        className="absolute top-4 left-4 w-6 sm:w-8 h-6 sm:h-8 text-primary opacity-20 group-hover:opacity-40 transition-opacity"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M7.17 6A5.995 5.995 0 002 12c0 3.31 2.69 6 6 6h2v-2H8c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V6H7.17zm9 0A5.995 5.995 0 0011 12c0 3.31 2.69 6 6 6h2v-2h-2c-2.21 0-4-1.79-4-4s1.79-4 4-4h1V6h-1.83z" />
-                      </svg>
-                      <p className="text-muted-foreground italic mb-4 sm:mb-6 mt-4 text-sm sm:text-base">
-                        “{testimonial.quote}”
-                      </p>
-                      <div className="flex items-center gap-3 sm:gap-4">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-primary"
-                        />
-                        <div>
-                          <h4 className="font-bold text-primary text-sm sm:text-base">{testimonial.name}</h4>
-                          <p className="text-xs sm:text-sm text-muted-foreground">
-                            {testimonial.company}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              {/* Background Quote */}
+              <div className="absolute top-4 right-4 opacity-10">
+                <Quote className="w-16 h-16" />
+              </div>
+
+              {/* Profile */}
+              <div className="flex items-center mb-6">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className={`text-lg font-outfit font-bold 'text-white' : 'text-gray-900'}`}>
+                    {testimonial.name}
+                  </h4>
+                  <p className= "text-sm font-supreme text-gray-400">
+                    {testimonial.role}
+                  </p>
                 </div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+              </div>
+
+              {/* Rating */}
+              <div className="flex items-center mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+
+              {/* Comment */}
+              <p className= "font-poppins text-sm relative z-10">
+                "{testimonial.comment}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
       </Container>
     </div>
   )

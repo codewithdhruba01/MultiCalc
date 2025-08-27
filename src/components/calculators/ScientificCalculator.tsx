@@ -169,7 +169,7 @@ export default function ScientificCalculator() {
   return (
     <Card className="w-full max-w-xl mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Scientific Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold">Scientific Calculator</CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="calculator">

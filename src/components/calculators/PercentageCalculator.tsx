@@ -91,8 +91,8 @@ export default function PercentageCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Percentage Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-2">Percentage Calculator</CardTitle>
+        <CardDescription className="text-center font-supreme ">
           Calculate percentages in different ways
         </CardDescription>
       </CardHeader>

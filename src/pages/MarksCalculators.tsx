@@ -79,10 +79,10 @@ export default function YgpaToCgpaPage() {
     <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-3xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="text-3xl font-bold mb-2">Marks Calculators</h1>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Convert YGPA to CGPA or Total Marks easily
-          </p>
+          <h1 className="text-4xl font-bold mb-4 font-synonym">Marks Calculators</h1>
+            <p className="text-muted-foreground text-center font-satoshi mb-8">
+            Effortlessly convert your (YGPA) to CGPA or calculate <br/> your total marks and percentage in just a few clicks.
+            </p>
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
@@ -112,9 +112,9 @@ export default function YgpaToCgpaPage() {
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
             data-aos="fade-up"
           >
-            <h2 className="text-lg font-semibold mb-1">YGPA to CGPA Converter</h2>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Convert your Yearly Grade Point Average to Cumulative Grade Point Average.
+            <h2 className="text-lg text-center font-bold font-synonym mb-2">YGPA to CGPA Converter</h2>
+            <p className="text-muted-foreground text-center font-satoshi mb-4 text-sm">
+              Convert your Yearly Grade Point Average to <br /> Cumulative Grade Point Average.
             </p>
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
@@ -164,8 +164,8 @@ export default function YgpaToCgpaPage() {
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
             data-aos="fade-up"
           >
-            <h2 className="text-lg font-semibold mb-1">YGPA to Total Marks</h2>
-            <p className="text-muted-foreground mb-4 text-sm">
+            <h2 className="text-lg font-bold mb-2 font-synonym text-center">YGPA to Total Marks</h2>
+            <p className="text-muted-foreground mb-4 text-sm text-center font-satoshi">
               Convert your YGPA into total marks and percentage.
             </p>
             <div className="grid grid-cols-1 gap-4 mb-4">

@@ -18,13 +18,13 @@ export default function Footer() {
               />
               <span>MultiCalc</span>
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground font-satoshi">
               Your one-stop solution for all calculation needs. Simple, fast, and accurate.
             </p>
           </div>
           
           <div>
-            <h3 className="mb-3 text-lg font-medium">Calculators</h3>
+            <h3 className="mb-3 text-lg font-bold">Calculators</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/basic-calculators" className="text-muted-foreground hover:text-foreground">
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-3 text-lg font-medium">Links</h3>
+            <h3 className="mb-3 text-lg font-bold">Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/about" className="text-muted-foreground hover:text-foreground">
@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-3 text-lg font-medium">Connect</h3>
+            <h3 className="mb-3 text-lg font-bold">Connect</h3>
             <div className="flex space-x-4">
               <a href="https://x.com/codewithdhruba" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />

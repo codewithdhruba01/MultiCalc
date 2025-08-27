@@ -79,8 +79,8 @@ export default function BMICalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
       <CardHeader>
-        <CardTitle className="text-center">BMI Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">BMI Calculator</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Calculate your Body Mass Index
         </CardDescription>
       </CardHeader>

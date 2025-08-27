@@ -133,15 +133,15 @@ export default function DetailedAgeCalculator() {
     <div className="py-20 md:py-15" data-aos="zoom-in">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2 text-center">Detailed Age Calculator</h1>
-          <p className="text-muted-foreground text-center mb-8">
+          <h1 className="text-4xl font-bold mb-4 text-center font-synonym">Detailed Age Calculator</h1>
+          <p className="text-muted-foreground text-center mb-8 font-satoshi">
             Calculate your exact age in years, months, days, hours, minutes, and seconds
           </p>
 
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="text-center">Enter Your Birth Details</CardTitle>
-              <CardDescription className="text-center">
+              <CardTitle className="text-center font-synonym font-bold mb-3">Enter Your Birth Details</CardTitle>
+              <CardDescription className="text-center font-satoshi">
                 Enter your date of birth to calculate your precise age
               </CardDescription>
             </CardHeader>
@@ -181,7 +181,7 @@ export default function DetailedAgeCalculator() {
                     onChange={toggleLiveUpdate}
                     className="h-4 w-4 rounded border-gray-300 text-primary"
                   />
-                  <label htmlFor="liveUpdate" className="text-sm font-medium">
+                  <label htmlFor="liveUpdate" className="text-sm font-medium font-satoshi">
                     Live update (real-time age calculation)
                   </label>
                 </div>
@@ -201,8 +201,8 @@ export default function DetailedAgeCalculator() {
             <div className="space-y-6">
               <Card className="border-primary/50">
                 <CardHeader>
-                  <CardTitle className="text-center flex items-center justify-center">
-                    <Calendar className="mr-2 h-6 w-6" />
+                  <CardTitle className="text-center font-bold flex items-center justify-center font-synonym">
+                    <Calendar className="mr-2 h-6 w-6 text-[#057988]" />
                     Primary Age Results
                   </CardTitle>
                 </CardHeader>
@@ -234,8 +234,8 @@ export default function DetailedAgeCalculator() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-center flex items-center justify-center">
-                    <Clock className="mr-2 h-6 w-6" />
+                  <CardTitle className="text-center flex items-center justify-center font-outfit font-bold">
+                    <Clock className="mr-2 h-6 w-6 text-[#c06905]" />
                     Time Details
                   </CardTitle>
                 </CardHeader>
@@ -259,8 +259,8 @@ export default function DetailedAgeCalculator() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-center flex items-center justify-center">
-                    <Hourglass className="mr-2 h-6 w-6" />
+                  <CardTitle className="text-center flex items-center justify-center font-outfit font-bold">
+                    <Hourglass className="mr-2 h-6 w-6 text-[#01a517]" />
                     Total Time Lived
                   </CardTitle>
                 </CardHeader>

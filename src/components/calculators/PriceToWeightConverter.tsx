@@ -10,22 +10,18 @@ export default function PriceToWeightConverter() {
   const [quantityKg, setQuantityKg] = useState<string>('')
   const [totalPrice, setTotalPrice] = useState<string>('')
 
-  // Mode: Spend Amount or Weight
   const [mode, setMode] = useState<'spend' | 'weight'>('spend')
 
-  // Inputs
   const [amountYouHave, setAmountYouHave] = useState<string>('')
   const [weightInput, setWeightInput] = useState<string>('')  
-  const [weightUnit, setWeightUnit] = useState<'kg' | 'g'>('kg')  // 👈 New: weight unit
+  const [weightUnit, setWeightUnit] = useState<'kg' | 'g'>('kg')
 
-  // Result
   const [result, setResult] = useState<string | null>(null)
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true })
   }, [])
 
-  // Auto-calculate price per kg
   useEffect(() => {
     const qty = parseFloat(quantityKg)
     const price = parseFloat(totalPrice)
@@ -50,7 +46,6 @@ export default function PriceToWeightConverter() {
       let weight = parseFloat(weightInput)
       if (isNaN(weight)) return
 
-      // Convert grams → kg
       if (weightUnit === 'g') {
         weight = weight / 1000
       }
@@ -74,8 +69,8 @@ export default function PriceToWeightConverter() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Price to Weight Converter</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Price to Weight Converter</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           This tool helps you find out either how much product (in weight) you can buy for a given spend amount, or how much money is needed for a given weight.
         </CardDescription>
       </CardHeader>

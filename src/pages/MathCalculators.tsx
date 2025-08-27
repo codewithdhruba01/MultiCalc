@@ -11,8 +11,8 @@ export default function MathCalculators() {
     <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2 text-center">Math Calculators</h1>
-          <p className="text-muted-foreground text-center mb-8">
+          <h1 className="text-4xl font-bold mb-4 text-center font-synonym">Math Calculators</h1>
+          <p className="text-muted-foreground text-center font-satoshi mb-8">
             Advanced mathematical tools and converters
           </p>
           

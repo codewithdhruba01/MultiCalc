@@ -82,8 +82,8 @@ export default function PeriodCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Period Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Period Calculator</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Estimate your next period and ovulation date
         </CardDescription>
       </CardHeader>
@@ -128,18 +128,18 @@ export default function PeriodCalculator() {
 
           {result && (
             <div className="mt-6 p-4 bg-muted rounded-md space-y-3">
-              <h3 className="text-lg font-medium">Your Cycle Details</h3>
-              <p className="text-center">
+              <h3 className="text-lg font-bold font-synonym">Your Cycle Details</h3>
+              <p className="font-satoshi">
                 <strong>Next Period:</strong> {formatDate(result.nextStart)} to {formatDate(result.nextEnd)}
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 <strong>Ovulation Date:</strong> {formatDate(result.ovulation)}
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 <strong>Fertile Window:</strong> {formatDate(result.fertileStart)} to {formatDate(result.fertileEnd)}
               </p>
               <div>
-                <h4 className="font-medium mt-3">Upcoming Periods:</h4>
+                <h4 className="mt-3 font-synonym font-bold mb-2">Upcoming Periods:</h4>
                 <ul className="list-disc list-inside space-y-1">
                   {result.nextPeriods.map((p, i) => (
                     <li key={i}>

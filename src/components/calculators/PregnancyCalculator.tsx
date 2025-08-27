@@ -160,8 +160,8 @@ export default function PregnancyCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center">Pregnancy Calculator</CardTitle>
-        <CardDescription className="text-center">
+        <CardTitle className="text-center font-synonym font-bold mb-3">Pregnancy Calculator</CardTitle>
+        <CardDescription className="text-center font-satoshi">
           Estimate your due date and milestones
         </CardDescription>
       </CardHeader>
@@ -256,31 +256,31 @@ export default function PregnancyCalculator() {
 
           {result && (
             <div className="mt-6 p-4 bg-muted rounded-md space-y-3">
-              <h3 className="text-lg font-medium">Pregnancy Result</h3>
-              <p className="text-center text-xl font-bold">
+              <h3 className="text-lg font-synonym font-bold">Pregnancy Result</h3>
+              <p className="text-xl font-bold mb-3">
                 Week #{result.gestationWeeks} ({result.gestationWeeks} weeks {result.gestationDays} days)
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 About {result.months} months pregnant
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 Trimester: <strong>{result.trimester}</strong>
               </p>
-              <p className="text-center">
-                Due Date: <strong>{formatDate(result.dueDate)}</strong>
+              <p className="font-satoshi">
+                Due Date: <strong className="font-bold">{formatDate(result.dueDate)}</strong>
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 Conception Date: {formatDate(result.conceptionDate)}
               </p>
-              <p className="text-center">
+              <p className="font-satoshi">
                 Baby size: {result.babySize}, weight: {result.babyWeight}
               </p>
-              <p className="text-center">
+              <p className="font-synonym font-bold">
                 {result.percentComplete}% completed
               </p>
               <div>
-                <h4 className="font-medium mt-3">Important Milestones:</h4>
-                <ul className="list-disc list-inside space-y-1">
+                <h4 className="mt-3 font-synonym font-bold">Important Milestones:</h4>
+                <ul className="list-disc list-inside space-y-1 font-satoshi">
                   {result.milestones.map((m, i) => (
                     <li key={i}>
                       {m.label}: {m.date}
