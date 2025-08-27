@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { Shield, Clock, User, FileText, Lock, Eye, Database, Globe } from 'lucide-react'
+import {Clock, User, FileText, Lock, Eye, Database, Globe } from 'lucide-react'
 
 export default function PrivacyPolicy() {
   useEffect(() => {
@@ -173,27 +173,6 @@ export default function PrivacyPolicy() {
                 <p className="font-satoshi text-muted-foreground text-lg">
                   We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date.
                 </p>
-              </div>
-            </div>
-
-            {/* Contact */}
-            <div
-              className="flex items-start"
-              data-aos="fade-up"
-              data-aos-delay="800"
-            >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Shield className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Contact Us</h2>
-                <p className="font-satoshi text-muted-foreground text-base">If you have any questions, contact us at:</p>
-                <p className="text-muted-foreground">
-                Contact us at{' '}
-                <a href="contact" className="text-primary hover:underline">
-                  Contact us
-                </a>
-              </p>
               </div>
             </div>
           </div>

@@ -130,21 +130,6 @@ export default function TermsOfService() {
                 </p>
               </div>
             </div>
-
-            <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <FileText className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym" data-aos="fade-up">Contact Us</h2>
-                <p className="font-xl" data-aos="fade-up">
-                  If you have any questions about these Terms of Service, please contact us at:
-                </p>
-                <p className="mt-2" data-aos="fade-up">
-                  <strong>Email:</strong> terms@multicalc.example.com
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </Container>
