@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="border-t border-border/40 bg-background py-8">
+    <footer className="border-t border-border/70 bg-background py-8">
       <Container>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
@@ -90,15 +90,15 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-lg font-bold">Connect</h3>
             <div className="flex space-x-4">
-              <a href="https://x.com/codewithdhruba" className="text-muted-foreground hover:text-foreground">
+              <a href="https://x.com/codewithdhruba" className="text-muted-foreground hover:text-[#1DA1F2]">
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </a>
-              <a href="https://github.com/codewithdhruba01/MultiCalc" className="text-muted-foreground hover:text-foreground">
+              <a href="https://github.com/codewithdhruba01/MultiCalc" className="text-muted-foreground dark:hover:text-[#f6f6f7] hover:text-[#000000]">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://codewithdhruba.netlify.app/" className="text-muted-foreground hover:text-foreground">
+              <a href="https://codewithdhruba.netlify.app/" className="text-muted-foreground hover:text-[#25b608]">
                 <Globe className="h-5 w-5" />
                 <span className="sr-only">Website</span>
               </a>
