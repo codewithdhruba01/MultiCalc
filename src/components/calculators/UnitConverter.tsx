@@ -179,50 +179,53 @@ export default function UnitConverter() {
         {/* Tabs for selecting conversion category */}
         <div className="mb-4">
           <div className="grid grid-cols-3 mb-4">
-            <button
-              className={`px-4 py-2 rounded ${category === 'length' ? 'bg-primary text-white' : 'bg-background'}`}
+             <Button
+              variant={category === 'length' ? 'default' : 'outline'}
+              className={`rounded-l-md rounded-r-none px-4 py-2 ${category === 'length' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('length')}
               type="button"
             >
               Length
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${category === 'weight' ? 'bg-primary text-white' : 'bg-background'}`}
+            </Button>
+            <Button
+              variant={category === 'weight' ? 'default' : 'outline'}
+              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'weight' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('weight')}
-              type="button"
             >
               Weight
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${category === 'volume' ? 'bg-primary text-white' : 'bg-background'}`}
+            </Button>
+            <Button
+              variant={category === 'volume' ? 'default' : 'outline'}
+              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'volume' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('volume')}
-              type="button"
             >
               Volume
-            </button>
+            </Button>
           </div>
+
           <div className="grid grid-cols-3">
-            <button
-              className={`px-4 py-2 rounded ${category === 'temperature' ? 'bg-primary text-white' : 'bg-background'}`}
+            <Button
+              variant={category === 'temperature' ? 'default' : 'outline'}
+              className={`rounded-l-md rounded-r-none px-4 py-2 ${category === 'temperature' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('temperature')}
               type="button"
             >
               Temperature
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${category === 'area' ? 'bg-primary text-white' : 'bg-background'}`}
+            </Button>
+            <Button
+              variant={category === 'area' ? 'default' : 'outline'}
+              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'area' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('area')}
-              type="button"
             >
               Area
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${category === 'time' ? 'bg-primary text-white' : 'bg-background'}`}
+            </Button>
+            <Button
+              variant={category === 'time' ? 'default' : 'outline'}
+              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'time' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('time')}
-              type="button"
             >
               Time
-            </button>
+            </Button>
           </div>
         </div>
         
