@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Container } from '@/components/ui/Container'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Calculator, Percent, Calendar, CreditCard, Ruler, BarChart3, Globe, ArrowRight, ArrowBigRight, Star, Quote } from 'lucide-react'
-
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Home() {
   useEffect(() => {
@@ -13,6 +13,17 @@ export default function Home() {
       duration: 800,
       once: true,
     })
+  }, [])
+
+  // Rotating Words
+  const words = ["effective", "powerful", "fast", "simple", "reliable"]
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length)
+    }, 2500)
+    return () => clearInterval(interval)
   }, [])
 
   const calculatorCategories = [
@@ -110,9 +121,18 @@ export default function Home() {
           {/* Title */}
           <h1 className="text-5xl md:text-7xl font-excon font-bold mb-5" data-aos="fade-up">
             Your all-in-one <br /> calculator platform
-            <span className="block italic font-light text-gray-500 dark:text-gray-500">
-              effective
-            </span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={words[index]}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+                className="block italic font-light font-serif text-gray-500 dark:text-gray-500"
+              >
+                {words[index]}
+              </motion.span>
+            </AnimatePresence>
           </h1>
 
           {/* Subtitle */}
@@ -140,36 +160,34 @@ export default function Home() {
             {/* Learn More Button */}
             <Link to="/about">
               <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                
-                 Learn More
-                 <ArrowBigRight className="w-5 h-5" />
+                Learn More
+                <ArrowBigRight className="w-5 h-5" />
               </button>
             </Link>
           </div>
 
-
-      {/* Trusted Users */}
-<div className="flex items-center justify-center gap-3 mt-8" data-aos="zoom-in">
-  <div className="flex -space-x-3">
-    {[
-      "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
-      "https://media.licdn.com/dms/image/v2/D4E03AQF_yseNz4L6QQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718270182406?e=1758758400&v=beta&t=pSDL3921FQskO04WLg8bhBDElIM4HMUOG0HvYw3X_J4",
-      "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1758758400&v=beta&t=9HR_Zx5h6eh_0Nn0Hu7zyzt4i4PAs7XLxFLPH5IZmYE",
-      "https://media.licdn.com/dms/image/v2/D5603AQF-enUdXzZsNQ/profile-displayphoto-scale_200_200/B56ZeKafJQGoAY-/0/1750373891578?e=1758758400&v=beta&t=ccU0R5aZhCq3f4vuaK_iOW7Z37Q4SCmYHkxrxDYcKQ8",
-      "https://media.licdn.com/dms/image/v2/D5603AQH-RnGEEqNs1A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1704649237478?e=1758758400&v=beta&t=WT8yz2pfbzSjy0c_lQQFWkL601aKUiruRsWrAISrJfA",
-      "https://media.licdn.com/dms/image/v2/D5603AQFAdnzmscuOrg/profile-displayphoto-scale_200_200/B56ZfYsGjSGQAY-/0/1751687129794?e=1758758400&v=beta&t=rODi_KlpaUq7QzA7dD-6TaEkFhH0X64HrJ7h0VoG-y0",
-    ].map((src, index) => (
-      <img
-        key={index}
-        className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900
-                   transition-transform transform-gpu ease-in-out duration-500
-                   hover:scale-125 hover:z-20 hover:shadow-lg cursor-pointer"
-        src={src}
-        alt={`User ${index + 1}`}
-         />
-       ))}
-       </div>
-         <span className="text-gray-600 dark:text-gray-400 text-sm">
+          {/* Trusted Users */}
+          <div className="flex items-center justify-center gap-3 mt-8" data-aos="zoom-in">
+            <div className="flex -space-x-3">
+              {[
+                "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
+                "https://media.licdn.com/dms/image/v2/D4E03AQF_yseNz4L6QQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718270182406?e=1758758400&v=beta&t=pSDL3921FQskO04WLg8bhBDElIM4HMUOG0HvYw3X_J4",
+                "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1758758400&v=beta&t=9HR_Zx5h6eh_0Nn0Hu7zyzt4i4PAs7XLxFLPH5IZmYE",
+                "https://media.licdn.com/dms/image/v2/D5603AQF-enUdXzZsNQ/profile-displayphoto-scale_200_200/B56ZeKafJQGoAY-/0/1750373891578?e=1758758400&v=beta&t=ccU0R5aZhCq3f4vuaK_iOW7Z37Q4SCmYHkxrxDYcKQ8",
+                "https://media.licdn.com/dms/image/v2/D5603AQH-RnGEEqNs1A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1704649237478?e=1758758400&v=beta&t=WT8yz2pfbzSjy0c_lQQFWkL601aKUiruRsWrAISrJfA",
+                "https://media.licdn.com/dms/image/v2/D5603AQFAdnzmscuOrg/profile-displayphoto-scale_200_200/B56ZfYsGjSGQAY-/0/1751687129794?e=1758758400&v=beta&t=rODi_KlpaUq7QzA7dD-6TaEkFhH0X64HrJ7h0VoG-y0",
+              ].map((src, index) => (
+                <img
+                  key={index}
+                  className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900
+                             transition-transform transform-gpu ease-in-out duration-500
+                             hover:scale-125 hover:z-20 hover:shadow-lg cursor-pointer"
+                  src={src}
+                  alt={`User ${index + 1}`}
+                />
+              ))}
+            </div>
+            <span className="text-gray-600 dark:text-gray-400 text-sm">
               Trusted by 1000+ users
             </span>
           </div>
