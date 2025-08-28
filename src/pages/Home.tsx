@@ -28,7 +28,7 @@ export default function Home() {
 
   const calculatorCategories = [
     {
-      title: 'Basic Calculators',
+      title: 'Math Calculators',
       description: 'Standard and scientific calculators for everyday use',
       icon: <Calculator className="h-12 w-12 text-white" />,
       link: '/basic-calculators',
@@ -55,7 +55,7 @@ export default function Home() {
       hoverEffect: 'hover:shadow-rose-200 dark:hover:shadow-rose-900'
     },
     {
-      title: 'Math Calculators',
+      title: 'Advance Calculators',
       description: 'Advanced mathematical tools and converters',
       icon: <Percent className="h-12 w-12 text-white" />,
       link: '/math-calculators',
@@ -202,8 +202,8 @@ export default function Home() {
                 <div className="mx-auto mb-4 bg-primary/10 p-4 rounded-full">
                   {featuredCalculators[0].icon}
                 </div>
-                <CardTitle className="text-2xl">{featuredCalculators[0].title}</CardTitle>
-                <CardDescription className="text-lg">{featuredCalculators[0].description}</CardDescription>
+                <CardTitle className="text-2xl font-synonym">{featuredCalculators[0].title}</CardTitle>
+                <CardDescription className="text-base font-satoshi">{featuredCalculators[0].description}</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <Link to={featuredCalculators[0].link}>
@@ -218,7 +218,7 @@ export default function Home() {
 
         {/* Categories Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-synonym font-bold mb-8 text-center" data-aos="fade-up">Calculator Categories</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-10 text-center" data-aos="fade-up">Calculator Categories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {calculatorCategories.map((category, index) => (
               <Link to={category.link} key={index}>
@@ -252,7 +252,10 @@ export default function Home() {
 
         {/* Features Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-synonym font-bold mb-12 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-5 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
+          <p className= "text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-12 text-center">
+          Explore a wide range of smart calculators tailored for math, finance, health, and advanced needs—all in one place.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
               <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
