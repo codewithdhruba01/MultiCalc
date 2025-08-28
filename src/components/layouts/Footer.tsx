@@ -12,8 +12,8 @@ export default function Footer() {
           <div className="space-y-3">
             <Link to="/" className="flex items-center gap-2 font-bold text-xl">
               <img 
-                src="/logo/multicalc.png" 
-                alt="MultiCalc Logo" 
+                src="/logo/MultiCalc.png"
+                alt="Logo" 
                 className="h-11 w-auto"
               />
               <span>MultiCalc</span>

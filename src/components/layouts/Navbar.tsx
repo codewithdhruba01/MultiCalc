@@ -41,7 +41,7 @@ export default function Navbar() {
               onClick={closeMenu}
             >
               <img 
-                src="/logo/multicalc.png" 
+                src="/logo/MultiCalc.png" 
                 alt="MultiCalc Logo" 
                 className="h-10 w-auto"
               />
@@ -127,8 +127,8 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-6">
               <Link to="/" className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
                 <img 
-                src="/logo/multicalc.png" 
-                alt="MultiCalc Logo" 
+                src="/logo/MultiCalc.png" 
+                alt="Logo" 
                 className="h-10 w-auto"
               />
                 <span>MultiCalc</span>
