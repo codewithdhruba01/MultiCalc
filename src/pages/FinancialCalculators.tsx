@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import LoanCalculator from '@/components/calculators/LoanCalculator'
-import CurrencyConverter from '@/components/calculators/CurrencyConverter'
+import NPVCalculator from '@/components/calculators/NPVCalculator'
 import PriceToWeightConverter from '@/components/calculators/PriceToWeightConverter'
+import ROICalculator from '@/components/calculators/ROICalculator' // ✅ Import ROI
 import { Button } from '@/components/ui/Button'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export default function FinancialCalculators() {
-  const [activeCalculator, setActiveCalculator] = useState<'loan' | 'currency' | 'priceToWeight'>('loan')
+  const [activeCalculator, setActiveCalculator] = useState<'loan' | 'npv' | 'priceToWeight' | 'roi'>('loan')
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -24,7 +25,7 @@ export default function FinancialCalculators() {
             Tools for financial planning, loans, and currency conversions
           </p>
 
-          {/* Slider-style Tab Switcher */}
+          {/* Tab Switcher */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
@@ -36,23 +37,35 @@ export default function FinancialCalculators() {
               >
                 Loan
               </Button>
+
               <Button
-                variant={activeCalculator === 'currency' ? 'default' : 'outline'}
+                variant={activeCalculator === 'npv' ? 'default' : 'outline'}
                 className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
-                  activeCalculator === 'currency' ? 'bg-primary text-primary-foreground' : ''
+                  activeCalculator === 'npv' ? 'bg-primary text-primary-foreground' : ''
                 }`}
-                onClick={() => setActiveCalculator('currency')}
+                onClick={() => setActiveCalculator('npv')}
               >
-                Currency
+                NPV
               </Button>
+
               <Button
                 variant={activeCalculator === 'priceToWeight' ? 'default' : 'outline'}
-                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
                   activeCalculator === 'priceToWeight' ? 'bg-primary text-primary-foreground' : ''
                 }`}
                 onClick={() => setActiveCalculator('priceToWeight')}
               >
-                Price to Weight
+                Weight
+              </Button>
+
+              <Button
+                variant={activeCalculator === 'roi' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeCalculator === 'roi' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('roi')}
+              >
+                ROI
               </Button>
             </div>
           </div>
@@ -60,8 +73,9 @@ export default function FinancialCalculators() {
           {/* Render Selected Calculator */}
           <div className="transition-all duration-300">
             {activeCalculator === 'loan' && <LoanCalculator />}
-            {activeCalculator === 'currency' && <CurrencyConverter />}
+            {activeCalculator === 'npv' && <NPVCalculator />}
             {activeCalculator === 'priceToWeight' && <PriceToWeightConverter />}
+            {activeCalculator === 'roi' && <ROICalculator />}
           </div>
         </div>
       </Container>

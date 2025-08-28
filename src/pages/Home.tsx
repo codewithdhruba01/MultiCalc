@@ -41,7 +41,7 @@ export default function Home() {
       description: 'Tools for financial planning and calculations',
       icon: <CreditCard className="h-12 w-12 text-white" />,
       link: '/financial-calculators',
-      calculators: ['Loan Calculator', 'Currency Converter', 'Price to Weight Calculator'],
+      calculators: ['Loan Calculator', 'NPV Calculator', 'Price to Weight Calculator','ROI Calculator'],
       gradient: 'from-emerald-500 to-teal-600',
       hoverEffect: 'hover:shadow-emerald-200 dark:hover:shadow-emerald-900'
     },
