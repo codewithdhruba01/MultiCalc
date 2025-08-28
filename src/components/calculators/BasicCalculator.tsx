@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { evaluate } from 'mathjs'
 
 export default function BasicCalculator() {
@@ -100,7 +100,10 @@ export default function BasicCalculator() {
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold">Basic Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-2">Basic Calculator</CardTitle>
+        <CardDescription className="text-center font-supreme ">
+          Basic calculators for quick arithmetic and <br/> daily number crunching
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="bg-muted p-4 rounded-md mb-4 text-right">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { evaluate } from 'mathjs'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
 import AOS from 'aos'
@@ -169,7 +169,10 @@ export default function ScientificCalculator() {
   return (
     <Card className="w-full max-w-xl mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold">Scientific Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-2">Scientific Calculator</CardTitle>
+        <CardDescription className="text-center font-supreme ">
+          Scientific tools for complex equations and advanced <br/> mathematical functions
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="calculator">

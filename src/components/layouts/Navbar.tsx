@@ -52,10 +52,10 @@ export default function Navbar() {
             <nav className="hidden md:flex items-center gap-2">
               {[
                 { to: "/", label: "Home" },
-                { to: "/basic-calculators", label: "Basic" },
+                { to: "/basic-calculators", label: "Math" },
                 { to: "/financial-calculators", label: "Financial" },
                 { to: "/health-calculators", label: "Health" },
-                { to: "/math-calculators", label: "Math" },
+                { to: "/math-calculators", label: "Advance" },
                 { to: "/age-calculator", label: "Age" },
                 { to: "/marks-calculators", label: "Marks" },
               ].map((item) => (
@@ -142,10 +142,10 @@ export default function Navbar() {
             <nav className="flex flex-col gap-3">
               {[
                 { to: "/", label: "Home" },
-                { to: "/basic-calculators", label: "Basic Calculators" },
+                { to: "/basic-calculators", label: "Math Calculators" },
                 { to: "/financial-calculators", label: "Financial Calculators" },
                 { to: "/health-calculators", label: "Health Calculators" },
-                { to: "/math-calculators", label: "Math Calculators" },
+                { to: "/math-calculators", label: "Advance Calculators" },
                 { to: "/age-calculator", label: "Age Calculator" },
                 { to: "/marks-calculators", label: "Marks Calculator" },
               ].map((item) => (

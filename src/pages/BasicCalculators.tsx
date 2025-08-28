@@ -12,7 +12,7 @@ export default function BasicCalculators() {
     <div className="py-20 md:py-15" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-5 text-center font-synonym">Basic Calculators</h1>
+          <h1 className="text-4xl font-bold mb-5 text-center font-synonym">Math Calculators</h1>
           <p className="text-muted-foreground text-center font-satoshi mb-8">
             Standard calculators for everyday calculations and <br /> mathematical operations
           </p>

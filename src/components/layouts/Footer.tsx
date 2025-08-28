@@ -28,7 +28,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/basic-calculators" className="text-muted-foreground hover:text-foreground">
-                  Basic Calculators
+                  Math Calculators
                 </Link>
               </li>
               <li>
@@ -43,7 +43,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/math-calculators" className="text-muted-foreground hover:text-foreground">
-                  Math Calculators
+                  Advance Calculators
                 </Link>
               </li>
               <li>
