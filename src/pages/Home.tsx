@@ -218,7 +218,7 @@ export default function Home() {
 
         {/* Categories Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-synonym font-bold mb-10 text-center" data-aos="fade-up">Calculator Categories</h2>
+          <h2 className="text-3xl font-synonym font-bold mb-10 text-center" data-aos="zoom-in">Calculator Categories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {calculatorCategories.map((category, index) => (
               <Link to={category.link} key={index}>
@@ -253,7 +253,7 @@ export default function Home() {
         {/* Features Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-synonym font-bold mb-5 text-center" data-aos="fade-up">Why Choose Our Calculators?</h2>
-          <p className= "text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-12 text-center">
+          <p className= "text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-12 text-center" data-aos="fade-up">
           Explore a wide range of smart calculators tailored for math, finance, health, and advanced needs—all in one place.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
