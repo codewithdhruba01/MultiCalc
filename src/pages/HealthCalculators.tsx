@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/Button'
 import BMICalculator from '@/components/calculators/BMICalculator'
 import PregnancyCalculator from '@/components/calculators/PregnancyCalculator'
 import PeriodCalculator from '@/components/calculators/PeriodCalculator'
+import ProteinCalculator from '@/components/calculators/ProteinCalculator'
 
 export default function HealthCalculators() {
-  const [activeCalculator, setActiveCalculator] = useState<'bmi' | 'pregnancy' | 'period'>('bmi')
+  const [activeCalculator, setActiveCalculator] = useState<'bmi' | 'pregnancy' | 'period' | 'protein'>('bmi')
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -54,6 +55,15 @@ export default function HealthCalculators() {
               >
                 Period
               </Button>
+              <Button
+                variant={activeCalculator === 'protein' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeCalculator === 'protein' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('protein')}
+              >
+                Protein
+              </Button>
             </div>
           </div>
 
@@ -62,6 +72,7 @@ export default function HealthCalculators() {
             {activeCalculator === 'bmi' && <BMICalculator />}
             {activeCalculator === 'pregnancy' && <PregnancyCalculator />}
             {activeCalculator === 'period' && <PeriodCalculator />}
+            {activeCalculator === 'protein' && <ProteinCalculator />}
           </div>
         </div>
       </Container>
