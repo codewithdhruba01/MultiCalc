@@ -50,7 +50,7 @@ export default function Home() {
       description: 'Calculate health metrics and statistics',
       icon: <BarChart3 className="h-12 w-12 text-white" />,
       link: '/health-calculators',
-      calculators: ['BMI Calculator', 'Pregnancy Calculator', 'Period Calculator'],
+      calculators: ['BMI Calculator', 'Pregnancy Calculator', 'Period Calculator', 'Protein Calculator', 'BMR Calculator'],
       gradient: 'from-rose-500 to-pink-600',
       hoverEffect: 'hover:shadow-rose-200 dark:hover:shadow-rose-900'
     },

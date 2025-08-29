@@ -7,9 +7,10 @@ import BMICalculator from '@/components/calculators/BMICalculator'
 import PregnancyCalculator from '@/components/calculators/PregnancyCalculator'
 import PeriodCalculator from '@/components/calculators/PeriodCalculator'
 import ProteinCalculator from '@/components/calculators/ProteinCalculator'
+import BMRCalculator from '@/components/calculators/BMRCalculator'
 
 export default function HealthCalculators() {
-  const [activeCalculator, setActiveCalculator] = useState<'bmi' | 'pregnancy' | 'period' | 'protein'>('bmi')
+  const [activeCalculator, setActiveCalculator] = useState<'bmi' | 'pregnancy' | 'period' | 'protein' | 'bmr'>('bmi')
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -64,6 +65,15 @@ export default function HealthCalculators() {
               >
                 Protein
               </Button>
+              <Button
+                variant={activeCalculator === 'bmr' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                  activeCalculator === 'bmr' ? 'bg-primary text-primary-foreground' : ''
+                }`}
+                onClick={() => setActiveCalculator('bmr')}
+              >
+                BMR
+              </Button>
             </div>
           </div>
 
@@ -73,6 +83,7 @@ export default function HealthCalculators() {
             {activeCalculator === 'pregnancy' && <PregnancyCalculator />}
             {activeCalculator === 'period' && <PeriodCalculator />}
             {activeCalculator === 'protein' && <ProteinCalculator />}
+            {activeCalculator === 'bmr' && <BMRCalculator />}
           </div>
         </div>
       </Container>
