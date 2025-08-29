@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
 import { Input } from '../ui/Input'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
+import { Tabs} from '../ui/Tabs'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -28,6 +28,11 @@ export default function PercentageCalculator() {
   const [partValue, setPartValue] = useState<string>('')
   const [totalValue, setTotalValue] = useState<string>('')
   const [totalResult, setTotalResult] = useState<number | null>(null)
+
+  // Value to Percentage calculation
+  const [valueInput, setValueInput] = useState<string>('')
+  const [totalForValueInput, setTotalForValueInput] = useState<string>('')
+  const [valueToPercentResult, setValueToPercentResult] = useState<number | null>(null)
 
   const calculatePercentage = () => {
     if (!percentValue || !ofValue) return
@@ -70,6 +75,18 @@ export default function PercentageCalculator() {
     setTotalResult(parseFloat(result.toFixed(2)))
   }
 
+  const calculateValueToPercentage = () => {
+    if (!valueInput || !totalForValueInput) return
+
+    const value = parseFloat(valueInput)
+    const total = parseFloat(totalForValueInput)
+
+    if (isNaN(value) || isNaN(total) || total === 0) return
+
+    const result = (value / total) * 100
+    setValueToPercentResult(parseFloat(result.toFixed(2)))
+  }
+
   const resetBasic = () => {
     setPercentValue('')
     setOfValue('')
@@ -88,6 +105,12 @@ export default function PercentageCalculator() {
     setTotalResult(null)
   }
 
+  const resetValueToPercentage = () => {
+    setValueInput('')
+    setTotalForValueInput('')
+    setValueToPercentResult(null)
+  }
+
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
@@ -98,18 +121,15 @@ export default function PercentageCalculator() {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="basic">
-          <TabsList className="grid w-full grid-cols-3 mb-4">
-            <TabsTrigger value="basic">Basic</TabsTrigger>
-            <TabsTrigger value="change">% Change</TabsTrigger>
-            <TabsTrigger value="total">% of Total</TabsTrigger>
-          </TabsList>
+         
           
-          <TabsContent className="space-y-4">
+          {/* Basic */}
+          
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label htmlFor="percentValue" className="block text-sm font-medium mb-1">
-                    Percentage (%)
+                    Percentage
                   </label>
                   <Input
                     id="percentValue"
@@ -121,7 +141,7 @@ export default function PercentageCalculator() {
                 </div>
                 <div>
                   <label htmlFor="ofValue" className="block text-sm font-medium mb-1">
-                    of Value
+                    Of Value
                   </label>
                   <Input
                     id="ofValue"
@@ -133,7 +153,7 @@ export default function PercentageCalculator() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 mb-4">
                 <Button onClick={calculatePercentage} disabled={!percentValue || !ofValue}>
                   Calculate
                 </Button>
@@ -151,9 +171,10 @@ export default function PercentageCalculator() {
                 </div>
               )}
             </div>
-          </TabsContent>
+         
           
-          <TabsContent className="space-y-4">
+          {/* % Change */}
+          
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
@@ -182,7 +203,7 @@ export default function PercentageCalculator() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 mb-4">
                 <Button onClick={calculatePercentageChange} disabled={!fromValue || !toValue}>
                   Calculate
                 </Button>
@@ -208,9 +229,10 @@ export default function PercentageCalculator() {
                 </div>
               )}
             </div>
-          </TabsContent>
+         
           
-          <TabsContent className="space-y-4">
+          {/* % of Total */}
+         
             <div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
@@ -239,7 +261,7 @@ export default function PercentageCalculator() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 mb-4">
                 <Button onClick={calculatePercentageOfTotal} disabled={!partValue || !totalValue}>
                   Calculate
                 </Button>
@@ -260,7 +282,57 @@ export default function PercentageCalculator() {
                 </div>
               )}
             </div>
-          </TabsContent>
+        
+
+          {/* Value to % */}
+          
+            <div>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label htmlFor="valueInput" className="block text-sm font-medium mb-1">
+                    Value
+                  </label>
+                  <Input
+                    id="valueInput"
+                    type="number"
+                    placeholder="e.g. 444"
+                    value={valueInput}
+                    onChange={(e) => setValueInput(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="totalForValueInput" className="block text-sm font-medium mb-1">
+                    Total Value
+                  </label>
+                  <Input
+                    id="totalForValueInput"
+                    type="number"
+                    placeholder="e.g. 500"
+                    value={totalForValueInput}
+                    onChange={(e) => setTotalForValueInput(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <Button onClick={calculateValueToPercentage} disabled={!valueInput || !totalForValueInput}>
+                  Calculate
+                </Button>
+                <Button variant="outline" onClick={resetValueToPercentage}>
+                  Reset
+                </Button>
+              </div>
+
+              {valueToPercentResult !== null && (
+                <div className="mt-6 p-4 bg-muted rounded-md">
+                  <h3 className="text-lg font-medium mb-2">Result</h3>
+                  <p className="text-center text-2xl font-bold">
+                    {valueInput} is {valueToPercentResult}% of {totalForValueInput}
+                  </p>
+                </div>
+              )}
+            </div>
+         
         </Tabs>
       </CardContent>
     </Card>
