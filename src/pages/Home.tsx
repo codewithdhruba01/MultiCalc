@@ -78,35 +78,35 @@ export default function Home() {
   const testimonials = [
     {
       id: 1,
-      name: 'Arjun Sharma',
+      name: 'Abhishek Rajput',
       role: 'Software Engineer',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQEkpZXUYBQRGQ/profile-displayphoto-scale_200_200/B56Zf08UTfG0Ao-/0/1752161142851?e=1759968000&v=beta&t=NZMZ9m7ygPPcGdYRejvB7abRjbd32mG7RYz1IxNWdwU',
       rating: 4,
-      comment: 'As a financial analyst, accuracy matters to me. MultiCalc saves me hours by handling both simple and complex calculations without errors.'
+      comment: 'This website is good in terms of functionality. The only thing you can improve is the theme. Other than this you can give more theme options to the user. Overall the experience is good and smooth.'
     },
     {
       id: 2,
-      name: 'Priya Patel',
-      role: 'Student',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Jaanvi Chouhan',
+      role: 'CSE Student',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1759968000&v=beta&t=MMir3iIPikxJh0mreOXKSQD9mfzEQPNzvXRgRGQF6jg',
       rating: 5,
-      comment: 'MultiCalc has made my math solution so much easier! I don’t waste time searching for different calculators anymore — everything is in one place.'
+      comment: 'MultiCalc is really impressive! I found it very useful, and I love the clean and simple design it makes everything easy to use. Having so many calculators in one place is super convenient.'
     },
     {
       id: 3,
+      name: 'Priya Sharma',
+      role: 'Software Developer',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQH_W2hQyjhqcg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710012272045?e=1759968000&v=beta&t=s9iM0gN31Pn71zD3CErwK84XOKAZsaltzQMZP-mdEQs',
+      rating: 5,
+      comment: 'Well I must say its very unique and beautifully maintained and responsiveness is also good.I dont find any bug here and UI is quite perfect.'
+    },
+    {
+      id: 4,
       name: 'Rohit Kumar',
       role: 'Marketing Manager',
       image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400',
       rating: 5,
       comment: 'Accurate and fast. MultiCalc saves hours of work by simplifying both financial and complex calculations.'
-    },
-    {
-      id: 4,
-      name: 'Sneha Reddy',
-      role: 'HR Manager',
-      image: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400',
-      rating: 5,
-      comment: 'Pregnancy Calculator gave me accurate due dates and weekly insights — it really eased my journey.'
     }
   ];
 
@@ -170,12 +170,12 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 mt-8" data-aos="zoom-in">
             <div className="flex -space-x-3">
               {[
-                "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
-                "https://media.licdn.com/dms/image/v2/D4E03AQF_yseNz4L6QQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718270182406?e=1758758400&v=beta&t=pSDL3921FQskO04WLg8bhBDElIM4HMUOG0HvYw3X_J4",
+                "https://media.licdn.com/dms/image/v2/D4E03AQGlbcw4Zn2ZMQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729081777208?e=1759968000&v=beta&t=PtU0AJk41ZQNZXOQuaJF6nhnO06LrVhAIP-NM5tlWHQ",
                 "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1758758400&v=beta&t=9HR_Zx5h6eh_0Nn0Hu7zyzt4i4PAs7XLxFLPH5IZmYE",
-                "https://media.licdn.com/dms/image/v2/D5603AQF-enUdXzZsNQ/profile-displayphoto-scale_200_200/B56ZeKafJQGoAY-/0/1750373891578?e=1758758400&v=beta&t=ccU0R5aZhCq3f4vuaK_iOW7Z37Q4SCmYHkxrxDYcKQ8",
-                "https://media.licdn.com/dms/image/v2/D5603AQH-RnGEEqNs1A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1704649237478?e=1758758400&v=beta&t=WT8yz2pfbzSjy0c_lQQFWkL601aKUiruRsWrAISrJfA",
-                "https://media.licdn.com/dms/image/v2/D5603AQFAdnzmscuOrg/profile-displayphoto-scale_200_200/B56ZfYsGjSGQAY-/0/1751687129794?e=1758758400&v=beta&t=rODi_KlpaUq7QzA7dD-6TaEkFhH0X64HrJ7h0VoG-y0",
+                "https://media.licdn.com/dms/image/v2/D5603AQH_W2hQyjhqcg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710012272045?e=1759968000&v=beta&t=s9iM0gN31Pn71zD3CErwK84XOKAZsaltzQMZP-mdEQs",
+                "https://media.licdn.com/dms/image/v2/D5603AQEkpZXUYBQRGQ/profile-displayphoto-scale_200_200/B56Zf08UTfG0Ao-/0/1752161142851?e=1759968000&v=beta&t=NZMZ9m7ygPPcGdYRejvB7abRjbd32mG7RYz1IxNWdwU",
+                "https://media.licdn.com/dms/image/v2/D4E03AQESfeQxnHCR6g/profile-displayphoto-scale_200_200/B4EZeDk68yHsAc-/0/1750259184449?e=1759968000&v=beta&t=TmHOQMWrjsNgOJQYJpV2Xfjj6z3ByDuydOvIPmV2B4Q",
+                "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
               ].map((src, index) => (
                 <img
                   key={index}
@@ -188,7 +188,7 @@ export default function Home() {
               ))}
             </div>
             <span className="text-gray-600 dark:text-gray-400 text-sm">
-              Trusted by 1000+ users
+              Trusted by 100+ users
             </span>
           </div>
         </section>
