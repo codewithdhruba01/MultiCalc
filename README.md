@@ -34,8 +34,8 @@ Whether you’re a student needing quick calculations, a professional who wants 
 
 ## Features
 
-- Multiple calculator types (Basic, Scientific, BMI, Currency, etc.)
-- Dark/Light mode toggle
+- 15+ Calculator are available
+- Dark/Light function
 - Responsive design
 - Clean and intuitive UI
 
@@ -48,21 +48,29 @@ Whether you’re a student needing quick calculations, a professional who wants 
 
 ## Available Calculators
 
-- Basic Calculator
-- Scientific Calculator
-- BMI Calculator
-- Currency Converter
-- Percentage Calculator
-- Age Calculator
-- Loan Calculator
-- Unit Converter
+- **Basic Calculator**
+- **Scientific Calculator**
+- **BMI Calculator**
+- **BMR Calculator**
+- **Protein Calculator**
+- **Pregnancy Calculator**
+- **Age Calculator**
+- **Period Calculator**
+- **Percentage Calculator**
+- **Loan Calculator**
+- **ROI Calculator**
+- **NPV Calculator**
+- **Unit Converter**
+- **Price to Weight Converter**
 
 ## Tech Stack
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
+- **Framework**: React + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Routing**: React Router
+- **Math**: mathjs (for advanced operations)
+- **Animations** : Motion
 
 ### Installation
 
@@ -86,7 +94,11 @@ Whether you’re a student needing quick calculations, a professional who wants 
 4. Open your browser and navigate to `http://localhost:5173`
 
 
+## Contributing
 
+- Fork the repo and create a feature branch
+- Keep code readable and typed; prefer small, focused PRs
+- Run locally and ensure no TypeScript/lint errors
 
 ## 📄 License
 
