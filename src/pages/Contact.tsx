@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import {
-  Send, Mail, Phone, MapPin, Github,
+  Send, Mail, Clock3, MapPin, Github,
   Linkedin, Twitter, Check, ChevronDown
 } from 'lucide-react'
 
@@ -90,7 +90,7 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Left: Contact Info */}
             <div data-aos="fade-up">
-              <h2 className="text-2xl font-poppins font-bold mb-3">Let's Start a Conversation</h2>
+              <h2 className="text-2xl font-synonym font-bold mb-3">Let's Start a Conversation</h2>
               <p className="text-muted-foreground mb-8 font-satoshi">
                  Reach out to our team using the contact information below or fill out the form. I'd love to hear from you. I typically respond within 24 hours.
               </p>
@@ -105,10 +105,10 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
-                  <Phone className="text-purple-600 w-5 h-5" />
+                  <Clock3 className="text-purple-600 w-5 h-5" />
                   <div>
-                    <p className="text-sm font-excon">Phone</p>
-                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">+91 9064644809</p>
+                    <p className="text-sm font-excon">Response Time</p>
+                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">Within 24 hours</p>
                   </div>
                 </div>
 
