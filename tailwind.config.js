@@ -67,9 +67,14 @@ module.exports = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite', // slow rotation (3 sec per cycle)
+        blink: 'blink 1s infinite', // blink effect
       },
     },
   },

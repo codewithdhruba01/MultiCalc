@@ -94,19 +94,19 @@ export default function Home() {
     },
     {
       id: 3,
+      name: 'Sanskruti Dhamal',
+      role: 'BE Student',
+      image: 'https://media.licdn.com/dms/image/v2/D4E03AQESfeQxnHCR6g/profile-displayphoto-scale_200_200/B4EZeDk68yHsAc-/0/1750259184449?e=1760572800&v=beta&t=yS9C-tSPjlGmGMHEkj59YjlvkqMD1bmr3-6NKuQuW-Y',
+      rating: 5,
+      comment: 'I was very impressed with the MultiCal website. It offers a truly comprehensive suite of tools, The site is incredibly fast and responsive, making it a great resource for quick and efficient calculations. Highly recommended!'
+    },
+    {
+      id: 4,
       name: 'Priya Sharma',
       role: 'Software Developer',
       image: 'https://media.licdn.com/dms/image/v2/D5603AQH_W2hQyjhqcg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710012272045?e=1759968000&v=beta&t=s9iM0gN31Pn71zD3CErwK84XOKAZsaltzQMZP-mdEQs',
       rating: 5,
       comment: 'Well I must say its very unique and beautifully maintained and responsiveness is also good.I dont find any bug here and UI is quite perfect.'
-    },
-    {
-      id: 4,
-      name: 'Rohit Kumar',
-      role: 'Marketing Manager',
-      image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400',
-      rating: 5,
-      comment: 'Accurate and fast. MultiCalc saves hours of work by simplifying both financial and complex calculations.'
     }
   ];
 
@@ -115,7 +115,8 @@ export default function Home() {
       <Container>
         <section className="mb-20 mt-20 text-center">
           <button className="bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-10 font-supreme">
-            Now it is time to calculate →
+          <span className="animate-blink">🟢 </span>
+          Now it is time to calculate →
           </button>
 
           {/* Title */}
@@ -138,7 +139,7 @@ export default function Home() {
           {/* Subtitle */}
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto font-satoshi" data-aos="fade-up">
             All your calculations in one place. From basic math to complex formulas, <br />
-            your one-stop calculator hub.
+            your one-stop calculator hub. <span className=" text-gray-900 dark:text-gray-300 font-satoshi">20+ calculator are available.</span>
           </p>
 
           <div className="flex flex-wrap gap-4 mb-9 justify-center" data-aos="zoom-in">
