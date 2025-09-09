@@ -94,7 +94,7 @@ export default function Home() {
     },
     {
       id: 3,
-      name: 'Sanskruti Dhamal',
+      name: 'Sanskruti D',
       role: 'BE Student',
       image: 'https://media.licdn.com/dms/image/v2/D4E03AQESfeQxnHCR6g/profile-displayphoto-scale_200_200/B4EZeDk68yHsAc-/0/1750259184449?e=1760572800&v=beta&t=yS9C-tSPjlGmGMHEkj59YjlvkqMD1bmr3-6NKuQuW-Y',
       rating: 5,
@@ -102,12 +102,12 @@ export default function Home() {
     },
     {
       id: 4,
-      name: 'Priya Sharma',
-      role: 'Software Developer',
-      image: 'https://media.licdn.com/dms/image/v2/D5603AQH_W2hQyjhqcg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710012272045?e=1759968000&v=beta&t=s9iM0gN31Pn71zD3CErwK84XOKAZsaltzQMZP-mdEQs',
+      name: 'Janani M',
+      role: 'SDE @Zoho',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQGeX4w2hwZukA/profile-displayphoto-scale_200_200/B56Zh.NWMIG4AY-/0/1754464086408?e=1760572800&v=beta&t=BeHLMst5wPHxQU0v0X3s7tvqg9AVHh4w-Vgh7-b163U',
       rating: 5,
-      comment: 'Well I must say its very unique and beautifully maintained and responsiveness is also good.I dont find any bug here and UI is quite perfect.'
-    }
+      comment: 'I have used the Multicalc platform. It is very smooth to use. It had wide range of calculators. Interesting to explore all in one place. With a Sleek UI and smooth UX MultiCalc is built very well.'
+    },
   ];
 
   return (
