@@ -286,7 +286,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section
-          className="relative mb-16 rounded-xl overflow-hidden bg-gradient-to-br from-rose-500 to-pink-600 text-white text-center py-20 px-6 shadow-lg"
+           className="relative mb-16 rounded-xl overflow-hidden pattern-bg text-white text-center py-20 px-6 shadow-lg"
           data-aos="zoom-in"
         >
           <div className="max-w-4xl mx-auto">
@@ -294,10 +294,10 @@ export default function Home() {
               className="text-4xl md:text-5xl font-excon font-bold tracking-tight mb-4"
               style={{ letterSpacing: '-0.02em' }}
             >
-              Build, Customize,<br className="hidden md:inline" />Deploy Quickly
+              Solve, Simplify, <br className="hidden md:inline" />Succeed
             </h2>
-            <p className="text-lg font-satoshi md:text-xl mb-8 text-white/90 leading-relaxed">
-              Start With <span className="text-white/60 font-supreme">Multicalculator </span> Today.
+            <p className="text-base font-satoshi md:text-base mb-4 text-white/90 leading-relaxed">
+              Start With hassle-free <span className="text-white/80 font-satoshi">Multical</span> Today.
             </p>
             <Link
               to="/basic-calculators"

@@ -1,0 +1,39 @@
+<!-- public/assets/math-pattern.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin slice">
+  <rect width="100%" height="100%" fill="none"/>
+  <g fill="#1a1515ff" fill-opacity="0.08" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <!-- big math symbols -->
+    <text x="60"  y="70"  font-size="60">∑</text>
+    <text x="200" y="30"  font-size="50">÷</text>
+    <text x="320" y="70"  font-size="46">π</text>
+    <text x="360" y="120" font-size="42">%</text>
+
+    <!-- equations / snippets -->
+    <text x="100" y="180" font-size="22">f(x) = ax²</text>
+    <text x="280" y="180" font-size="22">(sin x)</text>
+    <text x="200" y="250" font-size="18">limₓ→0 (sin x)/x = 1</text>
+    <text x="60"  y="280" font-size="20">∂/∂x</text>
+    <text x="340" y="280" font-size="20">α β γ</text>
+
+    <!-- big operators -->
+    <text x="60"  y="350" font-size="32">+</text>
+    <text x="120" y="350" font-size="32">−</text>
+    <text x="180" y="350" font-size="32">×</text>
+    <text x="240" y="350" font-size="32">÷</text>
+    <text x="300" y="350" font-size="32">%</text>
+
+    <!-- calculator doodle (larger) -->
+    <g transform="translate(280,240) scale(1.2)" fill="#ffffff" fill-opacity="0.08">
+      <rect x="0" y="0" width="60" height="80" rx="6" />
+      <rect x="8" y="8" width="44" height="16" rx="2" />
+      <g transform="translate(8,28)">
+        <rect x="0"  y="0"  width="12" height="12" rx="2" />
+        <rect x="16" y="0"  width="12" height="12" rx="2" />
+        <rect x="32" y="0"  width="12" height="12" rx="2" />
+        <rect x="0"  y="16" width="12" height="12" rx="2" />
+        <rect x="16" y="16" width="12" height="12" rx="2" />
+        <rect x="32" y="16" width="12" height="12" rx="2" />
+      </g>
+    </g>
+  </g>
+</svg>

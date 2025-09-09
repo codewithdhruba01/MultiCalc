@@ -68,3 +68,17 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
   }
 }
+
+/* Pattern Background */
+
+.pattern-bg {
+  /* base gradient similar to your design */
+  background-image:
+    linear-gradient(135deg, rgba(224, 80, 159, 0.95) 0%, rgba(236,72,153,0.92) 100%),
+    url('/assets/math-pattern.svg');
+  background-blend-mode: overlay;
+  background-size: cover, 800px 500px;
+  background-repeat: no-repeat, repeat;
+  background-position: center, center;
+  color: white;
+}
