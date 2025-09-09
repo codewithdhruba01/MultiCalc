@@ -138,8 +138,8 @@ export default function Home() {
 
           {/* Subtitle */}
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto font-satoshi" data-aos="fade-up">
-            All your calculations in one place. From basic math to complex formulas, <br />
-            your one-stop calculator hub. <span className=" text-gray-900 dark:text-gray-300 font-satoshi">20+ calculator are available.</span>
+            All your calculations in one place. From basic math to <br /> complex formulas,
+            your one-stop calculator hub. <br /> <span className=" text-xl text-gray-900 dark:text-gray-300 font-outfit">20+ calculator are available.</span>
           </p>
 
           <div className="flex flex-wrap gap-4 mb-9 justify-center" data-aos="zoom-in">
