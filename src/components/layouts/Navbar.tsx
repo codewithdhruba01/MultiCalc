@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu, X, LogIn } from 'lucide-react'
+import { Menu, X, LogIn, ChevronDown } from 'lucide-react'
 import { Container } from '../ui/Container'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { Button } from '../ui/Button'
@@ -11,6 +11,8 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showPanel, setShowPanel] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false) // desktop dropdown
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false) // mobile dropdown
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => {
@@ -20,7 +22,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (isMenuOpen) {
-      const timer = setTimeout(() => setShowPanel(true), 100) 
+      const timer = setTimeout(() => setShowPanel(true), 100)
       return () => clearTimeout(timer)
     } else {
       setShowPanel(false)
@@ -49,14 +51,13 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-2 relative">
               {[
                 { to: "/", label: "Home" },
                 { to: "/basic-calculators", label: "Math" },
                 { to: "/financial-calculators", label: "Financial" },
                 { to: "/health-calculators", label: "Health" },
                 { to: "/math-calculators", label: "Advance" },
-                { to: "/age-calculator", label: "Age" },
                 { to: "/marks-calculators", label: "Marks" },
               ].map((item) => (
                 <NavLink
@@ -74,6 +75,35 @@ export default function Navbar() {
                   {item.label}
                 </NavLink>
               ))}
+
+              {/* Others Dropdown (Desktop) */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium transition text-foreground/70 hover:text-foreground"
+                >
+                  Others <ChevronDown className={`h-4 w-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
+                </button>
+                <div
+                  className={`absolute left-0 mt-2 w-48 bg-card rounded-xl shadow-lg border border-border/40 overflow-hidden transition-all duration-300 ease-in-out ${
+                    isDropdownOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                  }`}
+                >
+                  {[
+                    { to: "/currency-converter", label: "Currency Converter" },
+                    { to: "/age-calculator", label: "Age Calculator" },
+                  ].map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="block px-4 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-primary/10 transition"
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
             </nav>
 
             {/* Right Side */}
@@ -146,7 +176,6 @@ export default function Navbar() {
                 { to: "/financial-calculators", label: "Financial Calculators" },
                 { to: "/health-calculators", label: "Health Calculators" },
                 { to: "/math-calculators", label: "Advance Calculators" },
-                { to: "/age-calculator", label: "Age Calculator" },
                 { to: "/marks-calculators", label: "Marks Calculator" },
               ].map((item) => (
                 <NavLink
@@ -165,6 +194,36 @@ export default function Navbar() {
                   {item.label}
                 </NavLink>
               ))}
+
+              {/* Mobile Others Dropdown */}
+              <div className="flex flex-col">
+                <button
+                  onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+                  className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition text-foreground/70 hover:text-foreground"
+                >
+                  Others
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isMobileDropdownOpen ? "rotate-180" : ""}`} />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isMobileDropdownOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  {[
+                    { to: "/currency-converter", label: "Currency Converter" },
+                    { to: "/age-calculator", label: "Age Calculator" },
+                  ].map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      onClick={closeMenu}
+                      className="block px-6 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-primary/10 transition"
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
             </nav>
 
             {/* Auth Buttons Bottom */}
