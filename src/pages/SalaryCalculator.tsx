@@ -141,17 +141,17 @@ export default function SalaryCalculator() {
           {/* Salary Breakdown */}
           {netSalary && (
             <div className="mt-4 border-t pt-4">
-              <h3 className="font-semibold mb-2">Salary Breakdown</h3>
+              <h3 className="text-lg font-semibold mb-2 font-synonym">Salary Breakdown</h3>
               <ul className="space-y-1 text-sm">
                 <li className="flex justify-between">
-                  <span>Gross Salary:</span>
+                  <span className="font-satoshi">Gross Salary:</span>
                   <span className="font-medium">₹ {grossSalary}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Total Deductions:</span>
+                  <span className="font-satoshi">Total Deductions:</span>
                   <span className="font-medium text-red-500">₹ {deductions}</span>
                 </li>
-                <li className="flex justify-between text-lg font-bold">
+                <li className="flex justify-between text-lg font-bold font-synonym">
                   <span>Net Salary:</span>
                   <span className="text-green-600">₹ {netSalary}</span>
                 </li>
