@@ -7,6 +7,7 @@ import FinancialCalculators from './pages/FinancialCalculators'
 import HealthCalculators from './pages/HealthCalculators'
 import MathCalculators from './pages/MathCalculators'
 import CurrencyConverter from './pages/CurrencyConverter'
+import SalaryCalculator from './pages/SalaryCalculator'
 import DetailedAgeCalculator from './pages/DetailedAgeCalculator'
 import About from './pages/About'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -32,6 +33,7 @@ function App() {
         <Route path="health-calculators" element={<HealthCalculators />} />
         <Route path="math-calculators" element={<MathCalculators />} />
         <Route path="currency-converter" element={<CurrencyConverter />} />
+        <Route path="salary-calculator" element={<SalaryCalculator />} />
         <Route path="age-calculator" element={<DetailedAgeCalculator />} />
         <Route path="about" element={<About />} />
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
@@ -43,3 +45,6 @@ function App() {
 }
 
 export default App
+
+
+SalaryCalculator
