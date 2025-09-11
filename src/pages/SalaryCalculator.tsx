@@ -59,13 +59,11 @@ export default function SalaryCalculator() {
   return (
     <div className="container mx-auto py-20 md:py-15" data-aos="fade-up">
       <h2 className="text-3xl font-bold text-center mb-2 font-excon">Salary Calculator</h2>
-      <p className="text-center text-muted-foreground mb-6 font-satoshi">
+      <p className="text-center text-muted-foreground mb-10 font-satoshi">
         Calculate your net salary after allowances and deductions
       </p>
 
-      <Card className="max-w-md mx-auto py-20 md:py-5 ">
-        
-
+      <Card className="max-w-md mx-auto py-5 md:py-5 ">
         <CardContent className="space-y-4">
           {/* Basic Salary */}
           <div>
