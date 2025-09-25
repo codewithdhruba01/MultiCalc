@@ -88,7 +88,7 @@ export default function Home() {
       id: 2,
       name: 'Jaanvi Chouhan',
       role: 'CSE Student',
-      image: 'https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1759968000&v=beta&t=MMir3iIPikxJh0mreOXKSQD9mfzEQPNzvXRgRGQF6jg',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQEA02mp7xVUcg/profile-displayphoto-scale_200_200/B56Zlyn.6PKEAY-/0/1758564709540?e=1761782400&v=beta&t=hAnq3ZcCa4ovbljvH-sxadyXod3duDZvwULI3piNiPE',
       rating: 5,
       comment: 'MultiCalc is really impressive! I found it very useful, and I love the clean and simple design it makes everything easy to use. Having so many calculators in one place is super convenient.'
     },
@@ -108,6 +108,32 @@ export default function Home() {
       rating: 5,
       comment: 'I have used the Multicalc platform. It is very smooth to use. It had wide range of calculators. Interesting to explore all in one place. With a Sleek UI and smooth UX MultiCalc is built very well.'
     },
+    
+    {
+      id: 5,
+      name: 'Ayushi Awasthi ',
+      role: 'CSE-AIML',
+      image: 'https://media.licdn.com/dms/image/v2/D4E03AQHy6dgAMy2s2w/profile-displayphoto-scale_200_200/B4EZhl511YGwAg-/0/1754056320177?e=1761782400&v=beta&t=SNSFiZyk5yMGUqCxDd_F9OWQVSFw6lZpvfxiySi8CbI',
+      rating: 5,
+      comment: 'One of the features I liked the most in this site is its simplicity and user friendly design also there are many options which covers almost all the calculators everything is well organized making it really easy to navigate without confusion I especially appreciate how quickly I can access what I need without wasting time Overall I would highly recommend this site.'
+    },
+
+    {
+      id: 6,
+      name: 'Priyadharshini S',
+      role: 'SDE @Zoho',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQHn4wC5UIbytA/profile-displayphoto-scale_200_200/B56ZiM1.F.HMAY-/0/1754709617624?e=1761782400&v=beta&t=JnkIBFbMQWYhXszHyGcPjpHcWcBtOOJYHfHDlg4oc-c',
+      rating: 5,
+      comment: 'I went through your Multicalc project, its really amazing in terms of both UI and functionality. the whole project is excellent, Kudos to the team for such a wonderful project.'
+    },
+    {
+      id: 7,
+      name: 'Aishika Biswas',
+      role: 'Developer @Mekyek',
+      image: 'https://media.licdn.com/dms/image/v2/D5635AQFBn3ZCzXzAsQ/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1735881781078?e=1759431600&v=beta&t=23o3mRYj78o6qPd_PQzvA5JApxU1liZ8RsL4cIJ_GHQ',
+      rating: 5,
+      comment: 'MultiCalc calculator site is s full package, for someone who needs every calculation at one place, this your place! The UI is simple and easy to use. Kudos to the team for such a wonderful project.'
+    }
   ];
 
   return (
@@ -172,11 +198,11 @@ export default function Home() {
             <div className="flex -space-x-3">
               {[
                 "https://media.licdn.com/dms/image/v2/D4E03AQGlbcw4Zn2ZMQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729081777208?e=1759968000&v=beta&t=PtU0AJk41ZQNZXOQuaJF6nhnO06LrVhAIP-NM5tlWHQ",
-                "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1758758400&v=beta&t=9HR_Zx5h6eh_0Nn0Hu7zyzt4i4PAs7XLxFLPH5IZmYE",
+                "https://media.licdn.com/dms/image/v2/D5603AQGTaaFhzCo7hg/profile-displayphoto-shrink_200_200/B56ZeIyJdqHQAY-/0/1750346538148?e=1761782400&v=beta&t=1hkPEzyfvbrQwZlRxMSUlFiNpJ06Rea_wc7HXxSQR74",
                 "https://media.licdn.com/dms/image/v2/D5603AQH_W2hQyjhqcg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710012272045?e=1759968000&v=beta&t=s9iM0gN31Pn71zD3CErwK84XOKAZsaltzQMZP-mdEQs",
                 "https://media.licdn.com/dms/image/v2/D5603AQEkpZXUYBQRGQ/profile-displayphoto-scale_200_200/B56Zf08UTfG0Ao-/0/1752161142851?e=1759968000&v=beta&t=NZMZ9m7ygPPcGdYRejvB7abRjbd32mG7RYz1IxNWdwU",
                 "https://media.licdn.com/dms/image/v2/D4E03AQESfeQxnHCR6g/profile-displayphoto-scale_200_200/B4EZeDk68yHsAc-/0/1750259184449?e=1759968000&v=beta&t=TmHOQMWrjsNgOJQYJpV2Xfjj6z3ByDuydOvIPmV2B4Q",
-                "https://media.licdn.com/dms/image/v2/D5603AQHFrWn6zpjQLg/profile-displayphoto-shrink_200_200/B56ZVTo4H7GoAY-/0/1740864980709?e=1758758400&v=beta&t=gFVgRz2ThTRjCCYyu4RfOxGCSjV5_48MFo8hiSxl-VQ",
+                "https://media.licdn.com/dms/image/v2/D5603AQEA02mp7xVUcg/profile-displayphoto-scale_200_200/B56Zlyn.6PKEAY-/0/1758564709540?e=1761782400&v=beta&t=hAnq3ZcCa4ovbljvH-sxadyXod3duDZvwULI3piNiPE",
               ].map((src, index) => (
                 <img
                   key={index}
