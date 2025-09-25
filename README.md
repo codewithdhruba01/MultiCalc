@@ -28,9 +28,9 @@ Whether you’re a student needing quick calculations, a professional who wants 
 - 🎨 Minimalistic UI: Focuses on clarity and ease of use without any clutter.
 - 🔧 Easy to Customize: Simple code structure makes it easy for developers to extend functionality.
 
-## 📸 Screenshots
+## Screenshots
 
-![MultiCalc Screenshot](./public/Screenshoot/template.png)
+![MultiCalc Screenshot](./public/Screenshoot/tamplate.png)
 
 ## Features
 
