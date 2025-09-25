@@ -22,11 +22,11 @@ Whether you’re a student needing quick calculations, a professional who wants 
 
 ## Key Highlights:
 
-- ✨ Instant Calculation: See results in real time as you enter your numbers.
-- 🖥️ Cross-Platform: Works seamlessly on desktops, tablets, and smartphones.
-- ⚡ Fast & Lightweight: No heavy dependencies; loads instantly.
-- 🎨 Minimalistic UI: Focuses on clarity and ease of use without any clutter.
-- 🔧 Easy to Customize: Simple code structure makes it easy for developers to extend functionality.
+- Instant Calculation: See results in real time as you enter your numbers.
+- Cross-Platform: Works seamlessly on desktops, tablets, and smartphones.
+- Fast & Lightweight: No heavy dependencies; loads instantly.
+- Minimalistic UI: Focuses on clarity and ease of use without any clutter.
+- Easy to Customize: Simple code structure makes it easy for developers to extend functionality.
 
 ## Screenshots
 
@@ -62,6 +62,8 @@ Whether you’re a student needing quick calculations, a professional who wants 
 - **NPV Calculator**
 - **Unit Converter**
 - **Price to Weight Converter**
+- **Salary Calculator**
+- **Currency Calculator**
 
 ## Tech Stack
 
@@ -77,7 +79,7 @@ Whether you’re a student needing quick calculations, a professional who wants 
 1. Clone the repository
    ```bash
    git clone https://github.com/codewithdhruba01/MultiCalc.git
-   cd MultiCalc
+   cd multicalc
    ````
 2. Install dependencies:
    ```bash
@@ -100,7 +102,7 @@ Whether you’re a student needing quick calculations, a professional who wants 
 - Keep code readable and typed; prefer small, focused PRs
 - Run locally and ensure no TypeScript/lint errors
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
