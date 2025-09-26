@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import UnitConverter from '@/components/calculators/UnitConverter'
 import AgeCalculator from '@/components/calculators/AgeCalculator'
 import { Button } from '@/components/ui/Button'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function MathCalculators() {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+      AOS.init({ duration: 800, once: true });
+    }, []);
   const [activeCalculator, setActiveCalculator] = useState<'unit' | 'age'>('unit')
 
   return (
-    <div className="py-20 md:py-15">
+    <div className="py-20 md:py-15" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-4 text-center font-synonym">Advance Calculators</h1>
