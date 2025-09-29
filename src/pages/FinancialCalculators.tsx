@@ -40,7 +40,7 @@ export default function FinancialCalculators() {
 
               <Button
                 variant={activeCalculator === 'npv' ? 'default' : 'outline'}
-                className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
+                className={`rounded-l-none rounded-r-none px-4 py-2 ${
                   activeCalculator === 'npv' ? 'bg-primary text-primary-foreground' : ''
                 }`}
                 onClick={() => setActiveCalculator('npv')}
