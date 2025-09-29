@@ -59,7 +59,7 @@ export default function Home() {
       description: 'Advanced mathematical tools and converters',
       icon: <Percent className="h-12 w-12 text-white" />,
       link: '/math-calculators',
-      calculators: ['Unit Converter', 'Age Calculator'],
+      calculators: ['Unit Converter', 'Pace Calculator'],
       gradient: 'from-amber-500 to-orange-600',
       hoverEffect: 'hover:shadow-amber-200 dark:hover:shadow-amber-900'
     }
