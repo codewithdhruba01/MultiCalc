@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import UnitConverter from '@/components/calculators/UnitConverter'
-import AgeCalculator from '@/components/calculators/AgeCalculator'
+import PaceCalculator from '@/components/calculators/PaceCalculator'
 import { Button } from '@/components/ui/Button'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -11,7 +11,7 @@ export default function MathCalculators() {
       window.scrollTo(0, 0);
       AOS.init({ duration: 800, once: true });
     }, []);
-  const [activeCalculator, setActiveCalculator] = useState<'unit' | 'age'>('unit')
+  const [activeCalculator, setActiveCalculator] = useState<'unit' | 'pace'>('unit')
 
   return (
     <div className="py-20 md:py-15" data-aos="fade-up">
@@ -32,18 +32,18 @@ export default function MathCalculators() {
                 Unit Converter
               </Button>
               <Button
-                variant={activeCalculator === 'age' ? 'default' : 'outline'}
-                className={`rounded-r-md rounded-l-none px-4 py-2 ${activeCalculator === 'age' ? 'bg-primary text-primary-foreground' : ''}`}
-                onClick={() => setActiveCalculator('age')}
+                variant={activeCalculator === 'pace' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${activeCalculator === 'pace' ? 'bg-primary text-primary-foreground' : ''}`}
+                onClick={() => setActiveCalculator('pace')}
               >
-                Age Calculator
+                Pace Calculator
               </Button>
             </div>
           </div>
           
           <div className="transition-all duration-300">
             {activeCalculator === 'unit' && <UnitConverter />}
-            {activeCalculator === 'age' && <AgeCalculator />}
+            {activeCalculator === 'pace' && <PaceCalculator />}
           </div>
         </div>
       </Container>
