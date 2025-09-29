@@ -189,7 +189,7 @@ export default function UnitConverter() {
             </Button>
             <Button
               variant={category === 'weight' ? 'default' : 'outline'}
-              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'weight' ? 'bg-primary text-primary-foreground' : ''}`}
+              className={`rounded-l-none rounded-r-none px-4 py-2 ${category === 'weight' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('weight')}
             >
               Weight
@@ -214,7 +214,7 @@ export default function UnitConverter() {
             </Button>
             <Button
               variant={category === 'area' ? 'default' : 'outline'}
-              className={`rounded-r-md rounded-l-none px-4 py-2 ${category === 'area' ? 'bg-primary text-primary-foreground' : ''}`}
+              className={`rounded-l-none rounded-r-none px-4 py-2 ${category === 'area' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('area')}
             >
               Area
