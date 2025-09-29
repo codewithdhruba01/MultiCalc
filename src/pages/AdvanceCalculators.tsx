@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-export default function MathCalculators() {
+export default function AdvanceCalculators() {
   useEffect(() => {
       window.scrollTo(0, 0);
       AOS.init({ duration: 800, once: true });

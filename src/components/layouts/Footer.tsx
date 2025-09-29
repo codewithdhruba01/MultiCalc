@@ -42,7 +42,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/math-calculators" className="text-muted-foreground hover:text-foreground">
+                <Link to="/advance-calculators" className="text-muted-foreground hover:text-foreground">
                   Advance Calculators
                 </Link>
               </li>

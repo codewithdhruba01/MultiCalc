@@ -5,7 +5,7 @@ import BasicCalculators from './pages/BasicCalculators'
 import MarksCalculators from './pages/MarksCalculators'
 import FinancialCalculators from './pages/FinancialCalculators'
 import HealthCalculators from './pages/HealthCalculators'
-import MathCalculators from './pages/MathCalculators'
+import AdvanceCalculators from './pages/AdvanceCalculators'
 import CurrencyConverter from './pages/CurrencyConverter'
 import SalaryCalculator from './pages/SalaryCalculator'
 import DetailedAgeCalculator from './pages/DetailedAgeCalculator'
@@ -31,7 +31,7 @@ function App() {
         <Route path="financial-calculators" element={<FinancialCalculators />} />
         <Route path="/marks-calculators" element={<MarksCalculators />} />
         <Route path="health-calculators" element={<HealthCalculators />} />
-        <Route path="math-calculators" element={<MathCalculators />} />
+        <Route path="advance-calculators" element={<AdvanceCalculators />} />
         <Route path="currency-converter" element={<CurrencyConverter />} />
         <Route path="salary-calculator" element={<SalaryCalculator />} />
         <Route path="age-calculator" element={<DetailedAgeCalculator />} />

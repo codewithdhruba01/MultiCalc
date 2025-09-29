@@ -57,7 +57,7 @@ export default function Navbar() {
                 { to: "/basic-calculators", label: "Math" },
                 { to: "/financial-calculators", label: "Financial" },
                 { to: "/health-calculators", label: "Health" },
-                { to: "/math-calculators", label: "Advance" },
+                { to: "/advance-calculators", label: "Advance" },
                 { to: "/marks-calculators", label: "Marks" },
               ].map((item) => (
                 <NavLink
@@ -176,7 +176,7 @@ export default function Navbar() {
                 { to: "/basic-calculators", label: "Math Calculators" },
                 { to: "/financial-calculators", label: "Financial Calculators" },
                 { to: "/health-calculators", label: "Health Calculators" },
-                { to: "/math-calculators", label: "Advance Calculators" },
+                { to: "/advance-calculators", label: "Advance Calculators" },
                 { to: "/marks-calculators", label: "Marks Calculator" },
               ].map((item) => (
                 <NavLink
