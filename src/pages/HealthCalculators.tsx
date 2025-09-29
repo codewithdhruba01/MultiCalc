@@ -49,7 +49,7 @@ export default function HealthCalculators() {
               </Button>
               <Button
                 variant={activeCalculator === 'period' ? 'default' : 'outline'}
-                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                className={`rounded-l-none rounded-r-none px-4 py-2 ${
                   activeCalculator === 'period' ? 'bg-primary text-primary-foreground' : ''
                 }`}
                 onClick={() => setActiveCalculator('period')}
@@ -58,7 +58,7 @@ export default function HealthCalculators() {
               </Button>
               <Button
                 variant={activeCalculator === 'protein' ? 'default' : 'outline'}
-                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                className={`rounded-l-none rounded-r-none px-4 py-2 ${
                   activeCalculator === 'protein' ? 'bg-primary text-primary-foreground' : ''
                 }`}
                 onClick={() => setActiveCalculator('protein')}
