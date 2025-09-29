@@ -18,6 +18,7 @@ export default function PregnancyCalculator() {
   const [calcDate, setCalcDate] = useState<string>(new Date().toISOString().split('T')[0])
   const [ultrasoundWeeks, setUltrasoundWeeks] = useState<string>('')
   const [cycleLength, setCycleLength] = useState<string>('28')
+  const [embryoAge, setEmbryoAge] = useState<string>('3') // NEW state for embryo age
   const [result, setResult] = useState<{
     dueDate: string
     conceptionDate: string
@@ -64,9 +65,18 @@ export default function PregnancyCalculator() {
       dueDate = new Date(conceptionDate)
       dueDate.setDate(conceptionDate.getDate() + 266)
     } else if (method === 'ivf') {
-      conceptionDate = new Date(mainDate)
-      dueDate = new Date(conceptionDate)
-      dueDate.setDate(dueDate.getDate() + 266)
+      const transferDate = new Date(mainDate)
+      const embryoAgeDays = parseInt(embryoAge || '3', 10)
+
+      // IVF adjustment: LMP is 14 days before ovulation, minus embryo age adjustment
+      const lmpDate = new Date(transferDate)
+      lmpDate.setDate(lmpDate.getDate() - (14 - embryoAgeDays))
+
+      dueDate = new Date(lmpDate)
+      dueDate.setDate(dueDate.getDate() + 280)
+
+      conceptionDate = new Date(lmpDate)
+      conceptionDate.setDate(lmpDate.getDate() + 14)
     } else if (method === 'ultrasound') {
       if (!ultrasoundWeeks) {
         alert('Please enter gestational age at ultrasound')
@@ -99,7 +109,7 @@ export default function PregnancyCalculator() {
       gestationWeeks < 28 ? 'Second' :
       'Third'
 
-    const percentComplete = +( (totalDays / 280) * 100 ).toFixed(1)
+    const percentComplete = +((totalDays / 280) * 100).toFixed(1)
 
     const babyData = babySizeData[gestationWeeks] || { size: 'N/A', weight: 'N/A' }
 
@@ -127,6 +137,7 @@ export default function PregnancyCalculator() {
     setMainDate('')
     setUltrasoundWeeks('')
     setCycleLength('28')
+    setEmbryoAge('3')
     setCalcDate(new Date().toISOString().split('T')[0])
     setResult(null)
   }
@@ -232,6 +243,23 @@ export default function PregnancyCalculator() {
             </div>
           )}
 
+          {method === 'ivf' && (
+            <div>
+              <label htmlFor="embryoAge" className="block text-sm font-medium mb-1">
+                Embryo Age (in days)
+              </label>
+              <input
+                id="embryoAge"
+                type="number"
+                min="1"
+                max="10"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                value={embryoAge}
+                onChange={(e) => setEmbryoAge(e.target.value)}
+              />
+            </div>
+          )}
+
           <div>
             <label htmlFor="calcDate" className="block text-sm font-medium mb-1">
               Calculate At Date (optional)
@@ -272,6 +300,11 @@ export default function PregnancyCalculator() {
               <p className="font-satoshi">
                 Conception Date: {formatDate(result.conceptionDate)}
               </p>
+              {method === 'ivf' && (
+                <p className="font-satoshi">
+                  IVF Transfer Date: {formatDate(mainDate)} (Embryo Age: {embryoAge} days)
+                </p>
+              )}
               <p className="font-satoshi">
                 Baby size: {result.babySize}, weight: {result.babyWeight}
               </p>
