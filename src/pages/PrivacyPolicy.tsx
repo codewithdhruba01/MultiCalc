@@ -1,30 +1,35 @@
-import { useEffect } from 'react'
-import { Container } from '@/components/ui/Container'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import {Clock, User, FileText, Lock, Eye, Database, Globe } from 'lucide-react'
+import { useEffect } from 'react';
+import { Container } from '@/components/ui/Container';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import {
+  Clock,
+  User,
+  FileText,
+  Lock,
+  Eye,
+  Database,
+  Globe,
+} from 'lucide-react';
 
 export default function PrivacyPolicy() {
   useEffect(() => {
-    // Scroll to top when page loads
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 
-    // Initialize AOS
     AOS.init({
       duration: 800,
       once: true,
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-4xl mx-auto">
-          <div
-            className="mb-8 text-center"
-            data-aos="fade-up"
-          >
-            <h1 className="text-5xl font-excon font-bold mb-5">Privacy Policy</h1>
+          <div className="mb-8 text-center" data-aos="fade-up">
+            <h1 className="text-5xl font-excon font-bold mb-5">
+              Privacy Policy
+            </h1>
             <p className="text-muted-foreground font-satoshi">
               Last updated:{' '}
               {new Date().toLocaleDateString('en-US', {
@@ -46,12 +51,22 @@ export default function PrivacyPolicy() {
                 <FileText className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Introduction</h2>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Introduction
+                </h2>
                 <p className="font-satoshi text-muted-foreground text-lg mb-2">
-                  Welcome to MultiCalc. We are committed to protecting your privacy and ensuring you have a positive experience on our website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+                  Welcome to MultiCalc. We are committed to protecting your
+                  privacy and ensuring you have a positive experience on our
+                  website. This Privacy Policy explains how we collect, use,
+                  disclose, and safeguard your information when you visit our
+                  website.
                 </p>
                 <p className="font-satoshi text-muted-foreground text-lg mb-2">
-                  Please read this Privacy Policy carefully. By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy. If you do not agree with the terms, please do not access the website.
+                  Please read this Privacy Policy carefully. By accessing or
+                  using our website, you acknowledge that you have read,
+                  understood, and agree to be bound by all the terms of this
+                  Privacy Policy. If you do not agree with the terms, please do
+                  not access the website.
                 </p>
               </div>
             </div>
@@ -66,19 +81,35 @@ export default function PrivacyPolicy() {
                 <Database className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Information We Collect</h2>
-                <p className="font-satoshi text-muted-foreground text-lg mb-2">We may collect information about you in a variety of ways:</p>
-                <h3 className="text-lg font-bold font-synonym mt-4 mb-2">Personal Data</h3>
-                <p className="font-satoshi text-muted-foreground">
-                  While using our calculator services, we do not require you to provide personally identifiable information. Our calculators function without user accounts or personal data collection.
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Information We Collect
+                </h2>
+                <p className="font-satoshi text-muted-foreground text-lg mb-2">
+                  We may collect information about you in a variety of ways:
                 </p>
-                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">Usage Data</h3>
+                <h3 className="text-lg font-bold font-synonym mt-4 mb-2">
+                  Personal Data
+                </h3>
                 <p className="font-satoshi text-muted-foreground">
-                  We may collect anonymous usage data about how you use our website, which calculators you access, and interaction patterns. This data is used solely to improve our services.
+                  While using our calculator services, we do not require you to
+                  provide personally identifiable information. Our calculators
+                  function without user accounts or personal data collection.
                 </p>
-                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">Cookies and Tracking</h3>
+                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">
+                  Usage Data
+                </h3>
                 <p className="font-satoshi text-muted-foreground">
-                  We may use cookies and similar tracking technologies. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+                  We may collect anonymous usage data about how you use our
+                  website, which calculators you access, and interaction
+                  patterns. This data is used solely to improve our services.
+                </p>
+                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">
+                  Cookies and Tracking
+                </h3>
+                <p className="font-satoshi text-muted-foreground">
+                  We may use cookies and similar tracking technologies. You can
+                  instruct your browser to refuse all cookies or to indicate
+                  when a cookie is being sent.
                 </p>
               </div>
             </div>
@@ -93,7 +124,9 @@ export default function PrivacyPolicy() {
                 <Eye className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">How We Use Your Information</h2>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  How We Use Your Information
+                </h2>
                 <ul className="list-disc font-satoshi pl-6 mt-2 space-y-1 text-muted-foreground text-lg">
                   <li>To provide and maintain our website</li>
                   <li>To improve website functionality and user experience</li>
@@ -114,8 +147,13 @@ export default function PrivacyPolicy() {
                 <Globe className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Disclosure of Your Information</h2>
-                <p className="font-supreme text-lg text-muted-foreground">We do not sell or trade your information. We may disclose information only in the following cases:</p>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Disclosure of Your Information
+                </h2>
+                <p className="font-supreme text-lg text-muted-foreground">
+                  We do not sell or trade your information. We may disclose
+                  information only in the following cases:
+                </p>
                 <ul className="list-disc pl-6 mt-2 font-satoshi space-y-1 text-muted-foreground text-lg">
                   <li>To comply with legal obligations</li>
                   <li>To protect our rights or property</li>
@@ -135,9 +173,13 @@ export default function PrivacyPolicy() {
                 <Lock className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Security of Your Information</h2>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Security of Your Information
+                </h2>
                 <p className="font-satoshi text-muted-foreground text-lg">
-                  We use administrative, technical, and physical security measures to protect your information. However, no method is 100% secure, and we cannot guarantee its absolute security.
+                  We use administrative, technical, and physical security
+                  measures to protect your information. However, no method is
+                  100% secure, and we cannot guarantee its absolute security.
                 </p>
               </div>
             </div>
@@ -152,9 +194,14 @@ export default function PrivacyPolicy() {
                 <User className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Children's Privacy</h2>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Children's Privacy
+                </h2>
                 <p className="font-satoshi text-muted-foreground text-lg">
-                  Our website is not intended for children under 13. We do not knowingly collect data from children under 13. If you believe your child has provided us with information, please contact us.
+                  Our website is not intended for children under 13. We do not
+                  knowingly collect data from children under 13. If you believe
+                  your child has provided us with information, please contact
+                  us.
                 </p>
               </div>
             </div>
@@ -169,9 +216,13 @@ export default function PrivacyPolicy() {
                 <Clock className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">Changes to This Privacy Policy</h2>
+                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                  Changes to This Privacy Policy
+                </h2>
                 <p className="font-satoshi text-muted-foreground text-lg">
-                  We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date.
+                  We may update this Privacy Policy from time to time. Changes
+                  will be posted on this page with an updated "Last updated"
+                  date.
                 </p>
               </div>
             </div>
@@ -179,5 +230,5 @@ export default function PrivacyPolicy() {
         </div>
       </Container>
     </div>
-  )
+  );
 }
