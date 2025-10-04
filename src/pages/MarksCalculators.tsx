@@ -79,16 +79,21 @@ export default function YgpaToCgpaPage() {
     <div className="py-20 md:py-15">
       <Container>
         <div className="max-w-3xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="text-4xl font-bold mb-4 font-synonym">Marks Calculators</h1>
-            <p className="text-muted-foreground text-center font-satoshi mb-8">
-            Effortlessly convert your (YGPA) to CGPA or calculate <br/> your total marks and percentage in just a few clicks.
-            </p>
+          <h1 className="text-4xl font-bold mb-4 font-synonym">
+            Marks Calculators
+          </h1>
+          <p className="text-muted-foreground text-center font-satoshi mb-8">
+            Effortlessly convert your (YGPA) to CGPA or calculate <br /> your
+            total marks and percentage in just a few clicks.
+          </p>
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
                 variant={activeTab === 'cgpa' ? 'default' : 'outline'}
                 className={`rounded-l-md rounded-r-none px-4 py-2 ${
-                  activeTab === 'cgpa' ? 'bg-primary text-primary-foreground' : ''
+                  activeTab === 'cgpa'
+                    ? 'bg-primary text-primary-foreground'
+                    : ''
                 }`}
                 onClick={() => setActiveTab('cgpa')}
               >
@@ -97,7 +102,9 @@ export default function YgpaToCgpaPage() {
               <Button
                 variant={activeTab === 'total' ? 'default' : 'outline'}
                 className={`rounded-r-md rounded-l-none px-4 py-2 ${
-                  activeTab === 'total' ? 'bg-primary text-primary-foreground' : ''
+                  activeTab === 'total'
+                    ? 'bg-primary text-primary-foreground'
+                    : ''
                 }`}
                 onClick={() => setActiveTab('total')}
               >
@@ -112,13 +119,19 @@ export default function YgpaToCgpaPage() {
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
             data-aos="fade-up"
           >
-            <h2 className="text-lg text-center font-bold font-synonym mb-2">YGPA to CGPA Converter</h2>
+            <h2 className="text-lg text-center font-bold font-synonym mb-2">
+              YGPA to CGPA Converter
+            </h2>
             <p className="text-muted-foreground text-center font-satoshi mb-4 text-sm">
-              Convert your Yearly Grade Point Average to <br /> Cumulative Grade Point Average.
+              Convert your Yearly Grade Point Average to <br /> Cumulative Grade
+              Point Average.
             </p>
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label htmlFor="ygpa" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="ygpa"
+                  className="block text-sm font-medium mb-1"
+                >
                   YGPA
                 </label>
                 <Input
@@ -135,7 +148,10 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
               <div>
-                <label htmlFor="cgpa" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="cgpa"
+                  className="block text-sm font-medium mb-1"
+                >
                   CGPA
                 </label>
                 <Input
@@ -147,9 +163,7 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
             </div>
-            {error && (
-              <div className="text-red-600 text-sm mb-3">{error}</div>
-            )}
+            {error && <div className="text-red-600 text-sm mb-3">{error}</div>}
             <div className="flex gap-2">
               <Button onClick={handleConvertCgpa}>Convert</Button>
               <Button variant="secondary" onClick={handleResetCgpa}>
@@ -164,13 +178,18 @@ export default function YgpaToCgpaPage() {
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
             data-aos="fade-up"
           >
-            <h2 className="text-lg font-bold mb-2 font-synonym text-center">YGPA to Total Marks</h2>
+            <h2 className="text-lg font-bold mb-2 font-synonym text-center">
+              YGPA to Total Marks
+            </h2>
             <p className="text-muted-foreground mb-4 text-sm text-center font-satoshi">
               Convert your YGPA into total marks and percentage.
             </p>
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label htmlFor="ygpa2" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="ygpa2"
+                  className="block text-sm font-medium mb-1"
+                >
                   YGPA
                 </label>
                 <Input
@@ -187,7 +206,10 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
               <div>
-                <label htmlFor="subjects" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="subjects"
+                  className="block text-sm font-medium mb-1"
+                >
                   Total Subjects
                 </label>
                 <Input
@@ -202,7 +224,10 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
               <div>
-                <label htmlFor="percentage" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="percentage"
+                  className="block text-sm font-medium mb-1"
+                >
                   Percentage (%)
                 </label>
                 <Input
@@ -214,7 +239,10 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
               <div>
-                <label htmlFor="totalMarks" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="totalMarks"
+                  className="block text-sm font-medium mb-1"
+                >
                   Total Marks
                 </label>
                 <Input
@@ -226,9 +254,7 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
             </div>
-            {error && (
-              <div className="text-red-600 text-sm mb-3">{error}</div>
-            )}
+            {error && <div className="text-red-600 text-sm mb-3">{error}</div>}
             <div className="flex gap-2">
               <Button onClick={handleConvertTotal}>Convert</Button>
               <Button variant="secondary" onClick={handleResetTotal}>
