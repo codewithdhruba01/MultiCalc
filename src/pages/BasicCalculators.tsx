@@ -1,22 +1,27 @@
-import { useState } from 'react'
-import { Container } from '@/components/ui/Container'
-import BasicCalculator from '@/components/calculators/BasicCalculator'
-import ScientificCalculator from '@/components/calculators/ScientificCalculator'
-import PercentageCalculator from '@/components/calculators/PercentageCalculator'
-import { Button } from '@/components/ui/Button'
+import { useState } from 'react';
+import { Container } from '@/components/ui/Container';
+import BasicCalculator from '@/components/calculators/BasicCalculator';
+import ScientificCalculator from '@/components/calculators/ScientificCalculator';
+import PercentageCalculator from '@/components/calculators/PercentageCalculator';
+import { Button } from '@/components/ui/Button';
 
 export default function BasicCalculators() {
-  const [activeCalculator, setActiveCalculator] = useState<'basic' | 'scientific' | 'percentage'>('basic')
+  const [activeCalculator, setActiveCalculator] = useState<
+    'basic' | 'scientific' | 'percentage'
+  >('basic');
 
   return (
     <div className="py-20 md:py-15" data-aos="fade-up">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-5 text-center font-synonym">Math Calculators</h1>
+          <h1 className="text-4xl font-bold mb-5 text-center font-synonym">
+            Math Calculators
+          </h1>
           <p className="text-muted-foreground text-center font-satoshi mb-8">
-            Standard calculators for everyday calculations and <br /> mathematical operations
+            Standard calculators for everyday calculations and <br />{' '}
+            mathematical operations
           </p>
-          
+
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
@@ -27,14 +32,18 @@ export default function BasicCalculators() {
                 Basic
               </Button>
               <Button
-                variant={activeCalculator === 'scientific' ? 'default' : 'outline'}
+                variant={
+                  activeCalculator === 'scientific' ? 'default' : 'outline'
+                }
                 className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${activeCalculator === 'scientific' ? 'bg-primary text-primary-foreground' : ''}`}
                 onClick={() => setActiveCalculator('scientific')}
               >
                 Scientific
               </Button>
               <Button
-                variant={activeCalculator === 'percentage' ? 'default' : 'outline'}
+                variant={
+                  activeCalculator === 'percentage' ? 'default' : 'outline'
+                }
                 className={`rounded-r-md rounded-l-none px-4 py-2 ${activeCalculator === 'percentage' ? 'bg-primary text-primary-foreground' : ''}`}
                 onClick={() => setActiveCalculator('percentage')}
               >
@@ -42,7 +51,7 @@ export default function BasicCalculators() {
               </Button>
             </div>
           </div>
-          
+
           <div className="transition-all duration-300">
             {activeCalculator === 'basic' && <BasicCalculator />}
             {activeCalculator === 'scientific' && <ScientificCalculator />}
@@ -51,5 +60,5 @@ export default function BasicCalculators() {
         </div>
       </Container>
     </div>
-  )
+  );
 }
