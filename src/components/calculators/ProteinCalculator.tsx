@@ -1,80 +1,95 @@
-import { useEffect, useState } from 'react'
-import { Button } from '../ui/Button'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
-import { Input } from '../ui/Input'
+import { useEffect, useState } from 'react';
+import { Button } from '../ui/Button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '../ui/Card';
+import { Input } from '../ui/Input';
 
 export default function ProteinCalculator() {
-  const [age, setAge] = useState<string>('')
-  const [weight, setWeight] = useState<string>('')
-  const [unit, setUnit] = useState<'metric' | 'us'>('metric')
-  const [gender, setGender] = useState<'male' | 'female'>('male')
-  const [activityLevel, setActivityLevel] = useState<'sedentary' | 'moderate' | 'active'>('moderate')
-  const [goal, setGoal] = useState<'maintain' | 'lose' | 'gain'>('maintain')
-  const [protein, setProtein] = useState<number | null>(null)
-  const [lastUpdated, setLastUpdated] = useState<string>('')
+  const [age, setAge] = useState<string>('');
+  const [weight, setWeight] = useState<string>('');
+  const [unit, setUnit] = useState<'metric' | 'us'>('metric');
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [activityLevel, setActivityLevel] = useState<
+    'sedentary' | 'moderate' | 'active'
+  >('moderate');
+  const [goal, setGoal] = useState<'maintain' | 'lose' | 'gain'>('maintain');
+  const [protein, setProtein] = useState<number | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
 
   useEffect(() => {
-    const now = new Date()
-    setLastUpdated(now.toLocaleString())
-  }, [])
+    const now = new Date();
+    setLastUpdated(now.toLocaleString());
+  }, []);
 
   const handleUnitSwitch = (newUnit: 'metric' | 'us') => {
-    const weightValue = parseFloat(weight)
+    const weightValue = parseFloat(weight);
     if (isNaN(weightValue)) {
-      setUnit(newUnit)
-      return
+      setUnit(newUnit);
+      return;
     }
 
-    let converted = weightValue
+    let converted = weightValue;
 
     if (unit !== newUnit) {
       if (newUnit === 'us') {
-        converted = weightValue * 2.20462 // kg → lbs
+        converted = weightValue * 2.20462; // kg → lbs
       } else {
-        converted = weightValue / 2.20462 // lbs → kg
+        converted = weightValue / 2.20462; // lbs → kg
       }
     }
 
-    setWeight(converted.toFixed(1))
-    setUnit(newUnit)
-  }
+    setWeight(converted.toFixed(1));
+    setUnit(newUnit);
+  };
 
   const calculateProtein = () => {
-    const weightValue = parseFloat(weight)
-    const userAge = parseInt(age)
+    const weightValue = parseFloat(weight);
+    const userAge = parseInt(age);
 
-    if (isNaN(weightValue) || isNaN(userAge) || weightValue <= 0 || userAge <= 0) {
-      setProtein(null)
-      return
+    if (
+      isNaN(weightValue) ||
+      isNaN(userAge) ||
+      weightValue <= 0 ||
+      userAge <= 0
+    ) {
+      setProtein(null);
+      return;
     }
 
     // Convert to kg if in lbs
-    const weightKg = unit === 'us' ? weightValue / 2.20462 : weightValue
+    const weightKg = unit === 'us' ? weightValue / 2.20462 : weightValue;
 
-    let multiplier = 0.8
-    if (activityLevel === 'moderate') multiplier = 1.2
-    else if (activityLevel === 'active') multiplier = 1.6
+    let multiplier = 0.8;
+    if (activityLevel === 'moderate') multiplier = 1.2;
+    else if (activityLevel === 'active') multiplier = 1.6;
 
-    if (goal === 'lose') multiplier += 0.2
-    else if (goal === 'gain') multiplier += 0.4
+    if (goal === 'lose') multiplier += 0.2;
+    else if (goal === 'gain') multiplier += 0.4;
 
-    const result = weightKg * multiplier
-    setProtein(parseFloat(result.toFixed(1)))
-  }
+    const result = weightKg * multiplier;
+    setProtein(parseFloat(result.toFixed(1)));
+  };
 
   const handleReset = () => {
-    setAge('')
-    setWeight('')
-    setGender('male')
-    setActivityLevel('moderate')
-    setGoal('maintain')
-    setProtein(null)
-  }
+    setAge('');
+    setWeight('');
+    setGender('male');
+    setActivityLevel('moderate');
+    setGoal('maintain');
+    setProtein(null);
+  };
 
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold mb-3">Protein Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-3">
+          Protein Calculator
+        </CardTitle>
         <CardDescription className="text-center font-satoshi">
           Calculate your daily recommended protein intake
         </CardDescription>
@@ -82,23 +97,23 @@ export default function ProteinCalculator() {
       <CardContent>
         <div className="space-y-4">
           <div className="flex justify-center mb-6">
-          <div className="inline-flex rounded-md shadow-sm">
-            <Button
-              variant={unit === 'metric' ? 'default' : 'outline'}
-              className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
-              onClick={() => handleUnitSwitch('metric')}
-            >
-              Metric Units
-            </Button>
-            <Button
-              variant={unit === 'us' ? 'default' : 'outline'}
-              className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'us' ? 'bg-primary text-primary-foreground' : ''}`}
-              onClick={() => handleUnitSwitch('us')}
-            >
-              US Units
-            </Button>
+            <div className="inline-flex rounded-md shadow-sm">
+              <Button
+                variant={unit === 'metric' ? 'default' : 'outline'}
+                className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
+                onClick={() => handleUnitSwitch('metric')}
+              >
+                Metric Units
+              </Button>
+              <Button
+                variant={unit === 'us' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'us' ? 'bg-primary text-primary-foreground' : ''}`}
+                onClick={() => handleUnitSwitch('us')}
+              >
+                US Units
+              </Button>
+            </div>
           </div>
-        </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Age</label>
@@ -135,10 +150,16 @@ export default function ProteinCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Activity Level</label>
+            <label className="block text-sm font-medium mb-1">
+              Activity Level
+            </label>
             <select
               value={activityLevel}
-              onChange={(e) => setActivityLevel(e.target.value as 'sedentary' | 'moderate' | 'active')}
+              onChange={(e) =>
+                setActivityLevel(
+                  e.target.value as 'sedentary' | 'moderate' | 'active'
+                )
+              }
               className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
             >
               <option value="sedentary">Sedentary</option>
@@ -148,10 +169,14 @@ export default function ProteinCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Fitness Goal</label>
+            <label className="block text-sm font-medium mb-1">
+              Fitness Goal
+            </label>
             <select
               value={goal}
-              onChange={(e) => setGoal(e.target.value as 'maintain' | 'lose' | 'gain')}
+              onChange={(e) =>
+                setGoal(e.target.value as 'maintain' | 'lose' | 'gain')
+              }
               className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
             >
               <option value="maintain">Maintain</option>
@@ -171,7 +196,9 @@ export default function ProteinCalculator() {
 
           {protein !== null && (
             <div className="mt-6 p-4 bg-muted rounded-md text-center">
-              <h3 className="text-lg font-medium mb-2">Daily Protein Requirement</h3>
+              <h3 className="text-lg font-medium mb-2">
+                Daily Protein Requirement
+              </h3>
               <p className="text-2xl font-bold">{protein} grams</p>
               <p className="text-xs text-muted-foreground mt-2">
                 Based on weight, activity, and fitness goal.
@@ -186,5 +213,5 @@ export default function ProteinCalculator() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
