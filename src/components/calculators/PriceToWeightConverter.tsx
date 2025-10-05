@@ -1,87 +1,101 @@
-import { useState, useEffect } from 'react'
-import { Button } from '../ui/Button'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
-import { Input } from '../ui/Input'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { useState, useEffect } from 'react';
+import { Button } from '../ui/Button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '../ui/Card';
+import { Input } from '../ui/Input';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function PriceToWeightConverter() {
-  const [pricePerKg, setPricePerKg] = useState<string>('')
-  const [quantityKg, setQuantityKg] = useState<string>('')
-  const [totalPrice, setTotalPrice] = useState<string>('')
+  const [pricePerKg, setPricePerKg] = useState<string>('');
+  const [quantityKg, setQuantityKg] = useState<string>('');
+  const [totalPrice, setTotalPrice] = useState<string>('');
 
-  const [mode, setMode] = useState<'spend' | 'weight'>('spend')
+  const [mode, setMode] = useState<'spend' | 'weight'>('spend');
 
-  const [amountYouHave, setAmountYouHave] = useState<string>('')
-  const [weightInput, setWeightInput] = useState<string>('')  
-  const [weightUnit, setWeightUnit] = useState<'kg' | 'g'>('kg')
+  const [amountYouHave, setAmountYouHave] = useState<string>('');
+  const [weightInput, setWeightInput] = useState<string>('');
+  const [weightUnit, setWeightUnit] = useState<'kg' | 'g'>('kg');
 
-  const [result, setResult] = useState<string | null>(null)
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true })
-  }, [])
+  const [result, setResult] = useState<string | null>(null);
 
   useEffect(() => {
-    const qty = parseFloat(quantityKg)
-    const price = parseFloat(totalPrice)
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  useEffect(() => {
+    const qty = parseFloat(quantityKg);
+    const price = parseFloat(totalPrice);
 
     if (!isNaN(qty) && !isNaN(price) && qty > 0) {
-      const calculatedPricePerKg = price / qty
-      setPricePerKg(calculatedPricePerKg.toFixed(2))
+      const calculatedPricePerKg = price / qty;
+      setPricePerKg(calculatedPricePerKg.toFixed(2));
     }
-  }, [quantityKg, totalPrice])
+  }, [quantityKg, totalPrice]);
 
   const handleConvert = () => {
-    const price = parseFloat(pricePerKg)
+    const price = parseFloat(pricePerKg);
 
-    if (isNaN(price) || price <= 0) return
+    if (isNaN(price) || price <= 0) return;
 
     if (mode === 'spend') {
-      const amount = parseFloat(amountYouHave)
-      if (isNaN(amount)) return
-      const weightGrams = (amount / price) * 1000
-      setResult(`${weightGrams.toFixed(2)} grams (${(weightGrams / 1000).toFixed(2)} kg)`)
+      const amount = parseFloat(amountYouHave);
+      if (isNaN(amount)) return;
+      const weightGrams = (amount / price) * 1000;
+      setResult(
+        `${weightGrams.toFixed(2)} grams (${(weightGrams / 1000).toFixed(2)} kg)`
+      );
     } else {
-      let weight = parseFloat(weightInput)
-      if (isNaN(weight)) return
+      let weight = parseFloat(weightInput);
+      if (isNaN(weight)) return;
 
       if (weightUnit === 'g') {
-        weight = weight / 1000
+        weight = weight / 1000;
       }
 
-      const totalCost = weight * price
-      setResult(`₹ ${totalCost.toFixed(2)}`)
+      const totalCost = weight * price;
+      setResult(`₹ ${totalCost.toFixed(2)}`);
     }
-  }
+  };
 
   const handleReset = () => {
-    setPricePerKg('')
-    setQuantityKg('')
-    setTotalPrice('')
-    setAmountYouHave('')
-    setWeightInput('')
-    setResult(null)
-    setMode('spend')
-    setWeightUnit('kg')
-  }
+    setPricePerKg('');
+    setQuantityKg('');
+    setTotalPrice('');
+    setAmountYouHave('');
+    setWeightInput('');
+    setResult(null);
+    setMode('spend');
+    setWeightUnit('kg');
+  };
 
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold mb-3">Price to Weight Converter</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-3">
+          Price to Weight Converter
+        </CardTitle>
         <CardDescription className="text-center font-satoshi">
-          This tool helps you find out either how much product (in weight) you can buy for a given spend amount, or how much money is needed for a given weight.
+          This tool helps you find out either how much product (in weight) you
+          can buy for a given spend amount, or how much money is needed for a
+          given weight.
         </CardDescription>
       </CardHeader>
 
       <CardContent>
         <div className="space-y-4">
-
           {/* Quantity & Total Price */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="quantityKg" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="quantityKg"
+                className="block text-sm font-medium mb-1"
+              >
                 Quantity (kg)
               </label>
               <Input
@@ -93,7 +107,10 @@ export default function PriceToWeightConverter() {
               />
             </div>
             <div>
-              <label htmlFor="totalPrice" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="totalPrice"
+                className="block text-sm font-medium mb-1"
+              >
                 Total Price
               </label>
               <Input
@@ -108,7 +125,10 @@ export default function PriceToWeightConverter() {
 
           {/* Price per Kg */}
           <div>
-            <label htmlFor="pricePerKg" className="block text-sm font-medium mb-1">
+            <label
+              htmlFor="pricePerKg"
+              className="block text-sm font-medium mb-1"
+            >
               Price per Kg
             </label>
             <Input
@@ -139,7 +159,10 @@ export default function PriceToWeightConverter() {
           {/* Conditional Input */}
           {mode === 'spend' ? (
             <div>
-              <label htmlFor="amountYouHave" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="amountYouHave"
+                className="block text-sm font-medium mb-1"
+              >
                 Enter Spend Amount
               </label>
               <Input
@@ -152,7 +175,10 @@ export default function PriceToWeightConverter() {
             </div>
           ) : (
             <div>
-              <label htmlFor="weightInput" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="weightInput"
+                className="block text-sm font-medium mb-1"
+              >
                 Enter Weight
               </label>
               <div className="flex gap-2">
@@ -177,7 +203,13 @@ export default function PriceToWeightConverter() {
 
           {/* Buttons */}
           <div className="grid grid-cols-2 gap-4">
-            <Button onClick={handleConvert} disabled={!pricePerKg || (mode === 'spend' ? !amountYouHave : !weightInput)}>
+            <Button
+              onClick={handleConvert}
+              disabled={
+                !pricePerKg ||
+                (mode === 'spend' ? !amountYouHave : !weightInput)
+              }
+            >
               Convert
             </Button>
             <Button variant="outline" onClick={handleReset}>
@@ -195,5 +227,5 @@ export default function PriceToWeightConverter() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
