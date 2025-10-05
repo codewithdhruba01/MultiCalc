@@ -1,15 +1,20 @@
-import { useState } from 'react'
-import { Button } from '../ui/Button'
-import AOS from 'aos'
-import { useEffect } from 'react'
-import 'aos/dist/aos.css'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
-import { Input } from '../ui/Input'
+import { useState } from 'react';
+import { Button } from '../ui/Button';
+import AOS from 'aos';
+import { useEffect } from 'react';
+import 'aos/dist/aos.css';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '../ui/Card';
+import { Input } from '../ui/Input';
 // import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'
 
 // Conversion factors
 const conversions = {
-  
   length: {
     meter: 1,
     kilometer: 0.001,
@@ -18,7 +23,7 @@ const conversions = {
     mile: 0.000621371,
     yard: 1.09361,
     foot: 3.28084,
-    inch: 39.3701
+    inch: 39.3701,
   },
   weight: {
     kilogram: 1,
@@ -27,7 +32,7 @@ const conversions = {
     metric_ton: 0.001,
     pound: 2.20462,
     ounce: 35.274,
-    stone: 0.157473
+    stone: 0.157473,
   },
   volume: {
     liter: 1,
@@ -39,12 +44,12 @@ const conversions = {
     cup_us: 4.22675,
     fluid_ounce_us: 33.814,
     tablespoon_us: 67.628,
-    teaspoon_us: 202.884
+    teaspoon_us: 202.884,
   },
   temperature: {
     celsius: 'celsius',
     fahrenheit: 'fahrenheit',
-    kelvin: 'kelvin'
+    kelvin: 'kelvin',
   },
   area: {
     square_meter: 1,
@@ -56,121 +61,141 @@ const conversions = {
     square_foot: 10.7639,
     square_inch: 1550,
     acre: 0.000247105,
-    hectare: 0.0001
+    hectare: 0.0001,
   },
   time: {
     second: 1,
     millisecond: 1000,
-    minute: 1/60,
-    hour: 1/3600,
-    day: 1/86400,
-    week: 1/604800,
-    month: 1/2592000,
-    year: 1/31536000
-  }
-}
+    minute: 1 / 60,
+    hour: 1 / 3600,
+    day: 1 / 86400,
+    week: 1 / 604800,
+    month: 1 / 2592000,
+    year: 1 / 31536000,
+  },
+};
 
-type ConversionCategory = keyof typeof conversions
-type UnitType<T extends ConversionCategory> = keyof typeof conversions[T]
+type ConversionCategory = keyof typeof conversions;
+type UnitType<T extends ConversionCategory> = keyof (typeof conversions)[T];
 
 export default function UnitConverter() {
-   useEffect(() => {
-          // Scroll to top when page loads
-          window.scrollTo(0, 0)
-      
-          // Initialize AOS
-          AOS.init({
-            duration: 800,
-            once: true,
-          })
-        }, [])
-  const [category, setCategory] = useState<ConversionCategory>('length')
-  const [fromUnit, setFromUnit] = useState<string>('meter')
-  const [toUnit, setToUnit] = useState<string>('centimeter')
-  const [fromValue, setFromValue] = useState<string>('')
-  const [toValue, setToValue] = useState<string>('')
+  useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
+  const [category, setCategory] = useState<ConversionCategory>('length');
+  const [fromUnit, setFromUnit] = useState<string>('meter');
+  const [toUnit, setToUnit] = useState<string>('centimeter');
+  const [fromValue, setFromValue] = useState<string>('');
+  const [toValue, setToValue] = useState<string>('');
 
   const handleCategoryChange = (newCategory: ConversionCategory) => {
-    setCategory(newCategory)
-    
+    setCategory(newCategory);
+
     // Set default units for the new category
-    const units = Object.keys(conversions[newCategory])
-    setFromUnit(units[0])
-    setToUnit(units[1])
-    
+    const units = Object.keys(conversions[newCategory]);
+    setFromUnit(units[0]);
+    setToUnit(units[1]);
+
     // Clear values
-    setFromValue('')
-    setToValue('')
-  }
+    setFromValue('');
+    setToValue('');
+  };
 
   const convert = () => {
     if (!fromValue || isNaN(parseFloat(fromValue))) {
-      setToValue('')
-      return
+      setToValue('');
+      return;
     }
 
-    const value = parseFloat(fromValue)
-    
+    const value = parseFloat(fromValue);
+
     if (category === 'temperature') {
-      setToValue(convertTemperature(value, fromUnit as UnitType<'temperature'>, toUnit as UnitType<'temperature'>).toFixed(2))
+      setToValue(
+        convertTemperature(
+          value,
+          fromUnit as UnitType<'temperature'>,
+          toUnit as UnitType<'temperature'>
+        ).toFixed(2)
+      );
     } else {
       // For other categories, convert to base unit then to target unit
-      const baseUnitValue = value / (conversions[category][fromUnit as keyof typeof conversions[typeof category]] as number)
-      const targetValue = baseUnitValue * (conversions[category][toUnit as keyof typeof conversions[typeof category]] as number)
-      setToValue(targetValue.toFixed(4))
+      const baseUnitValue =
+        value /
+        (conversions[category][
+          fromUnit as keyof (typeof conversions)[typeof category]
+        ] as number);
+      const targetValue =
+        baseUnitValue *
+        (conversions[category][
+          toUnit as keyof (typeof conversions)[typeof category]
+        ] as number);
+      setToValue(targetValue.toFixed(4));
     }
-  }
+  };
 
-  const convertTemperature = (value: number, from: UnitType<'temperature'>, to: UnitType<'temperature'>): number => {
+  const convertTemperature = (
+    value: number,
+    from: UnitType<'temperature'>,
+    to: UnitType<'temperature'>
+  ): number => {
     // First convert to Celsius as base
-    let celsius: number
-    
+    let celsius: number;
+
     switch (from) {
       case 'celsius':
-        celsius = value
-        break
+        celsius = value;
+        break;
       case 'fahrenheit':
-        celsius = (value - 32) * 5/9
-        break
+        celsius = ((value - 32) * 5) / 9;
+        break;
       case 'kelvin':
-        celsius = value - 273.15
-        break
+        celsius = value - 273.15;
+        break;
       default:
-        celsius = value
+        celsius = value;
     }
-    
+
     // Then convert from Celsius to target
     switch (to) {
       case 'celsius':
-        return celsius
+        return celsius;
       case 'fahrenheit':
-        return celsius * 9/5 + 32
+        return (celsius * 9) / 5 + 32;
       case 'kelvin':
-        return celsius + 273.15
+        return celsius + 273.15;
       default:
-        return celsius
+        return celsius;
     }
-  }
+  };
 
   const handleSwap = () => {
-    const tempUnit = fromUnit
-    setFromUnit(toUnit)
-    setToUnit(tempUnit)
-    
-    const tempValue = fromValue
-    setFromValue(toValue)
-    setToValue(tempValue)
-  }
+    const tempUnit = fromUnit;
+    setFromUnit(toUnit);
+    setToUnit(tempUnit);
+
+    const tempValue = fromValue;
+    setFromValue(toValue);
+    setToValue(tempValue);
+  };
 
   const handleReset = () => {
-    setFromValue('')
-    setToValue('')
-  }
+    setFromValue('');
+    setToValue('');
+  };
 
   return (
-    <Card className="w-full max-w-md mx-auto"  data-aos="fade-up">
+    <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold mb-3">Unit Converter</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-3">
+          Unit Converter
+        </CardTitle>
         <CardDescription className="text-center font-satoshi">
           Convert between different units of measurement
         </CardDescription>
@@ -179,7 +204,7 @@ export default function UnitConverter() {
         {/* Tabs for selecting conversion category */}
         <div className="mb-4">
           <div className="grid grid-cols-3 mb-4">
-             <Button
+            <Button
               variant={category === 'length' ? 'default' : 'outline'}
               className={`rounded-l-md rounded-r-none px-4 py-2 ${category === 'length' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleCategoryChange('length')}
@@ -228,11 +253,14 @@ export default function UnitConverter() {
             </Button>
           </div>
         </div>
-        
+
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="fromUnit" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="fromUnit"
+                className="block text-sm font-medium mb-1"
+              >
                 From
               </label>
               <select
@@ -248,9 +276,12 @@ export default function UnitConverter() {
                 ))}
               </select>
             </div>
-            
+
             <div>
-              <label htmlFor="toUnit" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="toUnit"
+                className="block text-sm font-medium mb-1"
+              >
                 To
               </label>
               <select
@@ -267,10 +298,13 @@ export default function UnitConverter() {
               </select>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="fromValue" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="fromValue"
+                className="block text-sm font-medium mb-1"
+              >
                 Value
               </label>
               <Input
@@ -279,51 +313,40 @@ export default function UnitConverter() {
                 placeholder="Enter value"
                 value={fromValue}
                 onChange={(e) => {
-                  setFromValue(e.target.value)
+                  setFromValue(e.target.value);
                   if (e.target.value) {
-                    convert()
+                    convert();
                   } else {
-                    setToValue('')
+                    setToValue('');
                   }
                 }}
               />
             </div>
-            
+
             <div>
-              <label htmlFor="toValue" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="toValue"
+                className="block text-sm font-medium mb-1"
+              >
                 Result
               </label>
-              <Input
-                id="toValue"
-                type="text"
-                readOnly
-                value={toValue}
-              />
+              <Input id="toValue" type="text" readOnly value={toValue} />
             </div>
           </div>
-          
+
           <div className="grid grid-cols-3 gap-4">
-            <Button 
-              onClick={convert} 
-              disabled={!fromValue}
-            >
+            <Button onClick={convert} disabled={!fromValue}>
               Convert
             </Button>
-            <Button 
-              variant="outline" 
-              onClick={handleSwap}
-            >
+            <Button variant="outline" onClick={handleSwap}>
               Swap
             </Button>
-            <Button 
-              variant="outline" 
-              onClick={handleReset}
-            >
+            <Button variant="outline" onClick={handleReset}>
               Reset
             </Button>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
