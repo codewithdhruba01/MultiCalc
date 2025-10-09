@@ -148,16 +148,6 @@ export default function Home() {
     },
 
     {
-      id: 5,
-      name: 'Ayushi Awasthi ',
-      role: 'CSE-AIML',
-      image: '/testimoni/img5.jpeg',
-      rating: 5,
-      comment:
-        'One of the features I liked the most in this site is its simplicity and user friendly design also there are many options which covers almost all the calculators everything is well organized making it really easy to navigate without confusion I especially appreciate how quickly I can access what I need without wasting time Overall I would highly recommend this site.',
-    },
-
-    {
       id: 6,
       name: 'Priyadharshini S',
       role: 'SDE @Zoho',
@@ -174,6 +164,15 @@ export default function Home() {
       rating: 5,
       comment:
         'MultiCalc calculator site is s full package, for someone who needs every calculation at one place, this your place! The UI is simple and easy to use. Kudos to the team for such a wonderful project.',
+    },
+    {
+      id: 8,
+      name: 'Archana B',
+      role: 'MTS @Zoho',
+      image: '/testimoni/img12.jpeg',
+      rating: 5,
+      comment:
+        'I like the way it have many calculations which includes health calcs too. This is a great work dhrubaraj! Congratulations. ',
     },
   ];
 
@@ -259,6 +258,7 @@ export default function Home() {
                 '/testimoni/img1.jpeg',
                 '/testimoni/img3.jpeg',
                 '/testimoni/img2.jpeg',
+                '/testimoni/img5.jpeg',
               ].map((src, index) => (
                 <img
                   key={index}
