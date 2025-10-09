@@ -32,6 +32,7 @@ export default function DetailedAgeCalculator() {
     new Date().toISOString().split('T')[0]
   );
   const [liveUpdate, setLiveUpdate] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [age, setAge] = useState<{
     years: number;
     months: number;
@@ -47,6 +48,22 @@ export default function DetailedAgeCalculator() {
 
   const calculateAge = (updateLive = false) => {
     if (!birthDate) return;
+
+    if (updateLive) {
+      performAgeCalculation(updateLive);
+      return;
+    }
+
+    setLoading(true);
+    setAge(null);
+
+    setTimeout(() => {
+      performAgeCalculation(updateLive);
+      setLoading(false);
+    }, 1500);
+  };
+
+  const performAgeCalculation = (updateLive = false) => {
     const birth = new Date(birthDate);
     const end = updateLive
       ? new Date()
@@ -56,6 +73,7 @@ export default function DetailedAgeCalculator() {
 
     if (birth > end) {
       alert('Birth date cannot be in the future!');
+      setLoading(false);
       return;
     }
 
@@ -119,6 +137,7 @@ export default function DetailedAgeCalculator() {
     setToDate(new Date().toISOString().split('T')[0]);
     setAge(null);
     setLiveUpdate(false);
+    setLoading(false);
   };
 
   const formatDate = (dateString: string): string => {
@@ -259,11 +278,22 @@ export default function DetailedAgeCalculator() {
                 <div className="grid grid-cols-2 gap-4">
                   <Button
                     onClick={() => calculateAge(false)}
-                    disabled={!birthDate || liveUpdate}
+                    disabled={!birthDate || liveUpdate || loading}
                   >
-                    Calculate
+                    {loading ? (
+                      <div className="flex items-center gap-2">
+                        <span className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin"></span>
+                        Calculating...
+                      </div>
+                    ) : (
+                      'Calculate'
+                    )}
                   </Button>
-                  <Button variant="outline" onClick={handleReset}>
+                  <Button
+                    variant="outline"
+                    onClick={handleReset}
+                    disabled={loading}
+                  >
                     Reset
                   </Button>
                 </div>
@@ -271,7 +301,18 @@ export default function DetailedAgeCalculator() {
             </CardContent>
           </Card>
 
-          {age && (
+          {/* Loading state UI */}
+          {loading && (
+            <div className="flex justify-center items-center py-10">
+              <span className="h-6 w-6 border-4 border-t-transparent border-primary rounded-full animate-spin"></span>
+              <p className="ml-3 text-sm text-muted-foreground">
+                Calculating your age...
+              </p>
+            </div>
+          )}
+
+          {/* Show results only when not loading */}
+          {!loading && age && (
             <div className="space-y-6">
               <Card className="border-primary/50">
                 <CardHeader>
