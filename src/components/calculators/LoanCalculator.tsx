@@ -15,6 +15,7 @@ export default function LoanCalculator() {
   const [interestRate, setInterestRate] = useState<string>('');
   const [loanTerm, setLoanTerm] = useState<string>('');
   const [termUnit, setTermUnit] = useState<'years' | 'months'>('years');
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{
     monthlyPayment: number;
     totalPayment: number;
@@ -31,21 +32,57 @@ export default function LoanCalculator() {
   const calculateLoan = () => {
     if (!loanAmount || !interestRate || !loanTerm) return;
 
-    const principal = parseFloat(loanAmount);
-    const rate = parseFloat(interestRate) / 100 / 12;
-    const numberOfPayments =
-      termUnit === 'years' ? parseInt(loanTerm) * 12 : parseInt(loanTerm);
+    setLoading(true);
+    setResult(null);
 
-    if (rate === 0) {
-      const monthlyPayment = principal / numberOfPayments;
+    setTimeout(() => {
+      const principal = parseFloat(loanAmount);
+      const rate = parseFloat(interestRate) / 100 / 12;
+      const numberOfPayments =
+        termUnit === 'years' ? parseInt(loanTerm) * 12 : parseInt(loanTerm);
+
+      if (rate === 0) {
+        const monthlyPayment = principal / numberOfPayments;
+
+        const amortizationSchedule = [];
+        let remainingBalance = principal;
+
+        for (let month = 1; month <= numberOfPayments; month++) {
+          const principalPayment = monthlyPayment;
+          const interestPayment = 0;
+          remainingBalance -= principalPayment;
+
+          amortizationSchedule.push({
+            month,
+            payment: monthlyPayment,
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: Math.max(0, remainingBalance),
+          });
+        }
+
+        setResult({
+          monthlyPayment,
+          totalPayment: principal,
+          totalInterest: 0,
+          amortizationSchedule,
+        });
+        setLoading(false);
+        return;
+      }
+
+      const x = Math.pow(1 + rate, numberOfPayments);
+      const monthlyPayment = (principal * x * rate) / (x - 1);
 
       const amortizationSchedule = [];
       let remainingBalance = principal;
+      let totalInterest = 0;
 
       for (let month = 1; month <= numberOfPayments; month++) {
-        const principalPayment = monthlyPayment;
-        const interestPayment = 0;
+        const interestPayment = remainingBalance * rate;
+        const principalPayment = monthlyPayment - interestPayment;
         remainingBalance -= principalPayment;
+        totalInterest += interestPayment;
 
         amortizationSchedule.push({
           month,
@@ -58,42 +95,12 @@ export default function LoanCalculator() {
 
       setResult({
         monthlyPayment,
-        totalPayment: principal,
-        totalInterest: 0,
+        totalPayment: monthlyPayment * numberOfPayments,
+        totalInterest,
         amortizationSchedule,
       });
-
-      return;
-    }
-
-    const x = Math.pow(1 + rate, numberOfPayments);
-    const monthlyPayment = (principal * x * rate) / (x - 1);
-
-    const amortizationSchedule = [];
-    let remainingBalance = principal;
-    let totalInterest = 0;
-
-    for (let month = 1; month <= numberOfPayments; month++) {
-      const interestPayment = remainingBalance * rate;
-      const principalPayment = monthlyPayment - interestPayment;
-      remainingBalance -= principalPayment;
-      totalInterest += interestPayment;
-
-      amortizationSchedule.push({
-        month,
-        payment: monthlyPayment,
-        principal: principalPayment,
-        interest: interestPayment,
-        balance: Math.max(0, remainingBalance),
-      });
-    }
-
-    setResult({
-      monthlyPayment,
-      totalPayment: monthlyPayment * numberOfPayments,
-      totalInterest,
-      amortizationSchedule,
-    });
+      setLoading(false);
+    }, 1500); // 1.5 sec delay for smooth loading
   };
 
   const handleReset = () => {
@@ -201,21 +208,29 @@ export default function LoanCalculator() {
               </div>
             </div>
 
+            {/* --- BUTTONS --- */}
             <div className="grid grid-cols-2 gap-4">
               <Button
                 onClick={calculateLoan}
-                disabled={!loanAmount || !interestRate || !loanTerm}
+                disabled={!loanAmount || !interestRate || !loanTerm || loading}
               >
-                Calculate
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <span className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin"></span>
+                    Calculating...
+                  </div>
+                ) : (
+                  'Calculate'
+                )}
               </Button>
-              <Button variant="outline" onClick={handleReset}>
+              <Button variant="outline" onClick={handleReset} disabled={loading}>
                 Reset
               </Button>
             </div>
 
             {/* LOAN SUMMARY RESULT */}
             {result !== null && (
-              <div className="mt-6 p-4 bg-muted rounded-md">
+              <div className="mt-6 p-4 bg-muted rounded-md transition-all duration-500">
                 <h3 className="text-lg font-medium mb-4">Loan Summary</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
