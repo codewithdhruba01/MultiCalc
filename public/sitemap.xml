@@ -1,12 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://multicalc.site/</loc></url>
-  <url><loc>https://www.multicalc.site/basic-calculators</loc></url>
-  <url><loc>https://www.multicalc.site/financial-calculators</loc></url>
-  <url><loc>https://www.multicalc.site/health-calculators</loc></url>
-  <url><loc>https://www.multicalc.site/advance-calculators</loc></url>
-  <url><loc>https://www.multicalc.site/marks-calculators</loc></url>
-  <url><loc>https://www.multicalc.site/currency-converter</loc></url>
-  <url><loc>https://www.multicalc.site/age-calculator</loc></url>
-  <url><loc>https://www.multicalc.site/salary-calculator</loc></url>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- Home Page -->
+  <url>
+    <loc>https://multicalc.site/</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Math Calculators -->
+  <url>
+    <loc>https://multicalc.site/basic-calculators</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Financial Calculators -->
+  <url>
+    <loc>https://multicalc.site/financial-calculators</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Health Calculators -->
+  <url>
+    <loc>https://multicalc.site/health-calculators</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Advanced Calculators -->
+  <url>
+    <loc>https://multicalc.site/advance-calculators</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Marks Calculators -->
+  <url>
+    <loc>https://multicalc.site/marks-calculators</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Currency Calculator -->
+  <url>
+    <loc>https://multicalc.site/currency-converter</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Age Calculator -->
+  <url>
+    <loc>https://multicalc.site/age-calculator</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Salary Calculator -->
+  <url>
+    <loc>https://multicalc.site/salary-calculator</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
