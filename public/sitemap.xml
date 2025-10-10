@@ -13,23 +13,23 @@
 
   <!-- Math Calculators -->
   <url>
-    <loc>https://multicalc.site/basic-calculators</loc>
+    <loc>https://www.multicalc.site/basic-calculators</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
 
   <!-- Financial Calculators -->
   <url>
-    <loc>https://multicalc.site/financial-calculators</loc>
+    <loc>https://www.multicalc.site/financial-calculators</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
 
   <!-- Health Calculators -->
   <url>
-    <loc>https://multicalc.site/health-calculators</loc>
+    <loc>https://www.multicalc.site/health-calculators</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -37,7 +37,7 @@
 
   <!-- Advanced Calculators -->
   <url>
-    <loc>https://multicalc.site/advance-calculators</loc>
+    <loc>https://www.multicalc.site/advance-calculators</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -45,7 +45,7 @@
 
   <!-- Marks Calculators -->
   <url>
-    <loc>https://multicalc.site/marks-calculators</loc>
+    <loc>https://www.multicalc.site/marks-calculators</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -53,7 +53,7 @@
 
   <!-- Currency Calculator -->
   <url>
-    <loc>https://multicalc.site/currency-converter</loc>
+    <loc>https://www.multicalc.site/currency-converter</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -61,17 +61,45 @@
 
   <!-- Age Calculator -->
   <url>
-    <loc>https://multicalc.site/age-calculator</loc>
+    <loc>https://www.multicalc.site/age-calculator</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Salary Calculator -->
   <url>
-    <loc>https://multicalc.site/salary-calculator</loc>
+    <loc>https://www.multicalc.site/salary-calculator</loc>
     <lastmod>2025-10-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.multicalc.site/about</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.multicalc.site/privacy-policy</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.multicalc.site/terms-of-service</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.multicalc.site/contact</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
