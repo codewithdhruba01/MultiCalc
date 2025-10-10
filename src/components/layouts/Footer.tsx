@@ -84,6 +84,11 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link to="/sitemap.xml" className="text-muted-foreground hover:text-foreground">
+                  Sitemap
+                </Link>
+              </li>
             </ul>
           </div>
           
@@ -108,7 +113,7 @@ export default function Footer() {
         
         <div className="mt-8 border-t border-border/40 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} Dhrubaraj Pati. All rights reserved.
+            &copy; {currentYear} MultiCalc. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center mt-2 md:mt-0">
             Made with <Heart className="h-4 w-4 mx-1 text-red-500" /> for Dhrubaraj Pati
