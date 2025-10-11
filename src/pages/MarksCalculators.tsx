@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Container } from '@/components/ui/Container';
@@ -13,7 +14,42 @@ export default function YgpaToCgpaPage() {
 
   const [activeTab, setActiveTab] = useState<'cgpa' | 'total'>('cgpa');
 
-  // YGPA to CGPA states
+  // Dynamic SEO Data
+  const getPageSEO = () => {
+    switch (activeTab) {
+      case 'cgpa':
+        return {
+          title: 'YGPA to CGPA Converter | MultiCalc',
+          description:
+            'Easily convert your Yearly Grade Point Average (YGPA) to Cumulative Grade Point Average (CGPA) with our accurate online YGPA to CGPA Converter.',
+          keywords:
+            'ygpa to cgpa, cgpa converter, grade calculator, university grade converter, online marks calculator, multicalc',
+          canonical: 'https://multicalc.site/ygpa-to-cgpa',
+        };
+      case 'total':
+        return {
+          title: 'YGPA to Total Marks Calculator | MultiCalc',
+          description:
+            'Convert your YGPA into total marks and percentage in just seconds. A simple and accurate YGPA to Total Marks Calculator for students.',
+          keywords:
+            'ygpa to total marks, marks percentage calculator, cgpa to marks converter, student marks calculator, ygpa calculator',
+          canonical: 'https://multicalc.site/ygpa-to-total-marks',
+        };
+      default:
+        return {
+          title: 'Marks Calculators | MultiCalc',
+          description:
+            'Effortlessly convert your YGPA to CGPA or total marks using our easy online marks calculators — accurate and student-friendly tools.',
+          keywords:
+            'marks calculator, ygpa to cgpa, cgpa to marks, total marks calculator, percentage calculator, multicalc',
+          canonical: 'https://multicalc.site/marks-calculators',
+        };
+    }
+  };
+
+  const seo = getPageSEO();
+
+  // --- Calculation Logic ---
   const [ygpa, setYgpa] = useState('');
   const [cgpa, setCgpa] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -36,7 +72,7 @@ export default function YgpaToCgpaPage() {
     setError(null);
   };
 
-  // YGPA to Total Marks states
+  // YGPA to Total Marks
   const [ygpa2, setYgpa2] = useState('');
   const [subjects, setSubjects] = useState('');
   const [percentage, setPercentage] = useState('');
@@ -77,6 +113,23 @@ export default function YgpaToCgpaPage() {
 
   return (
     <div className="py-20 md:py-15">
+      {/* Dynamic SEO Meta Tags */}
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <link rel="canonical" href={seo.canonical} />
+
+        {/* Social Share (Open Graph + Twitter) */}
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.canonical} />
+        <meta property="og:site_name" content="MultiCalc" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://multicalc.site/preview.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <Container>
         <div className="max-w-3xl mx-auto text-center" data-aos="fade-up">
           <h1 className="text-4xl font-bold mb-4 font-synonym">
@@ -86,6 +139,8 @@ export default function YgpaToCgpaPage() {
             Effortlessly convert your (YGPA) to CGPA or calculate <br /> your
             total marks and percentage in just a few clicks.
           </p>
+
+          {/* Tab Switcher */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm">
               <Button
@@ -114,6 +169,7 @@ export default function YgpaToCgpaPage() {
           </div>
         </div>
 
+        {/* --- Tab: YGPA to CGPA --- */}
         {activeTab === 'cgpa' && (
           <div
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
@@ -128,10 +184,7 @@ export default function YgpaToCgpaPage() {
             </p>
             <div className="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label
-                  htmlFor="ygpa"
-                  className="block text-sm font-medium mb-1"
-                >
+                <label htmlFor="ygpa" className="block text-sm font-medium mb-1">
                   YGPA
                 </label>
                 <Input
@@ -148,10 +201,7 @@ export default function YgpaToCgpaPage() {
                 />
               </div>
               <div>
-                <label
-                  htmlFor="cgpa"
-                  className="block text-sm font-medium mb-1"
-                >
+                <label htmlFor="cgpa" className="block text-sm font-medium mb-1">
                   CGPA
                 </label>
                 <Input
@@ -173,6 +223,7 @@ export default function YgpaToCgpaPage() {
           </div>
         )}
 
+        {/* --- Tab: YGPA to Total Marks --- */}
         {activeTab === 'total' && (
           <div
             className="max-w-md mx-auto border rounded-lg p-6 mt-6"
