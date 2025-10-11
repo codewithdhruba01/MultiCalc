@@ -39,7 +39,7 @@ export default function Navbar() {
               onClick={closeMenu}
             >
               <img
-                src="/logo/MultiCalc.png"
+                src="/images/logo.svg"
                 alt="MultiCalc Logo"
                 className="h-10 w-auto"
               />
@@ -155,7 +155,7 @@ export default function Navbar() {
                 onClick={closeMenu}
               >
                 <img
-                  src="/logo/MultiCalc.png"
+                  src="/images/logo.svg"
                   alt="Logo"
                   className="h-10 w-auto"
                 />
