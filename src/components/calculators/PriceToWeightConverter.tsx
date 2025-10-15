@@ -15,14 +15,12 @@ export default function PriceToWeightConverter() {
   const [pricePerKg, setPricePerKg] = useState<string>('');
   const [quantityKg, setQuantityKg] = useState<string>('');
   const [totalPrice, setTotalPrice] = useState<string>('');
-
   const [mode, setMode] = useState<'spend' | 'weight'>('spend');
-
   const [amountYouHave, setAmountYouHave] = useState<string>('');
   const [weightInput, setWeightInput] = useState<string>('');
   const [weightUnit, setWeightUnit] = useState<'kg' | 'g'>('kg');
-
   const [result, setResult] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -40,27 +38,38 @@ export default function PriceToWeightConverter() {
 
   const handleConvert = () => {
     const price = parseFloat(pricePerKg);
-
     if (isNaN(price) || price <= 0) return;
 
-    if (mode === 'spend') {
-      const amount = parseFloat(amountYouHave);
-      if (isNaN(amount)) return;
-      const weightGrams = (amount / price) * 1000;
-      setResult(
-        `${weightGrams.toFixed(2)} grams (${(weightGrams / 1000).toFixed(2)} kg)`
-      );
-    } else {
-      let weight = parseFloat(weightInput);
-      if (isNaN(weight)) return;
+    setLoading(true);
+    setResult(null);
 
-      if (weightUnit === 'g') {
-        weight = weight / 1000;
+    setTimeout(() => {
+      let conversionResult = '';
+
+      if (mode === 'spend') {
+        const amount = parseFloat(amountYouHave);
+        if (isNaN(amount)) {
+          setLoading(false);
+          return;
+        }
+        const weightGrams = (amount / price) * 1000;
+        conversionResult = `${weightGrams.toFixed(2)} grams (${(weightGrams / 1000).toFixed(2)} kg)`;
+      } else {
+        let weight = parseFloat(weightInput);
+        if (isNaN(weight)) {
+          setLoading(false);
+          return;
+        }
+        if (weightUnit === 'g') {
+          weight = weight / 1000;
+        }
+        const totalCost = weight * price;
+        conversionResult = `₹ ${totalCost.toFixed(2)}`;
       }
 
-      const totalCost = weight * price;
-      setResult(`₹ ${totalCost.toFixed(2)}`);
-    }
+      setResult(conversionResult);
+      setLoading(false);
+    }, 1200);
   };
 
   const handleReset = () => {
@@ -72,6 +81,7 @@ export default function PriceToWeightConverter() {
     setResult(null);
     setMode('spend');
     setWeightUnit('kg');
+    setLoading(false);
   };
 
   return (
@@ -206,23 +216,29 @@ export default function PriceToWeightConverter() {
             <Button
               onClick={handleConvert}
               disabled={
+                loading ||
                 !pricePerKg ||
                 (mode === 'spend' ? !amountYouHave : !weightInput)
               }
             >
-              Convert
+              {loading ? 'Converting...' : 'Convert'}
             </Button>
             <Button variant="outline" onClick={handleReset}>
               Reset
             </Button>
           </div>
 
-          {/* Result */}
-          {result !== null && (
-            <div className="mt-6 p-4 bg-muted rounded-md text-center">
-              <h3 className="text-lg font-medium mb-2">Conversion Result</h3>
-              <p className="text-2xl font-bold">{result}</p>
+          {loading ? (
+            <div className="mt-6 text-center text-sm text-muted-foreground animate-pulse">
+              Calculating conversion, please wait...
             </div>
+          ) : (
+            result && (
+              <div className="mt-6 p-4 bg-muted rounded-md text-center">
+                <h3 className="text-lg font-medium mb-2">Conversion Result</h3>
+                <p className="text-2xl font-bold">{result}</p>
+              </div>
+            )
           )}
         </div>
       </CardContent>
