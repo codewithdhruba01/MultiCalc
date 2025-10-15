@@ -14,6 +14,7 @@ export default function NPVCalculator() {
   const [cashFlows, setCashFlows] = useState<string>('');
   const [discountRate, setDiscountRate] = useState<string>('');
   const [npv, setNPV] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
   useEffect(() => {
@@ -34,11 +35,17 @@ export default function NPVCalculator() {
       return;
     }
 
-    const npvValue = flows.reduce((acc, flow, i) => {
-      return acc + flow / Math.pow(1 + rate, i + 1);
-    }, -investment);
+    setLoading(true);
+    setNPV(null);
 
-    setNPV(parseFloat(npvValue.toFixed(2)));
+    setTimeout(() => {
+      const npvValue = flows.reduce((acc, flow, i) => {
+        return acc + flow / Math.pow(1 + rate, i + 1);
+      }, -investment);
+
+      setNPV(parseFloat(npvValue.toFixed(2)));
+      setLoading(false);
+    }, 1500);
   };
 
   const handleReset = () => {
@@ -111,27 +118,45 @@ export default function NPVCalculator() {
           <div className="grid grid-cols-2 gap-4">
             <Button
               onClick={calculateNPV}
-              disabled={!initialInvestment || !cashFlows || !discountRate}
+              disabled={
+                !initialInvestment || !cashFlows || !discountRate || loading
+              }
             >
-              Calculate
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Calculating...
+                </div>
+              ) : (
+                'Calculate'
+              )}
             </Button>
-            <Button variant="outline" onClick={handleReset}>
+            <Button variant="outline" onClick={handleReset} disabled={loading}>
               Reset
             </Button>
           </div>
 
-          {npv !== null && (
-            <div className="mt-6 p-4 bg-muted rounded-md">
-              <h3 className="text-xl font-bold mb-2 text-center font-synonym">
-                NPV Result
-              </h3>
-              <p className="text-center text-2xl font-bold">
-                {npv} currency units
-              </p>
-              <p className="text-sm text-muted-foreground text-center font-satoshi mt-2">
-                A positive NPV indicates a profitable investment.
+          {/* Result Section */}
+          {loading ? (
+            <div className="mt-6 p-4 bg-muted rounded-md text-center animate-pulse">
+              <p className="text-base text-muted-foreground">
+                Calculating NPV, please wait...
               </p>
             </div>
+          ) : (
+            npv !== null && (
+              <div className="mt-6 p-4 bg-muted rounded-md transition-all duration-300 ease-in-out">
+                <h3 className="text-xl font-bold mb-2 text-center font-synonym">
+                  NPV Result
+                </h3>
+                <p className="text-center text-2xl font-bold">
+                  {npv} currency units
+                </p>
+                <p className="text-sm text-muted-foreground text-center font-satoshi mt-2">
+                  A positive NPV indicates a profitable investment.
+                </p>
+              </div>
+            )
           )}
 
           <div className="text-xs text-muted-foreground text-center mt-4">
