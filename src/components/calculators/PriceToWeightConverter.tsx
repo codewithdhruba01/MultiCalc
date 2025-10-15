@@ -91,9 +91,7 @@ export default function PriceToWeightConverter() {
           Price to Weight Converter
         </CardTitle>
         <CardDescription className="text-center font-satoshi">
-          This tool helps you find out either how much product (in weight) you
-          can buy for a given spend amount, or how much money is needed for a
-          given weight.
+          Find how much weight you can buy for your budget or how much money is needed for a given weight.
         </CardDescription>
       </CardHeader>
 
@@ -102,10 +100,7 @@ export default function PriceToWeightConverter() {
           {/* Quantity & Total Price */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label
-                htmlFor="quantityKg"
-                className="block text-sm font-medium mb-1"
-              >
+              <label htmlFor="quantityKg" className="block text-sm font-medium mb-1">
                 Quantity (kg)
               </label>
               <Input
@@ -117,10 +112,7 @@ export default function PriceToWeightConverter() {
               />
             </div>
             <div>
-              <label
-                htmlFor="totalPrice"
-                className="block text-sm font-medium mb-1"
-              >
+              <label htmlFor="totalPrice" className="block text-sm font-medium mb-1">
                 Total Price
               </label>
               <Input
@@ -135,10 +127,7 @@ export default function PriceToWeightConverter() {
 
           {/* Price per Kg */}
           <div>
-            <label
-              htmlFor="pricePerKg"
-              className="block text-sm font-medium mb-1"
-            >
+            <label htmlFor="pricePerKg" className="block text-sm font-medium mb-1">
               Price per Kg
             </label>
             <Input
@@ -169,10 +158,7 @@ export default function PriceToWeightConverter() {
           {/* Conditional Input */}
           {mode === 'spend' ? (
             <div>
-              <label
-                htmlFor="amountYouHave"
-                className="block text-sm font-medium mb-1"
-              >
+              <label htmlFor="amountYouHave" className="block text-sm font-medium mb-1">
                 Enter Spend Amount
               </label>
               <Input
@@ -185,10 +171,7 @@ export default function PriceToWeightConverter() {
             </div>
           ) : (
             <div>
-              <label
-                htmlFor="weightInput"
-                className="block text-sm font-medium mb-1"
-              >
+              <label htmlFor="weightInput" className="block text-sm font-medium mb-1">
                 Enter Weight
               </label>
               <div className="flex gap-2">
@@ -221,16 +204,25 @@ export default function PriceToWeightConverter() {
                 (mode === 'spend' ? !amountYouHave : !weightInput)
               }
             >
-              {loading ? 'Converting...' : 'Convert'}
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin"></span>
+                  Converting...
+                </div>
+              ) : (
+                'Convert'
+              )}
             </Button>
             <Button variant="outline" onClick={handleReset}>
               Reset
             </Button>
           </div>
 
+          {/* Result / Loader */}
           {loading ? (
-            <div className="mt-6 text-center text-sm text-muted-foreground animate-pulse">
-              Calculating conversion, please wait...
+            <div className="mt-6 flex flex-col items-center justify-center text-muted-foreground">
+              <div className="h-6 w-6 border-2 border-t-transparent border-primary rounded-full animate-spin mb-2"></div>
+              <p className="text-sm animate-pulse">Calculating conversion, please wait...</p>
             </div>
           ) : (
             result && (
