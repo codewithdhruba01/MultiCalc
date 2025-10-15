@@ -94,6 +94,7 @@ export default function Navbar() {
                     { to: '/currency-converter', label: 'Currency Converter' },
                     { to: '/age-calculator', label: 'Age Calculator' },
                     { to: '/salary-calculator', label: 'Salary Calculator' },
+                    { to: '/split-calculator', label: 'Split Calculator' },
                   ].map((item) => (
                     <NavLink
                       key={item.to}
@@ -218,6 +219,8 @@ export default function Navbar() {
                     { to: '/currency-converter', label: 'Currency Converter' },
                     { to: '/age-calculator', label: 'Age Calculator' },
                     { to: '/salary-calculator', label: 'Salary Calculator' },
+                    { to: '/split-calculator', label: 'Split Calculator' },
+
                   ].map((item) => (
                     <NavLink
                       key={item.to}
