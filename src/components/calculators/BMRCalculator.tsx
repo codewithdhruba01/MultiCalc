@@ -12,6 +12,7 @@ export default function BMRCalculator() {
   const [heightFt, setHeightFt] = useState('')
   const [heightIn, setHeightIn] = useState('')
   const [bmr, setBMR] = useState<number | null>(null)
+  const [loading, setLoading] = useState(false)
   const [lastUpdated, setLastUpdated] = useState<string>('')
 
   useEffect(() => {
@@ -29,34 +30,40 @@ export default function BMRCalculator() {
   }
 
   const calculateBMR = () => {
-    const parsedAge = parseInt(age)
-    const parsedWeight = parseFloat(weight)
+    setLoading(true)
+    setBMR(null)
 
-    let heightInCm = 0
+    setTimeout(() => {
+      const parsedAge = parseInt(age)
+      const parsedWeight = parseFloat(weight)
+      let heightInCm = 0
 
-    if (unit === 'metric') {
-      heightInCm = parseFloat(heightCm)
-    } else {
-      const ft = parseInt(heightFt) || 0
-      const inch = parseInt(heightIn) || 0
-      heightInCm = (ft * 30.48) + (inch * 2.54)
-    }
+      if (unit === 'metric') {
+        heightInCm = parseFloat(heightCm)
+      } else {
+        const ft = parseInt(heightFt) || 0
+        const inch = parseInt(heightIn) || 0
+        heightInCm = (ft * 30.48) + (inch * 2.54)
+      }
 
-    const weightInKg = unit === 'us' ? parsedWeight / 2.20462 : parsedWeight
+      const weightInKg = unit === 'us' ? parsedWeight / 2.20462 : parsedWeight
 
-    if (
-      isNaN(parsedAge) || isNaN(weightInKg) || isNaN(heightInCm) ||
-      parsedAge <= 0 || weightInKg <= 0 || heightInCm <= 0
-    ) {
-      setBMR(null)
-      return
-    }
+      if (
+        isNaN(parsedAge) || isNaN(weightInKg) || isNaN(heightInCm) ||
+        parsedAge <= 0 || weightInKg <= 0 || heightInCm <= 0
+      ) {
+        setBMR(null)
+        setLoading(false)
+        return
+      }
 
-    const base =
-      (10 * weightInKg) + (6.25 * heightInCm) - (5 * parsedAge)
+      const base =
+        (10 * weightInKg) + (6.25 * heightInCm) - (5 * parsedAge)
 
-    const finalBMR = gender === 'male' ? base + 5 : base - 161
-    setBMR(parseFloat(finalBMR.toFixed(2)))
+      const finalBMR = gender === 'male' ? base + 5 : base - 161
+      setBMR(parseFloat(finalBMR.toFixed(2)))
+      setLoading(false)
+    }, 1200) // delay for loading spinner
   }
 
   const handleReset = () => {
@@ -81,25 +88,24 @@ export default function BMRCalculator() {
         <div className="space-y-4">
 
           {/* Unit toggle */}
-        
           <div className="flex justify-center mb-6">
-          <div className="inline-flex rounded-md shadow-sm">
-            <Button
-              variant={unit === 'metric' ? 'default' : 'outline'}
-              className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
-              onClick={() => handleUnitSwitch('metric')}
-            >
-              Metric Units
-            </Button>
-            <Button
-              variant={unit === 'us' ? 'default' : 'outline'}
-              className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'us' ? 'bg-primary text-primary-foreground' : ''}`}
-              onClick={() => handleUnitSwitch('us')}
-            >
-              US Units
-            </Button>
+            <div className="inline-flex rounded-md shadow-sm">
+              <Button
+                variant={unit === 'metric' ? 'default' : 'outline'}
+                className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
+                onClick={() => handleUnitSwitch('metric')}
+              >
+                Metric Units
+              </Button>
+              <Button
+                variant={unit === 'us' ? 'default' : 'outline'}
+                className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'us' ? 'bg-primary text-primary-foreground' : ''}`}
+                onClick={() => handleUnitSwitch('us')}
+              >
+                US Units
+              </Button>
+            </div>
           </div>
-        </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Age</label>
@@ -169,15 +175,29 @@ export default function BMRCalculator() {
           )}
 
           <div className="grid grid-cols-2 gap-4">
-            <Button onClick={calculateBMR} disabled={!age || !weight}>
-              Calculate
+            <Button onClick={calculateBMR} disabled={!age || !weight || loading}>
+              {loading ? (
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Calculating...</span>
+                </div>
+              ) : (
+                'Calculate'
+              )}
             </Button>
             <Button variant="outline" onClick={handleReset}>
               Reset
             </Button>
           </div>
 
-          {bmr !== null && (
+          {/* Loading spinner animation */}
+          {loading && (
+            <div className="flex justify-center mt-6">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )}
+
+          {!loading && bmr !== null && (
             <div className="mt-6 p-4 bg-muted rounded-md text-center">
               <h3 className="text-xl font-bold mb-2 font-satoshi">Your BMR</h3>
               <p className="text-2xl font-bold">{bmr} kcal/day</p>
