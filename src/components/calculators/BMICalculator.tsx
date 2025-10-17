@@ -1,91 +1,109 @@
-import { useState, useEffect } from 'react'
-import { Button } from '../ui/Button'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/Card'
-import { Input } from '../ui/Input'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { useState, useEffect } from 'react';
+import { Button } from '../ui/Button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '../ui/Card';
+import { Input } from '../ui/Input';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-type Unit = 'metric' | 'imperial'
+type Unit = 'metric' | 'imperial';
 
 export default function BMICalculator() {
-  const [height, setHeight] = useState<string>('')
-  const [weight, setWeight] = useState<string>('')
-  const [unit, setUnit] = useState<Unit>('metric')
-  const [bmi, setBmi] = useState<number | null>(null)
-  const [status, setStatus] = useState<string>('')
+  const [height, setHeight] = useState<string>('');
+  const [weight, setWeight] = useState<string>('');
+  const [unit, setUnit] = useState<Unit>('metric');
+  const [bmi, setBmi] = useState<number | null>(null);
+  const [status, setStatus] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    AOS.init({ duration: 700, once: true })
-  }, [])
+    AOS.init({ duration: 700, once: true });
+  }, []);
 
   const calculateBMI = () => {
-    if (!height || !weight) return
+    if (!height || !weight) return;
+    setLoading(true);
+    setBmi(null);
+    setStatus('');
 
-    let bmiValue: number
+    setTimeout(() => {
+      let bmiValue: number;
 
-    if (unit === 'metric') {
-      const heightInMeters = parseFloat(height) / 100
-      bmiValue = parseFloat(weight) / (heightInMeters * heightInMeters)
-    } else {
-      bmiValue = 703 * parseFloat(weight) / (parseFloat(height) * parseFloat(height))
-    }
+      if (unit === 'metric') {
+        const heightInMeters = parseFloat(height) / 100;
+        bmiValue = parseFloat(weight) / (heightInMeters * heightInMeters);
+      } else {
+        bmiValue =
+          (703 * parseFloat(weight)) /
+          (parseFloat(height) * parseFloat(height));
+      }
 
-    setBmi(parseFloat(bmiValue.toFixed(1)))
-    setStatus(getBMIStatus(bmiValue))
-  }
+      const result = parseFloat(bmiValue.toFixed(1));
+      setBmi(result);
+      setStatus(getBMIStatus(result));
+      setLoading(false);
+    }, 1000); // Spinner visible for 1s
+  };
 
   const getBMIStatus = (bmi: number): string => {
-    if (bmi < 18.5) return 'Underweight'
-    if (bmi < 25) return 'Normal weight'
-    if (bmi < 30) return 'Overweight'
-    if (bmi < 35) return 'Obesity (Class 1)'
-    if (bmi < 40) return 'Obesity (Class 2)'
-    return 'Extreme Obesity (Class 3)'
-  }
+    if (bmi < 18.5) return 'Underweight';
+    if (bmi < 25) return 'Normal weight';
+    if (bmi < 30) return 'Overweight';
+    if (bmi < 35) return 'Obesity (Class 1)';
+    if (bmi < 40) return 'Obesity (Class 2)';
+    return 'Extreme Obesity (Class 3)';
+  };
 
   const getStatusColor = (status: string): string => {
     switch (status) {
       case 'Underweight':
-        return 'text-blue-500'
+        return 'text-blue-500';
       case 'Normal weight':
-        return 'text-green-500'
+        return 'text-green-500';
       case 'Overweight':
-        return 'text-yellow-500'
+        return 'text-yellow-500';
       case 'Obesity (Class 1)':
-        return 'text-orange-500'
+        return 'text-orange-500';
       case 'Obesity (Class 2)':
       case 'Extreme Obesity (Class 3)':
-        return 'text-red-500'
+        return 'text-red-500';
       default:
-        return ''
+        return '';
     }
-  }
+  };
 
   const handleReset = () => {
-    setHeight('')
-    setWeight('')
-    setBmi(null)
-    setStatus('')
-  }
+    setHeight('');
+    setWeight('');
+    setBmi(null);
+    setStatus('');
+  };
 
   const handleUnitChange = (value: Unit) => {
-    setUnit(value)
-    setHeight('')
-    setWeight('')
-    setBmi(null)
-    setStatus('')
-  }
+    setUnit(value);
+    setHeight('');
+    setWeight('');
+    setBmi(null);
+    setStatus('');
+  };
 
   return (
     <Card className="w-full max-w-md mx-auto" data-aos="fade-up">
       <CardHeader>
-        <CardTitle className="text-center font-synonym font-bold mb-3">BMI Calculator</CardTitle>
+        <CardTitle className="text-center font-synonym font-bold mb-3">
+          BMI Calculator
+        </CardTitle>
         <CardDescription className="text-center font-satoshi">
           Calculate your Body Mass Index
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/* Unit Switch Buttons */}
+        {/* Unit Switch */}
         <div className="flex justify-center mb-6">
           <div className="inline-flex rounded-md shadow-sm">
             <Button
@@ -113,7 +131,9 @@ export default function BMICalculator() {
             <Input
               id="height"
               type="number"
-              placeholder={unit === 'metric' ? 'Height in centimeters' : 'Height in inches'}
+              placeholder={
+                unit === 'metric' ? 'Height in centimeters' : 'Height in inches'
+              }
               value={height}
               onChange={(e) => setHeight(e.target.value)}
             />
@@ -126,32 +146,43 @@ export default function BMICalculator() {
             <Input
               id="weight"
               type="number"
-              placeholder={unit === 'metric' ? 'Weight in kilograms' : 'Weight in pounds'}
+              placeholder={
+                unit === 'metric' ? 'Weight in kilograms' : 'Weight in pounds'
+              }
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Button onClick={calculateBMI} disabled={!height || !weight}>
-              Calculate
+            <Button
+              onClick={calculateBMI}
+              disabled={!height || !weight || loading}
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-t-transparent border-white rounded-full animate-spin mx-auto"></div>
+              ) : (
+                'Calculate'
+              )}
             </Button>
-            <Button variant="outline" onClick={handleReset}>
+            <Button variant="outline" onClick={handleReset} disabled={loading}>
               Reset
             </Button>
           </div>
 
-          {bmi !== null && (
-            <div className="mt-6 p-4 bg-muted rounded-md">
+          {loading && (
+            <div className="mt-6 flex justify-center">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )}
+
+          {!loading && bmi !== null && (
+            <div className="mt-6 p-4 bg-muted rounded-md text-center">
               <h3 className="text-lg font-medium mb-2">Your Result</h3>
-              <div className="flex justify-between items-center">
-                <span>BMI:</span>
-                <span className="font-bold text-xl">{bmi}</span>
-              </div>
-              <div className="flex justify-between items-center mt-2">
-                <span>Status:</span>
-                <span className={`font-bold ${getStatusColor(status)}`}>{status}</span>
-              </div>
+              <p className="text-xl font-bold mb-1">BMI: {bmi}</p>
+              <p className={`font-semibold ${getStatusColor(status)}`}>
+                {status}
+              </p>
             </div>
           )}
 
@@ -169,5 +200,5 @@ export default function BMICalculator() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
