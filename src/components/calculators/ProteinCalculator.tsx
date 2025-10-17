@@ -20,6 +20,7 @@ export default function ProteinCalculator() {
   const [goal, setGoal] = useState<'maintain' | 'lose' | 'gain'>('maintain');
   const [protein, setProtein] = useState<number | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const now = new Date();
@@ -61,18 +62,23 @@ export default function ProteinCalculator() {
       return;
     }
 
-    // Convert to kg if in lbs
-    const weightKg = unit === 'us' ? weightValue / 2.20462 : weightValue;
+    setLoading(true);
+    setProtein(null);
 
-    let multiplier = 0.8;
-    if (activityLevel === 'moderate') multiplier = 1.2;
-    else if (activityLevel === 'active') multiplier = 1.6;
+    setTimeout(() => {
+      const weightKg = unit === 'us' ? weightValue / 2.20462 : weightValue;
 
-    if (goal === 'lose') multiplier += 0.2;
-    else if (goal === 'gain') multiplier += 0.4;
+      let multiplier = 0.8;
+      if (activityLevel === 'moderate') multiplier = 1.2;
+      else if (activityLevel === 'active') multiplier = 1.6;
 
-    const result = weightKg * multiplier;
-    setProtein(parseFloat(result.toFixed(1)));
+      if (goal === 'lose') multiplier += 0.2;
+      else if (goal === 'gain') multiplier += 0.4;
+
+      const result = weightKg * multiplier;
+      setProtein(parseFloat(result.toFixed(1)));
+      setLoading(false);
+    }, 1200);
   };
 
   const handleReset = () => {
@@ -186,15 +192,28 @@ export default function ProteinCalculator() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Button onClick={calculateProtein} disabled={!age || !weight}>
-              Calculate
+            <Button
+              onClick={calculateProtein}
+              disabled={!age || !weight || loading}
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-t-transparent border-white rounded-full animate-spin mx-auto"></div>
+              ) : (
+                'Calculate'
+              )}
             </Button>
-            <Button variant="outline" onClick={handleReset}>
+            <Button variant="outline" onClick={handleReset} disabled={loading}>
               Reset
             </Button>
           </div>
 
-          {protein !== null && (
+          {loading && (
+            <div className="flex justify-center mt-6">
+              <div className="w-6 h-6 border-2 border-t-transparent border-primary rounded-full animate-spin"></div>
+            </div>
+          )}
+
+          {protein !== null && !loading && (
             <div className="mt-6 p-4 bg-muted rounded-md text-center">
               <h3 className="text-lg font-medium mb-2">
                 Daily Protein Requirement
