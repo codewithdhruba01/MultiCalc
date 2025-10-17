@@ -26,7 +26,8 @@ export default function PregnancyCalculator() {
   );
   const [ultrasoundWeeks, setUltrasoundWeeks] = useState<string>('');
   const [cycleLength, setCycleLength] = useState<string>('28');
-  const [embryoAge, setEmbryoAge] = useState<string>('3'); // NEW state for embryo age
+  const [embryoAge, setEmbryoAge] = useState<string>('3');
+  const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<{
     dueDate: string;
     conceptionDate: string;
@@ -44,123 +45,127 @@ export default function PregnancyCalculator() {
     23: { size: '11.4 inches (28.9 cm)', weight: '1.1 pounds (501 grams)' },
     24: { size: '11.8 inches (30 cm)', weight: '1.3 pounds (600 grams)' },
     25: { size: '13.6 inches (34.6 cm)', weight: '1.5 pounds (700 grams)' },
-    // ... extend as needed
   };
 
   const calculatePregnancy = () => {
     if (!mainDate) return;
+    setLoading(true);
 
-    const referenceDate = calcDate ? new Date(calcDate) : new Date();
-    let dueDate: Date;
-    let conceptionDate: Date;
-    let lmpAdjusted: Date | null = null;
+    setTimeout(() => {
+      const referenceDate = calcDate ? new Date(calcDate) : new Date();
+      let dueDate: Date;
+      let conceptionDate: Date;
+      let lmpAdjusted: Date | null = null;
 
-    if (method === 'lastPeriod') {
-      const lmp = new Date(mainDate);
-      const cycleAdj = parseInt(cycleLength, 10) - 28;
-      lmpAdjusted = new Date(lmp);
-      lmpAdjusted.setDate(lmpAdjusted.getDate() + cycleAdj);
-      dueDate = new Date(lmpAdjusted);
-      dueDate.setDate(dueDate.getDate() + 280);
-      conceptionDate = new Date(lmpAdjusted);
-      conceptionDate.setDate(conceptionDate.getDate() + 14);
-    } else if (method === 'dueDate') {
-      dueDate = new Date(mainDate);
-      conceptionDate = new Date(dueDate);
-      conceptionDate.setDate(dueDate.getDate() - 266);
-    } else if (method === 'conception') {
-      conceptionDate = new Date(mainDate);
-      dueDate = new Date(conceptionDate);
-      dueDate.setDate(conceptionDate.getDate() + 266);
-    } else if (method === 'ivf') {
-      const transferDate = new Date(mainDate);
-      const embryoAgeDays = parseInt(embryoAge || '3', 10);
-
-      // IVF adjustment: LMP is 14 days before ovulation, minus embryo age adjustment
-      const lmpDate = new Date(transferDate);
-      lmpDate.setDate(lmpDate.getDate() - (14 - embryoAgeDays));
-
-      dueDate = new Date(lmpDate);
-      dueDate.setDate(dueDate.getDate() + 280);
-
-      conceptionDate = new Date(lmpDate);
-      conceptionDate.setDate(lmpDate.getDate() + 14);
-    } else if (method === 'ultrasound') {
-      if (!ultrasoundWeeks) {
-        alert('Please enter gestational age at ultrasound');
+      if (method === 'lastPeriod') {
+        const lmp = new Date(mainDate);
+        const cycleAdj = parseInt(cycleLength, 10) - 28;
+        lmpAdjusted = new Date(lmp);
+        lmpAdjusted.setDate(lmpAdjusted.getDate() + cycleAdj);
+        dueDate = new Date(lmpAdjusted);
+        dueDate.setDate(dueDate.getDate() + 280);
+        conceptionDate = new Date(lmpAdjusted);
+        conceptionDate.setDate(conceptionDate.getDate() + 14);
+      } else if (method === 'dueDate') {
+        dueDate = new Date(mainDate);
+        conceptionDate = new Date(dueDate);
+        conceptionDate.setDate(dueDate.getDate() - 266);
+      } else if (method === 'conception') {
+        conceptionDate = new Date(mainDate);
+        dueDate = new Date(conceptionDate);
+        dueDate.setDate(conceptionDate.getDate() + 266);
+      } else if (method === 'ivf') {
+        const transferDate = new Date(mainDate);
+        const embryoAgeDays = parseInt(embryoAge || '3', 10);
+        const lmpDate = new Date(transferDate);
+        lmpDate.setDate(lmpDate.getDate() - (14 - embryoAgeDays));
+        dueDate = new Date(lmpDate);
+        dueDate.setDate(dueDate.getDate() + 280);
+        conceptionDate = new Date(lmpDate);
+        conceptionDate.setDate(conceptionDate.getDate() + 14);
+      } else if (method === 'ultrasound') {
+        if (!ultrasoundWeeks) {
+          alert('Please enter gestational age at ultrasound');
+          setLoading(false);
+          return;
+        }
+        const ultrasoundDate = new Date(mainDate);
+        const weeks = parseInt(ultrasoundWeeks, 10);
+        const lmp = new Date(ultrasoundDate);
+        lmp.setDate(lmp.getDate() - weeks * 7);
+        dueDate = new Date(lmp);
+        dueDate.setDate(dueDate.getDate() + 280);
+        conceptionDate = new Date(lmp);
+        conceptionDate.setDate(conceptionDate.getDate() + 14);
+      } else {
+        alert('Unknown method');
+        setLoading(false);
         return;
       }
-      const ultrasoundDate = new Date(mainDate);
-      const weeks = parseInt(ultrasoundWeeks, 10);
-      const lmp = new Date(ultrasoundDate);
-      lmp.setDate(lmp.getDate() - weeks * 7);
-      dueDate = new Date(lmp);
-      dueDate.setDate(dueDate.getDate() + 280);
-      conceptionDate = new Date(lmp);
-      conceptionDate.setDate(conceptionDate.getDate() + 14);
-    } else {
-      alert('Unknown method');
-      return;
-    }
 
-    const pregnancyStart = new Date(dueDate);
-    pregnancyStart.setDate(dueDate.getDate() - 280);
+      const pregnancyStart = new Date(dueDate);
+      pregnancyStart.setDate(dueDate.getDate() - 280);
 
-    const diffTime = referenceDate.getTime() - pregnancyStart.getTime();
-    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const gestationWeeks = Math.floor(totalDays / 7);
-    const gestationDays = totalDays % 7;
-    const months = +(totalDays / 30.44).toFixed(1);
+      const diffTime = referenceDate.getTime() - pregnancyStart.getTime();
+      const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const gestationWeeks = Math.floor(totalDays / 7);
+      const gestationDays = totalDays % 7;
+      const months = +(totalDays / 30.44).toFixed(1);
+      const trimester =
+        gestationWeeks < 13
+          ? 'First'
+          : gestationWeeks < 28
+            ? 'Second'
+            : 'Third';
+      const percentComplete = +((totalDays / 280) * 100).toFixed(1);
 
-    const trimester =
-      gestationWeeks < 13 ? 'First' : gestationWeeks < 28 ? 'Second' : 'Third';
+      const babyData = babySizeData[gestationWeeks] || {
+        size: 'N/A',
+        weight: 'N/A',
+      };
 
-    const percentComplete = +((totalDays / 280) * 100).toFixed(1);
+      const milestones = [
+        {
+          label: 'End of First Trimester',
+          date: formatDate(
+            new Date(
+              pregnancyStart.getTime() + 13 * 7 * 24 * 60 * 60 * 1000
+            ).toISOString()
+          ),
+        },
+        {
+          label: 'End of Second Trimester',
+          date: formatDate(
+            new Date(
+              pregnancyStart.getTime() + 27 * 7 * 24 * 60 * 60 * 1000
+            ).toISOString()
+          ),
+        },
+        {
+          label: 'Start of Third Trimester',
+          date: formatDate(
+            new Date(
+              pregnancyStart.getTime() + 28 * 7 * 24 * 60 * 60 * 1000
+            ).toISOString()
+          ),
+        },
+      ];
 
-    const babyData = babySizeData[gestationWeeks] || {
-      size: 'N/A',
-      weight: 'N/A',
-    };
+      setResult({
+        dueDate: dueDate.toISOString().split('T')[0],
+        conceptionDate: conceptionDate.toISOString().split('T')[0],
+        gestationWeeks,
+        gestationDays,
+        months,
+        trimester,
+        percentComplete,
+        babySize: babyData.size,
+        babyWeight: babyData.weight,
+        milestones,
+      });
 
-    const milestones = [
-      {
-        label: 'End of First Trimester',
-        date: formatDate(
-          new Date(
-            pregnancyStart.getTime() + 13 * 7 * 24 * 60 * 60 * 1000
-          ).toISOString()
-        ),
-      },
-      {
-        label: 'End of Second Trimester',
-        date: formatDate(
-          new Date(
-            pregnancyStart.getTime() + 27 * 7 * 24 * 60 * 60 * 1000
-          ).toISOString()
-        ),
-      },
-      {
-        label: 'Start of Third Trimester',
-        date: formatDate(
-          new Date(
-            pregnancyStart.getTime() + 28 * 7 * 24 * 60 * 60 * 1000
-          ).toISOString()
-        ),
-      },
-    ];
-
-    setResult({
-      dueDate: dueDate.toISOString().split('T')[0],
-      conceptionDate: conceptionDate.toISOString().split('T')[0],
-      gestationWeeks,
-      gestationDays,
-      months,
-      trimester,
-      percentComplete,
-      babySize: babyData.size,
-      babyWeight: babyData.weight,
-      milestones,
-    });
+      setLoading(false);
+    }, 1000);
   };
 
   const handleReset = () => {
@@ -210,6 +215,7 @@ export default function PregnancyCalculator() {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
+          {/* INPUT FIELDS */}
           <div>
             <label htmlFor="method" className="block text-sm font-medium mb-1">
               Calculate Based On
@@ -320,16 +326,28 @@ export default function PregnancyCalculator() {
             />
           </div>
 
+          {/* BUTTONS */}
           <div className="grid grid-cols-2 gap-4">
-            <Button onClick={calculatePregnancy} disabled={!mainDate}>
-              Calculate
+            <Button
+              onClick={calculatePregnancy}
+              disabled={!mainDate || loading}
+            >
+              {loading ? 'Calculating...' : 'Calculate'}
             </Button>
-            <Button variant="outline" onClick={handleReset}>
+            <Button variant="outline" onClick={handleReset} disabled={loading}>
               Reset
             </Button>
           </div>
 
-          {result && (
+          {/* LOADING SPINNER */}
+          {loading && (
+            <div className="flex justify-center mt-6">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+          )}
+
+          {/* RESULT */}
+          {result && !loading && (
             <div className="mt-6 p-4 bg-muted rounded-md space-y-3">
               <h3 className="text-lg font-synonym font-bold">
                 Pregnancy Result
@@ -345,10 +363,7 @@ export default function PregnancyCalculator() {
                 Trimester: <strong>{result.trimester}</strong>
               </p>
               <p className="font-satoshi">
-                Due Date:{' '}
-                <strong className="font-bold">
-                  {formatDate(result.dueDate)}
-                </strong>
+                Due Date: <strong>{formatDate(result.dueDate)}</strong>
               </p>
               <p className="font-satoshi">
                 Conception Date: {formatDate(result.conceptionDate)}
