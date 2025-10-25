@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async'; // added for SEO
 import { Container } from '@/components/ui/Container';
 import LoanCalculator from '@/components/calculators/LoanCalculator';
+import FDCalculator from '@/components/calculators/FDCalculators';
 import NPVCalculator from '@/components/calculators/NPVCalculator';
 import PriceToWeightConverter from '@/components/calculators/PriceToWeightConverter';
 import ROICalculator from '@/components/calculators/ROICalculator';
@@ -11,7 +12,7 @@ import 'aos/dist/aos.css';
 
 export default function FinancialCalculators() {
   const [activeCalculator, setActiveCalculator] = useState<
-    'loan' | 'npv' | 'priceToWeight' | 'roi'
+    'loan' | 'fd' | 'npv' | 'priceToWeight' | 'roi'
   >('loan');
 
   useEffect(() => {
@@ -27,45 +28,36 @@ export default function FinancialCalculators() {
           title: 'Loan Calculator | MultiCalc',
           description:
             'Easily calculate your EMI and total interest using our free online Loan Calculator. Perfect for home, car, and personal loans.',
-          keywords:
-            'loan calculator, emi calculator, home loan calculator, car loan, personal loan, interest calculator, finance tools',
-          canonical: 'https://multicalc.site/loan-calculator',
+        };
+      case 'fd':
+        return {
+          title: 'FD Calculator | MultiCalc',
+          description:
+            'Calculate the maturity amount and total interest earned on your Fixed Deposit (FD) easily. Use our FD Calculator now!',
         };
       case 'npv':
         return {
           title: 'NPV Calculator | MultiCalc',
           description:
             'Calculate Net Present Value (NPV) for investments and business decisions instantly with our easy-to-use NPV Calculator.',
-          keywords:
-            'npv calculator, net present value, investment calculator, finance calculator, discounted cash flow',
-          canonical: 'https://multicalc.site/npv-calculator',
         };
       case 'priceToWeight':
         return {
           title: 'Price to Weight Converter | MultiCalc',
           description:
             'Compare prices by weight with our Price-to-Weight Converter. Ideal for grocery, retail, and product cost comparisons.',
-          keywords:
-            'price per kg calculator, price to weight, cost per gram calculator, unit price converter',
-          canonical: 'https://multicalc.site/price-to-weight-calculator',
         };
       case 'roi':
         return {
           title: 'ROI Calculator | MultiCalc',
           description:
             'Find your Return on Investment (ROI) quickly with our free online ROI Calculator. Perfect for investors and business owners.',
-          keywords:
-            'roi calculator, return on investment, profit percentage calculator, business investment calculator',
-          canonical: 'https://multicalc.site/roi-calculator',
         };
       default:
         return {
           title: 'Financial Calculators | MultiCalc',
           description:
             'All financial tools in one place — Loan, ROI, NPV, and Price-to-Weight Calculators for smarter financial decisions.',
-          keywords:
-            'financial calculators, online tools, finance, loan, roi, npv, calculator site',
-          canonical: 'https://multicalc.site/financial-calculators',
         };
     }
   };
@@ -78,16 +70,16 @@ export default function FinancialCalculators() {
       <Helmet>
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
-        <meta name="keywords" content={seo.keywords} />
-        <link rel="canonical" href={seo.canonical} />
 
         {/* Social share (Open Graph) */}
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.description} />
-        <meta property="og:url" content={seo.canonical} />
         <meta property="og:site_name" content="MultiCalc" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://multicalc.site/preview.png" />
+        <meta
+          property="og:image"
+          content="https://multicalc.site/preview.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
@@ -113,6 +105,18 @@ export default function FinancialCalculators() {
                 onClick={() => setActiveCalculator('loan')}
               >
                 Loan
+              </Button>
+
+              <Button
+                variant={activeCalculator === 'fd' ? 'default' : 'outline'}
+                className={`rounded-l-none rounded-r-none px-4 py-2 ${
+                  activeCalculator === 'fd'
+                    ? 'bg-primary text-primary-foreground'
+                    : ''
+                }`}
+                onClick={() => setActiveCalculator('fd')}
+              >
+                FD
               </Button>
 
               <Button
@@ -158,6 +162,7 @@ export default function FinancialCalculators() {
           {/* Render Selected Calculator */}
           <div className="transition-all duration-300">
             {activeCalculator === 'loan' && <LoanCalculator />}
+            {activeCalculator === 'fd' && <FDCalculator />}
             {activeCalculator === 'npv' && <NPVCalculator />}
             {activeCalculator === 'priceToWeight' && <PriceToWeightConverter />}
             {activeCalculator === 'roi' && <ROICalculator />}
