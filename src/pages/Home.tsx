@@ -65,6 +65,7 @@ export default function Home() {
       link: '/financial-calculators',
       calculators: [
         'Loan Calculator',
+        'FD Calculator',
         'NPV Calculator',
         'Price to Weight Calculator',
         'ROI Calculator',
