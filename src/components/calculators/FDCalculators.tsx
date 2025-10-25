@@ -86,18 +86,18 @@ const FDCaclculator: React.FC = () => {
 
   return (
     <div
-      className="min-h-[70vh] flex flex-col items-center justify-center px-4 py-8"
+      className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-2"
       data-aos="zoom-in"
     >
       <div className="w-full max-w-lg bg-white dark:bg-[#020817] border border-gray-200 dark:border-gray-800 rounded-lg p-6 shadow-lg transition-colors">
         {/* Principal */}
         <div className="text-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white font-synonym mb-3">
+          <h1 className="text-2xl md:text-2xl font-bold text-gray-900 dark:text-white font-synonym mb-3">
             Fixed Deposit Calculator
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2 font-satoshi">
             Calculate maturity amount and interest earned with compound
-            interest.
+            interest
           </p>
         </div>
 
