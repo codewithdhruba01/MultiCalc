@@ -15,9 +15,10 @@ const FDCaclculator: React.FC = () => {
     window.scrollTo(0, 0);
     AOS.init({ duration: 800, once: true });
   }, []);
+
   const [principal, setPrincipal] = useState<string>('');
-  const [rate, setRate] = useState<string>(''); // percent per annum
-  const [tenureValue, setTenureValue] = useState<string>(''); // numeric
+  const [rate, setRate] = useState<string>('');
+  const [tenureValue, setTenureValue] = useState<string>('');
   const [tenureUnit, setTenureUnit] = useState<'years' | 'months'>('years');
   const [freq, setFreq] = useState<string>('annual');
 
@@ -29,8 +30,8 @@ const FDCaclculator: React.FC = () => {
 
   const [maturity, setMaturity] = useState<number | null>(null);
   const [interestEarned, setInterestEarned] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false); // 👈 new loading state added
 
-  // Calculates maturity using A = P * (1 + r/n)^(n*t)
   const handleCalculate = () => {
     const newErrors = { principal: '', rate: '', tenure: '' };
     let valid = true;
@@ -54,23 +55,24 @@ const FDCaclculator: React.FC = () => {
     }
 
     setErrors(newErrors);
-    if (!valid) return; // don't proceed if invalid
+    if (!valid) return;
 
-    // Convert tenure to years
-    const t = tenureUnit === 'years' ? tenureRaw : tenureRaw / 12;
+    setLoading(true); // 👈 start loading
 
-    // find n from freq
-    const option = freqOptions.find((o) => o.value === freq);
-    const n = option ? option.n : 1;
+    setTimeout(() => {
+      // Convert tenure to years
+      const t = tenureUnit === 'years' ? tenureRaw : tenureRaw / 12;
+      const option = freqOptions.find((o) => o.value === freq);
+      const n = option ? option.n : 1;
+      const r = rPercent / 100;
 
-    const r = rPercent / 100; // decimal
+      const A = p * Math.pow(1 + r / n, n * t);
+      const interest = A - p;
 
-    // Compound interest formula
-    const A = p * Math.pow(1 + r / n, n * t);
-    const interest = A - p;
-
-    setMaturity(parseFloat(A.toFixed(2)));
-    setInterestEarned(parseFloat(interest.toFixed(2)));
+      setMaturity(parseFloat(A.toFixed(2)));
+      setInterestEarned(parseFloat(interest.toFixed(2)));
+      setLoading(false); // 👈 stop loading after calculation
+    }, 1000); // 1 second delay for realistic effect
   };
 
   const handleReset = () => {
@@ -90,63 +92,57 @@ const FDCaclculator: React.FC = () => {
       data-aos="zoom-in"
     >
       <div className="w-full max-w-lg bg-white dark:bg-[#020817] border border-gray-200 dark:border-gray-800 rounded-lg p-6 shadow-lg transition-colors">
-        {/* Principal */}
+        {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-2xl md:text-2xl font-bold text-gray-900 dark:text-white font-synonym mb-3">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white font-synonym mb-3">
             Fixed Deposit Calculator
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2 font-satoshi">
-            Calculate maturity amount and interest earned with compound
-            interest
+          <p className="text-gray-600 dark:text-gray-400 font-satoshi">
+            Calculate maturity amount and interest earned with compound interest
           </p>
         </div>
 
+        {/* Inputs */}
         <div className="mb-4">
           <label className="block text-gray-800 dark:text-gray-300 mb-1">
             Principal Amount <span className="text-red-500">*</span>
           </label>
           <input
             type="number"
-            min="0"
-            step="any"
             placeholder="Enter principal (e.g. 10000)"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
-            className={`w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 text-gray-900 dark:text-white bg-gray-100 dark:bg-[#020817] border transition-colors ${
+            className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
               errors.principal
                 ? 'border-red-500 focus:ring-red-500'
                 : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-            }`}
+            } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
           />
           {errors.principal && (
             <p className="text-red-500 text-sm mt-1">{errors.principal}</p>
           )}
         </div>
 
-        {/* Rate */}
         <div className="mb-4">
           <label className="block text-gray-800 dark:text-gray-300 mb-1">
             Annual Rate (%) <span className="text-red-500">*</span>
           </label>
           <input
             type="number"
-            min="0"
-            step="any"
             placeholder="e.g. 6.5"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
-            className={`w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 text-gray-900 dark:text-white bg-gray-100 dark:bg-[#020817] border transition-colors ${
+            className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
               errors.rate
                 ? 'border-red-500 focus:ring-red-500'
                 : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-            }`}
+            } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
           />
           {errors.rate && (
             <p className="text-red-500 text-sm mt-1">{errors.rate}</p>
           )}
         </div>
 
-        {/* Tenure and Unit */}
         <div className="mb-4 grid grid-cols-3 gap-3">
           <div className="col-span-2">
             <label className="block text-gray-800 dark:text-gray-300 mb-1">
@@ -154,16 +150,14 @@ const FDCaclculator: React.FC = () => {
             </label>
             <input
               type="number"
-              min="0"
-              step="any"
               placeholder="Enter tenure"
               value={tenureValue}
               onChange={(e) => setTenureValue(e.target.value)}
-              className={`w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 text-gray-900 dark:text-white bg-gray-100 dark:bg-[#020817] border transition-colors ${
+              className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
                 errors.tenure
                   ? 'border-red-500 focus:ring-red-500'
                   : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-              }`}
+              } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
             />
             {errors.tenure && (
               <p className="text-red-500 text-sm mt-1">{errors.tenure}</p>
@@ -187,7 +181,6 @@ const FDCaclculator: React.FC = () => {
           </div>
         </div>
 
-        {/* Frequency */}
         <div className="mb-4">
           <label className="block text-gray-800 dark:text-gray-300 mb-1">
             Compounding Frequency
@@ -209,12 +202,18 @@ const FDCaclculator: React.FC = () => {
         <div className="flex gap-3 mt-6">
           <button
             onClick={handleCalculate}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+            disabled={loading}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition flex justify-center items-center"
           >
-            Calculate
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              'Calculate'
+            )}
           </button>
           <button
             onClick={handleReset}
+            disabled={loading}
             className="flex-1 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white py-2 rounded-md transition"
           >
             Reset
@@ -222,15 +221,17 @@ const FDCaclculator: React.FC = () => {
         </div>
 
         {/* Result */}
-        {maturity !== null && interestEarned !== null && (
+        {!loading && maturity !== null && interestEarned !== null && (
           <div className="mt-6 bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 rounded-md p-4 transition-colors">
-            <p className="text-gray-800 dark:text-gray-300">Maturity Amount</p>
+            <p className="text-gray-800 dark:text-gray-300 font-outfit font-semibold">
+              Maturity Amount
+            </p>
             <p className="text-2xl font-semibold text-green-600 dark:text-green-400">
               ₹ {maturity.toLocaleString()}
             </p>
 
             <div className="mt-2">
-              <p className="text-gray-800 dark:text-gray-300">
+              <p className="text-gray-800 dark:text-gray-300 font-outfit font-semibold">
                 Total Interest Earned
               </p>
               <p className="text-lg font-medium text-gray-700 dark:text-gray-200">
