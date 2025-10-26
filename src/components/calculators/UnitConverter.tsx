@@ -94,6 +94,7 @@ export default function UnitConverter() {
   const [toUnit, setToUnit] = useState<string>('centimeter');
   const [fromValue, setFromValue] = useState<string>('');
   const [toValue, setToValue] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleCategoryChange = (newCategory: ConversionCategory) => {
     setCategory(newCategory);
@@ -108,11 +109,14 @@ export default function UnitConverter() {
     setToValue('');
   };
 
-  const convert = () => {
+  const convert = async () => {
     if (!fromValue || isNaN(parseFloat(fromValue))) {
       setToValue('');
       return;
     }
+
+    setLoading(true); 
+    await new Promise((resolve) => setTimeout(resolve, 700));
 
     const value = parseFloat(fromValue);
 
@@ -138,6 +142,8 @@ export default function UnitConverter() {
         ] as number);
       setToValue(targetValue.toFixed(4));
     }
+
+    setLoading(false); // <-- stop spinner
   };
 
   const convertTemperature = (
@@ -335,8 +341,12 @@ export default function UnitConverter() {
           </div>
 
           <div className="grid grid-cols-3 gap-4">
-            <Button onClick={convert} disabled={!fromValue}>
-              Convert
+            <Button onClick={convert} disabled={!fromValue || loading}>
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-t-transparent border-white rounded-full animate-spin mx-auto" />
+              ) : (
+                'Convert'
+              )}
             </Button>
             <Button variant="outline" onClick={handleSwap}>
               Swap
