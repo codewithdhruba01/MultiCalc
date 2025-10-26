@@ -58,6 +58,18 @@ export default function Footer() {
                   Marks Calculator
                 </Link>
               </li>
+              <li>
+                <Link to="/split-calculator" className="text-muted-foreground hover:text-foreground flex items-center">
+                  
+                  Split Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/salary-calculator" className="text-muted-foreground hover:text-foreground flex items-center">
+                  
+                  Salary Calculator
+                </Link>
+              </li>
             </ul>
           </div>
           
@@ -103,7 +115,7 @@ export default function Footer() {
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://codewithdhruba.netlify.app/" className="text-muted-foreground hover:text-[#25b608]">
+              <a href="https://codewithdhruba.vercel.app/" className="text-muted-foreground hover:text-[#25b608]">
                 <Globe className="h-5 w-5" />
                 <span className="sr-only">Website</span>
               </a>
