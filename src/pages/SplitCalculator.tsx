@@ -7,10 +7,12 @@ const BillSplitCalculator: React.FC = () => {
     window.scrollTo(0, 0);
     AOS.init({ duration: 800, once: true });
   }, []);
+
   const [totalBill, setTotalBill] = useState<string>('');
   const [extraCharges, setExtraCharges] = useState<string>('');
   const [totalPeople, setTotalPeople] = useState<string>('');
   const [perPerson, setPerPerson] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [errors, setErrors] = useState({
     bill: '',
@@ -32,16 +34,21 @@ const BillSplitCalculator: React.FC = () => {
     }
 
     setErrors(newErrors);
-
     if (!isValid) return;
 
-    const bill = parseFloat(totalBill);
-    const extra = parseFloat(extraCharges) || 0;
-    const people = parseInt(totalPeople);
+    setLoading(true);
+    setPerPerson(null);
 
-    const totalAmount = bill + extra;
-    const perHead = totalAmount / people;
-    setPerPerson(parseFloat(perHead.toFixed(2)));
+    setTimeout(() => {
+      const bill = parseFloat(totalBill);
+      const extra = parseFloat(extraCharges) || 0;
+      const people = parseInt(totalPeople);
+
+      const totalAmount = bill + extra;
+      const perHead = totalAmount / people;
+      setPerPerson(parseFloat(perHead.toFixed(2)));
+      setLoading(false);
+    }, 700); // small delay for smooth effect
   };
 
   const handleReset = () => {
@@ -50,10 +57,14 @@ const BillSplitCalculator: React.FC = () => {
     setTotalPeople('');
     setPerPerson(null);
     setErrors({ bill: '', people: '' });
+    setLoading(false);
   };
 
   return (
-    <div className="min-h-[70vh] flex flex-col justify-center items-center px-4" data-aos="fade-up">
+    <div
+      className="min-h-[70vh] flex flex-col justify-center items-center px-4"
+      data-aos="fade-up"
+    >
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center font-synonym mb-3">
           Bill Split Calculator
@@ -124,12 +135,18 @@ const BillSplitCalculator: React.FC = () => {
         <div className="flex gap-2 mt-6">
           <button
             onClick={handleCalculate}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+            disabled={loading}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition flex justify-center items-center"
           >
-            Calculate
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              'Calculate'
+            )}
           </button>
           <button
             onClick={handleReset}
+            disabled={loading}
             className="flex-1 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white py-2 rounded-md transition"
           >
             Reset
@@ -137,10 +154,10 @@ const BillSplitCalculator: React.FC = () => {
         </div>
 
         {/* Result */}
-        {perPerson !== null && (
+        {perPerson !== null && !loading && (
           <div className="mt-6 text-center bg-gray-100 dark:bg-[#0f172a] p-3 rounded-md border border-gray-300 dark:border-gray-700 transition-colors">
             <p className="text-gray-800 dark:text-gray-300 font-poppins">
-              Per Person Amount:
+              Per Person Distribute Amount:
             </p>
             <p className="text-2xl font-semibold text-green-600 dark:text-green-400">
               ₹ {perPerson}
