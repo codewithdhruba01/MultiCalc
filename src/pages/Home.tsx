@@ -306,113 +306,150 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Categories Section */}
+        {/* Calculator Categories - Neo Brutalism Smooth + Balanced Layout */}
         <section className="mb-16">
-          <h2
-            className="text-3xl font-synonym font-bold mb-10 text-center"
-            data-aos="zoom-in"
-          >
-            Calculator Categories
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {calculatorCategories.map((category, index) => (
-              <Link to={category.link} key={index}>
-                <Card
-                  className={`h-full transition-all hover:shadow-xl ${category.hoverEffect} transform hover:-translate-y-1 duration-300`}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
-                  <div
-                    className={`bg-gradient-to-br ${category.gradient} rounded-t-lg p-6 text-center`}
-                  >
-                    <div className="mx-auto mb-2 bg-white/20 p-4 rounded-full inline-block">
-                      {category.icon}
-                    </div>
-                    <h3 className="text-xl font-outfit text-white">
-                      {category.title}
-                    </h3>
-                  </div>
-                  <CardContent className="pt-4">
-                    <p className="text-muted-foreground font-satoshi mb-4">
-                      {category.description}
-                    </p>
-                    <div className="space-y-2">
-                      {category.calculators.map((calc, i) => (
-                        <div key={i} className="flex items-center">
-                          <div className="w-2 h-2 rounded-full bg-primary mr-2"></div>
-                          <span>{calc}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+  <h2
+    className="text-3xl font-synonym font-bold mb-10 text-center"
+    data-aos="zoom-in"
+  >
+    Calculator Categories
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {calculatorCategories.map((category, index) => (
+      <Link to={category.link} key={index}>
+        <div
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          className={`
+            relative flex flex-col justify-between h-full p-6 rounded-2xl
+            bg-gradient-to-br ${category.gradient}
+            border-[3px] border-black dark:border-white
+            shadow-[8px_8px_0px_#000] dark:shadow-[8px_8px_0px_#fff]
+            transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-100
+            hover:-translate-y-2 hover:-translate-x-2
+            hover:shadow-[12px_12px_0px_#000] dark:hover:shadow-[12px_12px_0px_#fff]
+            hover:scale-[1.02]
+            ytext-white cursor-pointer
+          `}
+        >
+          {/* Top Section */}
+          <div className="flex flex-col items-center text-center mb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150">
+            <div className="p-4 bg-white/30 dark:bg-black/20 rounded-full mb-3 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150 group-hover:rotate-6">
+              {category.icon}
+            </div>
+            <h3 className="text-xl font-extrabold tracking-tight ">
+              {category.title}
+            </h3>
+            <p className="text-sm opacity-80 font-satoshi mt-1 text-center">
+              {category.description}
+            </p>
           </div>
-        </section>
+
+          
+
+          {/* Bottom Section - Calculators List */}
+          <ul className="mt-auto space-y-2 text-sm font-semibold list-disc list-inside">
+            {category.calculators.map((calc, i) => (
+              <li
+                key={i}
+                className="pl-10 marker:text-violet-700 dark:marker:text-white"
+              >
+                {calc}
+              </li>
+            ))}
+          </ul>
+          {/* Spacer */}
+          <div className="flex-grow"></div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
+
+
+
 
         {/* Features Section */}
         <section className="mb-16">
-          <h2
-            className="text-3xl font-synonym font-bold mb-5 text-center"
-            data-aos="fade-up"
-          >
-            Why Choose Our Calculators?
-          </h2>
-          <p
-            className="text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-12 text-center"
-            data-aos="fade-up"
-          >
-            Explore a wide range of smart calculators tailored for math,
-            finance, health, and advanced needs—all in one place.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Calculator className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-outfit mb-2">Easy to Use</h3>
-              <p className="text-white/90 font-satoshi">
-                Simple, intuitive interface designed for quick calculations
-                without any hassle.
-              </p>
-            </div>
+  <h2
+    className="text-3xl font-synonym font-bold mb-5 text-center"
+    data-aos="fade-up"
+  >
+    Why Choose Our Calculators?
+  </h2>
 
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Calendar className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-outfit mb-2">Multiple Categories</h3>
-              <p className="text-white/90 font-satoshi">
-                From basic math to finance, health, and conversions — we've got
-                all your calculation needs covered.
-              </p>
-            </div>
+  <p
+    className="text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-12 text-center"
+    data-aos="fade-up"
+  >
+    Explore a wide range of smart calculators tailored for math, finance, health,
+    and advanced needs—all in one place.
+  </p>
 
-            <div
-              className="group text-center p-6 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="bg-black/50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Ruler className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-outfit mb-2">Accurate Results</h3>
-              <p className="text-white/90 font-satoshi">
-                Precise calculations you can rely on for personal, educational,
-                or professional use.
-              </p>
-            </div>
-          </div>
-        </section>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {/* Card 1 */}
+    <div
+      className="group bg-gradient-to-br from-blue-800 to-indigo-500 text-white 
+                 rounded-2xl border-[2px] border-black dark:border-white 
+                 shadow-[6px_6px_0px_#000] dark:shadow-[6px_6px_0px_#fff] 
+                 p-8 transition-all duration-500 
+                 hover:-translate-y-2 hover:-translate-x-2 
+                 hover:shadow-[10px_10px_0px_#000] dark:hover:shadow-[10px_10px_0px_#fff]"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div className="bg-white/30 dark:bg-black/20 border border-white/40 dark:border-white/30 rounded-xl w-14 h-14 flex items-center justify-center mb-4 shadow-[3px_3px_0px_rgba(0,0,0,0.4)] dark:shadow-[3px_3px_0px_rgba(255,255,255,0.2)]">
+        <Calculator className="h-7 w-7 text-white" />
+      </div>
+      <h3 className="text-lg font-bold mb-2 font-outfit">Easy to Use</h3>
+      <p className="text-white/90 font-satoshi text-sm leading-relaxed">
+        Simple, intuitive interface designed for quick calculations without any hassle.
+      </p>
+    </div>
+
+    {/* Card 2 */}
+    <div
+      className="group bg-gradient-to-br from-pink-800 to-rose-500 text-white 
+                 rounded-2xl border-[2px] border-black dark:border-white 
+                 shadow-[6px_6px_0px_#000] dark:shadow-[6px_6px_0px_#fff] 
+                 p-8 transition-all duration-500 
+                 hover:-translate-y-2 hover:-translate-x-2 
+                 hover:shadow-[10px_10px_0px_#000] dark:hover:shadow-[10px_10px_0px_#fff]"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      <div className="bg-white/30 dark:bg-black/20 border border-white/40 dark:border-white/30 rounded-xl w-14 h-14 flex items-center justify-center mb-4 shadow-[3px_3px_0px_rgba(0,0,0,0.4)] dark:shadow-[3px_3px_0px_rgba(255,255,255,0.2)]">
+        <Calendar className="h-7 w-7 text-white" />
+      </div>
+      <h3 className="text-lg font-bold mb-2 font-outfit">Multiple Categories</h3>
+      <p className="text-white/90 font-satoshi text-sm leading-relaxed">
+        From basic math to finance, health, and conversions — we've got all your calculation needs covered.
+      </p>
+    </div>
+
+    {/* Card 3 */}
+    <div
+      className="group bg-gradient-to-br from-green-800 to-emerald-500 text-white 
+                 rounded-2xl border-[2px] border-black dark:border-white 
+                 shadow-[6px_6px_0px_#000] dark:shadow-[6px_6px_0px_#fff] 
+                 p-8 transition-all duration-500 
+                 hover:-translate-y-2 hover:-translate-x-2 
+                 hover:shadow-[10px_10px_0px_#000] dark:hover:shadow-[10px_10px_0px_#fff]"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <div className="bg-white/30 dark:bg-black/20 border border-white/40 dark:border-white/30 rounded-xl w-14 h-14 flex items-center justify-center mb-4 shadow-[3px_3px_0px_rgba(0,0,0,0.4)] dark:shadow-[3px_3px_0px_rgba(255,255,255,0.2)]">
+        <Ruler className="h-7 w-7 text-white" />
+      </div>
+      <h3 className="text-lg font-bold mb-2 font-outfit">Accurate Results</h3>
+      <p className="text-white/90 font-satoshi text-sm leading-relaxed">
+        Precise calculations you can rely on for personal, educational, or professional use.
+      </p>
+    </div>
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section
