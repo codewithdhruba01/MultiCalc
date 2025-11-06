@@ -306,7 +306,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Calculator Categories - Neo Brutalism Smooth + Balanced Layout */}
+        {/* Calculator Categories */}
         <section className="mb-16">
   <h2
     className="text-3xl font-synonym font-bold mb-10 text-center"
@@ -334,11 +334,11 @@ export default function Home() {
           `}
         >
           {/* Top Section */}
-          <div className="flex flex-col items-center text-center mb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150">
+          <div className="flex flex-col items-center text-white text-center mb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150">
             <div className="p-4 bg-white/30 dark:bg-black/20 rounded-full mb-3 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150 group-hover:rotate-6">
               {category.icon}
             </div>
-            <h3 className="text-xl font-extrabold tracking-tight ">
+            <h3 className="text-xl font-bold tracking-tight font-synonym ">
               {category.title}
             </h3>
             <p className="text-sm opacity-80 font-satoshi mt-1 text-center">
@@ -346,10 +346,8 @@ export default function Home() {
             </p>
           </div>
 
-          
-
           {/* Bottom Section - Calculators List */}
-          <ul className="mt-auto space-y-2 text-sm font-semibold list-disc list-inside">
+          <ul className="text-white mt-auto space-y-2 text-sm font-semibold list-disc list-inside">
             {category.calculators.map((calc, i) => (
               <li
                 key={i}
@@ -366,9 +364,6 @@ export default function Home() {
     ))}
   </div>
 </section>
-
-
-
 
         {/* Features Section */}
         <section className="mb-16">
