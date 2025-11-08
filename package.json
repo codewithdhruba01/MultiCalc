@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.18.0",
+    "styled-components": "^6.1.19",
     "swiper": "^11.2.10",
     "tailwind-merge": "^1.14.0",
     "ui": "^0.2.4"
@@ -30,6 +31,7 @@
     "@types/aos": "^3.0.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.35",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^9.36.0",
