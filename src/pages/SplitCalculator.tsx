@@ -62,7 +62,7 @@ const BillSplitCalculator: React.FC = () => {
 
   return (
     <div
-      className="min-h-[70vh] flex flex-col justify-center items-center px-4"
+      className="min-h-[70vh] flex flex-col justify-center items-center px-4 pt-24 pb-20" // 👈 Added top & bottom padding
       data-aos="fade-up"
     >
       <div className="text-center mb-6">
