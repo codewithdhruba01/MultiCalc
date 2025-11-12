@@ -15,6 +15,7 @@ import {
   Check,
   ChevronDown,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Contact() {
   useEffect(() => {
@@ -31,7 +32,6 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   const handleChange = (
@@ -302,21 +302,38 @@ export default function Contact() {
             </h2>
             <div className="space-y-4 max-w-2xl mx-auto">
               {faqData.map((faq, index) => (
-                <div key={index} className="rounded-md border border-muted p-4">
+                <div
+                  key={index}
+                  className="rounded-md border border-muted p-4 transition-all duration-300 hover:shadow-md hover:bg-[#f9f9f9] dark:hover:bg-[#010111]"
+                >
                   <button
                     className="w-full flex items-center justify-between text-left font-outfit text-base"
-                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                    onClick={() =>
+                      setOpenFAQ(openFAQ === index ? null : index)
+                    }
                   >
                     {faq.question}
                     <ChevronDown
-                      className={`transition-transform ${openFAQ === index ? 'rotate-180' : ''}`}
+                      className={`transition-transform duration-300 ${
+                        openFAQ === index ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
-                  {openFAQ === index && (
-                    <p className="mt-3 text-muted-foreground font-satoshi text-sm">
-                      {faq.answer}
-                    </p>
-                  )}
+
+                  <AnimatePresence initial={false}>
+                    {openFAQ === index && (
+                      <motion.p
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
+                        className="mt-3 text-muted-foreground font-satoshi text-sm overflow-hidden"
+                      >
+                        {faq.answer}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </div>
