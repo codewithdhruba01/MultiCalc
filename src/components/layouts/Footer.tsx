@@ -47,9 +47,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/age-calculator" className="text-muted-foreground hover:text-foreground flex items-center">
+                <Link to="/SalesTax-Calculator" className="text-muted-foreground hover:text-foreground flex items-center">
                   
-                  Age Calculator
+                  Sales Tax Calculator
                 </Link>
               </li>
               <li>
