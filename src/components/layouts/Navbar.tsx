@@ -93,6 +93,7 @@ export default function Navbar() {
                     { to: '/age-calculator', label: 'Age Calculator' },
                     { to: '/salary-calculator', label: 'Salary Calculator' },
                     { to: '/split-calculator', label: 'Split Calculator' },
+                    { to: '/SalesTax-Calculator', label: 'Sales Tax Calculator' },
                   ].map((item) => (
                     <NavLink
                       key={item.to}
@@ -202,6 +203,7 @@ export default function Navbar() {
                     { to: '/age-calculator', label: 'Age Calculator' },
                     { to: '/salary-calculator', label: 'Salary Calculator' },
                     { to: '/split-calculator', label: 'Split Calculator' },
+                    { to: '/SalesTax-Calculator', label: 'Sales Tax Calculator' },
                   ].map((item) => (
                     <NavLink
                       key={item.to}
