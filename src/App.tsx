@@ -9,6 +9,7 @@ import AdvanceCalculators from './pages/AdvanceCalculators';
 import CurrencyConverter from './pages/CurrencyConverter';
 import SalaryCalculator from './pages/SalaryCalculator';
 import SplitCalculator from './pages/SplitCalculator';
+import SalesTaxCalculator from './pages/SalesTaxCalculator';
 import DetailedAgeCalculator from './pages/DetailedAgeCalculator';
 import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -32,6 +33,7 @@ function App() {
         <Route path="currency-converter" element={<CurrencyConverter />} />
         <Route path="salary-calculator" element={<SalaryCalculator />} />
         <Route path="split-calculator" element={<SplitCalculator />} />
+        <Route path="SalesTax-Calculator" element={<SalesTaxCalculator />} />
         <Route path="age-calculator" element={<DetailedAgeCalculator />} />
         <Route path="about" element={<About />} />
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
