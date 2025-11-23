@@ -1,6 +1,6 @@
 <div align="center">
 
-![Banner](public/Screenshoot/multicalculator.png)
+![Banner](public/Screenshoot/multicalc.png)
 
 ![GitHub contributors](https://img.shields.io/github/contributors/codewithdhruba01/MultiCalc?color=lightgrey)
 [![GitHub forks](https://img.shields.io/github/forks/codewithdhruba01/MultiCalc?color=lightgrey)](https://github.com/codewithdhruba01/MultiCalc/network)
