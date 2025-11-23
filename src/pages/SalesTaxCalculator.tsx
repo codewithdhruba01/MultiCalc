@@ -25,12 +25,12 @@ const SalesTaxCalculator: React.FC = () => {
     let valid = true;
 
     if (!price || parseFloat(price) <= 0) {
-      newErrors.price = "Please enter valid product price";
+      newErrors.price = 'Please enter valid product price';
       valid = false;
     }
 
     if (!tax || parseFloat(tax) < 0) {
-      newErrors.tax = "Please enter valid tax percentage";
+      newErrors.tax = 'Please enter valid tax percentage';
       valid = false;
     }
 
@@ -62,43 +62,55 @@ const SalesTaxCalculator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[70vh] flex flex-col justify-center items-center px-4 pt-24 pb-20" data-aos="fade-up">
+    <div
+      className="min-h-[70vh] flex flex-col justify-center items-center px-4 pt-24 pb-20"
+      data-aos="fade-up"
+    >
       <div className="text-center mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+        <h1 className="text-2xl md:text-3xl font-synonym font-bold text-gray-900 dark:text-white mb-3">
           Sales Tax Calculator
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-gray-600 font-satoshi dark:text-gray-400">
           Calculate total price including tax easily
         </p>
       </div>
 
       <div className="bg-white dark:bg-[#020817] border border-gray-200 dark:border-gray-800 rounded-lg p-6 w-full max-w-md shadow-lg">
-
         {/* Price */}
         <div className="mb-4">
-          <label className="text-gray-800 dark:text-gray-300">Product Price *</label>
+          <label className="text-gray-800 dark:text-gray-300">
+            Product Price *
+          </label>
           <input
             type="number"
             placeholder="Enter price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] text-gray-900 dark:text-white border ${
-              errors.price ? "border-red-600" : "border-gray-300 dark:border-gray-800"
+              errors.price
+                ? 'border-red-600'
+                : 'border-gray-300 dark:border-gray-800'
             }`}
           />
-          {errors.price && <p className="text-red-500 text-sm">{errors.price}</p>}
+          {errors.price && (
+            <p className="text-red-500 text-sm">{errors.price}</p>
+          )}
         </div>
 
         {/* Tax */}
         <div className="mb-4">
-          <label className="text-gray-800 dark:text-gray-300">Tax Percentage (%) *</label>
+          <label className="text-gray-800 dark:text-gray-300">
+            Tax Percentage (%) *
+          </label>
           <input
             type="number"
             placeholder="Enter tax"
             value={tax}
             onChange={(e) => setTax(e.target.value)}
             className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] text-gray-900 dark:text-white border ${
-              errors.tax ? "border-red-600" : "border-gray-300 dark:border-gray-800"
+              errors.tax
+                ? 'border-red-600'
+                : 'border-gray-300 dark:border-gray-800'
             }`}
           />
           {errors.tax && <p className="text-red-500 text-sm">{errors.tax}</p>}
@@ -106,7 +118,9 @@ const SalesTaxCalculator: React.FC = () => {
 
         {/* Quantity */}
         <div className="mb-4">
-          <label className="text-gray-800 dark:text-gray-300">Quantity (optional)</label>
+          <label className="text-gray-800 dark:text-gray-300">
+            Quantity (optional)
+          </label>
           <input
             type="number"
             placeholder="1"
@@ -126,7 +140,7 @@ const SalesTaxCalculator: React.FC = () => {
             {loading ? (
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             ) : (
-              "Calculate"
+              'Calculate'
             )}
           </button>
 
