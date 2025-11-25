@@ -27,7 +27,6 @@ export default function Navbar() {
     }
   }, [isMenuOpen]);
 
-  /* COPY PROTECTION (Right-click Enabled) */
   useEffect(() => {
     const blockEvent = (e: any) => e.preventDefault();
 
@@ -67,7 +66,7 @@ export default function Navbar() {
               className="flex items-center gap-2 font-bold text-lg px-3 py-1 rounded-full"
             >
               <img src="/images/logo.svg" alt="MultiCalc Logo" className="h-10 w-auto" />
-              <span>MultiCalc</span>
+              <span className="font-synonym">MultiCalc</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -162,7 +161,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-6">
               <Link to="/" onClick={closeMenu} className="flex items-center gap-2 font-bold text-lg">
                 <img src="/images/logo.svg" alt="Logo" className="h-10 w-auto" />
-                <span>MultiCalc</span>
+                <span className="font-synonym">MultiCalc</span>
               </Link>
 
               <button onClick={closeMenu}>
