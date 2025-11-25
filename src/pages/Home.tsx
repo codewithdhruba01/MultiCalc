@@ -33,6 +33,35 @@ export default function Home() {
     });
   }, []);
 
+  // COPY PROTECTION — RIGHT-CLICK ENABLED
+  useEffect(() => {
+    const blockEvent = (e: any) => e.preventDefault();
+
+    // Disable copy, cut, paste
+    document.addEventListener('copy', blockEvent);
+    document.addEventListener('cut', blockEvent);
+    document.addEventListener('paste', blockEvent);
+
+    // Disable keyboard shortcuts
+    const disableKeys = (e: KeyboardEvent) => {
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        ['c', 'v', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase())
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('keydown', disableKeys);
+
+    return () => {
+      document.removeEventListener('copy', blockEvent);
+      document.removeEventListener('cut', blockEvent);
+      document.removeEventListener('paste', blockEvent);
+      document.removeEventListener('keydown', disableKeys);
+    };
+  }, []);
+  // END PROTECTION
+
   // Rotating Words
   const words = ['effective', 'powerful', 'fast', 'simple', 'reliable'];
   const [index, setIndex] = useState(0);
@@ -145,9 +174,8 @@ export default function Home() {
       image: '/testimoni/img4.jpeg',
       rating: 5,
       comment:
-        'I have used the Multicalc platform. It is very smooth to use. It had wide range of calculators. Interesting to explore all in one place. With a Sleek UI and smooth UX MultiCalc is built very well.',
+        'I have used the Multicalc platform. It is very smooth to use. It had wide range of calculators. Interesting to explore all in one place. With a Sleek UI and smooth UX MultiCalc is built very well.',
     },
-
     {
       id: 6,
       name: 'Priyadharshini S',
@@ -173,12 +201,12 @@ export default function Home() {
       image: '/testimoni/img12.jpeg',
       rating: 5,
       comment:
-        'I like the way it have many calculations which includes health calcs too. This is a great work dhrubaraj! Congratulations. ',
+        'I like the way it have many calculations which includes health calcs too. This is a great work dhrubaraj! Congratulations.',
     },
   ];
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-8 md:py-12 select-none">
       <Container>
         <section className="mb-20 mt-20 text-center">
           <button className="bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-10 font-supreme">
@@ -186,7 +214,6 @@ export default function Home() {
             Now it is time to calculate →
           </button>
 
-          {/* Title */}
           <h1
             className="text-5xl md:text-7xl font-excon font-bold mb-5"
             data-aos="fade-up"
@@ -206,7 +233,6 @@ export default function Home() {
             </AnimatePresence>
           </h1>
 
-          {/* Subtitle */}
           <p
             className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto font-satoshi"
             data-aos="fade-up"
@@ -237,7 +263,6 @@ export default function Home() {
               </button>
             </Link>
 
-            {/* Learn More Button */}
             <Link to="/about">
               <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                 Learn More
@@ -357,7 +382,6 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  {/* Spacer */}
                   <div className="flex-grow"></div>
                 </div>
               </Link>
