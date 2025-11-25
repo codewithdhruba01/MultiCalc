@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container';
-import { Github, Heart, Twitter, Globe } from 'lucide-react';
+import { Github, Coffee, Twitter, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -165,13 +165,20 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border/40 pt-6 text-center">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground font-satoshi">
             &copy; {currentYear} MultiCalc. All rights reserved.
           </p>
-
-          <p className="text-sm text-muted-foreground flex items-center justify-center mt-2">
-            Made with <Heart className="h-4 w-4 mx-1 text-red-500" /> for
-            Dhrubaraj Pati
+          <p className="text-sm text-muted-foreground flex items-center font-satoshi justify-center mt-2">
+            Design & Developed by{' '}
+            <Coffee className="w-4 h-4 mx-1 text-[#04afee]" />
+            <a
+              href="https://codewithdhruba.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground dark:text-white hover:none active:no-underline transition-colors font-satoshi"
+            >
+              Dhrubaraj Pati
+            </a>
           </p>
         </div>
       </Container>
