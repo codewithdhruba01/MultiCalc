@@ -27,11 +27,42 @@ export default function Navbar() {
     }
   }, [isMenuOpen]);
 
+  /* COPY PROTECTION FOR NAVBAR (Right-click ENABLED) */
+  useEffect(() => {
+    const blockEvent = (e: any) => e.preventDefault();
+
+    // Disable copy, cut, paste
+    document.addEventListener("copy", blockEvent);
+    document.addEventListener("cut", blockEvent);
+    document.addEventListener("paste", blockEvent);
+
+    // Disable keyboard shortcuts (Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+A)
+    const disableKeys = (e: KeyboardEvent) => {
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        ["c", "v", "x", "a", "s", "p"].includes(e.key.toLowerCase())
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("keydown", disableKeys);
+
+    return () => {
+      document.removeEventListener("copy", blockEvent);
+      document.removeEventListener("cut", blockEvent);
+      document.removeEventListener("paste", blockEvent);
+      document.removeEventListener("keydown", disableKeys);
+    };
+  }, []);
+  /* END PROTECTION */
+
   return (
-    <header className="sticky top-4 z-50 w-full flex justify-center">
+    <header className="sticky top-4 z-50 w-full flex justify-center select-none">
       <Container>
         <div className="flex justify-center">
           <div className="flex items-center justify-between w-full md:w-auto gap-4 bg-card/70 backdrop-blur-md px-6 py-2 rounded-full shadow-lg border border-border/40">
+            
             {/* Logo */}
             <Link
               to="/"
@@ -86,7 +117,6 @@ export default function Navbar() {
                   />
                 </button>
 
-                {/* Stylish Dropdown */}
                 <StyledDropdown isOpen={isDropdownOpen}>
                   {[
                     { to: '/currency-converter', label: 'Currency Converter' },
@@ -127,7 +157,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="fixed inset-0 z-40 md:hidden select-none">
           <div
             className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
               isMenuOpen ? 'opacity-100' : 'opacity-0'
@@ -275,7 +305,6 @@ const StyledDropdown = styled.div<{ isOpen: boolean }>`
     }
   }
 
-  /* 🌞 Light mode styling */
   [data-theme='light'] & {
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
