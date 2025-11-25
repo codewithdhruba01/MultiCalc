@@ -11,27 +11,30 @@ export default function Footer() {
     const blockEvent = (e: any) => e.preventDefault();
 
     // Disable selection
-    document.addEventListener("selectstart", blockEvent);
+    document.addEventListener('selectstart', blockEvent);
 
     // Disable copy/cut/paste
-    document.addEventListener("copy", blockEvent);
-    document.addEventListener("cut", blockEvent);
-    document.addEventListener("paste", blockEvent);
+    document.addEventListener('copy', blockEvent);
+    document.addEventListener('cut', blockEvent);
+    document.addEventListener('paste', blockEvent);
 
     // Disable keyboard shortcuts
     const disableKeys = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && ["c", "v", "x", "a"].includes(e.key.toLowerCase())) {
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        ['c', 'v', 'x', 'a'].includes(e.key.toLowerCase())
+      ) {
         e.preventDefault();
       }
     };
-    document.addEventListener("keydown", disableKeys);
+    document.addEventListener('keydown', disableKeys);
 
     return () => {
-      document.removeEventListener("selectstart", blockEvent);
-      document.removeEventListener("copy", blockEvent);
-      document.removeEventListener("cut", blockEvent);
-      document.removeEventListener("paste", blockEvent);
-      document.removeEventListener("keydown", disableKeys);
+      document.removeEventListener('selectstart', blockEvent);
+      document.removeEventListener('copy', blockEvent);
+      document.removeEventListener('cut', blockEvent);
+      document.removeEventListener('paste', blockEvent);
+      document.removeEventListener('keydown', disableKeys);
     };
   }, []);
 
