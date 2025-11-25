@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Container } from '../ui/Container';
 import { Github, Coffee, Twitter, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,8 +6,37 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // COPY PROTECTION (text selection disable + copy/cut/paste block)
+  useEffect(() => {
+    const blockEvent = (e: any) => e.preventDefault();
+
+    // Disable selection
+    document.addEventListener("selectstart", blockEvent);
+
+    // Disable copy/cut/paste
+    document.addEventListener("copy", blockEvent);
+    document.addEventListener("cut", blockEvent);
+    document.addEventListener("paste", blockEvent);
+
+    // Disable keyboard shortcuts
+    const disableKeys = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ["c", "v", "x", "a"].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", disableKeys);
+
+    return () => {
+      document.removeEventListener("selectstart", blockEvent);
+      document.removeEventListener("copy", blockEvent);
+      document.removeEventListener("cut", blockEvent);
+      document.removeEventListener("paste", blockEvent);
+      document.removeEventListener("keydown", disableKeys);
+    };
+  }, []);
+
   return (
-    <footer className="border-t border-border/70 bg-background py-8">
+    <footer className="border-t border-border/70 bg-background py-8 select-none">
       <Container>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
