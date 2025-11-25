@@ -12,6 +12,35 @@ import {
 } from 'lucide-react';
 
 export default function About() {
+  /* CONTENT PROTECTION — Right-click ENABLED */
+  useEffect(() => {
+    const blockEvent = (e: any) => e.preventDefault();
+
+    // disable copy / cut / paste
+    document.addEventListener('copy', blockEvent);
+    document.addEventListener('cut', blockEvent);
+    document.addEventListener('paste', blockEvent);
+
+    // disable keyboard shortcuts (Ctrl+C/V/X/A/S/P)
+    const disableKeys = (e: KeyboardEvent) => {
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        ['c', 'v', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase())
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('keydown', disableKeys);
+
+    return () => {
+      document.removeEventListener('copy', blockEvent);
+      document.removeEventListener('cut', blockEvent);
+      document.removeEventListener('paste', blockEvent);
+      document.removeEventListener('keydown', disableKeys);
+    };
+  }, []);
+  /* END PROTECTION */
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -22,7 +51,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="py-20 md:py-15">
+    <div className="py-20 md:py-15 select-none">
       <Container>
         <div className="max-w-3xl mx-auto">
           <h1
@@ -196,9 +225,9 @@ export default function About() {
                 Get in Touch
               </h2>
               <p className="text-muted-foreground mb-6 font-satoshi max-w-xl mx-auto">
-                Have questions, suggestions, or want to contribute? We’d love to
-                hear from you! MultiCalc is always evolving with your feedback.
-                Your input helps us build better tools for everyone.
+                Have questions, suggestions, or want to contribute ? We’d love
+                to hear from you! MultiCalc is always evolving with your
+                feedback. Your input helps us build better tools for everyone.
               </p>
               <div className="flex justify-center gap-4">
                 <a
