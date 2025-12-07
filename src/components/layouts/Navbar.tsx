@@ -110,6 +110,8 @@ export default function Navbar() {
                     { to: "/salary-calculator", label: "Salary Calculator" },
                     { to: "/split-calculator", label: "Split Calculator" },
                     { to: "/SalesTax-Calculator", label: "Sales Tax Calculator" },
+                    { to: "/Data-Converter", label: "Data Converter" },
+                    
                   ].map((item) => (
                     <NavLink
                       key={item.to}
@@ -218,6 +220,7 @@ export default function Navbar() {
                     { to: "/salary-calculator", label: "Salary Calculator" },
                     { to: "/split-calculator", label: "Split Calculator" },
                     { to: "/SalesTax-Calculator", label: "Sales Tax Calculator" },
+                    { to: "/Data-Converter", label: "Data Converter" },
                   ].map((item) => (
                     <NavLink
                       key={item.to}
