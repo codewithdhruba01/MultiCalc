@@ -4,37 +4,37 @@ import { Marquee } from "@/registry/magicui/marquee"
 const reviews = [
   {
     name: "Abhishek Rajput",
-    username: "@abhishekrajput",
+    username: "Developer @BMC Software ",
     body: "This website is good in terms of functionality. The only thing you can improve is the theme. Overall the experience is good and smooth.",
     img: "/testimoni/img1.jpeg",
   },
   {
     name: "Jaanvi Chouhan",
-    username: "@jaanvi_cse",
+    username: "@Student",
     body: "MultiCalc is really impressive! I found it very useful, and I love the clean and simple design it makes everything easy to use.",
     img: "/testimoni/img2.jpeg",
   },
   {
     name: "Sanskruti D",
-    username: "@sanskruti_be",
+    username: "@Student",
     body: "I was very impressed with the MultiCal website. It offers a truly comprehensive suite of tools, incredibly fast and responsive.",
     img: "/testimoni/img3.jpeg",
   },
   {
     name: "Janani M",
-    username: "@janani_zoho",
+    username: "@ZOHO",
     body: "I have used the Multicalc platform. It is very smooth to use. It had wide range of calculators. With a Sleek UI and smooth UX.",
     img: "/testimoni/img4.jpeg",
   },
   {
     name: "Priyadharshini S",
-    username: "@priya_zoho",
+    username: "@ZOHO",
     body: "I went through your Multicalc project, its really amazing in terms of both UI and functionality. Kudos to the team!",
     img: "/testimoni/img6.jpeg",
   },
   {
     name: "Aishika Biswas",
-    username: "@aishika_dev",
+    username: "@Mekyek",
     body: "MultiCalc calculator site is a full package, for someone who needs every calculation at one place. The UI is simple and easy to use.",
     img: "/testimoni/img7.jpeg",
   },
