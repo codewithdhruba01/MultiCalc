@@ -5,6 +5,7 @@ import {
   CreditCard,
   BarChart3,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function CalculatorCategoriesSection() {
   const calculatorCategories = [
@@ -74,7 +75,7 @@ export default function CalculatorCategoriesSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {calculatorCategories.map((category, index) => (
           <Link to={category.link} key={index}>
-            <div
+            <motion.div
               data-aos="fade-up"
               data-aos-delay={index * 100}
               className={`
@@ -88,6 +89,13 @@ export default function CalculatorCategoriesSection() {
         hover:scale-[1.02]
         ytext-white cursor-pointer
       `}
+              whileHover={{
+                borderColor: "rgba(255, 255, 255, 0.8)",
+                transition: {
+                  duration: 0.3,
+                  ease: "easeOut"
+                }
+              }}
             >
               {/* Top Section */}
               <div className="flex flex-col items-center text-white text-center mb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150">
@@ -114,7 +122,7 @@ export default function CalculatorCategoriesSection() {
                 ))}
               </ul>
               <div className="flex-grow"></div>
-            </div>
+            </motion.div>
           </Link>
         ))}
       </div>
