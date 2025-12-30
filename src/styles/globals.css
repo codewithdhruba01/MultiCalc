@@ -87,3 +87,22 @@ input[type="number"]::-webkit-outer-spin-button {
   animation: none;
   mix-blend-mode: normal;
 }
+
+/* Marquee Animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
