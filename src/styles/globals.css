@@ -80,3 +80,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background-position: center, center;
   color: white;
 }
+
+/* View Transitions for Animated Theme Toggler */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
