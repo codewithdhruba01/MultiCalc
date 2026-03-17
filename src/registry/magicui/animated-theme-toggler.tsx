@@ -67,13 +67,20 @@ export const AnimatedThemeToggler = ({
       ref={buttonRef}
       onClick={toggleTheme}
       className={cn(
-        "inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
-        "h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-accent-foreground hover:scale-110 hover:shadow-lg hover:shadow-gray-200 dark:hover:shadow-gray-800",
+        "inline-flex items-center justify-center rounded-none text-sm font-medium transition duration-200 ease-out disabled:opacity-50 disabled:pointer-events-none",
+        "h-11 w-11 border-4 border-black bg-white text-black shadow-[4px_4px_0px_0px_black]",
+        "hover:bg-[#E0E0E0]",
+        "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+        "focus-visible:outline-none focus-visible:ring-0 bauhaus-focus-ring",
         className
       )}
       {...props}
     >
-      {currentTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {currentTheme === "dark" ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
       <span className="sr-only">Toggle theme</span>
     </button>
   )
