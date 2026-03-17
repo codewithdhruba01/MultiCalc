@@ -48,32 +48,57 @@ const ReviewCard = ({
   name,
   username,
   body,
+  variant,
 }: {
   img: string
   name: string
   username: string
   body: string
+  variant: number
 }) => {
+  const avatarShape = variant % 2 === 0 ? "rounded-full" : "rounded-none"
+  const deco =
+    variant % 3 === 0 ? "#D02020" : variant % 3 === 1 ? "#1040C0" : "#F0C020"
+
   return (
     <figure
       className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        "relative h-full w-72 cursor-pointer overflow-hidden border-4 border-black bg-white p-5",
+        "text-black shadow-[8px_8px_0px_0px_black] transition duration-200 ease-out hover:-translate-y-1"
       )}
     >
+      <div
+        className="absolute -right-2 -top-2 h-5 w-5 border-2 border-black"
+        style={{
+          background: deco,
+          borderRadius: variant % 3 === 0 ? "9999px" : undefined,
+          transform: variant % 3 === 1 ? "rotate(45deg)" : undefined,
+        }}
+      />
       <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <img
+          className={cn(
+            "h-10 w-10 border-2 border-black bg-[#F0F0F0] object-cover grayscale transition duration-200 ease-out hover:grayscale-0",
+            avatarShape
+          )}
+          width="40"
+          height="40"
+          alt=""
+          src={img}
+          loading="lazy"
+        />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
+          <figcaption className="text-sm font-black uppercase tracking-wide font-outfit">
             {name}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          <p className="text-xs font-bold uppercase tracking-widest opacity-70 font-outfit">
+            {username}
+          </p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
+      <blockquote className="mt-4 text-sm leading-relaxed font-outfit font-medium text-black">
+        {body}
+      </blockquote>
     </figure>
   )
 }
@@ -81,26 +106,35 @@ const ReviewCard = ({
 export default function TestimonialsSection() {
 
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-excon font-bold mb-8 text-center">
-            What Our Users Say
-          </h2>
-          <p className="text-xl text-gray-500 font-supreme max-w-3xl mx-auto mb-6">
-            Here's what our happy user have to say about their experience.
+    <section className="border-b-4 border-black bg-[#1040C0] text-white">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+        <div className="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <p className="font-outfit font-bold uppercase tracking-widest text-xs text-white/90">
+              Testimonials
+            </p>
+            <h2 className="mt-3 font-outfit font-black uppercase tracking-tighter leading-[0.95] text-4xl sm:text-6xl">
+              What our users say
+            </h2>
+          </div>
+          <p className="max-w-xl font-outfit font-medium text-base sm:text-lg leading-relaxed text-white/90">
+            Real feedback from real people—rolling across like a moving poster strip.
           </p>
         </div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <div className="relative mt-10 flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
+            {firstRow.map((review, i) => (
+              <ReviewCard key={review.username} {...review} variant={i} />
             ))}
           </Marquee>
           <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
+            {secondRow.map((review, i) => (
+              <ReviewCard
+                key={review.username}
+                {...review}
+                variant={i + firstRow.length}
+              />
             ))}
           </Marquee>
         </div>

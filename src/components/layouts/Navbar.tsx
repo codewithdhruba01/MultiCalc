@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Container } from '../ui/Container';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { Button } from '../ui/Button';
 import { StyledDropdown } from "@/components/ui/Dropdown";
@@ -56,21 +55,26 @@ export default function Navbar() {
   /* END COPY PROTECTION */
 
   return (
-    <header className="sticky top-4 z-50 w-full flex justify-center select-none">
-      <Container>
-        <div className="flex justify-center">
-          <div className="flex items-center justify-between w-full md:w-auto gap-4 bg-card/70 backdrop-blur-md px-6 py-2 rounded-full shadow-lg border border-border/40">
+    <header className="sticky top-0 z-50 w-full select-none border-b-4 border-black bg-[#F0F0F0]">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
             <Link
               to="/"
               onClick={closeMenu}
-              className="flex items-center gap-2 font-bold text-lg px-3 py-1 rounded-full"
+              className="flex items-center gap-3 font-bold text-lg"
             >
-              <img src="/images/logo.svg" alt="MultiCalc Logo" className="h-10 w-auto" />
-              <span className="font-synonym">MultiCalc</span>
+              <span className="flex items-center gap-1">
+                <span className="h-4 w-4 rounded-full bg-[#D02020] border-2 border-black" />
+                <span className="h-4 w-4 bg-[#F0C020] border-2 border-black" />
+                <span className="h-4 w-4 bg-[#1040C0] border-2 border-black bauhaus-triangle" />
+              </span>
+              <span className="font-outfit font-black uppercase tracking-wide">
+                MultiCalc
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-2 relative">
+            <nav className="hidden md:flex items-center gap-2 relative border-4 border-black bg-white px-3 py-2 shadow-[4px_4px_0px_0px_black]">
               {[
                 { to: "/", label: "Home" },
                 { to: "/basic-calculators", label: "Math" },
@@ -84,8 +88,10 @@ export default function Navbar() {
                   to={item.to}
                   end={item.to === "/"}
                   className={({ isActive }) =>
-                    `px-3 py-1 rounded-full text-sm font-medium transition ${
-                      isActive ? "bg-primary/10 text-primary" : "text-foreground/70 hover:text-foreground"
+                    `px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide font-outfit transition ${
+                      isActive
+                        ? "bg-[#F0C020] text-black border-2 border-black"
+                        : "text-black hover:bg-[#E0E0E0]"
                     }`
                   }
                 >
@@ -97,7 +103,7 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium transition text-foreground/70 hover:text-foreground"
+                  className="flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide font-outfit transition text-black hover:bg-[#E0E0E0]"
                 >
                   Others
                   <ChevronDown className={`h-4 w-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
@@ -127,14 +133,20 @@ export default function Navbar() {
             </nav>
 
             {/* Right Side Icons */}
-            <div className="flex items-center gap-2 pl-2">
+            <div className="flex items-center gap-2">
               <ThemeToggle />
+
+              <Link to="/basic-calculators" className="hidden md:inline-flex bauhaus-focus-ring">
+                <span className="inline-flex items-center rounded-none border-4 border-black bg-[#D02020] px-5 py-2 font-outfit font-black uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_black] transition duration-200 ease-out active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                  Get started
+                </span>
+              </Link>
 
               {/* Mobile Menu Toggle */}
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden rounded-full"
+                className="md:hidden rounded-none border-4 border-black bg-white shadow-[4px_4px_0px_0px_black]"
                 onClick={toggleMenu}
                 aria-label="Toggle menu"
               >
@@ -143,7 +155,6 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </Container>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
@@ -156,14 +167,18 @@ export default function Navbar() {
           ></div>
 
           <div
-            className={`relative bg-card w-full h-auto shadow-xl p-6 flex flex-col rounded-b-2xl transform transition-transform duration-300 ease-in-out ${
+            className={`relative bg-[#F0F0F0] border-b-4 border-black w-full h-auto shadow-[8px_8px_0px_0px_black] p-6 flex flex-col rounded-none transform transition-transform duration-300 ease-in-out ${
               showPanel ? "translate-y-0" : "-translate-y-full"
             }`}
           >
             <div className="flex items-center justify-between mb-6">
               <Link to="/" onClick={closeMenu} className="flex items-center gap-2 font-bold text-lg">
-                <img src="/images/logo.svg" alt="Logo" className="h-10 w-auto" />
-                <span className="font-synonym">MultiCalc</span>
+                <span className="flex items-center gap-1">
+                  <span className="h-4 w-4 rounded-full bg-[#D02020] border-2 border-black" />
+                  <span className="h-4 w-4 bg-[#F0C020] border-2 border-black" />
+                  <span className="h-4 w-4 bg-[#1040C0] border-2 border-black bauhaus-triangle" />
+                </span>
+                <span className="font-outfit font-black uppercase tracking-wide">MultiCalc</span>
               </Link>
 
               <button onClick={closeMenu}>
@@ -186,8 +201,8 @@ export default function Navbar() {
                   onClick={closeMenu}
                   end={item.to === "/"}
                   className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      isActive ? "bg-primary/10 text-primary" : "text-foreground/70 hover:text-foreground"
+                    `block px-4 py-3 rounded-none border-4 border-black bg-white shadow-[4px_4px_0px_0px_black] text-sm font-black uppercase tracking-wide font-outfit transition ${
+                      isActive ? "bg-[#F0C020] text-black" : "text-black hover:bg-[#E0E0E0]"
                     }`
                   }
                 >
@@ -199,7 +214,7 @@ export default function Navbar() {
               <div className="flex flex-col">
                 <button
                   onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                  className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition text-foreground/70 hover:text-foreground"
+                  className="flex items-center justify-between px-4 py-3 rounded-none border-4 border-black bg-white shadow-[4px_4px_0px_0px_black] text-sm font-black uppercase tracking-wide font-outfit transition text-black hover:bg-[#E0E0E0]"
                 >
                   Others
                   <ChevronDown
@@ -226,7 +241,7 @@ export default function Navbar() {
                       key={item.to}
                       to={item.to}
                       onClick={closeMenu}
-                      className="block px-6 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-primary/10 transition"
+                      className="block px-4 py-3 mt-3 rounded-none border-4 border-black bg-white shadow-[4px_4px_0px_0px_black] text-sm font-bold uppercase tracking-wide font-outfit text-black hover:bg-[#E0E0E0] transition"
                     >
                       {item.label}
                     </NavLink>
@@ -234,6 +249,12 @@ export default function Navbar() {
                 </div>
               </div>
             </nav>
+
+            <Link to="/basic-calculators" onClick={closeMenu} className="mt-6 bauhaus-focus-ring">
+              <span className="inline-flex w-full items-center justify-center rounded-none border-4 border-black bg-[#D02020] px-6 py-3 font-outfit font-black uppercase tracking-wider text-white shadow-[6px_6px_0px_0px_black] transition duration-200 ease-out active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                Get started
+              </span>
+            </Link>
           </div>
         </div>
       )}

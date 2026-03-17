@@ -1,37 +1,43 @@
 import { Link } from 'react-router-dom';
-import { Globe, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function CTASection() {
   return (
     <section
-      className="relative mb-16 rounded-xl overflow-hidden pattern-bg text-white text-center py-20 px-6 shadow-lg"
+      className="relative border-b-4 border-black bg-[#F0C020] text-black overflow-hidden"
       data-aos="zoom-in"
     >
-      <div className="max-w-4xl mx-auto">
-        <h2
-          className="text-4xl md:text-5xl font-excon font-bold tracking-tight mb-4"
-          style={{ letterSpacing: '-0.02em' }}
-        >
-          Solve, Simplify, <br className="hidden md:inline" />
-          Succeed
-        </h2>
-        <p className="text-base font-satoshi md:text-base mb-4 text-white/90 leading-relaxed">
-          Start With hassle-free{' '}
-          <span className="text-white/80 font-satoshi">Calculate</span>{' '}
-          Today.
-        </p>
-        <Link
-          to="/basic-calculators"
-          className="group relative inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
-        >
-          <span className="flex items-center gap-2 bg-rose-500 text-white px-4 py-2 rounded-full font-semibold text-sm md:text-base cursor-pointer transition-all duration-300 ease-in-out group-hover:ml-2 group-hover:shadow-md group-hover:shadow-rose-300">
-            <Globe className="mr-2 h-5 w-5 animate-spin-slow" />
-            Start Now
-          </span>
-          <span className="bg-gray-100 group-hover:bg-gray-200 p-2 rounded-full transition-all duration-300 transform group-hover:scale-110 group-hover:shadow">
-            <ArrowRight className="w-4 h-4 text-rose-500 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </span>
-        </Link>
+      {/* Decorative shapes (50% opacity) */}
+      <div className="pointer-events-none absolute -left-20 -top-16 h-64 w-64 rounded-full bg-white/50 border-4 border-black" />
+      <div className="pointer-events-none absolute -right-24 -bottom-20 h-72 w-72 bg-[#1040C0]/50 border-4 border-black rotate-45" />
+
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+        <div className="relative border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-8 sm:p-12">
+          <div className="absolute -right-2 -top-2 h-5 w-5 rounded-full bg-[#D02020] border-2 border-black" />
+
+          <div className="flex items-end justify-between gap-8 flex-wrap">
+            <div className="max-w-2xl">
+              <p className="font-outfit font-bold uppercase tracking-widest text-xs">
+                Final call
+              </p>
+              <h2 className="mt-4 font-outfit font-black uppercase tracking-tighter leading-[0.9] text-4xl sm:text-6xl">
+                Solve. Simplify.
+                <br />
+                Succeed.
+              </h2>
+              <p className="mt-5 font-outfit font-medium text-base sm:text-lg leading-relaxed">
+                Start with hassle-free calculations today—fast, direct, and built for focus.
+              </p>
+            </div>
+
+            <Link to="/basic-calculators" className="bauhaus-focus-ring">
+              <span className="inline-flex items-center gap-3 border-4 border-black bg-[#D02020] px-7 py-4 font-outfit font-bold uppercase tracking-wider text-white shadow-[6px_6px_0px_0px_black] transition duration-200 ease-out active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                Start now
+                <ArrowRight className="h-6 w-6" />
+              </span>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

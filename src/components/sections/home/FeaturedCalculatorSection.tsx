@@ -1,12 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/Card';
 
 export default function FeaturedCalculatorSection() {
   const featuredCalculators = [
@@ -14,38 +7,58 @@ export default function FeaturedCalculatorSection() {
       title: 'Age Calculator',
       description:
         'Calculate your exact age in years, months, days, hours, minutes, and seconds',
-      icon: <Calendar className="h-10 w-10 text-primary" />,
+      icon: <Calendar className="h-10 w-10 text-black" />,
       link: '/age-calculator',
       featured: true,
     },
   ];
 
   return (
-    <section className="mb-16" data-aos="zoom-in">
-      <h2 className="text-3xl font-synonym font-bold mb-8 text-center">
-        Featured Calculator
-      </h2>
-      <div className="max-w-xl mx-auto">
-        <Card className="transition-all hover:shadow-lg border-primary/30">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4 bg-primary/10 p-4 rounded-full">
-              {featuredCalculators[0].icon}
+    <section className="border-b-4 border-black bg-[#F0C020]" data-aos="zoom-in">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+        <div className="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <p className="font-outfit font-bold uppercase tracking-widest text-xs">
+              Spotlight
+            </p>
+            <h2 className="mt-3 font-outfit font-black uppercase tracking-tighter leading-[0.95] text-4xl sm:text-6xl">
+              Featured calculator
+            </h2>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-4 w-4 rounded-full bg-[#D02020] border-2 border-black" />
+            <div className="h-4 w-4 bg-white border-2 border-black rotate-45" />
+            <div className="h-4 w-4 bg-[#1040C0] border-2 border-black bauhaus-triangle" />
+          </div>
+        </div>
+
+        <div className="mt-10 max-w-2xl">
+          <div className="relative border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
+            {/* Corner decoration */}
+            <div className="absolute -right-2 -top-2 h-5 w-5 rounded-full bg-[#D02020] border-2 border-black" />
+
+            <div className="flex items-start gap-5">
+              <div className="shrink-0 grid place-items-center h-16 w-16 rounded-full bg-[#F0C020] border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                {featuredCalculators[0].icon}
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-outfit font-black uppercase tracking-tight text-2xl">
+                  {featuredCalculators[0].title}
+                </h3>
+                <p className="mt-2 font-outfit font-medium leading-relaxed text-base">
+                  {featuredCalculators[0].description}
+                </p>
+                <div className="mt-6">
+                  <Link to={featuredCalculators[0].link} className="bauhaus-focus-ring">
+                    <span className="inline-flex items-center gap-3 border-4 border-black bg-[#1040C0] px-6 py-3 font-outfit font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_black] transition duration-200 ease-out active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                      Try now
+                    </span>
+                  </Link>
+                </div>
+              </div>
             </div>
-            <CardTitle className="text-2xl font-synonym">
-              {featuredCalculators[0].title}
-            </CardTitle>
-            <CardDescription className="text-base font-satoshi">
-              {featuredCalculators[0].description}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-center">
-            <Link to={featuredCalculators[0].link}>
-              <button className="bg-indigo-500 text-white font-bold px-6 py-2 rounded-md shadow-[3px_3px_0px_black] dark:shadow-[3px_3px_0px_white] hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0px_black] dark:hover:shadow-[1px_1px_0px_black] transition-all duration-200">
-                Try Now
-              </button>
-            </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

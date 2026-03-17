@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Container } from '@/components/ui/Container';
 import Hero from '@/components/sections/home/Hero';
 import FeaturedCalculatorSection from '@/components/sections/home/FeaturedCalculatorSection';
 import Categories from '@/components/sections/home/Categories';
@@ -48,16 +47,14 @@ export default function Home() {
   // END PROTECTION
 
   return (
-    <div className="py-8 md:py-12 select-none">
-      <Container>
-        <Hero />
-        <FeaturedCalculatorSection />
-        <Categories />
-        <Features />
-        <CTA />
-        <Testimonials />
-        <ShareExperienceSection />
-      </Container>
+    <div className="bauhaus-canvas bauhaus-dotgrid select-none">
+      <Hero />
+      <FeaturedCalculatorSection />
+      <Categories />
+      <Features />
+      <Testimonials />
+      <CTA />
+      <ShareExperienceSection />
     </div>
   );
 }

@@ -24,7 +24,7 @@
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.18.0",
     "styled-components": "^6.1.19",
-    "swiper": "^11.2.10",
+    "swiper": "^12.1.2",
     "tailwind-merge": "^1.14.0",
     "ui": "^0.2.4"
   },

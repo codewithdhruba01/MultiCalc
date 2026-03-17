@@ -39,15 +39,19 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t border-border/70 bg-background py-8 select-none">
+    <footer className="border-t-4 border-black bg-[#121212] text-white py-10 select-none">
       <Container>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
             <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-              <img src="/images/logo.svg" alt="Logo" className="h-11 w-auto" />
-              <span>MultiCalc</span>
+              <span className="flex items-center gap-1">
+                <span className="h-4 w-4 rounded-full bg-[#D02020] border-2 border-black" />
+                <span className="h-4 w-4 bg-[#F0C020] border-2 border-black" />
+                <span className="h-4 w-4 bg-[#1040C0] border-2 border-black bauhaus-triangle" />
+              </span>
+              <span className="font-outfit font-black uppercase tracking-wide">MultiCalc</span>
             </Link>
-            <p className="text-base text-muted-foreground font-satoshi">
+            <p className="text-base text-white/80 font-outfit font-medium leading-relaxed">
               Your one-stop solution for all calculation needs. Simple, fast,
               and accurate.
             </p>
@@ -55,12 +59,14 @@ export default function Footer() {
 
           {/* Calculator Links */}
           <div>
-            <h3 className="mb-3 text-lg font-bold">Calculators</h3>
+            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
+              Calculators
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   to="/basic-calculators"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Math Calculators
                 </Link>
@@ -68,7 +74,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/financial-calculators"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Financial Calculators
                 </Link>
@@ -76,7 +82,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/health-calculators"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Health Calculators
                 </Link>
@@ -84,7 +90,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/advance-calculators"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Advance Calculators
                 </Link>
@@ -92,7 +98,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/SalesTax-Calculator"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Sales Tax Calculator
                 </Link>
@@ -100,7 +106,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/marks-calculators"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Marks Calculator
                 </Link>
@@ -108,7 +114,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/split-calculator"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Split Calculator
                 </Link>
@@ -116,7 +122,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/salary-calculator"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Salary Calculator
                 </Link>
@@ -126,12 +132,14 @@ export default function Footer() {
 
           {/* Important Links */}
           <div>
-            <h3 className="mb-3 text-lg font-bold">Links</h3>
+            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
+              Links
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   to="/about"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   About Us
                 </Link>
@@ -139,7 +147,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Privacy Policy
                 </Link>
@@ -147,7 +155,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/terms-of-service"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Terms of Service
                 </Link>
@@ -155,7 +163,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Contact
                 </Link>
@@ -163,7 +171,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/sitemap.xml"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-white/80 hover:text-white"
                 >
                   Sitemap
                 </Link>
@@ -173,23 +181,25 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div>
-            <h3 className="mb-3 text-lg font-bold">Connect</h3>
+            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
+              Connect
+            </h3>
             <div className="flex space-x-4">
               <a
                 href="https://x.com/codewithdhruba"
-                className="text-muted-foreground hover:text-[#1DA1F2]"
+                className="text-white/70 hover:text-white"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/codewithdhruba01/MultiCalc"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-white/70 hover:text-white"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a
                 href="https://codewithdhruba.vercel.app/"
-                className="text-muted-foreground hover:text-[#25b608]"
+                className="text-white/70 hover:text-white"
               >
                 <Globe className="h-5 w-5" />
               </a>
@@ -197,18 +207,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-border/40 pt-6 text-center">
-          <p className="text-sm text-muted-foreground font-satoshi">
+        <div className="mt-10 border-t-4 border-black pt-6 text-center">
+          <p className="text-sm text-white/70 font-outfit font-medium">
             &copy; {currentYear} MultiCalc. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground flex items-center font-satoshi justify-center mt-2">
+          <p className="text-sm text-white/70 flex items-center font-outfit font-medium justify-center mt-2">
             Design & Developed by{' '}
             <Coffee className="w-4 h-4 mx-1 text-[#04afee]" />
             <a
               href="https://codewithdhruba.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground dark:text-white hover:none active:no-underline transition-colors font-satoshi"
+              className="text-white hover:underline underline-offset-4 transition-colors font-outfit font-bold"
             >
               Dhrubaraj Pati
             </a>

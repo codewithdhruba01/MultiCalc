@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowBigRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
@@ -16,97 +16,131 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="mb-20 mt-20 text-center">
-      <button className="bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-full text-sm mb-10 font-supreme">
-        <span className="animate-blink">🟢 </span>
-        Now it is time to calculate →
-      </button>
+    <section className="border-b-4 border-black">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+        <div className="grid items-stretch gap-8 lg:grid-cols-2">
+          {/* Left: Type + CTAs */}
+          <div className="relative border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
+            <div className="flex items-center gap-3">
+              <div className="h-3 w-3 rounded-full bg-[#D02020] border-2 border-black" />
+              <div className="h-3 w-3 bg-[#F0C020] border-2 border-black" />
+              <div className="h-3 w-3 rounded-full bg-[#1040C0] border-2 border-black" />
+              <span className="ml-2 text-xs font-bold tracking-widest uppercase">
+                MultiCalc / Bauhaus Edition
+              </span>
+            </div>
 
-      <h1
-        className="text-5xl md:text-7xl font-excon font-bold mb-5"
-        data-aos="fade-up"
-      >
-        Your all-in-one <br /> calculator platform
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={words[index]}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="block italic font-light font-serif text-gray-500 dark:text-gray-500"
+            <h1
+              className="mt-8 font-outfit font-black uppercase tracking-tighter leading-[0.9] text-[2.75rem] sm:text-6xl lg:text-8xl"
+              data-aos="fade-up"
+            >
+              Your all-in-one
+              <br />
+              calculator platform
+              <span className="block mt-3">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={words[index]}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -18 }}
+                    transition={{ duration: 0.35, ease: 'easeOut' }}
+                    className="inline-flex items-center gap-3"
+                  >
+                    <span className="inline-block h-4 w-4 bg-black" />
+                    <span className="text-[#D02020]">{words[index]}</span>
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+
+            <p
+              className="mt-6 max-w-xl font-outfit font-medium text-base sm:text-lg leading-relaxed"
+              data-aos="fade-up"
+            >
+              All your calculations in one place—from basic math to complex formulas.
+              <span className="block mt-2 font-bold uppercase tracking-wider">
+                20+ calculators available.
+              </span>
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4" data-aos="zoom-in">
+              <Link to="/basic-calculators" className="bauhaus-focus-ring">
+                <span className="inline-flex items-center gap-3 rounded-none border-4 border-black bg-[#D02020] px-6 py-3 font-outfit font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_black] transition duration-200 ease-out active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                  Get started
+                  <ArrowRight className="h-5 w-5" />
+                </span>
+              </Link>
+
+              <Link to="/about" className="bauhaus-focus-ring">
+                <span className="inline-flex items-center gap-3 rounded-none border-4 border-black bg-white px-6 py-3 font-outfit font-bold uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_black] transition duration-200 ease-out hover:bg-[#E0E0E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                  Learn more
+                  <ArrowRight className="h-5 w-5" />
+                </span>
+              </Link>
+            </div>
+
+            {/* Trusted Users */}
+            <div className="mt-10 flex flex-wrap items-center gap-4" data-aos="zoom-in">
+              <div className="flex -space-x-3">
+                {[
+                  '/testimoni/img10.jpeg',
+                  '/testimoni/img11.jpeg',
+                  '/testimoni/img8.jpeg',
+                  '/testimoni/img1.jpeg',
+                  '/testimoni/img3.jpeg',
+                  '/testimoni/img2.jpeg',
+                  '/testimoni/img5.jpeg',
+                ].map((src, i) => (
+                  <img
+                    key={i}
+                    className="h-10 w-10 rounded-full border-2 border-black bg-white grayscale transition duration-200 ease-out hover:grayscale-0"
+                    src={src}
+                    alt={`User ${i + 1}`}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+              <span className="text-sm font-bold uppercase tracking-wider">
+                Trusted by 100+ users
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Bauhaus composition panel */}
+          <div
+            className="relative overflow-hidden border-4 border-black bg-[#1040C0] shadow-[8px_8px_0px_0px_black] min-h-[420px]"
+            data-aos="fade-up"
           >
-            {words[index]}
-          </motion.span>
-        </AnimatePresence>
-      </h1>
+            {/* Overlapping shapes */}
+            <div className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[#F0C020] border-4 border-black shadow-[8px_8px_0px_0px_black]" />
+            <div className="absolute right-12 top-10 h-44 w-44 bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] rotate-45" />
+            <div className="absolute left-16 bottom-14 h-40 w-40 bg-[#D02020] border-4 border-black shadow-[8px_8px_0px_0px_black]" />
+            <div className="absolute left-[55%] bottom-10 h-44 w-44 bg-[#F0C020] border-4 border-black shadow-[8px_8px_0px_0px_black]">
+              <div className="absolute inset-0 m-auto h-24 w-24 bg-white border-4 border-black grid place-items-center">
+                <div className="h-12 w-12 bg-[#D02020] border-4 border-black bauhaus-triangle" />
+              </div>
+            </div>
 
-      <p
-        className="text-lg text-gray-600 dark:text-gray-400 mb-9 max-w-2xl mx-auto font-satoshi"
-        data-aos="fade-up"
-      >
-        All your calculations in one place. From basic math to <br />{' '}
-        complex formulas, your one-stop calculator hub. <br />{' '}
-        <span className=" text-xl text-gray-900 dark:text-gray-300 font-outfit">
-          20+ calculator are available.
-        </span>
-      </p>
+            {/* Poster text strip */}
+            <div className="absolute left-6 top-6 border-4 border-black bg-white px-4 py-3 shadow-[4px_4px_0px_0px_black]">
+              <p className="font-outfit font-black uppercase tracking-widest leading-none">
+                Calculate.
+                <br />
+                Construct.
+                <br />
+                Repeat.
+              </p>
+            </div>
 
-      <div
-        className="flex flex-wrap gap-4 mb-9 justify-center"
-        data-aos="zoom-in"
-      >
-        <Link to="/basic-calculators">
-          <button className="relative flex items-center px-6 py-3 overflow-hidden font-poppins font-medium transition-all bg-indigo-500 rounded-md group">
-            <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
-              <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
-            </span>
-            <span className="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4">
-              <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
-            </span>
-            <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0" />
-            <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
-              Get Started
-            </span>
-          </button>
-        </Link>
-
-        <Link to="/about">
-          <button className="flex items-center gap-2 border border-gray-400 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-            Learn More
-            <ArrowBigRight className="w-5 h-5" />
-          </button>
-        </Link>
-      </div>
-
-      {/* Trusted Users */}
-      <div
-        className="flex items-center justify-center gap-3 mt-8"
-        data-aos="zoom-in"
-      >
-        <div className="flex -space-x-3">
-          {[
-            '/testimoni/img10.jpeg',
-            '/testimoni/img11.jpeg',
-            '/testimoni/img8.jpeg',
-            '/testimoni/img1.jpeg',
-            '/testimoni/img3.jpeg',
-            '/testimoni/img2.jpeg',
-            '/testimoni/img5.jpeg',
-          ].map((src, index) => (
-            <img
-              key={index}
-              className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900
-                         transition-transform transform-gpu ease-in-out duration-500
-                         hover:scale-125 hover:z-20 hover:shadow-lg cursor-pointer"
-              src={src}
-              alt={`User ${index + 1}`}
-            />
-          ))}
+            {/* Bottom label */}
+            <div className="absolute bottom-6 right-6 border-4 border-black bg-[#F0F0F0] px-4 py-2 shadow-[4px_4px_0px_0px_black]">
+              <p className="font-outfit font-bold uppercase tracking-widest text-xs">
+                Form follows function
+              </p>
+            </div>
+          </div>
         </div>
-        <span className="text-gray-600 dark:text-gray-400 text-sm font-semibold">
-          Trusted by 100+ users
-        </span>
       </div>
     </section>
   );
