@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Container } from '../ui/Container';
-import { Github, Coffee, Twitter, Globe } from 'lucide-react';
+import { Github, Twitter, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -39,191 +39,172 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t-4 border-black bg-[#121212] text-white py-10 select-none">
+    <footer className="bg-[#111111] text-white pt-20 pb-10 select-none font-satoshi">
       <Container>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-3">
-            <Link to="/" className="flex items-center gap-2 font-bold text-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-16">
+          {/* Top Left: Logo & Socials */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col items-start pr-8">
+            <Link to="/" className="flex items-center gap-3 mb-6 hover:opacity-90 transition-opacity">
               <img
                 src="/images/logo.svg"
                 alt="MultiCalc logo"
-                className="h-10 w-10 border-2 border-black bg-white"
+                className="h-9 w-9 border-2 border-black bg-white"
                 loading="lazy"
               />
               <span className="font-outfit font-black uppercase tracking-wide">MultiCalc</span>
             </Link>
-            <p className="text-base text-white/80 font-outfit font-medium leading-relaxed">
-              Your one-stop solution for all calculation needs. Simple, fast,
-              and accurate.
+            <p className="text-gray-400 font-medium text-sm mb-10 max-w-sm">
+              Your one-stop solution for all calculation needs. <br className="hidden sm:block" /> Simple, fast, and accurate.
             </p>
+            <div className="flex gap-4">
+              <a
+                href="https://x.com/codewithdhruba"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 border border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://github.com/codewithdhruba01/MultiCalc"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 border border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://codewithdhruba.in/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 border border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+                aria-label="Website"
+              >
+                <Globe className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
-          {/* Calculator Links */}
-          <div>
-            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
+          {/* Top Right: PRODUCT */}
+          <div className="col-span-1">
+            <h3 className="text-[#F0C020] font-black uppercase tracking-wider mb-6 text-sm font-outfit">
               Calculators
             </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  to="/basic-calculators"
-                  className="text-white/80 hover:text-white"
-                >
+            <ul className="space-y-4 text-sm font-bold text-white">
+              <li className="flex items-center gap-2">
+                <Link to="/basic-calculators" className="hover:text-gray-300 transition-colors">
                   Math Calculators
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/financial-calculators"
-                  className="text-white/80 hover:text-white"
-                >
+              <li className="flex items-center gap-2">
+                <Link to="/financial-calculators" className="hover:text-gray-300 transition-colors">
                   Financial Calculators
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/health-calculators"
-                  className="text-white/80 hover:text-white"
-                >
+              <li className="flex items-center gap-2">
+                <Link to="/health-calculators" className="hover:text-gray-300 transition-colors">
                   Health Calculators
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/advance-calculators"
-                  className="text-white/80 hover:text-white"
-                >
+              <li className="flex items-center gap-2">
+                <Link to="/marks-calculators" className="hover:text-gray-300 transition-colors">
+                  Marks Calculator
+                </Link>
+              </li>
+              <li className="flex items-center gap-2">
+                <Link to="/advance-calculators" className="hover:text-gray-300 transition-colors">
                   Advance Calculators
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Top Right: COMPANY */}
+          <div className="col-span-1">
+            <h3 className="text-[#F0C020] font-black uppercase tracking-wider mb-6 text-sm font-outfit">
+              More Tools
+            </h3>
+            <ul className="space-y-4 text-sm font-bold text-white">
               <li>
-                <Link
-                  to="/SalesTax-Calculator"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/SalesTax-Calculator" className="hover:text-gray-300 transition-colors">
                   Sales Tax Calculator
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/marks-calculators"
-                  className="text-white/80 hover:text-white"
-                >
-                  Marks Calculator
+                <Link to="/data-converter" className="hover:text-gray-300 transition-colors">
+                  Data Converter
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/split-calculator"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/split-calculator" className="hover:text-gray-300 transition-colors">
                   Split Calculator
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/salary-calculator"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/salary-calculator" className="hover:text-gray-300 transition-colors">
                   Salary Calculator
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Important Links */}
-          <div>
-            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
-              Links
+          {/* Bottom Left: RESOURCES */}
+          <div className="col-span-1">
+            <h3 className="text-[#F0C020] font-black uppercase tracking-wider mb-6 text-sm font-outfit">
+              Resources
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-4 text-sm font-bold text-white">
               <li>
-                <Link
-                  to="/about"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/about" className="hover:text-gray-300 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-white/80 hover:text-white"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/terms-of-service"
-                  className="text-white/80 hover:text-white"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/contact" className="hover:text-gray-300 transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/sitemap.xml"
-                  className="text-white/80 hover:text-white"
-                >
+                <Link to="/sitemap.xml" className="hover:text-gray-300 transition-colors">
                   Sitemap
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Social Icons */}
-          <div>
-            <h3 className="mb-3 text-lg font-black uppercase tracking-wide font-outfit">
-              Connect
+          {/* Bottom Left: LEGAL */}
+          <div className="col-span-1">
+            <h3 className="text-[#F0C020] font-black uppercase tracking-wider mb-6 text-sm font-outfit">
+              Legal
             </h3>
-            <div className="flex space-x-4">
-              <a
-                href="https://x.com/codewithdhruba"
-                className="text-white/70 hover:text-white"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://github.com/codewithdhruba01/MultiCalc"
-                className="text-white/70 hover:text-white"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://codewithdhruba.vercel.app/"
-                className="text-white/70 hover:text-white"
-              >
-                <Globe className="h-5 w-5" />
-              </a>
-            </div>
+            <ul className="space-y-4 text-sm font-bold text-white">
+              <li>
+                <Link to="/privacy-policy" className="hover:text-gray-300 transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="hover:text-gray-300 transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-10 border-t-4 border-black pt-6 text-center">
-          <p className="text-sm text-white/70 font-outfit font-medium">
-            &copy; {currentYear} MultiCalc. All rights reserved.
-          </p>
-          <p className="text-sm text-white/70 flex items-center font-outfit font-medium justify-center mt-2">
-            Design & Developed by{' '}
-            <Coffee className="w-4 h-4 mx-1 text-[#04afee]" />
-            <a
-              href="https://codewithdhruba.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:underline underline-offset-4 transition-colors font-outfit font-bold"
-            >
-              Dhrubaraj Pati
-            </a>
-          </p>
+        {/* Bottom Bar */}
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs font-medium text-gray-400">
+          <p>&copy; {currentYear} MultiCalc. All rights reserved.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-of-service" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>
