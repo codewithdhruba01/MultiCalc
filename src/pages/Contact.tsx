@@ -92,55 +92,55 @@ export default function Contact() {
   ];
 
   return (
-    <div className="py-20 md:py-15">
+    <div className="py-12 sm:py-16 lg:py-24 border-b-4 border-black">
       <Container>
         <div className="max-w-7xl mx-auto">
           {/* Page Heading */}
-          <h1 className="text-5xl font-excon font-bold text-center mb-5">
+          <h1 className="text-4xl sm:text-6xl font-outfit font-black uppercase tracking-tighter leading-[0.95] text-center mb-5">
             Contact Us
           </h1>
-          <p className="text-center text-muted-foreground mb-20 max-w-3xl mx-auto font-satoshi">
+          <p className="text-center text-muted-foreground mb-14 max-w-3xl mx-auto font-outfit font-medium">
             Have questions, feedback, or need assistance we're here to help.
           </p>
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Left: Contact Info */}
             <div data-aos="fade-up">
-              <h2 className="text-2xl font-synonym font-bold mb-3">
+              <h2 className="text-2xl font-outfit font-black uppercase tracking-wide mb-3">
                 Let's Start a Conversation
               </h2>
-              <p className="text-muted-foreground mb-8 font-satoshi">
+              <p className="text-muted-foreground mb-8 font-outfit font-medium leading-relaxed">
                 Reach out to our team using the contact information below or
                 fill out the form. I'd love to hear from you. I typically
                 respond within 24 hours.
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
-                  <Mail className="text-blue-600 w-5 h-5" />
+                <div className="flex items-center gap-4 p-4 border-4 border-black bg-white shadow-[6px_6px_0px_0px_black]">
+                  <Mail className="text-black w-5 h-5" />
                   <div>
-                    <p className="text-sm font-excon">Email</p>
-                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">
+                    <p className="text-xs font-outfit font-black uppercase tracking-widest">Email</p>
+                    <p className="text-sm font-outfit font-medium text-black">
                       pati.dhrubaraj@outlook.com
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
-                  <Clock3 className="text-purple-600 w-5 h-5" />
+                <div className="flex items-center gap-4 p-4 border-4 border-black bg-white shadow-[6px_6px_0px_0px_black]">
+                  <Clock3 className="text-black w-5 h-5" />
                   <div>
-                    <p className="text-sm font-excon">Response Time</p>
-                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">
+                    <p className="text-xs font-outfit font-black uppercase tracking-widest">Response time</p>
+                    <p className="text-sm font-outfit font-medium text-black">
                       Within 24 hours
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-[#f3f2f2] dark:bg-[#11161f]">
-                  <MapPin className="text-green-600 w-5 h-5" />
+                <div className="flex items-center gap-4 p-4 border-4 border-black bg-white shadow-[6px_6px_0px_0px_black]">
+                  <MapPin className="text-black w-5 h-5" />
                   <div>
-                    <p className="text-sm font-excon">Location</p>
-                    <p className="text-sm font-sans text-[#1f1f1f] dark:text-[#ffffff]">
+                    <p className="text-xs font-outfit font-black uppercase tracking-widest">Location</p>
+                    <p className="text-sm font-outfit font-medium text-black">
                       Kolkata, West Bengal
                     </p>
                   </div>
@@ -149,13 +149,15 @@ export default function Contact() {
 
               {/* Social Links */}
               <div className="mt-6">
-                <p className="text-sm font-medium mb-2">Connect With Me</p>
+                <p className="text-xs font-outfit font-black uppercase tracking-widest mb-3">
+                  Connect
+                </p>
                 <div className="flex gap-4">
                   <a
                     href="https://github.com/codewithdhruba01"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-[#ffffff] bg-[#2c2c2c] hover:bg-[#1d1d1d] transition"
+                    className="p-2 border-4 border-black bg-white text-black shadow-[4px_4px_0px_0px_black] hover:bg-muted transition active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                   >
                     <Github className="w-5 h-5" />
                   </a>
@@ -163,7 +165,7 @@ export default function Contact() {
                     href="https://linkedin.com/in/dhrubaraj-pati"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-[#d3d3d3] bg-[#296af5] hover:bg-[#223c83] transition"
+                    className="p-2 border-4 border-black bg-[#1040C0] text-white shadow-[4px_4px_0px_0px_black] hover:opacity-90 transition active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
@@ -171,7 +173,7 @@ export default function Contact() {
                     href="https://x.com/codewithdhruba"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-[#fff] bg-[#28aaf5] hover:bg-[#235985] transition"
+                    className="p-2 border-4 border-black bg-[#F0C020] text-black shadow-[4px_4px_0px_0px_black] hover:opacity-90 transition active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                   >
                     <Twitter className="w-5 h-5" />
                   </a>
@@ -181,8 +183,10 @@ export default function Contact() {
 
             {/* Right: Contact Form */}
             <div data-aos="fade-up">
-              <div className="rounded-xl bg-[#f3f2f2] dark:bg-[#11161f] p-6">
-                <h3 className="text-xl font-bold mb-6">Send me a message</h3>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6">
+                <h3 className="text-xl font-outfit font-black uppercase tracking-wide mb-6">
+                  Send a message
+                </h3>
 
                 {isSubmitted ? (
                   <div className="text-center py-6">
@@ -269,7 +273,7 @@ export default function Contact() {
                         placeholder="Your message here"
                         value={formState.message}
                         onChange={handleChange}
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        className="w-full rounded-none border-4 border-black bg-white px-3 py-2 text-sm font-outfit font-medium shadow-[4px_4px_0px_0px_black] focus-visible:outline-none bauhaus-focus-ring"
                         required
                       ></textarea>
                     </div>
@@ -279,7 +283,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:brightness-110 transition"
+                      className="w-full md:w-auto bg-primary text-primary-foreground"
                     >
                       {isSubmitting ? (
                         'Sending...'
@@ -297,17 +301,17 @@ export default function Contact() {
 
           {/* FAQ Section */}
           <div className="mt-16" data-aos="fade-up">
-            <h2 className="text-2xl font-synonym font-bold text-center mb-8">
+            <h2 className="text-2xl font-outfit font-black uppercase tracking-wide text-center mb-8">
               Frequently Asked Questions
             </h2>
             <div className="space-y-4 max-w-2xl mx-auto">
               {faqData.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-md border border-muted p-4 transition-all duration-300 hover:shadow-md hover:bg-[#f9f9f9] dark:hover:bg-[#010111]"
+                  className="border-4 border-black bg-white shadow-[6px_6px_0px_0px_black] p-4 transition duration-200 ease-out hover:-translate-y-1"
                 >
                   <button
-                    className="w-full flex items-center justify-between text-left font-outfit text-base"
+                    className="w-full flex items-center justify-between text-left font-outfit font-black uppercase tracking-wide text-sm"
                     onClick={() =>
                       setOpenFAQ(openFAQ === index ? null : index)
                     }

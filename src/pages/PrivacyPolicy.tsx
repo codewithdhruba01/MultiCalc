@@ -23,14 +23,14 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-    <div className="py-20 md:py-15">
+    <div className="py-12 sm:py-16 lg:py-24 border-b-4 border-black">
       <Container>
         <div className="max-w-4xl mx-auto">
           <div className="mb-8 text-center" data-aos="fade-up">
-            <h1 className="text-5xl font-excon font-bold mb-5">
+            <h1 className="text-4xl sm:text-6xl font-outfit font-black uppercase tracking-tighter leading-[0.95] mb-5">
               Privacy Policy
             </h1>
-            <p className="text-muted-foreground font-satoshi">
+            <p className="text-muted-foreground font-outfit font-medium">
               Last updated:{' '}
               {new Date().toLocaleDateString('en-US', {
                 month: 'long',
@@ -40,28 +40,28 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
+          <div className="space-y-8">
             {/* Introduction */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <FileText className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <FileText className="h-5 w-5 text-black" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Introduction
                 </h2>
-                <p className="font-satoshi text-muted-foreground text-lg mb-2">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed">
                   Welcome to MultiCalc. We are committed to protecting your
                   privacy and ensuring you have a positive experience on our
                   website. This Privacy Policy explains how we collect, use,
                   disclose, and safeguard your information when you visit our
                   website.
                 </p>
-                <p className="font-satoshi text-muted-foreground text-lg mb-2">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed">
                   Please read this Privacy Policy carefully. By accessing or
                   using our website, you acknowledge that you have read,
                   understood, and agree to be bound by all the terms of this
@@ -73,40 +73,40 @@ export default function PrivacyPolicy() {
 
             {/* Information We Collect */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Database className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#1040C0] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Database className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Information We Collect
                 </h2>
-                <p className="font-satoshi text-muted-foreground text-lg mb-2">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed">
                   We may collect information about you in a variety of ways:
                 </p>
-                <h3 className="text-lg font-bold font-synonym mt-4 mb-2">
+                <h3 className="text-lg font-black uppercase tracking-wide font-outfit mt-4 mb-2">
                   Personal Data
                 </h3>
-                <p className="font-satoshi text-muted-foreground">
+                <p className="font-outfit font-medium text-muted-foreground leading-relaxed">
                   While using our calculator services, we do not require you to
                   provide personally identifiable information. Our calculators
                   function without user accounts or personal data collection.
                 </p>
-                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">
+                <h3 className="text-lg font-black uppercase tracking-wide font-outfit mt-4 mb-2">
                   Usage Data
                 </h3>
-                <p className="font-satoshi text-muted-foreground">
+                <p className="font-outfit font-medium text-muted-foreground leading-relaxed">
                   We may collect anonymous usage data about how you use our
                   website, which calculators you access, and interaction
                   patterns. This data is used solely to improve our services.
                 </p>
-                <h3 className="text-lg font-semibold font-synonym mt-4 mb-2">
+                <h3 className="text-lg font-black uppercase tracking-wide font-outfit mt-4 mb-2">
                   Cookies and Tracking
                 </h3>
-                <p className="font-satoshi text-muted-foreground">
+                <p className="font-outfit font-medium text-muted-foreground leading-relaxed">
                   We may use cookies and similar tracking technologies. You can
                   instruct your browser to refuse all cookies or to indicate
                   when a cookie is being sent.
@@ -116,18 +116,18 @@ export default function PrivacyPolicy() {
 
             {/* How We Use Your Information */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Eye className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#D02020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Eye className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   How We Use Your Information
                 </h2>
-                <ul className="list-disc font-satoshi pl-6 mt-2 space-y-1 text-muted-foreground text-lg">
+                <ul className="list-disc font-outfit font-medium pl-6 mt-2 space-y-1 text-muted-foreground text-base sm:text-lg">
                   <li>To provide and maintain our website</li>
                   <li>To improve website functionality and user experience</li>
                   <li>To analyze usage patterns and trends</li>
@@ -139,22 +139,22 @@ export default function PrivacyPolicy() {
 
             {/* Disclosure */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Globe className="h-6 w-6 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Globe className="h-6 w-6 text-black" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Disclosure of Your Information
                 </h2>
-                <p className="font-supreme text-lg text-muted-foreground">
+                <p className="font-outfit font-medium text-base sm:text-lg text-muted-foreground leading-relaxed">
                   We do not sell or trade your information. We may disclose
                   information only in the following cases:
                 </p>
-                <ul className="list-disc pl-6 mt-2 font-satoshi space-y-1 text-muted-foreground text-lg">
+                <ul className="list-disc pl-6 mt-2 font-outfit font-medium space-y-1 text-muted-foreground text-base sm:text-lg">
                   <li>To comply with legal obligations</li>
                   <li>To protect our rights or property</li>
                   <li>To prevent or investigate wrongdoing</li>
@@ -165,18 +165,18 @@ export default function PrivacyPolicy() {
 
             {/* Security */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Lock className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#1040C0] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Lock className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Security of Your Information
                 </h2>
-                <p className="font-satoshi text-muted-foreground text-lg">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg leading-relaxed">
                   We use administrative, technical, and physical security
                   measures to protect your information. However, no method is
                   100% secure, and we cannot guarantee its absolute security.
@@ -186,18 +186,18 @@ export default function PrivacyPolicy() {
 
             {/* Children's Privacy */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="600"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <User className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#D02020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <User className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Children's Privacy
                 </h2>
-                <p className="font-satoshi text-muted-foreground text-lg">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg leading-relaxed">
                   Our website is not intended for children under 13. We do not
                   knowingly collect data from children under 13. If you believe
                   your child has provided us with information, please contact
@@ -208,18 +208,18 @@ export default function PrivacyPolicy() {
 
             {/* Changes */}
             <div
-              className="flex items-start"
+              className="flex items-start border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6"
               data-aos="fade-up"
               data-aos-delay="700"
             >
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Clock className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Clock className="h-5 w-5 text-black" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2 className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit">
                   Changes to This Privacy Policy
                 </h2>
-                <p className="font-satoshi text-muted-foreground text-lg">
+                <p className="font-outfit font-medium text-muted-foreground text-base sm:text-lg leading-relaxed">
                   We may update this Privacy Policy from time to time. Changes
                   will be posted on this page with an updated "Last updated"
                   date.

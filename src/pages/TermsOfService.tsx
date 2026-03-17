@@ -22,14 +22,14 @@ export default function TermsOfService() {
     });
   }, []);
   return (
-    <div className="py-20 md:py-15">
+    <div className="py-12 sm:py-16 lg:py-24 border-b-4 border-black">
       <Container>
         <div className="max-w-4xl mx-auto">
           <div className="mb-8 text-center">
-            <h1 className="text-5xl font-excon font-bold mb-5">
+            <h1 className="text-4xl sm:text-6xl font-outfit font-black uppercase tracking-tighter leading-[0.95] mb-5">
               Terms of Service
             </h1>
-            <p className="text-muted-foreground font-satoshi">
+            <p className="text-muted-foreground font-outfit font-medium">
               Last updated:{' '}
               {new Date().toLocaleDateString('en-US', {
                 month: 'long',
@@ -40,22 +40,22 @@ export default function TermsOfService() {
           </div>
 
           <div
-            className="prose prose-lg dark:prose-invert max-w-none"
+            className="space-y-6"
             data-aos="fade-up"
           >
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <FileText className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <FileText className="h-5 w-5 text-black" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Introduction
                 </h2>
                 <p
-                  className="font-satoshi text-muted-foreground text-lg mb-2"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   Welcome to MultiCalc. These Terms of Service ("Terms") govern
@@ -63,7 +63,7 @@ export default function TermsOfService() {
                   functionality, and services offered on or through our website.
                 </p>
                 <p
-                  className="font-satoshi text-muted-foreground text-lg mb-2"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   Please read these Terms carefully before using our website. By
@@ -75,24 +75,24 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Globe className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#1040C0] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Globe className="h-5 w-5 text-white" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Use of Our Website
                 </h2>
                 <h3
-                  className="text-lg font-bold font-synonym mt-4"
+                  className="text-lg font-black uppercase tracking-wide font-outfit mt-4"
                   data-aos="fade-up"
                 >
                   Eligibility
                 </h3>
                 <p
-                  className="font-satoshi text-muted-foreground font-xl"
+                  className="font-outfit font-medium text-muted-foreground leading-relaxed"
                   data-aos="fade-up"
                 >
                   You must be at least 13 years old to use our website. By using
@@ -100,13 +100,13 @@ export default function TermsOfService() {
                   requirement.
                 </p>
                 <h3
-                  className="text-lg font-bold font-synonym mt-4"
+                  className="text-lg font-black uppercase tracking-wide font-outfit mt-4"
                   data-aos="fade-up"
                 >
                   License
                 </h3>
                 <p
-                  className="font-xl font-satoshi text-muted-foreground"
+                  className="font-outfit font-medium text-muted-foreground leading-relaxed"
                   data-aos="fade-up"
                 >
                   Subject to these Terms, we grant you a limited, non-exclusive,
@@ -117,10 +117,10 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Ban className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#D02020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Ban className="h-5 w-5 text-white" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2 className="text-2xl font-bold mb-2 font-synonym">
                   Prohibited Activities
                 </h2>

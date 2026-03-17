@@ -5,10 +5,10 @@ export const StyledDropdown = styled.div<{ isOpen: boolean }>`
   left: -50px;
   margin-top: 20px;
   width: 210px;
-  background-color: var(--card, #0d1117);
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #ffffff;
+  border-radius: 0px;
+  box-shadow: 6px 6px 0px 0px #000000;
+  border: 4px solid #000000;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
@@ -22,16 +22,18 @@ export const StyledDropdown = styled.div<{ isOpen: boolean }>`
     position: relative;
     font-size: 15px;
     padding: 12px 18px;
-    color: #d0d7de;
+    color: #121212;
     text-decoration: none;
     transition: all 0.25s ease;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 
     &:hover {
-      background-color: rgba(56, 139, 253, 0.1);
-      color: #58a6ff;
-      transform: translateX(5px);
+      background-color: #e0e0e0;
+      color: #121212;
+      transform: translateX(0px);
     }
 
     &::before {
@@ -41,33 +43,29 @@ export const StyledDropdown = styled.div<{ isOpen: boolean }>`
       top: 6px;
       height: 70%;
       width: 4px;
-      background: #2f81f7;
-      border-radius: 6px;
-      opacity: 0;
-      transition: 0.3s;
+      background: #d02020;
+      border-radius: 0px;
+      opacity: 1;
+      transition: 0.2s;
     }
 
     &:hover::before {
-      opacity: 1;
+      background: #1040c0;
     }
   }
 
-  [data-theme="light"] & {
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  /* Dark mode: keep Bauhaus structure, invert surface */
+  .dark & {
+    background-color: #121212;
+    border-color: #000000;
+    box-shadow: 6px 6px 0px 0px #000000;
 
     .dropdown-item {
-      color: #333;
+      color: #f0f0f0;
 
       &:hover {
-        background-color: #f2f4f7;
-        color: #0070f3;
-        transform: translateX(5px);
-      }
-
-      &::before {
-        background: #0070f3;
+        background-color: #1f1f1f;
+        color: #f0f0f0;
       }
     }
   }
