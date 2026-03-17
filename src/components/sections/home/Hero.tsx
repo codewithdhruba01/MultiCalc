@@ -18,9 +18,9 @@ export default function HeroSection() {
   return (
     <section className="border-b-4 border-black">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-        <div className="grid items-stretch gap-8 lg:grid-cols-2">
-          {/* Left: Type + CTAs */}
-          <div className="relative border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
+        <div className="flex justify-center">
+          {/* Center: Type + CTAs */}
+          <div className="relative w-full max-w-4xl border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 rounded-full bg-[#D02020] border-2 border-black" />
               <div className="h-3 w-3 bg-[#F0C020] border-2 border-black" />
@@ -104,40 +104,6 @@ export default function HeroSection() {
               <span className="text-sm font-bold uppercase tracking-wider">
                 Trusted by 100+ users
               </span>
-            </div>
-          </div>
-
-          {/* Right: Bauhaus composition panel */}
-          <div
-            className="relative overflow-hidden border-4 border-black bg-[#1040C0] shadow-[8px_8px_0px_0px_black] min-h-[420px]"
-            data-aos="fade-up"
-          >
-            {/* Overlapping shapes */}
-            <div className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[#F0C020] border-4 border-black shadow-[8px_8px_0px_0px_black]" />
-            <div className="absolute right-12 top-10 h-44 w-44 bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] rotate-45" />
-            <div className="absolute left-16 bottom-14 h-40 w-40 bg-[#D02020] border-4 border-black shadow-[8px_8px_0px_0px_black]" />
-            <div className="absolute left-[55%] bottom-10 h-44 w-44 bg-[#F0C020] border-4 border-black shadow-[8px_8px_0px_0px_black]">
-              <div className="absolute inset-0 m-auto h-24 w-24 bg-white border-4 border-black grid place-items-center">
-                <div className="h-12 w-12 bg-[#D02020] border-4 border-black bauhaus-triangle" />
-              </div>
-            </div>
-
-            {/* Poster text strip */}
-            <div className="absolute left-6 top-6 border-4 border-black bg-white px-4 py-3 shadow-[4px_4px_0px_0px_black]">
-              <p className="font-outfit font-black uppercase tracking-widest leading-none">
-                Calculate.
-                <br />
-                Construct.
-                <br />
-                Repeat.
-              </p>
-            </div>
-
-            {/* Bottom label */}
-            <div className="absolute bottom-6 right-6 border-4 border-black bg-[#F0F0F0] px-4 py-2 shadow-[4px_4px_0px_0px_black]">
-              <p className="font-outfit font-bold uppercase tracking-widest text-xs">
-                Form follows function
-              </p>
             </div>
           </div>
         </div>
