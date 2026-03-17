@@ -77,7 +77,7 @@ export default function HealthCalculators() {
       </Helmet>
 
       <Container>
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto px-2 sm:px-0">
           <h1 className="text-4xl font-bold mb-4 text-center font-synonym">
             Health Calculators
           </h1>
@@ -85,12 +85,12 @@ export default function HealthCalculators() {
             Tools for calculating health metrics and statistics
           </p>
 
-          {/* Tab Switcher */}
+          {/* Tab Switcher - Mobile Responsive Grid */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex rounded-md shadow-sm">
+            <div className="grid grid-cols-2 md:inline-flex rounded-md shadow-sm w-full md:w-auto gap-[1px] md:gap-0">
               <Button
                 variant={activeCalculator === 'bmi' ? 'default' : 'outline'}
-                className={`rounded-l-md rounded-r-none px-4 py-2 ${
+                className={`md:rounded-l-md md:rounded-r-none md:border-r-0 rounded-tl-md px-4 py-2 text-xs sm:text-sm ${
                   activeCalculator === 'bmi'
                     ? 'bg-primary text-primary-foreground'
                     : ''
@@ -103,7 +103,7 @@ export default function HealthCalculators() {
                 variant={
                   activeCalculator === 'pregnancy' ? 'default' : 'outline'
                 }
-                className={`rounded-none border-l-0 border-r-0 px-4 py-2 ${
+                className={`md:rounded-none md:border-l-0 md:border-r-0 rounded-tr-md px-4 py-2 text-xs sm:text-sm ${
                   activeCalculator === 'pregnancy'
                     ? 'bg-primary text-primary-foreground'
                     : ''
@@ -114,7 +114,7 @@ export default function HealthCalculators() {
               </Button>
               <Button
                 variant={activeCalculator === 'period' ? 'default' : 'outline'}
-                className={`rounded-l-none rounded-r-none px-4 py-2 ${
+                className={`md:rounded-none md:border-l-0 md:border-r-0 px-4 py-2 text-xs sm:text-sm ${
                   activeCalculator === 'period'
                     ? 'bg-primary text-primary-foreground'
                     : ''
@@ -125,7 +125,7 @@ export default function HealthCalculators() {
               </Button>
               <Button
                 variant={activeCalculator === 'protein' ? 'default' : 'outline'}
-                className={`rounded-l-none rounded-r-none px-4 py-2 ${
+                className={`md:rounded-none md:border-l-0 md:border-r-0 px-4 py-2 text-xs sm:text-sm ${
                   activeCalculator === 'protein'
                     ? 'bg-primary text-primary-foreground'
                     : ''
@@ -136,7 +136,7 @@ export default function HealthCalculators() {
               </Button>
               <Button
                 variant={activeCalculator === 'bmr' ? 'default' : 'outline'}
-                className={`rounded-r-md rounded-l-none px-4 py-2 ${
+                className={`md:rounded-r-md md:rounded-l-none md:border-l-0 rounded-bl-md rounded-br-md col-span-2 md:col-span-1 px-4 py-2 text-xs sm:text-sm ${
                   activeCalculator === 'bmr'
                     ? 'bg-primary text-primary-foreground'
                     : ''

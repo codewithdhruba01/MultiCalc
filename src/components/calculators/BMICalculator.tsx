@@ -105,17 +105,17 @@ export default function BMICalculator() {
       <CardContent>
         {/* Unit Switch */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex rounded-md shadow-sm">
+          <div className="grid grid-cols-2 md:inline-flex rounded-md shadow-sm w-full md:w-auto gap-[1px] md:gap-0">
             <Button
               variant={unit === 'metric' ? 'default' : 'outline'}
-              className={`rounded-l-md rounded-r-none px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
+              className={`md:rounded-l-md md:rounded-r-none md:border-r-0 rounded-l-md px-4 py-2 ${unit === 'metric' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleUnitChange('metric')}
             >
               Metric
             </Button>
             <Button
               variant={unit === 'imperial' ? 'default' : 'outline'}
-              className={`rounded-r-md rounded-l-none px-4 py-2 ${unit === 'imperial' ? 'bg-primary text-primary-foreground' : ''}`}
+              className={`md:rounded-r-md md:rounded-l-none rounded-r-md px-4 py-2 ${unit === 'imperial' ? 'bg-primary text-primary-foreground' : ''}`}
               onClick={() => handleUnitChange('imperial')}
             >
               Imperial
