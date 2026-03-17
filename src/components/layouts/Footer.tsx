@@ -44,11 +44,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
             <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-              <span className="flex items-center gap-1">
-                <span className="h-4 w-4 rounded-full bg-[#D02020] border-2 border-black" />
-                <span className="h-4 w-4 bg-[#F0C020] border-2 border-black" />
-                <span className="h-4 w-4 bg-[#1040C0] border-2 border-black bauhaus-triangle" />
-              </span>
+              <img
+                src="/images/logo.svg"
+                alt="MultiCalc logo"
+                className="h-10 w-10 border-2 border-black bg-white"
+                loading="lazy"
+              />
               <span className="font-outfit font-black uppercase tracking-wide">MultiCalc</span>
             </Link>
             <p className="text-base text-white/80 font-outfit font-medium leading-relaxed">
