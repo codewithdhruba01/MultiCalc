@@ -20,7 +20,7 @@ export default function HeroSection() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="flex justify-center">
           {/* Center: Type + CTAs */}
-          <div className="relative w-full max-w-4xl border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
+          <div className="relative w-full max-w-12xl border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 rounded-full bg-[#D02020] border-2 border-black" />
               <div className="h-3 w-3 bg-[#F0C020] border-2 border-black" />
