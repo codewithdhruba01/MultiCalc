@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Button } from '../ui/Button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '../ui/Card';
+import { Input } from '../ui/Input';
 
 const freqOptions = [
   { label: 'Annually', value: 'annual', n: 1 },
@@ -87,85 +96,67 @@ const FDCaclculator: React.FC = () => {
   };
 
   return (
-    <div
-      className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-2"
-      data-aos="zoom-in"
-    >
-      <div className="w-full max-w-lg bg-white dark:bg-[#020817] border border-gray-200 dark:border-gray-800 rounded-lg p-6 shadow-lg transition-colors">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white font-synonym mb-3">
-            Fixed Deposit Calculator
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 font-satoshi">
-            Calculate maturity amount and interest earned with compound interest
-          </p>
-        </div>
-
+    <Card className="w-full max-w-md mx-auto" data-aos="zoom-in">
+      <CardHeader>
+        <CardTitle className="text-center font-synonym font-bold mb-3">
+          Fixed Deposit Calculator
+        </CardTitle>
+        <CardDescription className="text-center font-satoshi">
+          Calculate maturity amount and interest earned with compound interest
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
         {/* Inputs */}
-        <div className="mb-4">
-          <label className="block text-gray-800 dark:text-gray-300 mb-1">
+        <div>
+          <label className="block text-sm font-medium mb-1">
             Principal Amount <span className="text-red-500">*</span>
           </label>
-          <input
+          <Input
             type="number"
             placeholder="Enter principal (e.g. 10000)"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
-            className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
-              errors.principal
-                ? 'border-red-500 focus:ring-red-500'
-                : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-            } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
+            className={errors.principal ? 'border-red-500 focus-visible:ring-red-500' : ''}
           />
           {errors.principal && (
             <p className="text-red-500 text-sm mt-1">{errors.principal}</p>
           )}
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-800 dark:text-gray-300 mb-1">
+        <div>
+          <label className="block text-sm font-medium mb-1">
             Annual Rate (%) <span className="text-red-500">*</span>
           </label>
-          <input
+          <Input
             type="number"
             placeholder="e.g. 6.5"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
-            className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
-              errors.rate
-                ? 'border-red-500 focus:ring-red-500'
-                : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-            } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
+            className={errors.rate ? 'border-red-500 focus-visible:ring-red-500' : ''}
           />
           {errors.rate && (
             <p className="text-red-500 text-sm mt-1">{errors.rate}</p>
           )}
         </div>
 
-        <div className="mb-4 grid grid-cols-3 gap-3">
-          <div className="col-span-2">
-            <label className="block text-gray-800 dark:text-gray-300 mb-1">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">
               Tenure <span className="text-red-500">*</span>
             </label>
-            <input
+            <Input
               type="number"
               placeholder="Enter tenure"
               value={tenureValue}
               onChange={(e) => setTenureValue(e.target.value)}
-              className={`w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border ${
-                errors.tenure
-                  ? 'border-red-500 focus:ring-red-500'
-                  : 'border-gray-300 dark:border-gray-800 focus:ring-blue-500'
-              } text-gray-900 dark:text-white focus:outline-none focus:ring-2`}
+              className={errors.tenure ? 'border-red-500 focus-visible:ring-red-500' : ''}
             />
             {errors.tenure && (
               <p className="text-red-500 text-sm mt-1">{errors.tenure}</p>
             )}
           </div>
-
           <div>
-            <label className="block text-gray-800 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium mb-1">
               Unit
             </label>
             <select
@@ -173,7 +164,7 @@ const FDCaclculator: React.FC = () => {
               onChange={(e) =>
                 setTenureUnit(e.target.value === 'months' ? 'months' : 'years')
               }
-              className="w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border border-gray-300 dark:border-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <option value="years">Years</option>
               <option value="months">Months</option>
@@ -181,14 +172,14 @@ const FDCaclculator: React.FC = () => {
           </div>
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-800 dark:text-gray-300 mb-1">
+        <div>
+          <label className="block text-sm font-medium mb-1">
             Compounding Frequency
           </label>
           <select
             value={freq}
             onChange={(e) => setFreq(e.target.value)}
-            className="w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-[#020817] border border-gray-300 dark:border-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             {freqOptions.map((o) => (
               <option key={o.value} value={o.value}>
@@ -199,49 +190,50 @@ const FDCaclculator: React.FC = () => {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3 mt-6">
-          <button
-            onClick={handleCalculate}
-            disabled={loading}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition flex justify-center items-center"
-          >
+        <div className="grid grid-cols-2 gap-4 mt-6">
+          <Button onClick={handleCalculate} disabled={loading}>
             {loading ? (
-              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              <div className="flex items-center gap-2">
+                <span className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin"></span>
+                Calculating...
+              </div>
             ) : (
               'Calculate'
             )}
-          </button>
-          <button
-            onClick={handleReset}
-            disabled={loading}
-            className="flex-1 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white py-2 rounded-md transition"
-          >
+          </Button>
+          <Button variant="outline" onClick={handleReset} disabled={loading}>
             Reset
-          </button>
+          </Button>
         </div>
 
         {/* Result */}
         {!loading && maturity !== null && interestEarned !== null && (
-          <div className="mt-6 bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 rounded-md p-4 transition-colors">
-            <p className="text-gray-800 dark:text-gray-300 font-outfit font-semibold">
-              Maturity Amount
-            </p>
-            <p className="text-2xl font-semibold text-green-600 dark:text-green-400">
-              ₹ {maturity.toLocaleString()}
-            </p>
-
-            <div className="mt-2">
-              <p className="text-gray-800 dark:text-gray-300 font-outfit font-semibold">
-                Total Interest Earned
-              </p>
-              <p className="text-lg font-medium text-gray-700 dark:text-gray-200">
-                ₹ {interestEarned.toLocaleString()}
-              </p>
+          <div className="mt-6 p-4 bg-muted rounded-md transition-all duration-500">
+            <h3 className="text-lg font-medium mb-4">Deposit Summary</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span>Principal Amount:</span>
+                <span className="font-bold">
+                  ₹ {parseFloat(principal).toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Total Interest Earned:</span>
+                <span className="font-bold">
+                  ₹ {interestEarned.toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Maturity Amount:</span>
+                <span className="font-bold text-green-600 dark:text-green-400">
+                  ₹ {maturity.toLocaleString()}
+                </span>
+              </div>
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

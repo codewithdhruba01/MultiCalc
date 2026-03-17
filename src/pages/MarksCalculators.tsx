@@ -5,6 +5,13 @@ import 'aos/dist/aos.css';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/Card';
 
 export default function YgpaToCgpaPage() {
   useEffect(() => {
@@ -171,18 +178,16 @@ export default function YgpaToCgpaPage() {
 
         {/* --- Tab: YGPA to CGPA --- */}
         {activeTab === 'cgpa' && (
-          <div
-            className="max-w-md mx-auto border rounded-lg p-6 mt-6"
-            data-aos="fade-up"
-          >
-            <h2 className="text-lg text-center font-bold font-synonym mb-2">
-              YGPA to CGPA Converter
-            </h2>
-            <p className="text-muted-foreground text-center font-satoshi mb-4 text-sm">
-              Convert your Yearly Grade Point Average to <br /> Cumulative Grade
-              Point Average.
-            </p>
-            <div className="grid grid-cols-1 gap-4 mb-4">
+          <Card className="w-full max-w-md mx-auto mt-6" data-aos="fade-up">
+            <CardHeader>
+              <CardTitle className="text-center font-synonym font-bold mb-3">
+                YGPA to CGPA Converter
+              </CardTitle>
+              <CardDescription className="text-center font-satoshi">
+                Convert your Yearly Grade Point Average to <br /> Cumulative Grade Point Average.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
               <div>
                 <label htmlFor="ygpa" className="block text-sm font-medium mb-1">
                   YGPA
@@ -212,30 +217,29 @@ export default function YgpaToCgpaPage() {
                   readOnly
                 />
               </div>
-            </div>
-            {error && <div className="text-red-600 text-sm mb-3">{error}</div>}
-            <div className="flex gap-2">
-              <Button onClick={handleConvertCgpa}>Convert</Button>
-              <Button variant="secondary" onClick={handleResetCgpa}>
-                Reset
-              </Button>
-            </div>
-          </div>
+              {error && <div className="text-red-500 text-sm">{error}</div>}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <Button onClick={handleConvertCgpa}>Convert</Button>
+                <Button variant="outline" onClick={handleResetCgpa}>
+                  Reset
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* --- Tab: YGPA to Total Marks --- */}
         {activeTab === 'total' && (
-          <div
-            className="max-w-md mx-auto border rounded-lg p-6 mt-6"
-            data-aos="fade-up"
-          >
-            <h2 className="text-lg font-bold mb-2 font-synonym text-center">
-              YGPA to Total Marks
-            </h2>
-            <p className="text-muted-foreground mb-4 text-sm text-center font-satoshi">
-              Convert your YGPA into total marks and percentage.
-            </p>
-            <div className="grid grid-cols-1 gap-4 mb-4">
+          <Card className="w-full max-w-md mx-auto mt-6" data-aos="fade-up">
+            <CardHeader>
+              <CardTitle className="text-center font-synonym font-bold mb-3">
+                YGPA to Total Marks
+              </CardTitle>
+              <CardDescription className="text-center font-satoshi">
+                Convert your YGPA into total marks and percentage.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
               <div>
                 <label
                   htmlFor="ygpa2"
@@ -304,15 +308,15 @@ export default function YgpaToCgpaPage() {
                   readOnly
                 />
               </div>
-            </div>
-            {error && <div className="text-red-600 text-sm mb-3">{error}</div>}
-            <div className="flex gap-2">
-              <Button onClick={handleConvertTotal}>Convert</Button>
-              <Button variant="secondary" onClick={handleResetTotal}>
-                Reset
-              </Button>
-            </div>
-          </div>
+              {error && <div className="text-red-500 text-sm">{error}</div>}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <Button onClick={handleConvertTotal}>Convert</Button>
+                <Button variant="outline" onClick={handleResetTotal}>
+                  Reset
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         )}
       </Container>
     </div>
