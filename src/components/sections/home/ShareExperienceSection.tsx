@@ -21,11 +21,7 @@ export default function ShareExperienceSection() {
               >
                 Write testimonial
               </a>
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-[#D02020] border-2 border-black" />
-                <span className="h-3 w-3 bg-[#F0C020] border-2 border-black" />
-                <span className="h-3 w-3 rounded-full bg-[#1040C0] border-2 border-black" />
-              </div>
+
             </div>
           </div>
         </div>
