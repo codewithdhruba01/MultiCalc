@@ -75,7 +75,6 @@ export default function HeroSection() {
               <Link to="/about" className="bauhaus-focus-ring">
                 <span className="inline-flex items-center gap-3 rounded-none border-4 border-black bg-white px-6 py-3 font-outfit font-bold uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_black] transition duration-200 ease-out hover:bg-[#E0E0E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
                   Learn more
-                  <ArrowRight className="h-5 w-5" />
                 </span>
               </Link>
             </div>
