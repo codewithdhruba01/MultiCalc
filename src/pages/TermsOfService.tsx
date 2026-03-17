@@ -121,18 +121,21 @@ export default function TermsOfService() {
                 <Ban className="h-5 w-5 text-white" />
               </div>
               <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
-                <h2 className="text-2xl font-bold mb-2 font-synonym">
+                <h2
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
+                  data-aos="fade-up"
+                >
                   Prohibited Activities
                 </h2>
                 <p
-                  className="font-satoshi text-muted-foreground text-lg mb-2"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   You agree not to engage in any of the following prohibited
                   activities:
                 </p>
                 <ul
-                  className="list-disc pl-6 mt-2 space-y-1 font-satoshi text-muted-foreground"
+                  className="list-disc pl-6 mt-2 space-y-1 font-outfit font-medium text-muted-foreground text-base sm:text-lg leading-relaxed"
                   data-aos="fade-up"
                 >
                   <li>
@@ -165,18 +168,18 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <AlertTriangle className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <AlertTriangle className="h-5 w-5 text-black" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Disclaimer of Warranties
                 </h2>
                 <p
-                  className="font-xl font-supreme text-muted-foreground"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   THE WEBSITE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE"
@@ -187,7 +190,7 @@ export default function TermsOfService() {
                   AVAILABILITY OF THE WEBSITE.
                 </p>
                 <p
-                  className="mt-2 font-supreme text-muted-foreground"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed mt-2"
                   data-aos="fade-up"
                 >
                   WITHOUT LIMITING THE FOREGOING, NEITHER MULTICALC NOR ANYONE
@@ -201,18 +204,18 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Scale className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#1040C0] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Scale className="h-5 w-5 text-white" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Limitation of Liability
                 </h2>
                 <p
-                  className="font-xl font-supreme text-muted-foreground"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   TO THE FULLEST EXTENT PROVIDED BY LAW, IN NO EVENT WILL
@@ -227,18 +230,18 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Shield className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#D02020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Shield className="h-5 w-5 text-white" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Indemnification
                 </h2>
                 <p
-                  className="font-satoshi text-muted-foreground text-lg mb-2"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   You agree to defend, indemnify, and hold harmless MultiCalc,
@@ -254,18 +257,18 @@ export default function TermsOfService() {
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="mr-4 mt-1 bg-primary/10 p-2 rounded-full">
-                <Clock className="h-5 w-5 text-primary" />
+              <div className="mr-4 mt-1 bg-[#F0C020] p-2 border-4 border-black shadow-[4px_4px_0px_0px_black]">
+                <Clock className="h-5 w-5 text-black" />
               </div>
-              <div>
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] p-6 w-full">
                 <h2
-                  className="text-2xl font-bold mb-2 font-synonym"
+                  className="text-2xl font-black uppercase tracking-wide mb-2 font-outfit"
                   data-aos="fade-up"
                 >
                   Changes to These Terms
                 </h2>
                 <p
-                  className="font-satoshi text-muted-foreground text-lg mb-2"
+                  className="font-outfit font-medium text-muted-foreground text-base sm:text-lg mb-2 leading-relaxed"
                   data-aos="fade-up"
                 >
                   We may revise and update these Terms from time to time in our
