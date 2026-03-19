@@ -5,7 +5,6 @@ export default function CTASection() {
   return (
     <section
       className="relative border-b-4 border-black bg-[#F0C020] text-black overflow-hidden"
-      data-aos="zoom-in"
     >
       {/* Decorative shapes (50% opacity) */}
       <div className="pointer-events-none absolute -left-20 -top-16 h-64 w-64 rounded-full bg-white/50 border-4 border-black" />
@@ -15,7 +14,7 @@ export default function CTASection() {
         <div className="relative border-4 border-black bg-[#F0F0F0] shadow-[8px_8px_0px_0px_black] p-8 sm:p-12">
           <div className="absolute -right-2 -top-2 h-5 w-5 rounded-full bg-[#D02020] border-2 border-black" />
 
-          <div className="flex items-end justify-between gap-8 flex-wrap">
+          <div className="flex items-end justify-between gap-8 flex-wrap" data-aos="zoom-in">
             <div className="max-w-2xl">
               <p className="font-outfit font-bold uppercase tracking-widest text-xs">
                 Final call

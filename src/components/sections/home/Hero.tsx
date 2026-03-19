@@ -26,7 +26,7 @@ export default function HeroSection() {
               <div className="h-3 w-3 bg-[#F0C020] border-2 border-black" />
               <div className="h-3 w-3 rounded-full bg-[#1040C0] border-2 border-black" />
               <span className="ml-2 text-xs font-bold tracking-widest uppercase">
-                MultiCalc / Bauhaus Edition
+                MultiCalc / New Edition
               </span>
             </div>
 

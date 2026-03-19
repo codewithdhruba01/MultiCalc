@@ -14,8 +14,8 @@ export default function FeaturedCalculatorSection() {
   ];
 
   return (
-    <section className="border-b-4 border-black bg-[#F0C020]" data-aos="zoom-in">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+    <section className="border-b-4 border-black bg-[#F0C020]">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24" data-aos="zoom-in">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
             <p className="font-outfit font-bold uppercase tracking-widest text-xs">
